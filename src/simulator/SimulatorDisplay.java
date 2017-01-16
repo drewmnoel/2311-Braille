@@ -40,7 +40,7 @@ public class SimulatorDisplay extends Application {
 		btnPush.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				System.out.println("OMG stop pushing me");
+				System.out.println("OMG stop pushing me dude");
 			}
 		});
 
