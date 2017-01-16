@@ -1,3 +1,5 @@
+package simulator;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -31,6 +33,16 @@ public class SimulatorDisplay extends Application {
 			}
 		});
 		
+		//Create new button
+		Button btnNew = new Button();
+		btnNew.setText("New Button");
+		btnNew.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				System.out.println("New button clicked");
+			}
+		});
+		
 		//Create the push button
 		Button btnPush = new Button("Push");
 		btnPush.setOnAction(new EventHandler<ActionEvent>() {
@@ -50,6 +62,7 @@ public class SimulatorDisplay extends Application {
 		gridPane.add(btnLeft, 0, 1);
 		gridPane.add(btnRight, 1, 1);
 		gridPane.add(btnPush, 0, 2);
+		gridPane.add(btnNew, 1, 2);
 		// Create the scene
 		Scene scene = new Scene(gridPane, 300, 250);
 
