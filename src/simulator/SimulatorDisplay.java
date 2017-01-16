@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -33,15 +34,6 @@ public class SimulatorDisplay extends Application {
 			}
 		});
 		
-		//Create new button
-		Button btnNew = new Button();
-		btnNew.setText("New Button");
-		btnNew.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				System.out.println("New button clicked");
-			}
-		});
 		
 		//Create the push button
 		Button btnPush = new Button("Push");
@@ -58,13 +50,29 @@ public class SimulatorDisplay extends Application {
 		gridPane.setHgap(50);
 		gridPane.setPadding(new Insets(25, 25, 25, 25));
 
+		//Create new button
+		Button btnNew = new Button();
+		btnNew.setText("New Button");
+		btnNew.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				//System.out.println("New button clicked");
+				String test = "⠌⠜⠬test ";
+				displayBraille.putBraille(test, gridPane);
+			}
+		});
+		
 		// Populate the main pane with the buttons
 		gridPane.add(btnLeft, 0, 1);
 		gridPane.add(btnRight, 1, 1);
 		gridPane.add(btnPush, 0, 2);
 		gridPane.add(btnNew, 1, 2);
+		
+		//String charTest = new String("⠥⠧⠭⠽⠵⠯⠿⠷⠮⠾abc");
+		//displayBraille.putBraille(charTest, gridPane);
+		
 		// Create the scene
-		Scene scene = new Scene(gridPane, 300, 250);
+		Scene scene = new Scene(gridPane, 800, 300);
 
 		// Set the stage with the scene
 		stage.setTitle("Braille Simulator");
