@@ -30,17 +30,26 @@ public class SimulatorDisplay extends Application {
 				System.out.println("Right button clicked");
 			}
 		});
+		
+		//Create the push button
+		Button btnPush = new Button("Push");
+		btnPush.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				System.out.println("OMG stop pushing me");
+			}
+		});
 
 		// Create the main grid pane
 		GridPane gridPane = new GridPane();
-		gridPane.setVgap(10);
+		gridPane.setVgap(20);
 		gridPane.setHgap(50);
 		gridPane.setPadding(new Insets(25, 25, 25, 25));
 
 		// Populate the main pane with the buttons
 		gridPane.add(btnLeft, 0, 1);
 		gridPane.add(btnRight, 1, 1);
-
+		gridPane.add(btnPush, 0, 2);
 		// Create the scene
 		Scene scene = new Scene(gridPane, 300, 250);
 
