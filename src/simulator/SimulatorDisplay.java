@@ -15,16 +15,10 @@ public class SimulatorDisplay extends Application {
 	@Override
 	public void start(Stage stage) {
 		// Create the left button
-		Button btnLeft = new Button();
-		btnLeft.setText("Left Button");
-		btnLeft.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				System.out.println("Left button clicked");
-			}
-		});
+		
+		
 
-		// Create the right button
+	/*	// Create the right button
 		Button btnRight = new Button();
 		btnRight.setText("Right Button");
 		btnRight.setOnAction(new EventHandler<ActionEvent>() {
@@ -42,14 +36,18 @@ public class SimulatorDisplay extends Application {
 			public void handle(ActionEvent event) {
 				System.out.println("I need a proper name, dude.");
 			}
-		});
+		});*/
 
 		// Create the main grid pane
 		GridPane gridPane = new GridPane();
-		gridPane.setVgap(20);
-		gridPane.setHgap(50);
+		/*gridPane.setVgap(20);
+		gridPane.setHgap(50);*/
 		gridPane.setPadding(new Insets(25, 25, 25, 25));
-
+		
+		
+		CreateButtons btn = new CreateButtons();
+		btn.createNumButtons(gridPane);
+		
 		//Create new button
 		Button btnNew = new Button();
 		btnNew.setText("New Button");
@@ -63,12 +61,11 @@ public class SimulatorDisplay extends Application {
 		});
 		
 		// Populate the main pane with the buttons
-		gridPane.add(btnLeft, 0, 1);
-		gridPane.add(btnRight, 1, 1);
+		/*gridPane.add(btnRight, 1, 1);
 		gridPane.add(btnPush, 0, 2);
-		gridPane.add(btnNew, 1, 2);
+		gridPane.add(btnNew, 1, 2);*/
 		
-		//String charTest = new String("⠥⠧⠭⠽⠵⠯⠿⠷⠮⠾abc");
+		//String charTest = new String("â ¥â §â ­â ½â µâ ¯â ¿â ·â ®â ¾abc");
 		//displayBraille.putBraille(charTest, gridPane);
 		
 		// Create the scene

@@ -5,8 +5,7 @@ import javafx.scene.layout.GridPane;
 
 public class displayBraille {
 	
-	static void putBraille(String input, GridPane gridPane) {
-	
+	static void putBraille(String input, GridPane gridPane) {	
 		
 		for(int i=0; i<input.length(); i++) {
 			Label temp = new Label(Character.toString(input.charAt(i)));
