@@ -6,7 +6,6 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -39,8 +38,7 @@ public class SimulatorDisplay extends Application {
 		 */
 		gridPane.setPadding(new Insets(25, 25, 25, 25));
 
-		CreateButtons btn = new CreateButtons();
-		btn.createNumButtons(gridPane);
+		CreateButtons.createNumButtons(gridPane);
 
 		// Create new button
 		Button btnNew = new Button();

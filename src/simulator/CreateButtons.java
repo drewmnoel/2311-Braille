@@ -10,11 +10,10 @@ public class CreateButtons {
 	}
 
 	CreateButtons(String btnName, GridPane pane, int y, int x) {
-		BrailleTextTranslator txtToBraille = new BrailleTextTranslator();
 
 		Button btn = new Button(btnName);
 		btn.setOnAction((event) -> {
-			System.out.println(txtToBraille.translate(btnName));
+			System.out.println(BrailleTextTranslator.translate(btnName));
 		});
 		pane.add(btn, y, x);
 	}
@@ -30,7 +29,8 @@ public class CreateButtons {
 			} else {
 				y = 1;
 			}
-			CreateButtons btn = new CreateButtons(buttonName, pane, y, x);
+			
+			new CreateButtons(buttonName, pane, y, x);
 		}
 	}
 
