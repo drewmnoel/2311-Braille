@@ -3,8 +3,8 @@ package simulator;
 import java.util.Hashtable;
 
 public class BrailleTextSymbol {
-	public static final Hashtable<String,String> ht = new Hashtable<>();
-	
+	public static final Hashtable<String, String> ht = new Hashtable<>();
+
 	static {
 		ht.put("a", "⠁");
 		ht.put("b", "⠃");
