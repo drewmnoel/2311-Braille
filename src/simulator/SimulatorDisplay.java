@@ -1,6 +1,10 @@
 package simulator;
 
+import java.util.ArrayList;
+
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,7 +22,12 @@ public class SimulatorDisplay extends Application {
 		this.pane.setPadding(new Insets(25, 25, 25, 25));
 
 		// Create the numbered buttons
-		generateButtons(5, new String[] { "Left", "2nd", "Middle", "4th", "Right" });
+		ArrayList<EventHandler<ActionEvent>> actions = new ArrayList<>();
+		for (int i = 0; i < 5; i++) {
+			actions.add(new BlankEventHandler());
+		}
+
+		generateButtons(5, new String[] { "Left", "2nd", "Middle", "4th", "Right" }, actions);
 
 		// Create the scene
 		Scene scene = new Scene(this.pane, 800, 300);
@@ -29,13 +38,13 @@ public class SimulatorDisplay extends Application {
 		stage.show();
 	}
 
-	protected void generateButtons(int numButtons, String[] names) {
+	protected void generateButtons(int numButtons, String[] names, ArrayList<EventHandler<ActionEvent>> actions) {
 		int x = 1;
 		for (int i = 0, y = 1; i < numButtons; i++, y++) {
 			String buttonName = names[i];
 
 			Button btn = new Button(buttonName);
-			btn.setOnAction(new BlankEventHandler());
+			btn.setOnAction(actions.get(i));
 			this.pane.add(btn, y, x);
 		}
 	}
