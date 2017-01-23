@@ -18,7 +18,7 @@ public class SimulatorDisplay extends Application {
 		this.pane.setPadding(new Insets(25, 25, 25, 25));
 
 		// Create the numbered buttons
-		generateButtons(1, new String[] { "a" });
+		generateButtons(5, new String[] { "Left", "2nd", "Middle", "4th", "Right" });
 
 		// Create the scene
 		Scene scene = new Scene(this.pane, 800, 300);
