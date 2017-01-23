@@ -29,7 +29,7 @@ public class CreateButtons {
 			} else {
 				y = 1;
 			}
-			
+
 			new CreateButtons(buttonName, pane, y, x);
 		}
 	}
