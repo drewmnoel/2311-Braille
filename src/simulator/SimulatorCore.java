@@ -1,10 +1,14 @@
 package simulator;
 
 import java.util.ArrayList;
+import javafx.collections.ObservableList;
+import javafx.collections.ListChangeListener;
+import javafx.collections.FXCollections;
 
 public class SimulatorCore {
 	
 	private ArrayList<int[]> cellList;
+	private ObservableList<int[]> cellObserver;
 	private int buttons;
 	
 	//Constructor creating a simulator with numCells braille cells and numButton buttons
@@ -20,13 +24,13 @@ public class SimulatorCore {
 		for (int i = 0; i<numCells; i++) {
 			cellList.add(cell);
 		}
-		
+		cellObserver = FXCollections.observableList(cellList);
 		buttons = numButton;
 	}
 	
 	//Method to set a specific braille cell to raise/lower specified dots
 	public void setCell(int cellNumber, int[] dots) throws Exception {
-		if (cellNumber >= cellList.size() || cellNumber < 1) {
+		if (cellNumber >= cellObserver.size() || cellNumber < 1) {
 			Exception error = new Exception("Enter a legal cell number");
 			throw error;
 		}
@@ -34,27 +38,27 @@ public class SimulatorCore {
 			Exception error = new Exception("Must set value for 6 dots");
 			throw error;
 		}
-		cellList.set(cellNumber, dots);
+		cellObserver.set(cellNumber, dots);
 	}
 	
 	//method to set all braille cells to lowered
 	public void clearCells() {
 		int[] cell = {0, 0, 0, 0, 0, 0};
-		for (int i = 0; i<cellList.size(); i++) {
-			cellList.set(i, cell);
+		for (int i = 0; i<cellObserver.size(); i++) {
+			cellObserver.set(i, cell);
 		}
 	}
 
 	//method to return the braille cell at index i
 	public int[] cellAt(int i) {
-		return cellList.get(i);
+		return cellObserver.get(i);
 	}
 	
 	//method to return a copy of the list of braille cells
 	public ArrayList<int[]> allCells() {
 		ArrayList<int[]> brailleCells = new ArrayList<int[]>();
-		for(int i =0; i<cellList.size(); i++) {
-			brailleCells.add(cellList.get(i));
+		for(int i =0; i<cellObserver.size(); i++) {
+			brailleCells.add(cellObserver.get(i));
 		}
 		return brailleCells;
 	}

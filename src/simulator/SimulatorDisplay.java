@@ -28,9 +28,6 @@ public class SimulatorDisplay extends Application {
 		//Instantiate SimulatorCore object
 		SimulatorCore simCore = new SimulatorCore(5, 5);
 		
-		//Create a javaFX observable list containing the braille cell arrays
-		ArrayList<int[]> brailleCells = simCore.allCells();
-		ObservableList<int[]> cellObserver = FXCollections.observableList(brailleCells);
 		//Need to add listener object and routines for when cellObserver detects changes
 		
 		// Create the numbered buttons
