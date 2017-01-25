@@ -25,19 +25,18 @@ public class SimulatorDisplay extends Application {
 		this.pane = new GridPane();
 		this.pane.setPadding(new Insets(25, 25, 25, 25));
 
-		//Instantiate SimulatorCore object with 5 cells and 5 buttons
+		// Instantiate SimulatorCore object with 5 cells and 5 buttons
 		SimulatorCore simCore = new SimulatorCore(5, 5);
-		//Wrapper that detects if simCore changes, will trigger event
+		// Wrapper that detects if simCore changes, will trigger event
 		simCore.cellObserver.addListener(new ListChangeListener() {
-			
+
 			@Override
 			public void onChanged(ListChangeListener.Change change) {
-				//add changes to display here
-				
+				// add changes to display here
+
 			}
 		});
-		
-		
+
 		// Create the numbered buttons
 		ArrayList<EventHandler<ActionEvent>> actions = new ArrayList<>();
 		for (int i = 0; i < 5; i++) {
