@@ -25,10 +25,10 @@ public class SimulatorDisplay extends Application {
 		this.pane = new GridPane();
 		this.pane.setPadding(new Insets(25, 25, 25, 25));
 
-		//Instantiate SimulatorCore object
+		//Instantiate SimulatorCore object with 5 cells and 5 buttons
 		SimulatorCore simCore = new SimulatorCore(5, 5);
 		
-		//Need to add listener object and routines for when cellObserver detects changes
+		
 		
 		// Create the numbered buttons
 		ArrayList<EventHandler<ActionEvent>> actions = new ArrayList<>();

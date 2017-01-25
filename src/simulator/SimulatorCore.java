@@ -25,6 +25,14 @@ public class SimulatorCore {
 			cellList.add(cell);
 		}
 		cellObserver = FXCollections.observableList(cellList);
+		cellObserver.addListener(new ListChangeListener() {
+			
+			@Override
+			public void onChanged(ListChangeListener.Change change) {
+				//add changes to display here
+			}
+		});
+		
 		buttons = numButton;
 	}
 	
