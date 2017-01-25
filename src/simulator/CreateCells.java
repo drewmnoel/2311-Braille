@@ -18,7 +18,7 @@ import simulator.SimulatorCore;
 public class CreateCells extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		int rows = 3;
+		int rows = 4;
 		int columns = 2;
 		primaryStage.setTitle("Enjoy your game.");
 		

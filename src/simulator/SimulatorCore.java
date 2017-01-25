@@ -17,11 +17,11 @@ public class SimulatorCore {
 			Exception error = new Exception("Enter a number of cells between 1 and 10");
 			throw error;
 		}
-		
-		int[] cell = {0, 0, 0, 0, 0, 0};
+	
 		cellList = new ArrayList<int[]>(numCells);
 		
 		for (int i = 0; i<numCells; i++) {
+			int[] cell = {0, 0, 0, 0, 0, 0, 0, 0};
 			cellList.add(cell);
 		}
 		cellObserver = FXCollections.observableList(cellList);
@@ -30,6 +30,7 @@ public class SimulatorCore {
 			@Override
 			public void onChanged(ListChangeListener.Change change) {
 				//add changes to display here
+				
 			}
 		});
 		
@@ -42,8 +43,8 @@ public class SimulatorCore {
 			Exception error = new Exception("Enter a legal cell number");
 			throw error;
 		}
-		if (dots.length != 6) {
-			Exception error = new Exception("Must set value for 6 dots");
+		if (dots.length != 8) {
+			Exception error = new Exception("Must set value for 8 dots");
 			throw error;
 		}
 		cellObserver.set(cellNumber, dots);
@@ -51,8 +52,9 @@ public class SimulatorCore {
 	
 	//method to set all braille cells to lowered
 	public void clearCells() {
-		int[] cell = {0, 0, 0, 0, 0, 0};
+		
 		for (int i = 0; i<cellObserver.size(); i++) {
+			int[] cell = {0, 0, 0, 0, 0, 0, 0, 0};
 			cellObserver.set(i, cell);
 		}
 	}
