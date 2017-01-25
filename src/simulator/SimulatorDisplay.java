@@ -27,7 +27,15 @@ public class SimulatorDisplay extends Application {
 
 		//Instantiate SimulatorCore object with 5 cells and 5 buttons
 		SimulatorCore simCore = new SimulatorCore(5, 5);
-		
+		//Wrapper that detects if simCore changes, will trigger event
+		simCore.cellObserver.addListener(new ListChangeListener() {
+			
+			@Override
+			public void onChanged(ListChangeListener.Change change) {
+				//add changes to display here
+				
+			}
+		});
 		
 		
 		// Create the numbered buttons

@@ -8,7 +8,7 @@ import javafx.collections.FXCollections;
 public class SimulatorCore {
 	
 	private ArrayList<int[]> cellList;
-	private ObservableList<int[]> cellObserver;
+	protected ObservableList<int[]> cellObserver;
 	private int buttons;
 	
 	//Constructor creating a simulator with numCells braille cells and numButton buttons
@@ -25,14 +25,6 @@ public class SimulatorCore {
 			cellList.add(cell);
 		}
 		cellObserver = FXCollections.observableList(cellList);
-		cellObserver.addListener(new ListChangeListener() {
-			
-			@Override
-			public void onChanged(ListChangeListener.Change change) {
-				//add changes to display here
-				
-			}
-		});
 		
 		buttons = numButton;
 	}
@@ -64,7 +56,7 @@ public class SimulatorCore {
 		return cellObserver.get(i);
 	}
 	
-	//method to return a copy of the list of braille cells
+	//method to return an ArrayList copy of the list of braille cells
 	public ArrayList<int[]> allCells() {
 		ArrayList<int[]> brailleCells = new ArrayList<int[]>();
 		for(int i =0; i<cellObserver.size(); i++) {
@@ -72,6 +64,7 @@ public class SimulatorCore {
 		}
 		return brailleCells;
 	}
+	
 	
 	public int numOfCells() {
 		return cellObserver.size();
