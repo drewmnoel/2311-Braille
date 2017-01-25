@@ -45,6 +45,18 @@ public class SimulatorCore {
 		}
 	}
 
+	//method to return the braille cell at index i
+	public int[] cellAt(int i) {
+		return cellList.get(i);
+	}
 	
+	//method to return a copy of the list of braille cells
+	public ArrayList<int[]> allCells() {
+		ArrayList<int[]> brailleCells = new ArrayList<int[]>();
+		for(int i =0; i<cellList.size(); i++) {
+			brailleCells.add(cellList.get(i));
+		}
+		return brailleCells;
+	}
 	
 }

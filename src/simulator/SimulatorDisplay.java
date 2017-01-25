@@ -1,5 +1,6 @@
 package simulator;
 
+import simulator.SimulatorCore;
 import java.util.ArrayList;
 
 import javafx.application.Application;
@@ -19,11 +20,19 @@ public class SimulatorDisplay extends Application {
 	protected GridPane pane;
 
 	@Override
-	public void start(Stage stage) {
+	public void start(Stage stage) throws Exception {
 		// Create the main grid pane
 		this.pane = new GridPane();
 		this.pane.setPadding(new Insets(25, 25, 25, 25));
 
+		//Instantiate SimulatorCore object
+		SimulatorCore simCore = new SimulatorCore(5, 5);
+		
+		//Create a javaFX observable list containing the braille cell arrays
+		ArrayList<int[]> brailleCells = simCore.allCells();
+		ObservableList<int[]> cellObserver = FXCollections.observableList(brailleCells);
+		//Need to add listener object and routines for when cellObserver detects changes
+		
 		// Create the numbered buttons
 		ArrayList<EventHandler<ActionEvent>> actions = new ArrayList<>();
 		for (int i = 0; i < 5; i++) {
