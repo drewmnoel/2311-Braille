@@ -71,4 +71,8 @@ public class SimulatorCore {
 		return brailleCells;
 	}
 	
+	public int numOfCells() {
+		return cellObserver.size();
+	}
+	
 }
