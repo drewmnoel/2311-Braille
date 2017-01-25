@@ -38,7 +38,7 @@ public class SimulatorCore {
 	
 	//Method to set a specific braille cell to raise/lower specified dots
 	public void setCell(int cellNumber, int[] dots) throws Exception {
-		if (cellNumber >= cellObserver.size() || cellNumber < 1) {
+		if (cellNumber >= cellObserver.size() || cellNumber < 0) {
 			Exception error = new Exception("Enter a legal cell number");
 			throw error;
 		}
