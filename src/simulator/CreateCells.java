@@ -69,7 +69,11 @@ public class CreateCells extends Application {
 
 		// Scene width will be approx 3 braille boxes wide per braille cell (except only 2 on last cell)
 		int sceneWidth = 3 * BRAILLE_BOX_SIDE * numBrailleCells - BRAILLE_BOX_SIDE;
-		Scene scene = new Scene(grid, sceneWidth, (BRAILLE_HEIGHT * BRAILLE_BOX_SIDE) + 100, Color.WHITE);
+
+		// Scene height will be approx the height of 1 cell plus some padding constant
+		int sceneHeight = (BRAILLE_HEIGHT * BRAILLE_BOX_SIDE) + 100;
+
+		Scene scene = new Scene(grid, sceneWidth, sceneHeight, Color.WHITE);
 		scene.getStylesheets().add("application.css");
 
 		primaryStage.setScene(scene);
