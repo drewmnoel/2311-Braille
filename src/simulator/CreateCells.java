@@ -25,7 +25,6 @@ public class CreateCells extends Application {
 	/** Length of Braille box */
 	private static final int BRAILLE_BOX_SIDE = 40;
 
-
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		int numBrailleCells = 3;
@@ -38,16 +37,19 @@ public class CreateCells extends Application {
 		Button yes = new Button("YES");
 		Button no = new Button("NO");
 
+		// Constrain each column to be BRAILLE_BOX_SIDE wide
 		for (int i = 0; i < numBrailleCells * 3; i++) {
 			ColumnConstraints column = new ColumnConstraints(BRAILLE_BOX_SIDE);
 			grid.getColumnConstraints().add(column);
 		}
 
+		// Constrain each row to be BRAILLE_BOX_SIDE tall
 		for (int i = 0; i < SCREEN_ROWS; i++) {
 			RowConstraints row = new RowConstraints(BRAILLE_BOX_SIDE);
 			grid.getRowConstraints().add(row);
 		}
 
+		// Layout each of the cells
 		for (int k = 0; k < simCore.numOfCells(); k++) {
 			for (int i = 0; i < BRAILLE_WIDTH; i++) {
 				for (int j = 0; j < BRAILLE_HEIGHT; j++) {
@@ -60,18 +62,21 @@ public class CreateCells extends Application {
 					if (j == 0) {
 						pane.getStyleClass().add("first-row");
 					}
-					grid.add(pane, i+(3*k), j);
+					grid.add(pane, i + (3 * k), j);
 				}
 			}
 		}
-		grid.add(yes, 1, BRAILLE_HEIGHT+1);
-		grid.add(no, 3, BRAILLE_HEIGHT+1);
 
-		// Scene width will be approx 3 braille boxes wide per braille cell (except only 2 on last cell)
+		// Add two buttons
+		grid.add(yes, 0, BRAILLE_HEIGHT);
+		grid.add(no, 3, BRAILLE_HEIGHT);
+
+		// Scene width will be approx 3 braille boxes wide per braille cell
+		// (except only 2 on last cell)
 		int sceneWidth = 3 * BRAILLE_BOX_SIDE * numBrailleCells - BRAILLE_BOX_SIDE;
 
-		// Scene height will be approx the height of 1 cell plus some padding constant
-		int sceneHeight = (BRAILLE_HEIGHT * BRAILLE_BOX_SIDE) + 100;
+		// Scene height will be approx the height of 1 cell plus one more box
+		int sceneHeight = ((BRAILLE_HEIGHT + 1) * BRAILLE_BOX_SIDE);
 
 		Scene scene = new Scene(grid, sceneWidth, sceneHeight, Color.WHITE);
 		scene.getStylesheets().add("application.css");
@@ -82,7 +87,7 @@ public class CreateCells extends Application {
 
 	public static class balls {
 		public static Node getBalls() {
-			Circle circle = new Circle(BRAILLE_BOX_SIDE/2, BRAILLE_BOX_SIDE/2, BRAILLE_DOT_RADIUS);
+			Circle circle = new Circle(BRAILLE_BOX_SIDE / 2, BRAILLE_BOX_SIDE / 2, BRAILLE_DOT_RADIUS);
 			circle.setFill(Color.BLACK);
 			return circle;
 		}
