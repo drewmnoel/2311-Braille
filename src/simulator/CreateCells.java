@@ -75,7 +75,7 @@ public class CreateCells extends Application {
 			for (int i = 0; i < BRAILLE_WIDTH; i++) {
 				for (int j = 0; j < BRAILLE_HEIGHT; j++) {
 					Pane pane = new Pane();
-					pane.getChildren().add(BrailleCirlce.getCircle(cellArray, runningIndex));
+					pane.getChildren().add(BrailleCircle.getCircle(cellArray, runningIndex));
 					pane.getStyleClass().add("game-grid-cell");
 					if (i == 0) {
 						pane.getStyleClass().add("first-column");
