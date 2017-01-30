@@ -1,5 +1,7 @@
 package simulator;
 
+import java.util.Scanner;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -25,24 +27,35 @@ public class CreateCells extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		int numBrailleCells = 3;
+		Scanner stdin = new Scanner(System.in);
+
+		// Get the word to show
+		System.out.print("Word to display? ");
+		String brailleText = stdin.nextLine();
+
+		// Get the number of buttons
+		System.out.print("Number of buttons? ");
+		int numButtons = stdin.nextInt();
+
 		primaryStage.setTitle("Enjoy your game.");
 
-		SimulatorCore simCore = new SimulatorCore(numBrailleCells, 5);
+		SimulatorCore simCore = new SimulatorCore(brailleText.length(), numButtons);
 
-		// Set example cells
-		simCore.setCell(0, new int[] {1, 1, 1, 0, 1, 0, 1, 1});
-		simCore.setCell(1, new int[] {0, 0, 1, 0, 0, 0, 1, 0});
-		simCore.setCell(2, new int[] {0, 1, 1, 1, 0, 0, 0, 0});
-
+		// Set the strings
+		int[][] nCells = BrailleTextTranslator.translate(brailleText);
+		for (int i = 0; i < brailleText.length(); i++) {
+			simCore.setCell(i, nCells[i]);
+		}
 
 		GridPane grid = new GridPane();
 		// grid.getStyleClass().add("game-grid");
+
+		// TODO: Make programatically generated
 		Button yes = new Button("YES");
 		Button no = new Button("NO");
 
 		// Constrain each column to be BRAILLE_BOX_SIDE wide
-		for (int i = 0; i < numBrailleCells * 3; i++) {
+		for (int i = 0; i < brailleText.length() * 3; i++) {
 			ColumnConstraints column = new ColumnConstraints(BRAILLE_BOX_SIDE);
 			grid.getColumnConstraints().add(column);
 		}
@@ -83,7 +96,7 @@ public class CreateCells extends Application {
 
 		// Scene width will be approx 3 braille boxes wide per braille cell
 		// (except only 2 on last cell)
-		int sceneWidth = 3 * BRAILLE_BOX_SIDE * numBrailleCells - BRAILLE_BOX_SIDE;
+		int sceneWidth = 3 * BRAILLE_BOX_SIDE * brailleText.length() - BRAILLE_BOX_SIDE;
 
 		// Scene height will be approx the height of 1 cell plus one more box
 		int sceneHeight = ((BRAILLE_HEIGHT + 1) * BRAILLE_BOX_SIDE);
@@ -93,6 +106,8 @@ public class CreateCells extends Application {
 
 		primaryStage.setScene(scene);
 		primaryStage.show();
+
+		stdin.close();
 	}
 
 	public static void main(String[] args) {

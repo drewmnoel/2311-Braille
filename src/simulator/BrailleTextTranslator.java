@@ -1,16 +1,16 @@
 package simulator;
 
 public class BrailleTextTranslator {
-	public static String translate(String input) {
-		StringBuilder result = new StringBuilder();
+	public static int[][] translate(String input) {
+		int[][] result = new int[input.length()][];
+		int i = 0;
 		for (char c : input.toCharArray()) {
 			String strC = new String(c + "");
 			if (strC.equals(strC.toUpperCase())) {
-				System.out.print(BrailleTextSymbol.ht.get("capital"));
-				strC = strC.toLowerCase();
+				// TODO: What if there's capitals?
 			}
-			System.out.print(BrailleTextSymbol.ht.get(strC));
+			result[i++] = BrailleTextSymbol.ht.get(strC);
 		}
-		return result.toString();
+		return result;
 	}
 }
