@@ -13,9 +13,9 @@ public class SimulatorCore {
 
 	// Constructor creating a simulator with numCells braille cells and
 	// numButton buttons
-	public SimulatorCore(int numCells, int numButton) throws Exception {
+	public SimulatorCore(int numCells, int numButton) throws SimulatorException {
 		if (numCells >= 10 || numCells < 1) {
-			Exception error = new Exception("Enter a number of cells between 1 and 10");
+			SimulatorException error = new SimulatorException("Enter a number of cells between 1 and 10");
 			throw error;
 		}
 
@@ -31,13 +31,13 @@ public class SimulatorCore {
 	}
 
 	// Method to set a specific braille cell to raise/lower specified dots
-	public void setCell(int cellNumber, int[] dots) throws Exception {
+	public void setCell(int cellNumber, int[] dots) throws SimulatorException {
 		if (cellNumber >= cellObserver.size() || cellNumber < 0) {
-			Exception error = new Exception("Enter a legal cell number");
+			SimulatorException error = new SimulatorException("Enter a legal cell number");
 			throw error;
 		}
 		if (dots.length != 8) {
-			Exception error = new Exception("Must set value for 8 dots");
+			SimulatorException error = new SimulatorException("Must set value for 8 dots");
 			throw error;
 		}
 		cellObserver.set(cellNumber, dots);
@@ -65,7 +65,8 @@ public class SimulatorCore {
 		}
 		return brailleCells;
 	}
-
+	
+	//Returns the number of braille cells
 	public int numOfCells() {
 		return cellObserver.size();
 	}
