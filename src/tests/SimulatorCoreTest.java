@@ -130,7 +130,7 @@ public class SimulatorCoreTest {
 	public void testConstructorExceptionGreaterThan10() throws SimulatorException {
 		exception.expect(SimulatorException.class);
 		exception.expectMessage("Enter a number of cells between 1 and 10");
-		SimulatorCore badSim = new SimulatorCore(3,15);
+		SimulatorCore badSim = new SimulatorCore(11,5);
 	}
 	
 	@Test
@@ -138,6 +138,6 @@ public class SimulatorCoreTest {
 	public void testConstructorExceptionLessThan1() throws SimulatorException {
 		exception.expect(SimulatorException.class);
 		exception.expectMessage("Enter a number of cells between 1 and 10");
-		SimulatorCore badSim = new SimulatorCore(0,15);
+		SimulatorCore badSim = new SimulatorCore(0,5);
 	}
 }
