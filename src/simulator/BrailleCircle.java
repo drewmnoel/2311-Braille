@@ -10,7 +10,9 @@ public class BrailleCircle {
 		if (cell[pos] == 1) {
 			circle.setFill(Color.BLACK);
 		} else {
-			circle.setVisible(false);
+			circle.setStroke(Color.BLACK);
+			circle.setFill(null);
+			circle.setStrokeWidth(1);
 		}
 
 		return circle;
