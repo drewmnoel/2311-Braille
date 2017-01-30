@@ -32,6 +32,12 @@ public class CreateCells extends Application {
 
 		SimulatorCore simCore = new SimulatorCore(numBrailleCells, 5);
 
+		// Set example cells
+		simCore.setCell(0, new int[] {1, 1, 1, 0, 1, 0, 1, 1});
+		simCore.setCell(1, new int[] {0, 0, 1, 0, 0, 0, 1, 0});
+		simCore.setCell(2, new int[] {0, 1, 1, 1, 0, 0, 0, 0});
+
+
 		GridPane grid = new GridPane();
 		// grid.getStyleClass().add("game-grid");
 		Button yes = new Button("YES");
@@ -51,10 +57,14 @@ public class CreateCells extends Application {
 
 		// Layout each of the cells
 		for (int k = 0; k < simCore.numOfCells(); k++) {
+			// Create a running index
+			int[] cellArray = simCore.cellAt(k);
+
+			int runningIndex = 0;
 			for (int i = 0; i < BRAILLE_WIDTH; i++) {
 				for (int j = 0; j < BRAILLE_HEIGHT; j++) {
 					Pane pane = new Pane();
-					pane.getChildren().add(balls.getBalls());
+					pane.getChildren().add(Balls.getBalls(cellArray, runningIndex));
 					pane.getStyleClass().add("game-grid-cell");
 					if (i == 0) {
 						pane.getStyleClass().add("first-column");
@@ -63,6 +73,8 @@ public class CreateCells extends Application {
 						pane.getStyleClass().add("first-row");
 					}
 					grid.add(pane, i + (3 * k), j);
+
+					runningIndex++;
 				}
 			}
 		}
@@ -85,10 +97,15 @@ public class CreateCells extends Application {
 		primaryStage.show();
 	}
 
-	public static class balls {
-		public static Node getBalls() {
+	public static class Balls {
+		public static Node getBalls(int[] cell, int pos) {
 			Circle circle = new Circle(BRAILLE_BOX_SIDE / 2, BRAILLE_BOX_SIDE / 2, BRAILLE_DOT_RADIUS);
-			circle.setFill(Color.BLACK);
+			if (cell[pos] == 1) {
+				circle.setFill(Color.BLACK);
+			} else {
+				circle.setVisible(false);
+			}
+
 			return circle;
 		}
 	}
