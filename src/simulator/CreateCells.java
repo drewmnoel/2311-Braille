@@ -1,7 +1,6 @@
 package simulator;
 
 import javafx.application.Application;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.ColumnConstraints;
@@ -9,7 +8,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 public class CreateCells extends Application {
@@ -21,9 +19,9 @@ public class CreateCells extends Application {
 	/** Maximum rows this screen will have */
 	private static final int SCREEN_ROWS = 10;
 	/** Radius of Braille dot */
-	private static final int BRAILLE_DOT_RADIUS = 5;
+	static final int BRAILLE_DOT_RADIUS = 5;
 	/** Length of Braille box */
-	private static final int BRAILLE_BOX_SIDE = 40;
+	static final int BRAILLE_BOX_SIDE = 40;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -64,7 +62,7 @@ public class CreateCells extends Application {
 			for (int i = 0; i < BRAILLE_WIDTH; i++) {
 				for (int j = 0; j < BRAILLE_HEIGHT; j++) {
 					Pane pane = new Pane();
-					pane.getChildren().add(Balls.getBalls(cellArray, runningIndex));
+					pane.getChildren().add(BrailleCirlce.getCircle(cellArray, runningIndex));
 					pane.getStyleClass().add("game-grid-cell");
 					if (i == 0) {
 						pane.getStyleClass().add("first-column");
@@ -95,19 +93,6 @@ public class CreateCells extends Application {
 
 		primaryStage.setScene(scene);
 		primaryStage.show();
-	}
-
-	public static class Balls {
-		public static Node getBalls(int[] cell, int pos) {
-			Circle circle = new Circle(BRAILLE_BOX_SIDE / 2, BRAILLE_BOX_SIDE / 2, BRAILLE_DOT_RADIUS);
-			if (cell[pos] == 1) {
-				circle.setFill(Color.BLACK);
-			} else {
-				circle.setVisible(false);
-			}
-
-			return circle;
-		}
 	}
 
 	public static void main(String[] args) {
