@@ -30,7 +30,7 @@ public class SimulatorCoreTest {
 
 	@Test
 	//Checks that constructor creates a SimulatorCore is all 0 valued
-	public void testCreation() {
+	public void testCreation() throws SimulatorException {
 		for(int i=0; i < testSim.numOfCells(); i++) {
 			for(int j=0; j<8; j++) {
 				int temp = testSim.cellAt(i)[j];
@@ -126,18 +126,42 @@ public class SimulatorCoreTest {
 	}
 	
 	@Test
-	//Tests that SimulatorCore constructor throws an exception for numCells > 10
-	public void testConstructorExceptionGreaterThan10() throws SimulatorException {
+	//Tests that SimulatorCore constructor throws an exception for numCells < 1 or numCells > 10
+	public void testConstructorException() throws SimulatorException {
 		exception.expect(SimulatorException.class);
 		exception.expectMessage("Enter a number of cells between 1 and 10");
 		SimulatorCore badSim = new SimulatorCore(11,5);
+		SimulatorCore badSim2 = new SimulatorCore(0,5);
+	}
+	
+	
+	@Test
+	//Tests that setCell() throws the proper exception for an invalid cell number
+	public void testSetCellExceptionIndex() throws SimulatorException {
+		exception.expect(SimulatorException.class);
+		exception.expectMessage("Enter a legal cell number");
+		int[]cell_0 = {0, 1, 0, 1, 0, 1, 0, 1};
+		testSim.setCell(3, cell_0);
 	}
 	
 	@Test
-	//Tests that SimulatorCore constructor throws an exception for numCells <1
-	public void testConstructorExceptionLessThan1() throws SimulatorException {
+	//Tests that setCell() throws the proper exception for a non-8 element array
+	public void testSetCellExceptionCellSize() throws SimulatorException {
 		exception.expect(SimulatorException.class);
-		exception.expectMessage("Enter a number of cells between 1 and 10");
-		SimulatorCore badSim = new SimulatorCore(0,5);
+		exception.expectMessage("Must set value for 8 dots");
+		int[]cell_0 = {0, 1, 0, 1, 0, 1};
+		testSim.setCell(1, cell_0);
 	}
+	
+	@Test
+	//Tests that cellAt() throws the proper exception for an invalid cell number
+	public void testSetCellAtException() throws SimulatorException {
+		exception.expect(SimulatorException.class);
+		exception.expectMessage("Enter a legal cell number");
+		testSim.cellAt(-1);
+		testSim.cellAt(3);
+	}
+	
+	
+	
 }

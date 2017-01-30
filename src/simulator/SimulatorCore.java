@@ -53,7 +53,11 @@ public class SimulatorCore {
 	}
 
 	// method to return the braille cell at index i
-	public int[] cellAt(int i) {
+	public int[] cellAt(int i) throws SimulatorException {
+		if (i >= cellObserver.size() || i < 0) {
+			SimulatorException error = new SimulatorException("Enter a legal cell number");
+			throw error;
+		}
 		return cellObserver.get(i);
 	}
 
