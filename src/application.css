@@ -1,7 +1,6 @@
-
 .game-grid-cell {
     -fx-background-color: white;
-    -fx-border:12px solid black;
+    -fx-border: 12px;
     -fx-border-color:black;
+    -fx-border-style: solid;
 }
-

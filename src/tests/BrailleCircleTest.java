@@ -28,12 +28,12 @@ public class BrailleCircleTest {
 		
 		for(int i = 0;i < 8;i++){			
 			if(array[i] == 1){
-				System.out.println("inside one");
-				System.out.println(array[i] + " " + circle.getHexFillColor());
+				//System.out.println("inside one");
+				//System.out.println(array[i] + " " + circle.getHexFillColor());
 				assertEquals(testColor,circle.getHexFillColor());				
 			}else{
-				System.out.println("Inside zero");
-				System.out.println(array[i] + " " + circle.getHexFillColor());
+				//System.out.println("Inside zero");
+				//System.out.println(array[i] + " " + circle.getHexFillColor());
 				assertEquals(null,circle.getHexFillColor());				
 			}	
 		}
