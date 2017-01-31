@@ -34,7 +34,8 @@ public class CreateCells extends Application {
 
 		primaryStage.setTitle("Enjoy your game.");
 
-		SimulatorCore simCore = new SimulatorCore(brailleText.length(), numButtons);
+		SimulatorCore simCore = SimulatorCore.getInstance();
+		simCore.populate(brailleText.length(), numButtons);
 
 		// Set the strings
 		int[][] nCells = BrailleTextTranslator.translate(brailleText);

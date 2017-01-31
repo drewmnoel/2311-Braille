@@ -7,8 +7,19 @@ import javafx.collections.ObservableList;
 
 public class SimulatorCore {
 
-	protected ObservableList<int[]> cellObserver;
-	private int buttons;
+	protected static ObservableList<int[]> cellObserver;
+	private static int buttons;
+	private static SimulatorCore sc;
+
+	static {
+		sc = new SimulatorCore();
+	}
+
+	private SimulatorCore() {}
+
+	public static SimulatorCore getInstance() {
+		return sc;
+	}
 
 	// Constructor creating a simulator with numCells braille cells and
 	// numButton buttons

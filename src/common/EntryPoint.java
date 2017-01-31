@@ -1,11 +1,13 @@
 package common;
 
-import simulator.*;
+import simulator.Simulator;
+import simulator.SimulatorCore;
 
 public class EntryPoint {
 	public static void main(String[] args) throws Exception {
 		// Demo of Simulator Core with 5 cells, 2 buttons
-		SimulatorCore sc = new SimulatorCore(5, 2);
+		SimulatorCore sc = SimulatorCore.getInstance();
+		sc.populate(5, 2);
 		sc.setCell(0, new int[] { 1, 1, 0, 0, 0, 0 }); // c
 		sc.setCell(1, new int[] { 1, 0, 0, 1, 0, 0 }); // e
 		sc.setCell(2, new int[] { 1, 0, 1, 0, 1, 0 }); // l

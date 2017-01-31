@@ -1,9 +1,9 @@
 package simulator;
 
-import simulator.SimulatorCore;
 import java.util.ArrayList;
 
 import javafx.application.Application;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -11,9 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.collections.ObservableList;
-import javafx.collections.ListChangeListener;
-import javafx.collections.FXCollections;
 
 public class SimulatorDisplay extends Application {
 
@@ -26,7 +23,8 @@ public class SimulatorDisplay extends Application {
 		this.pane.setPadding(new Insets(25, 25, 25, 25));
 
 		// Instantiate SimulatorCore object with 5 cells and 5 buttons
-		SimulatorCore simCore = new SimulatorCore(5, 5);
+		SimulatorCore simCore = SimulatorCore.getInstance();
+		simCore.populate(5, 5);
 		// Wrapper that detects if simCore changes, will trigger event
 		simCore.cellObserver.addListener(new ListChangeListener() {
 
