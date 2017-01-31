@@ -52,9 +52,8 @@ public class CreateCells extends Application {
 			// Create a running index
 			int[] cellArray = simCore.cellAt(k);
 			GridPane secondary = new GridPane();
-			
+
 			int runningIndex = 0;
-			
 			for (int i = 0; i < BRAILLE_WIDTH; i++) {
 				for (int j = 0; j < BRAILLE_HEIGHT; j++) {
 					Pane pane = new Pane();
