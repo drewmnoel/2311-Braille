@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
@@ -16,8 +15,6 @@ public class CreateCells extends Application {
 	private static final int BRAILLE_WIDTH = 2;
 	/** Number of rows tall a Braille cell is */
 	private static final int BRAILLE_HEIGHT = 4;
-	/** Maximum rows this screen will have */
-	private static final int SCREEN_ROWS = 10;
 	/** Radius of Braille dot */
 	static final int BRAILLE_DOT_RADIUS = 5;
 	/** Length of Braille box */
@@ -48,9 +45,7 @@ public class CreateCells extends Application {
 		TilePane grid = new TilePane();
 		// grid.getStyleClass().add("game-grid");
 
-		// TODO: Make programatically generated
-		Button yes = new Button("YES");
-		Button no = new Button("NO");
+		// TODO: Make programatically generated buttons
 
 		// Layout each of the cells
 		for (int k = 0; k < simCore.numOfCells(); k++) {
@@ -74,13 +69,6 @@ public class CreateCells extends Application {
 			grid.setHgap(20);
 			grid.setVgap(20);
 		}
-
-		// Scene width will be approx 3 braille boxes wide per braille cell
-		// (except only 2 on last cell)
-		int sceneWidth = 3 * BRAILLE_BOX_SIDE * brailleText.length() - BRAILLE_BOX_SIDE;
-
-		// Scene height will be approx the height of 1 cell plus one more box
-		int sceneHeight = ((BRAILLE_HEIGHT + 1) * BRAILLE_BOX_SIDE);
 
 		Scene scene = new Scene(grid);
 		scene.getStylesheets().add("application.css");
