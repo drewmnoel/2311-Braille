@@ -1,13 +1,12 @@
 package simulator;
 
 import java.util.ArrayList;
-import javafx.collections.ObservableList;
-import javafx.collections.ListChangeListener;
+
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class SimulatorCore {
 
-	private ArrayList<int[]> cellList;
 	protected ObservableList<int[]> cellObserver;
 	private int buttons;
 
@@ -23,7 +22,7 @@ public class SimulatorCore {
 			throw error;
 		}
 
-		cellList = new ArrayList<int[]>(numCells);
+		ArrayList<int[]> cellList = new ArrayList<int[]>(numCells);
 
 		for (int i = 0; i < numCells; i++) {
 			int[] cell = { 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -73,7 +72,7 @@ public class SimulatorCore {
 		}
 		return brailleCells;
 	}
-	
+
 	//Returns the number of braille cells
 	public int numOfCells() {
 		return cellObserver.size();
