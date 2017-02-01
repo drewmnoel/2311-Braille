@@ -1,15 +1,6 @@
-<<<<<<< HEAD
 .game-grid-cell {
     -fx-background-color: white;
     -fx-border: 12px;
     -fx-border-color:black;
     -fx-border-style: solid;
 }
-=======
-.game-grid-cell {
-    -fx-background-color: white;
-    -fx-border: 12px;
-    -fx-border-color:black;
-    -fx-border-style: solid;
-}
->>>>>>> branch 'master' of https://github.com/drewmnoel/Braille.git
