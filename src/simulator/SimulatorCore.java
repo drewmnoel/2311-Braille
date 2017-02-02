@@ -7,9 +7,10 @@ import javafx.collections.ObservableList;
 
 public class SimulatorCore {
 
-	protected static ObservableList<int[]> cellObserver;
+	protected static ObservableList<int[]> cellObserver = null;
 	private static int buttons;
 	private static SimulatorCore sc;
+	private static boolean ready = false;
 
 	static {
 		sc = new SimulatorCore();
@@ -33,15 +34,19 @@ public class SimulatorCore {
 			throw error;
 		}
 
-		ArrayList<int[]> cellList = new ArrayList<int[]>(numCells);
+		if (cellObserver == null) {
+			cellObserver = FXCollections.observableList(new ArrayList<int[]>(numCells));
+		}
+
+		cellObserver.clear();
 
 		for (int i = 0; i < numCells; i++) {
 			int[] cell = { 0, 0, 0, 0, 0, 0, 0, 0 };
-			cellList.add(cell);
+			cellObserver.add(i, cell);
 		}
-		cellObserver = FXCollections.observableList(cellList);
 
 		buttons = numButton;
+		ready = true;
 	}
 
 	// Method to set a specific braille cell to raise/lower specified dots
@@ -91,6 +96,10 @@ public class SimulatorCore {
 	
 	public int numOfButtons() {
 		return buttons;
+	}
+
+	public static boolean ready() {
+		return ready;
 	}
 
 }
