@@ -3,6 +3,7 @@ package tests;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -37,6 +38,12 @@ public class SimulatorCoreTest {
 				assertEquals(0, temp);
 			}
 		}
+	}
+	
+	@Test
+	//Check basic functionality of numOfButtons()
+	public void testNumOfButtson() {
+		assertEquals(5, testSim.numOfButtons());
 	}
 	
 	@Test
@@ -162,6 +169,118 @@ public class SimulatorCoreTest {
 		testSim.cellAt(3);
 	}
 	
+	@Test
+	//Test instantiating SimulatorCores with 1 to 10 braille cells
+	public void testCreateMultipleCells() throws SimulatorException {
+		SimulatorCore testMultiCells;
+		for (int i=1; i<=10; i++) {
+			testMultiCells = new SimulatorCore(i, 2);
+			assertEquals(i, testMultiCells.numOfCells());
+			assertEquals(2, testMultiCells.numOfButtons());
+		}
+	}
 	
+	@Test
+	//Test instantiating SimulatorCores with 1 to 5 buttons
+	public void testCreateMultipleButtons() throws SimulatorException {
+		SimulatorCore testMultiCells;
+		for (int i=1; i<=5; i++) {
+			testMultiCells = new SimulatorCore(3, i);
+			assertEquals(3, testMultiCells.numOfCells());
+			assertEquals(i, testMultiCells.numOfButtons());
+		}
+	}
 	
+	@Test
+	//Test setCell() and cellAt() for SimCores with 1-10 braille cells
+	public void testMutlipleCellsGetAndSet() throws SimulatorException {
+		SimulatorCore[] simArray = new SimulatorCore[10];
+		int[][] testCell = new int[10][8];
+		
+		//Create 10 SimulatorCores with 1-10 braille cells
+		//Create 10 length 8 int arrays with a single 1 in them
+		for (int i = 0; i <10; i++) {
+			simArray[i] = new SimulatorCore(i+1, 3);
+			testCell[i][i/2]=1;
+		}
+		//Set cell 0 for SimCore with 1 cell, set cell 1 for SimCore with 2 cells, etc.
+		for (int i=0; i<10; i++) {
+			simArray[i].setCell(i, testCell[i]);
+		}
+		
+		//Check that the cells have been set properly
+		for (int i=0; i<10; i++) {
+			assertEquals(simArray[i].cellAt(i), testCell[i]);
+		}
+	}
+	
+	@Test
+	//Tests clearCells() method for SimCores with 1-10 cells
+	public void testMultipleCellClearCells() throws SimulatorException {
+		int[] putCell = { 1, 1, 1, 1, 1, 1, 1, 1 };
+		
+		SimulatorCore[] simArray = new SimulatorCore[10];
+		//Creates 10 SimCores with 1 to 10 braille cells
+		//Sets all cells to be all 1's
+		for (int i = 0; i <10; i++) {
+			simArray[i] = new SimulatorCore(i+1, 3);
+			for(int j=i; j>=0; j--) {
+				simArray[i].setCell(j, putCell);
+			}
+		}
+		//calls clearCells() for each SimCore
+		for (int i = 0; i <10; i++) {
+			simArray[i].clearCells();
+		}
+		
+		//asserts that all cells are 0's
+		for(int i=0; i<10; i++) {
+			for(int j=i; j>=0; j--) {
+				assertTrue(Arrays.equals(simArray[i].cellAt(j), emptyCell));
+			}
+		}
+	}
+	
+	@Test
+	//test allCells for SimCores with 1-10 braille cells
+	public void testMultipleCellsAllCells() throws SimulatorException {
+		SimulatorCore[] simArray = new SimulatorCore[10];
+		int[] putCell = { 0, 0, 0, 0, 0, 0, 0, 0 };
+		ArrayList<int[]> expectedList = new ArrayList<int[]>();
+		ArrayList<int[]> testList;
+		
+		//creates 10 SimCores, with 1-10 braille cells
+		//and tests allCells() for each one
+		for (int i = 0; i <10; i++) {
+			simArray[i] = new SimulatorCore(i+1, 3);
+			putCell[i%8] = 1;
+			simArray[i].setCell(i, putCell);
+			//populates the expected list
+			for(int j=0; j<=i; j++) {
+				if(j==i) {
+					expectedList.add(putCell);
+				}
+				else {
+					expectedList.add(emptyCell);
+				}
+			}
+			//compare list returned by allCells() and expectedList
+			testList = simArray[i].allCells();
+			for(int j=0; j<=i; j++) {
+				assertTrue(Arrays.equals(expectedList.get(j), testList.get(j)));
+			}
+			expectedList.clear();
+		}
+	}
+	
+	@Test
+	//Test functionality of SimCores with 1 - 5 buttons
+	public void testMultipleButtons() throws SimulatorException {
+		SimulatorCore[] simArray = new SimulatorCore[5];
+		for(int i = 0; i<5; i++) {
+			simArray[i] = new SimulatorCore(i+1, i+1);
+			assertEquals(i+1, simArray[i].numOfButtons());
+			assertEquals(i+1, simArray[i].numOfCells());
+		}
+	}
 }

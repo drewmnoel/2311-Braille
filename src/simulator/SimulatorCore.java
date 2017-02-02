@@ -14,8 +14,12 @@ public class SimulatorCore {
 	// Constructor creating a simulator with numCells braille cells and
 	// numButton buttons
 	public SimulatorCore(int numCells, int numButton) throws SimulatorException {
-		if (numCells >= 10 || numCells < 1) {
+		if (numCells >= 11 || numCells < 1) {
 			SimulatorException error = new SimulatorException("Enter a number of cells between 1 and 10");
+			throw error;
+		}
+		if (numButton >= 6 || numButton < 1) {
+			SimulatorException error = new SimulatorException("Enter a number of buttons between 1 and 5");
 			throw error;
 		}
 
@@ -73,6 +77,10 @@ public class SimulatorCore {
 	//Returns the number of braille cells
 	public int numOfCells() {
 		return cellObserver.size();
+	}
+	
+	public int numOfButtons() {
+		return buttons;
 	}
 
 }
