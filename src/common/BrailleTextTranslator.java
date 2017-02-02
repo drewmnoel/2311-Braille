@@ -1,4 +1,4 @@
-package simulator;
+package common;
 
 public class BrailleTextTranslator {
 	public static int[][] translate(String input) {
