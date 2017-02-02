@@ -1,19 +1,41 @@
 package simulator;
 
 import java.util.ArrayList;
-import javafx.collections.ObservableList;
-import javafx.collections.ListChangeListener;
+
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class SimulatorCore {
 
-	private ArrayList<int[]> cellList;
-	protected ObservableList<int[]> cellObserver;
-	private int buttons;
+	protected static ObservableList<int[]> cellObserver = null;
+	private static int buttons;
+	private static SimulatorCore sc;
+	private static boolean ready = false;
+
+	static {
+		sc = new SimulatorCore();
+	}
+
+	private SimulatorCore() {}
+
+	public static SimulatorCore getInstance() {
+		return sc;
+	}
 
 	// Constructor creating a simulator with numCells braille cells and
 	// numButton buttons
 	public SimulatorCore(int numCells, int numButton) throws SimulatorException {
+		populate(numCells, numButton);
+	}
+
+	/**
+	 * Actually populate the elements of the core
+	 *
+	 * @param numCells Number of cells desired
+	 * @param numButton Number of buttons desired
+	 * @throws SimulatorException if the values are outside accepted ranges
+	 */
+	public void populate(int numCells, int numButton) throws SimulatorException {
 		if (numCells >= 11 || numCells < 1) {
 			SimulatorException error = new SimulatorException("Enter a number of cells between 1 and 10");
 			throw error;
@@ -23,15 +45,19 @@ public class SimulatorCore {
 			throw error;
 		}
 
-		cellList = new ArrayList<int[]>(numCells);
+		if (cellObserver == null) {
+			cellObserver = FXCollections.observableList(new ArrayList<int[]>(numCells));
+		}
+
+		cellObserver.clear();
 
 		for (int i = 0; i < numCells; i++) {
 			int[] cell = { 0, 0, 0, 0, 0, 0, 0, 0 };
-			cellList.add(cell);
+			cellObserver.add(i, cell);
 		}
-		cellObserver = FXCollections.observableList(cellList);
 
 		buttons = numButton;
+		ready = true;
 	}
 
 	// Method to set a specific braille cell to raise/lower specified dots
@@ -73,14 +99,17 @@ public class SimulatorCore {
 		}
 		return brailleCells;
 	}
-	
+
 	//Returns the number of braille cells
 	public int numOfCells() {
 		return cellObserver.size();
 	}
-	
+
 	public int numOfButtons() {
 		return buttons;
 	}
 
+	public static boolean ready() {
+		return ready;
+	}
 }

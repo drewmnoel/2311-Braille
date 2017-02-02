@@ -1,6 +1,7 @@
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,8 +24,9 @@ public class SimulatorCoreTest {
 	
 	@Before
 	public void setUp() throws SimulatorException {
-		testSim = new SimulatorCore(3,5);
-		for(int i=0; i<8; i++) {	
+		testSim = SimulatorCore.getInstance();
+		testSim.populate(3,5);
+		for(int i=0; i<8; i++) {
 			emptyCell[i] = 0;
 		}
 	}
@@ -137,8 +139,9 @@ public class SimulatorCoreTest {
 	public void testConstructorException() throws SimulatorException {
 		exception.expect(SimulatorException.class);
 		exception.expectMessage("Enter a number of cells between 1 and 10");
-		SimulatorCore badSim = new SimulatorCore(11,5);
-		SimulatorCore badSim2 = new SimulatorCore(0,5);
+		SimulatorCore badSim = SimulatorCore.getInstance();
+		badSim.populate(11,5);
+		badSim.populate(0,5);
 	}
 	
 	

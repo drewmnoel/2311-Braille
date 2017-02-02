@@ -1,8 +1,7 @@
 package simulator;
 
-import java.util.Scanner;
-
 import javafx.application.Application;
+import javafx.collections.ListChangeListener;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -20,34 +19,42 @@ public class CreateCells extends Application {
 	/** Length of Braille box */
 	static final int BRAILLE_BOX_SIDE = 40;
 
+	private static final SimulatorCore simCore = SimulatorCore.getInstance();
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Scanner stdin = new Scanner(System.in);
-
-		// Get the word to show
-		System.out.print("Word to display? ");
-		String brailleText = stdin.nextLine();
-
-		// Get the number of buttons
-		System.out.print("Number of buttons? ");
-		int numButtons = stdin.nextInt();
-
 		primaryStage.setTitle("Enjoy your game.");
+		simCore.populate(1, 1);
 
-		SimulatorCore simCore = new SimulatorCore(brailleText.length(), numButtons);
+		// Add the listener
+		SimulatorCore.cellObserver.addListener(new ListChangeListener<int[]>() {
+			@Override
+			public void onChanged(javafx.collections.ListChangeListener.Change<? extends int[]> c) {
+				try {
+					primaryStage.setScene(makeScene());
+				} catch (SimulatorException e) {
+					// Do nothing if something went horribly wrong
+					return;
+				}
+			}
 
-		// Set the strings
-		int[][] nCells = BrailleTextTranslator.translate(brailleText);
-		for (int i = 0; i < brailleText.length(); i++) {
-			simCore.setCell(i, nCells[i]);
-		}
+		});
 
+		primaryStage.setScene(makeScene());
+		primaryStage.show();
+	}
+
+	private Scene makeScene() throws SimulatorException {
 		TilePane grid = new TilePane();
-		// grid.getStyleClass().add("game-grid");
+		grid = drawCells(grid);
+		Scene scene = new Scene(grid);
+		scene.getStylesheets().add("application.css");
 
-		// TODO: Make programatically generated buttons
+		return scene;
+	}
 
-		// Layout each of the cells
+	private TilePane drawCells(TilePane grid) throws SimulatorException {
+		// Layout each of the TilePane
 		for (int k = 0; k < simCore.numOfCells(); k++) {
 			// Create a running index
 			int[] cellArray = simCore.cellAt(k);
@@ -71,13 +78,7 @@ public class CreateCells extends Application {
 			grid.setVgap(20);
 		}
 
-		Scene scene = new Scene(grid);
-		scene.getStylesheets().add("application.css");
-
-		primaryStage.setScene(scene);
-		primaryStage.show();
-
-		stdin.close();
+		return grid;
 	}
 
 	public static void main(String[] args) {

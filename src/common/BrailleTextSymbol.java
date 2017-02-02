@@ -1,4 +1,4 @@
-package simulator;
+package common;
 
 import java.util.Hashtable;
 
