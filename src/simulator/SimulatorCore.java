@@ -25,6 +25,17 @@ public class SimulatorCore {
 	// Constructor creating a simulator with numCells braille cells and
 	// numButton buttons
 	public SimulatorCore(int numCells, int numButton) throws SimulatorException {
+		populate(numCells, numButton);
+	}
+
+	/**
+	 * Actually populate the elements of the core
+	 *
+	 * @param numCells Number of cells desired
+	 * @param numButton Number of buttons desired
+	 * @throws SimulatorException if the values are outside accepted ranges
+	 */
+	public void populate(int numCells, int numButton) throws SimulatorException {
 		if (numCells >= 11 || numCells < 1) {
 			SimulatorException error = new SimulatorException("Enter a number of cells between 1 and 10");
 			throw error;
@@ -93,7 +104,7 @@ public class SimulatorCore {
 	public int numOfCells() {
 		return cellObserver.size();
 	}
-	
+
 	public int numOfButtons() {
 		return buttons;
 	}
@@ -101,5 +112,4 @@ public class SimulatorCore {
 	public static boolean ready() {
 		return ready;
 	}
-
 }
