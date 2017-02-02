@@ -1,7 +1,5 @@
 package simulator;
 
-import java.util.Scanner;
-
 import javafx.application.Application;
 import javafx.collections.ListChangeListener;
 import javafx.scene.Scene;
@@ -25,24 +23,8 @@ public class CreateCells extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Scanner stdin = new Scanner(System.in);
-
-		// Get the word to show
-		System.out.print("Word to display? ");
-		String brailleText = stdin.nextLine();
-
-		// Get the number of buttons
-		System.out.print("Number of buttons? ");
-		int numButtons = stdin.nextInt();
-
 		primaryStage.setTitle("Enjoy your game.");
-		simCore.populate(brailleText.length(), numButtons);
-
-		// Set the strings
-		int[][] nCells = BrailleTextTranslator.translate(brailleText);
-		for (int i = 0; i < brailleText.length(); i++) {
-			simCore.setCell(i, nCells[i]);
-		}
+		simCore.populate(1, 1);
 
 		// Add the listener
 		SimulatorCore.cellObserver.addListener(new ListChangeListener<int[]>() {
@@ -60,8 +42,6 @@ public class CreateCells extends Application {
 
 		primaryStage.setScene(makeScene());
 		primaryStage.show();
-
-		stdin.close();
 	}
 
 	private Scene makeScene() throws SimulatorException {
