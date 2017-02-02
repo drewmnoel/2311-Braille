@@ -6,5 +6,6 @@
 * Document (JavaDoc) all methods and loops
 * Extract functionality to an API for later use
 * JUnit tests for API and common modules
-* Remove duplicate/unused methods/classes (e.g. there are several mains)
+* ~~Remove duplicate/unused methods/classes (e.g. there are several mains)~~
+* Rename classes / methods to be more clear what they do (e.g. CreateCells is GUI's main)
 * Translate support for capitals/numbers
