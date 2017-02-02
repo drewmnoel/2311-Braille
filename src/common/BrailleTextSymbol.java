@@ -2,7 +2,11 @@ package common;
 
 import java.util.Hashtable;
 
+/**
+ * Static map for Braille conversions
+ */
 public class BrailleTextSymbol {
+	/** Hashtable that will keep the mapping */
 	public static final Hashtable<String, int[]> ht = new Hashtable<>();
 
 	static {

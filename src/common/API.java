@@ -5,6 +5,11 @@ import simulator.SimulatorCore;
 import simulator.SimulatorException;
 
 public class API {
+	/**
+	 * Set the text display of the UI
+	 *
+	 * @param input Text to show on the screen
+	 */
 	public void setText(String input) {
 		Platform.runLater(() -> {
 			SimulatorCore simcore = SimulatorCore.getInstance();
