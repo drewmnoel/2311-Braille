@@ -14,7 +14,7 @@ public class API {
 		Platform.runLater(() -> {
 			SimulatorCore simcore = SimulatorCore.getInstance();
 			try {
-				simcore.populate(input.length(), 0);
+				simcore.populate(input.length(), 1);
 				int[][] resultCells = BrailleTextTranslator.translate(input);
 				for (int i = 0; i < input.length(); i++) {
 					simcore.setCell(i, resultCells[i]);
