@@ -286,4 +286,14 @@ public class SimulatorCoreTest {
 			assertEquals(i+1, simArray[i].numOfCells());
 		}
 	}
+	
+	@Test
+	//Test that trying to use setCell() with an array with values other than 0 or 1 throws an exception
+	public void testSetCellNot0Or1() throws SimulatorException {
+		int[] badCell = { 0, 2, 1, 0, 1, 0, 3, 0 };
+		exception.expect(SimulatorException.class);
+		exception.expectMessage("Argument dots must only have values of 0 or 1");
+		testSim.setCell(0, badCell);
+		
+	}
 }
