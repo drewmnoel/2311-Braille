@@ -116,7 +116,7 @@ public class SimulatorCore {
 
 	
 	/**
-	 * This method to set all the pins in all braille cells in the simulator to 'lowered' position
+	 * Use this method to set all the pins in all braille cells in the simulator to 'lowered' position
 	 */
 	public void clearCells() {
 
@@ -151,7 +151,7 @@ public class SimulatorCore {
 	 * Braille cells are represented as length 8 integer arrays, with '0' indicating lowered and '1' indicating raised pins
 	 * The ArrayList returned by this method is ordered the same as the braille cells in the simulator
 	 * 
-	 * @return an Arraylist<int[]> containing int[] representations of all the braille cells in the simulator
+	 * @return an Arraylist of int arrays representations of all the braille cells in the simulator
 	 */
 	public ArrayList<int[]> allCells() {
 		ArrayList<int[]> brailleCells = new ArrayList<int[]>();
@@ -180,8 +180,9 @@ public class SimulatorCore {
 	}
 
 	/**
+	 * Use this method to query the simulator to check if it has been properly initialized with braille cells and buttons
 	 * 
-	 * @return
+	 * @return boolean value, with true indicating the simulator is properly intialized
 	 */
 	public static boolean ready() {
 		return ready;
