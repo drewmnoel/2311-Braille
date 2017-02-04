@@ -14,7 +14,8 @@ import javafx.collections.ObservableList;
  * 
  * 
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
- *
+ * @version 1.0
+ * @since 2017-02-07
  */
 
 public class SimulatorCore {
