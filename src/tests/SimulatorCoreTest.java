@@ -17,6 +17,7 @@ import simulator.SimulatorException;
 public class SimulatorCoreTest {
 	
 	SimulatorCore testSim;
+	SimulatorCore notReady;
 	int[] emptyCell = new int[8];
 	
 	@Rule
@@ -29,6 +30,8 @@ public class SimulatorCoreTest {
 		for(int i=0; i<8; i++) {
 			emptyCell[i] = 0;
 		}
+		
+		notReady = SimulatorCore.getInstance();
 	}
 
 	@Test
@@ -158,7 +161,7 @@ public class SimulatorCoreTest {
 	//Tests that setCell() throws the proper exception for a non-8 element array
 	public void testSetCellExceptionCellSize() throws SimulatorException {
 		exception.expect(SimulatorException.class);
-		exception.expectMessage("Must set value for 8 dots");
+		exception.expectMessage("Must set value for 8 pins");
 		int[]cell_0 = {0, 1, 0, 1, 0, 1};
 		testSim.setCell(1, cell_0);
 	}
@@ -295,5 +298,12 @@ public class SimulatorCoreTest {
 		exception.expectMessage("Argument dots must only have values of 0 or 1");
 		testSim.setCell(0, badCell);
 		
+	}
+	
+	@Test
+	//Test that ready() correctly returns true if the SimCore is initialized
+	public void testReady() throws SimulatorException {
+		
+		assertTrue(SimulatorCore.ready());
 	}
 }
