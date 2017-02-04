@@ -18,7 +18,7 @@ public class BrailleCircle {
 			circle.setStrokeWidth(1);
 		}
 	}
-	public Node getCircle(){		
+	public Circle getCircle(){		
 		return circle;
 	}
 	public String getHexFillColor(){
