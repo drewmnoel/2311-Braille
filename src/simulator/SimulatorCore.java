@@ -5,6 +5,17 @@ import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * 
+ * <h1>SimulatorCore</h1>
+ * 
+ * <p>The SimulatorCore class provides a simulation of the function of a braille player hardware. It supports the creation of a simulation of hardware with 1 to 10 braille cells and 1 to 5 buttons.</p>
+ * 
+ * 
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ *
+ */
+
 public class SimulatorCore {
 
 	protected static ObservableList<int[]> cellObserver = null;
