@@ -23,6 +23,7 @@ public class MainThread implements Runnable {
 			api.setText("test");
 			Thread.sleep(1500);
 			api.setText("hello");
+			api.setButtons(4);
 			Thread.sleep(1500);
 			api.setText("bye");
 		} catch (InterruptedException e) {}
