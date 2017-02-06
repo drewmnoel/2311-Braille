@@ -35,7 +35,7 @@ public class CreateCells extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Enjoy your game.");
-		simCore.populate(10, 5);
+		simCore.populate(4, 2);
 
 		// Add the listener
 		SimulatorCore.cellObserver.addListener(new ListChangeListener<int[]>() {
@@ -74,14 +74,13 @@ public class CreateCells extends Application {
 	//horizontal pane gets added to stack pane 
 	//StackPane finally gets added to BorderPane
 	private static void addButtons(BorderPane pane){
-		int MAX_WIDTH = 50;
 		Button b = null;
 		StackPane bottomPane = new StackPane();		
 		HBox hbButtons = new HBox();
 		hbButtons.setPadding(new Insets(20,0,0,0));
 		for(int i = 1;i <= simCore.numOfButtons();i++){
 			b = new Button(Integer.toString(i));
-			b.setMinWidth(MAX_WIDTH);
+			b.setMinWidth(BUTTON_MIN_WIDTH);
 			b.setOnAction((event)->{
 				System.out.println("Button " + event.getTarget() + " was clicked");
 			});
