@@ -13,13 +13,10 @@ public class BrailleTextTranslator {
 	 */
 	public static int[][] translate(String input) {
 		int[][] result = new int[input.length()][];
-		int i = 0;
-		for (char c : input.toCharArray()) {
-			String strC = new String(c + "");
-			if (strC.equals(strC.toUpperCase())) {
-				// TODO: What if there's capitals?
-			}
-			result[i++] = BrailleTextSymbol.ht.get(strC);
+		for (int i = 0; i < input.length(); i++) {
+			String current = input.substring(i, i+1).toLowerCase();
+
+			result[i] = BrailleTextSymbol.ht.get(current);
 		}
 		return result;
 	}
