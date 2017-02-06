@@ -36,17 +36,5 @@ public class BrailleTextSymbol {
 		ht.put("y", new int[]{1, 0, 1, 0, 1, 1, 1, 0});
 		ht.put("z", new int[]{1, 0, 1, 0, 0, 1, 1, 0});
 		ht.put("w", new int[]{0, 1, 1, 0, 1, 1, 1, 0});
-		//TODO: Numbers?
-		ht.put("0", new int[]{0, 0, 0, 0, 0, 0, 0, 0});
-		ht.put("1", new int[]{0, 0, 0, 0, 0, 0, 0, 0});
-		ht.put("2", new int[]{0, 0, 0, 0, 0, 0, 0, 0});
-		ht.put("3", new int[]{0, 0, 0, 0, 0, 0, 0, 0});
-		ht.put("4", new int[]{0, 0, 0, 0, 0, 0, 0, 0});
-		ht.put("5", new int[]{0, 0, 0, 0, 0, 0, 0, 0});
-		ht.put("6", new int[]{0, 0, 0, 0, 0, 0, 0, 0});
-		ht.put("7", new int[]{0, 0, 0, 0, 0, 0, 0, 0});
-		ht.put("8", new int[]{0, 0, 0, 0, 0, 0, 0, 0});
-		ht.put("9", new int[]{0, 0, 0, 0, 0, 0, 0, 0});
-		ht.put("capital", new int[]{0, 0, 0, 0, 0, 0, 0, 1});
 	}
 }
