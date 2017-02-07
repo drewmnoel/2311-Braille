@@ -60,7 +60,7 @@ public class BrailleCircleTest {
 	//
 	@Test
 	public void testgetHexFillColor(){		
-		//get numeric value of red, green, blue in color BLACK and convert it to hexadecimal value
+		//get numeric value of red, green, blue in color BLACK and convert it to hexacimal value
 		String testColor = "#" +(int)Color.BLACK.getRed()*255 + (int)Color.BLACK.getGreen() * 255 + (int)Color.BLACK.getBlue() * 255;
 			//iterate though each alphabet array
 			for(int i = 0;i < array.length;i++){
