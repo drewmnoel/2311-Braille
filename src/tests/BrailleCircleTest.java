@@ -55,17 +55,17 @@ public class BrailleCircleTest {
 	 */
 	@Test
 	public void testgetHexFillColor() {
-		// get numeric value of red, green, blue in color BLACK and convert it
-		// to hexacimal value
+		// gets numeric value of red, green, blue in color BLACK and converts it
+		// to a hexadecimal value
 		String testColor = "#" + (int) Color.BLACK.getRed() * 255 + (int) Color.BLACK.getGreen() * 255
 				+ (int) Color.BLACK.getBlue() * 255;
-		// iterate though each alphabet array
+		// iterates through each alphabet array
 		for (int i = 0; i < array.length; i++) {
-			// iterate though coordinates of alphabet and create circle
+			// iterates through coordinates of the alphabets and creates circles
 			// accordingly
 			for (int runningIndex = 0; runningIndex < 8; runningIndex++) {
 				circle = new BrailleCircle(array[i], runningIndex);
-				// if coordinate value is 1 then circle must be filled with
+				// if the coordinate value is 1 then circle must be filled with
 				// black color otherwise empty(i.e. white color)
 				if (array[i][runningIndex] == 1) {
 					assertEquals(testColor, circle.getHexFillColor());
@@ -82,13 +82,13 @@ public class BrailleCircleTest {
 	 */
 	@Test
 	public void testgetHexStrokeColor() {
-		// get hexadecimal value of color black
+		// gets hexadecimal value of color black
 		String testColor = "#" + (int) Color.BLACK.getRed() * 255 + (int) Color.BLACK.getGreen() * 255
 				+ (int) Color.BLACK.getBlue() * 255;
 		for (int i = 0; i < array.length; i++) {
 			for (int j = 0; j < 8; j++) {
 				circle = new BrailleCircle(array[i], j);
-				// check for border color of circle
+				// checks for border color of circle
 				assertEquals(testColor, circle.getHexStrokeColor());
 			}
 		}
