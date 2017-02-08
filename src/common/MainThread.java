@@ -4,6 +4,10 @@ import simulator.SimulatorCore;
 
 /**
  * Thread which performs various interactions. Required since JavaFX eats the normal Main method
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-02-02
  */
 public class MainThread implements Runnable {
 

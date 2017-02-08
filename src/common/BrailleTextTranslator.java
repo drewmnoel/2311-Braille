@@ -3,6 +3,9 @@ package common;
 /**
  * Utility class to convert between ASCII text and Braille cells
  *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-01-30
  */
 public class BrailleTextTranslator {
 

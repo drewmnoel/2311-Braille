@@ -4,6 +4,10 @@ import java.util.Hashtable;
 
 /**
  * Static map for Braille conversions
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-01-30
  */
 public class BrailleTextSymbol {
 	/** Hashtable that will keep the mapping */
