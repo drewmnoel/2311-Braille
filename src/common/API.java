@@ -4,18 +4,26 @@ import javafx.application.Platform;
 import simulator.SimulatorCore;
 import simulator.SimulatorException;
 
+/**
+ * API Wrapper for interacting with the system. Currently connected to the
+ * Simulator, but is abstracted such that it may connected to the hardware
+ * instead.
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-02-02
+ */
 public class API {
+	private String lastText = "";
+	private int lastButtons = 1;
+	private SimulatorCore simcore = SimulatorCore.getInstance();
+
 	/**
 	 * Set the text display of the UI
 	 *
 	 * @param input
 	 *            Text to show on the screen
 	 */
-
-	private String lastText = "";
-	private int lastButtons = 1;
-	private SimulatorCore simcore = SimulatorCore.getInstance();
-
 	public void setText(String input) {
 		redraw(input, lastButtons);
 	}
