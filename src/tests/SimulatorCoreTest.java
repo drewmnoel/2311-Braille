@@ -38,7 +38,7 @@ public class SimulatorCoreTest {
 	 * Create a basic simulator core for later user
 	 *
 	 * @throws SimulatorException
-	 *             If the simulator core generates an exception
+	 *             If the simulator core enters an invalid state
 	 */
 	@Before
 	public void setUp() throws SimulatorException {
@@ -55,6 +55,7 @@ public class SimulatorCoreTest {
 	 * Checks that constructor creates a SimulatorCore is all 0 valued
 	 *
 	 * @throws SimulatorException
+	 *             If the simulator core enters an invalid state
 	 */
 	@Test
 	public void testCreation() throws SimulatorException {
@@ -78,6 +79,7 @@ public class SimulatorCoreTest {
 	 * Checks that setCell() changes cells correctly
 	 *
 	 * @throws SimulatorException
+	 *             If the simulator core enters an invalid state
 	 */
 	@Test
 	public void testSetCell() throws SimulatorException {
@@ -99,6 +101,7 @@ public class SimulatorCoreTest {
 	 * values
 	 *
 	 * @throws SimulatorException
+	 *             If the simulator core enters an invalid state
 	 */
 	@Test
 	public void testClearCells() throws SimulatorException {
@@ -122,6 +125,7 @@ public class SimulatorCoreTest {
 	 * Tests whether cellAt() returns the proper cell
 	 *
 	 * @throws SimulatorException
+	 *             If the simulator core enters an invalid state
 	 */
 	@Test
 	public void testCellAt() throws SimulatorException {
@@ -149,6 +153,7 @@ public class SimulatorCoreTest {
 	 * Ensure allCells() returns a list containing all cells
 	 *
 	 * @throws SimulatorException
+	 *             If the simulator core enters an invalid state
 	 */
 	@Test
 	public void testAllCells() throws SimulatorException {
@@ -174,6 +179,7 @@ public class SimulatorCoreTest {
 	 * Ensure numCells() returns the right number of cells
 	 *
 	 * @throws SimulatorException
+	 *             If the simulator core enters an invalid state
 	 */
 	@Test
 	public void testNumCells() throws SimulatorException {
@@ -181,10 +187,11 @@ public class SimulatorCoreTest {
 	}
 
 	/**
-	 * Tests that SimulatorCore constructor throws an exception for numCells < 1
-	 * or numCells > 10
+	 * Tests that SimulatorCore constructor throws an exception for numCells
+	 * &lt; 1 or numCells &gt; 10
 	 *
 	 * @throws SimulatorException
+	 *             If the simulator core enters an invalid state
 	 */
 	@Test
 	public void testConstructorException() throws SimulatorException {
@@ -200,6 +207,7 @@ public class SimulatorCoreTest {
 	 * number
 	 *
 	 * @throws SimulatorException
+	 *             If the simulator core enters an invalid state
 	 */
 	@Test
 	public void testSetCellExceptionIndex() throws SimulatorException {
@@ -214,6 +222,7 @@ public class SimulatorCoreTest {
 	 * array
 	 *
 	 * @throws SimulatorException
+	 *             If the simulator core enters an invalid state
 	 */
 	@Test
 	public void testSetCellExceptionCellSize() throws SimulatorException {
@@ -228,6 +237,7 @@ public class SimulatorCoreTest {
 	 * number
 	 *
 	 * @throws SimulatorException
+	 *             If the simulator core enters an invalid state
 	 */
 	@Test
 	public void testSetCellAtException() throws SimulatorException {
@@ -241,6 +251,7 @@ public class SimulatorCoreTest {
 	 * Test instantiating SimulatorCores with 1 to 10 braille cells
 	 *
 	 * @throws SimulatorException
+	 *             If the simulator core enters an invalid state
 	 */
 	@Test
 	public void testCreateMultipleCells() throws SimulatorException {
@@ -256,6 +267,7 @@ public class SimulatorCoreTest {
 	 * Test instantiating SimulatorCores with 1 to 5 buttons
 	 *
 	 * @throws SimulatorException
+	 *             If the simulator core enters an invalid state
 	 */
 	@Test
 	public void testCreateMultipleButtons() throws SimulatorException {
@@ -271,6 +283,7 @@ public class SimulatorCoreTest {
 	 * Test setCell() and cellAt() for SimCores with 1-10 braille cells
 	 *
 	 * @throws SimulatorException
+	 *             If the simulator core enters an invalid state
 	 */
 	@Test
 	public void testMutlipleCellsGetAndSet() throws SimulatorException {
@@ -299,6 +312,7 @@ public class SimulatorCoreTest {
 	 * Tests clearCells() method for SimCores with 1-10 cells
 	 *
 	 * @throws SimulatorException
+	 *             If the simulator core enters an invalid state
 	 */
 	@Test
 	public void testMultipleCellClearCells() throws SimulatorException {
@@ -330,6 +344,7 @@ public class SimulatorCoreTest {
 	 * Test allCells for SimCores with 1-10 braille cells
 	 *
 	 * @throws SimulatorException
+	 *             If the simulator core enters an invalid state
 	 */
 	@Test
 	public void testMultipleCellsAllCells() throws SimulatorException {
@@ -365,6 +380,7 @@ public class SimulatorCoreTest {
 	 * Test functionality of SimCores with 1 - 5 buttons
 	 *
 	 * @throws SimulatorException
+	 *             If the simulator core enters an invalid state
 	 */
 	@Test
 	public void testMultipleButtons() throws SimulatorException {
@@ -381,6 +397,7 @@ public class SimulatorCoreTest {
 	 * or 1 throws an exception
 	 *
 	 * @throws SimulatorException
+	 *             If the simulator core enters an invalid state
 	 */
 	@Test
 	public void testSetCellNot0Or1() throws SimulatorException {
@@ -395,6 +412,7 @@ public class SimulatorCoreTest {
 	 * Test that ready() correctly returns true if the SimCore is initialized
 	 *
 	 * @throws SimulatorException
+	 *             If the simulator core enters an invalid state
 	 */
 	@Test
 	public void testReady() throws SimulatorException {
