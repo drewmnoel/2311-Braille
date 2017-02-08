@@ -14,15 +14,31 @@ import org.junit.rules.ExpectedException;
 import simulator.SimulatorCore;
 import simulator.SimulatorException;
 
+/**
+ * JUnit tests for the SimulatorCore class
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-01-30
+ *
+ */
 public class SimulatorCoreTest {
 
 	SimulatorCore testSim;
 	SimulatorCore notReady;
 	int[] emptyCell = new int[8];
 
+	/**
+	 * Set the expected exception for this set of tests
+	 */
 	@Rule
 	public ExpectedException exception = ExpectedException.none();
 
+	/**
+	 * Create a basic simulator core for later user
+	 *
+	 * @throws SimulatorException If the simulator core generates an exception
+	 */
 	@Before
 	public void setUp() throws SimulatorException {
 		testSim = SimulatorCore.getInstance();
@@ -34,8 +50,12 @@ public class SimulatorCoreTest {
 		notReady = SimulatorCore.getInstance();
 	}
 
+	/**
+	 * Checks that constructor creates a SimulatorCore is all 0 valued
+	 *
+	 * @throws SimulatorException
+	 */
 	@Test
-	//Checks that constructor creates a SimulatorCore is all 0 valued
 	public void testCreation() throws SimulatorException {
 		for(int i=0; i < testSim.numOfCells(); i++) {
 			for(int j=0; j<8; j++) {
@@ -45,14 +65,20 @@ public class SimulatorCoreTest {
 		}
 	}
 
+	/**
+	 * Check basic functionality of numOfButtons()
+	 */
 	@Test
-	//Check basic functionality of numOfButtons()
 	public void testNumOfButtson() {
 		assertEquals(5, testSim.numOfButtons());
 	}
 
+	/**
+	 * Checks that setCell() changes cells correctly
+	 *
+	 * @throws SimulatorException
+	 */
 	@Test
-	//Checks that setCell() changes cells correctly
 	public void testSetCell() throws SimulatorException {
 
 		int[]cell_0 = {0, 1, 0, 1, 0, 1, 0, 1};
@@ -67,8 +93,12 @@ public class SimulatorCoreTest {
 		assertEquals(testSim.cellAt(2), cell_2);
 	}
 
+	/**
+	 * Tests clearCells() clears all cells to 0 after being assigned other values
+	 *
+	 * @throws SimulatorException
+	 */
 	@Test
-	//Tests clearCells() clears all cells to 0 after being assigned other values
 	public void testClearCells() throws SimulatorException {
 		int[]cell_0 = {0, 1, 0, 1, 0, 1, 0, 1};
 		int[]cell_1 = {1, 0, 1, 0, 1, 0, 1, 0};
@@ -86,8 +116,12 @@ public class SimulatorCoreTest {
 		}
 	}
 
+	/**
+	 * Tests whether cellAt() returns the proper cell
+	 *
+	 * @throws SimulatorException
+	 */
 	@Test
-	//Tests whether cellAt() returns the proper cell
 	public void testCellAt() throws SimulatorException{
 		int[]cell_1 = {1, 0, 1, 0, 1, 0, 1, 0};
 		testSim.setCell(1, cell_1);
@@ -110,8 +144,12 @@ public class SimulatorCoreTest {
 		}
 	}
 
+	/**
+	 * Ensure allCells() returns a list containing all cells
+	 *
+	 * @throws SimulatorException
+	 */
 	@Test
-	//Ensure allCells() returns a list containing all cells
 	public void testAllCells() throws SimulatorException {
 		int[]cell_0 = {0, 1, 0, 1, 0, 1, 0, 1};
 		int[]cell_1 = {1, 0, 1, 0, 1, 0, 1, 0};
@@ -131,14 +169,22 @@ public class SimulatorCoreTest {
 		assertTrue(testListExpected.equals(testList1));
 	}
 
+	/**
+	 * Ensure numCells() returns the right number of cells
+	 *
+	 * @throws SimulatorException
+	 */
 	@Test
-	//Ensure numCells() returns the right number of cells
 	public void testNumCells() throws SimulatorException {
 		assertEquals(3, testSim.numOfCells());
 	}
 
+	/**
+	 * Tests that SimulatorCore constructor throws an exception for numCells < 1 or numCells > 10
+	 *
+	 * @throws SimulatorException
+	 */
 	@Test
-	//Tests that SimulatorCore constructor throws an exception for numCells < 1 or numCells > 10
 	public void testConstructorException() throws SimulatorException {
 		exception.expect(SimulatorException.class);
 		exception.expectMessage("Enter a number of cells between 1 and 10");
@@ -147,9 +193,12 @@ public class SimulatorCoreTest {
 		badSim.populate(0,5);
 	}
 
-
+	/**
+	 * Tests that setCell() throws the proper exception for an invalid cell number
+	 *
+	 * @throws SimulatorException
+	 */
 	@Test
-	//Tests that setCell() throws the proper exception for an invalid cell number
 	public void testSetCellExceptionIndex() throws SimulatorException {
 		exception.expect(SimulatorException.class);
 		exception.expectMessage("Enter a legal cell number");
@@ -157,8 +206,12 @@ public class SimulatorCoreTest {
 		testSim.setCell(3, cell_0);
 	}
 
+	/**
+	 * Tests that setCell() throws the proper exception for a non-8 element array
+	 *
+	 * @throws SimulatorException
+	 */
 	@Test
-	//Tests that setCell() throws the proper exception for a non-8 element array
 	public void testSetCellExceptionCellSize() throws SimulatorException {
 		exception.expect(SimulatorException.class);
 		exception.expectMessage("Must set value for 8 pins");
@@ -166,8 +219,12 @@ public class SimulatorCoreTest {
 		testSim.setCell(1, cell_0);
 	}
 
+	/**
+	 * Tests that cellAt() throws the proper exception for an invalid cell number
+	 *
+	 * @throws SimulatorException
+	 */
 	@Test
-	//Tests that cellAt() throws the proper exception for an invalid cell number
 	public void testSetCellAtException() throws SimulatorException {
 		exception.expect(SimulatorException.class);
 		exception.expectMessage("Enter a legal cell number");
@@ -175,8 +232,12 @@ public class SimulatorCoreTest {
 		testSim.cellAt(3);
 	}
 
+	/**
+	 * Test instantiating SimulatorCores with 1 to 10 braille cells
+	 *
+	 * @throws SimulatorException
+	 */
 	@Test
-	//Test instantiating SimulatorCores with 1 to 10 braille cells
 	public void testCreateMultipleCells() throws SimulatorException {
 		SimulatorCore testMultiCells;
 		for (int i=1; i<=10; i++) {
@@ -186,8 +247,12 @@ public class SimulatorCoreTest {
 		}
 	}
 
+	/**
+	 * Test instantiating SimulatorCores with 1 to 5 buttons
+	 *
+	 * @throws SimulatorException
+	 */
 	@Test
-	//Test instantiating SimulatorCores with 1 to 5 buttons
 	public void testCreateMultipleButtons() throws SimulatorException {
 		SimulatorCore testMultiCells;
 		for (int i=1; i<=5; i++) {
@@ -197,8 +262,12 @@ public class SimulatorCoreTest {
 		}
 	}
 
+	/**
+	 * Test setCell() and cellAt() for SimCores with 1-10 braille cells
+	 *
+	 * @throws SimulatorException
+	 */
 	@Test
-	//Test setCell() and cellAt() for SimCores with 1-10 braille cells
 	public void testMutlipleCellsGetAndSet() throws SimulatorException {
 		SimulatorCore[] simArray = new SimulatorCore[10];
 		int[][] testCell = new int[10][8];
@@ -220,8 +289,12 @@ public class SimulatorCoreTest {
 		}
 	}
 
+	/**
+	 * Tests clearCells() method for SimCores with 1-10 cells
+	 *
+	 * @throws SimulatorException
+	 */
 	@Test
-	//Tests clearCells() method for SimCores with 1-10 cells
 	public void testMultipleCellClearCells() throws SimulatorException {
 		int[] putCell = { 1, 1, 1, 1, 1, 1, 1, 1 };
 
@@ -247,8 +320,12 @@ public class SimulatorCoreTest {
 		}
 	}
 
+	/**
+	 * Test allCells for SimCores with 1-10 braille cells
+	 *
+	 * @throws SimulatorException
+	 */
 	@Test
-	//test allCells for SimCores with 1-10 braille cells
 	public void testMultipleCellsAllCells() throws SimulatorException {
 		SimulatorCore[] simArray = new SimulatorCore[10];
 		int[] putCell = { 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -279,8 +356,12 @@ public class SimulatorCoreTest {
 		}
 	}
 
+	/**
+	 * Test functionality of SimCores with 1 - 5 buttons
+	 *
+	 * @throws SimulatorException
+	 */
 	@Test
-	//Test functionality of SimCores with 1 - 5 buttons
 	public void testMultipleButtons() throws SimulatorException {
 		SimulatorCore[] simArray = new SimulatorCore[5];
 		for(int i = 0; i<5; i++) {
@@ -290,8 +371,12 @@ public class SimulatorCoreTest {
 		}
 	}
 
+	/**
+	 * Test that trying to use setCell() with an array with values other than 0 or 1 throws an exception
+	 *
+	 * @throws SimulatorException
+	 */
 	@Test
-	//Test that trying to use setCell() with an array with values other than 0 or 1 throws an exception
 	public void testSetCellNot0Or1() throws SimulatorException {
 		int[] badCell = { 0, 2, 1, 0, 1, 0, 3, 0 };
 		exception.expect(SimulatorException.class);
@@ -300,8 +385,12 @@ public class SimulatorCoreTest {
 
 	}
 
+	/**
+	 * Test that ready() correctly returns true if the SimCore is initialized
+	 *
+	 * @throws SimulatorException
+	 */
 	@Test
-	//Test that ready() correctly returns true if the SimCore is initialized
 	public void testReady() throws SimulatorException {
 
 		assertTrue(SimulatorCore.ready());

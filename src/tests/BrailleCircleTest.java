@@ -12,6 +12,14 @@ import javafx.scene.shape.Circle;
 import simulator.BrailleCircle;
 import simulator.SimulatorException;
 
+/**
+ * JUnit tests for the BrailleCircle class
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-01-31
+ *
+ */
 public class BrailleCircleTest {
 
 	private BrailleCircle circle;
@@ -45,7 +53,12 @@ public class BrailleCircleTest {
 	{0, 0, 0, 0, 0, 0, 0, 0},
 	{0, 0, 0, 0, 0, 0, 0, 1}
 	};
-	//iterating though possible letters and capital {0, 0, 0, 0, 0, 0, 0, 1} to initialize circles
+
+	/**
+	 * Set up the circle to be the last entry in the preset array. Verifies that no exceptions are thrown when setting a circle.
+	 *
+	 * @throws SimulatorException If the circle initialization generates an exception
+	 */
 	@Before
 	public void setUp() throws SimulatorException {
 		for(int i = 0;i < array.length;i++){
@@ -55,7 +68,9 @@ public class BrailleCircleTest {
 		}
 	}
 
-	//
+	/**
+	 * Tests that each element of the Braille cell will have the correct color.
+	 */
 	@Test
 	public void testgetHexFillColor(){
 		//get numeric value of red, green, blue in color BLACK and convert it to hexacimal value
@@ -74,6 +89,10 @@ public class BrailleCircleTest {
 				}
 		}
 	}
+
+	/**
+	 * Tests that the stroke color of each element of a Braille cell will be correct
+	 */
 	@Test
 	public void testgetHexStrokeColor(){
 		//get hexadecimal value of color black
@@ -87,6 +106,9 @@ public class BrailleCircleTest {
 		}
 	}
 
+	/**
+	 * Minimal test to verify there is no null pointer
+	 */
 	@Test
 	public void testGetCircle(){
 		assertTrue(circle.getCircle() instanceof Circle);
