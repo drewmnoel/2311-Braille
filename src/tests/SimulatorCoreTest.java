@@ -15,14 +15,14 @@ import simulator.SimulatorCore;
 import simulator.SimulatorException;
 
 public class SimulatorCoreTest {
-	
+
 	SimulatorCore testSim;
 	SimulatorCore notReady;
 	int[] emptyCell = new int[8];
-	
+
 	@Rule
 	public ExpectedException exception = ExpectedException.none();
-	
+
 	@Before
 	public void setUp() throws SimulatorException {
 		testSim = SimulatorCore.getInstance();
@@ -30,7 +30,7 @@ public class SimulatorCoreTest {
 		for(int i=0; i<8; i++) {
 			emptyCell[i] = 0;
 		}
-		
+
 		notReady = SimulatorCore.getInstance();
 	}
 
@@ -44,30 +44,30 @@ public class SimulatorCoreTest {
 			}
 		}
 	}
-	
+
 	@Test
 	//Check basic functionality of numOfButtons()
 	public void testNumOfButtson() {
 		assertEquals(5, testSim.numOfButtons());
 	}
-	
+
 	@Test
 	//Checks that setCell() changes cells correctly
 	public void testSetCell() throws SimulatorException {
-		
+
 		int[]cell_0 = {0, 1, 0, 1, 0, 1, 0, 1};
 		int[]cell_1 = {1, 0, 1, 0, 1, 0, 1, 0};
 		int[]cell_2 = {1, 1, 1, 1, 1, 1, 1, 1};
 		testSim.setCell(0, cell_0);
 		testSim.setCell(1, cell_1);
 		testSim.setCell(2, cell_2);
-		
+
 		assertEquals(testSim.cellAt(0), cell_0);
 		assertEquals(testSim.cellAt(1), cell_1);
 		assertEquals(testSim.cellAt(2), cell_2);
 	}
-	
-	@Test 
+
+	@Test
 	//Tests clearCells() clears all cells to 0 after being assigned other values
 	public void testClearCells() throws SimulatorException {
 		int[]cell_0 = {0, 1, 0, 1, 0, 1, 0, 1};
@@ -76,7 +76,7 @@ public class SimulatorCoreTest {
 		testSim.setCell(0, cell_0);
 		testSim.setCell(1, cell_1);
 		testSim.setCell(2, cell_2);
-		
+
 		testSim.clearCells();
 		for(int i=0; i < testSim.numOfCells(); i++) {
 			for(int j=0; j<8; j++) {
@@ -86,13 +86,13 @@ public class SimulatorCoreTest {
 		}
 	}
 
-	@Test 
+	@Test
 	//Tests whether cellAt() returns the proper cell
 	public void testCellAt() throws SimulatorException{
 		int[]cell_1 = {1, 0, 1, 0, 1, 0, 1, 0};
 		testSim.setCell(1, cell_1);
-		
-		for(int i=0; i<testSim.numOfCells(); i++) {		
+
+		for(int i=0; i<testSim.numOfCells(); i++) {
 			for(int j=0; j<8; j++) {
 				int temp = testSim.cellAt(i)[j];
 				if(i != 1) {
@@ -109,7 +109,7 @@ public class SimulatorCoreTest {
 			}
 		}
 	}
-	
+
 	@Test
 	//Ensure allCells() returns a list containing all cells
 	public void testAllCells() throws SimulatorException {
@@ -119,24 +119,24 @@ public class SimulatorCoreTest {
 		testSim.setCell(0, cell_0);
 		testSim.setCell(1, cell_1);
 		testSim.setCell(2, cell_2);
-		
+
 		ArrayList<int[]> testList1 = new ArrayList<int[]>();
 		ArrayList<int[]> testListExpected = new ArrayList<int[]>();
 		testListExpected.add(cell_0);
 		testListExpected.add(cell_1);
 		testListExpected.add(cell_2);
-		
+
 		testList1 = testSim.allCells();
-		
+
 		assertTrue(testListExpected.equals(testList1));
 	}
-	
+
 	@Test
 	//Ensure numCells() returns the right number of cells
 	public void testNumCells() throws SimulatorException {
 		assertEquals(3, testSim.numOfCells());
 	}
-	
+
 	@Test
 	//Tests that SimulatorCore constructor throws an exception for numCells < 1 or numCells > 10
 	public void testConstructorException() throws SimulatorException {
@@ -146,8 +146,8 @@ public class SimulatorCoreTest {
 		badSim.populate(11,5);
 		badSim.populate(0,5);
 	}
-	
-	
+
+
 	@Test
 	//Tests that setCell() throws the proper exception for an invalid cell number
 	public void testSetCellExceptionIndex() throws SimulatorException {
@@ -156,7 +156,7 @@ public class SimulatorCoreTest {
 		int[]cell_0 = {0, 1, 0, 1, 0, 1, 0, 1};
 		testSim.setCell(3, cell_0);
 	}
-	
+
 	@Test
 	//Tests that setCell() throws the proper exception for a non-8 element array
 	public void testSetCellExceptionCellSize() throws SimulatorException {
@@ -165,7 +165,7 @@ public class SimulatorCoreTest {
 		int[]cell_0 = {0, 1, 0, 1, 0, 1};
 		testSim.setCell(1, cell_0);
 	}
-	
+
 	@Test
 	//Tests that cellAt() throws the proper exception for an invalid cell number
 	public void testSetCellAtException() throws SimulatorException {
@@ -174,7 +174,7 @@ public class SimulatorCoreTest {
 		testSim.cellAt(-1);
 		testSim.cellAt(3);
 	}
-	
+
 	@Test
 	//Test instantiating SimulatorCores with 1 to 10 braille cells
 	public void testCreateMultipleCells() throws SimulatorException {
@@ -185,7 +185,7 @@ public class SimulatorCoreTest {
 			assertEquals(2, testMultiCells.numOfButtons());
 		}
 	}
-	
+
 	@Test
 	//Test instantiating SimulatorCores with 1 to 5 buttons
 	public void testCreateMultipleButtons() throws SimulatorException {
@@ -196,13 +196,13 @@ public class SimulatorCoreTest {
 			assertEquals(i, testMultiCells.numOfButtons());
 		}
 	}
-	
+
 	@Test
 	//Test setCell() and cellAt() for SimCores with 1-10 braille cells
 	public void testMutlipleCellsGetAndSet() throws SimulatorException {
 		SimulatorCore[] simArray = new SimulatorCore[10];
 		int[][] testCell = new int[10][8];
-		
+
 		//Create 10 SimulatorCores with 1-10 braille cells
 		//Create 10 length 8 int arrays with a single 1 in them
 		for (int i = 0; i <10; i++) {
@@ -213,18 +213,18 @@ public class SimulatorCoreTest {
 		for (int i=0; i<10; i++) {
 			simArray[i].setCell(i, testCell[i]);
 		}
-		
+
 		//Check that the cells have been set properly
 		for (int i=0; i<10; i++) {
 			assertEquals(simArray[i].cellAt(i), testCell[i]);
 		}
 	}
-	
+
 	@Test
 	//Tests clearCells() method for SimCores with 1-10 cells
 	public void testMultipleCellClearCells() throws SimulatorException {
 		int[] putCell = { 1, 1, 1, 1, 1, 1, 1, 1 };
-		
+
 		SimulatorCore[] simArray = new SimulatorCore[10];
 		//Creates 10 SimCores with 1 to 10 braille cells
 		//Sets all cells to be all 1's
@@ -238,7 +238,7 @@ public class SimulatorCoreTest {
 		for (int i = 0; i <10; i++) {
 			simArray[i].clearCells();
 		}
-		
+
 		//asserts that all cells are 0's
 		for(int i=0; i<10; i++) {
 			for(int j=i; j>=0; j--) {
@@ -246,7 +246,7 @@ public class SimulatorCoreTest {
 			}
 		}
 	}
-	
+
 	@Test
 	//test allCells for SimCores with 1-10 braille cells
 	public void testMultipleCellsAllCells() throws SimulatorException {
@@ -254,7 +254,7 @@ public class SimulatorCoreTest {
 		int[] putCell = { 0, 0, 0, 0, 0, 0, 0, 0 };
 		ArrayList<int[]> expectedList = new ArrayList<int[]>();
 		ArrayList<int[]> testList;
-		
+
 		//creates 10 SimCores, with 1-10 braille cells
 		//and tests allCells() for each one
 		for (int i = 0; i <10; i++) {
@@ -278,7 +278,7 @@ public class SimulatorCoreTest {
 			expectedList.clear();
 		}
 	}
-	
+
 	@Test
 	//Test functionality of SimCores with 1 - 5 buttons
 	public void testMultipleButtons() throws SimulatorException {
@@ -289,7 +289,7 @@ public class SimulatorCoreTest {
 			assertEquals(i+1, simArray[i].numOfCells());
 		}
 	}
-	
+
 	@Test
 	//Test that trying to use setCell() with an array with values other than 0 or 1 throws an exception
 	public void testSetCellNot0Or1() throws SimulatorException {
@@ -297,13 +297,13 @@ public class SimulatorCoreTest {
 		exception.expect(SimulatorException.class);
 		exception.expectMessage("Argument dots must only have values of 0 or 1");
 		testSim.setCell(0, badCell);
-		
+
 	}
-	
+
 	@Test
 	//Test that ready() correctly returns true if the SimCore is initialized
 	public void testReady() throws SimulatorException {
-		
+
 		assertTrue(SimulatorCore.ready());
 	}
 }

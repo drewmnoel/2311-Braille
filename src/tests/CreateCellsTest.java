@@ -1,14 +1,9 @@
 package tests;
 
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.fail;
 
-import simulator.BrailleCircle;
+import org.junit.Before;
+import org.junit.Test;
 
 public class CreateCellsTest {
 

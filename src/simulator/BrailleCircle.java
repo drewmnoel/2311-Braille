@@ -1,8 +1,6 @@
 package simulator;
 
-import javafx.scene.Node;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 
 public class BrailleCircle {
@@ -18,7 +16,7 @@ public class BrailleCircle {
 			circle.setStrokeWidth(1);
 		}
 	}
-	public Circle getCircle(){		
+	public Circle getCircle(){
 		return circle;
 	}
 	public String getHexFillColor(){
@@ -46,7 +44,7 @@ public class BrailleCircle {
 			return null;
 		}
 	}
-	
 
-	
+
+
 }

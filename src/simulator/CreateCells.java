@@ -12,7 +12,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class CreateCells extends Application {
@@ -52,7 +51,7 @@ public class CreateCells extends Application {
 		});
 
 		primaryStage.setScene(makeScene());
-		// 5 is number of horizontal boxes, padding space is 4 + borderPane padding of 20 		
+		// 5 is number of horizontal boxes, padding space is 4 + borderPane padding of 20
 		primaryStage.setMinWidth(BRAILLE_BOX_SIDE*BRAILLE_WIDTH*5+(HORIZONTAL_PADDING*7));
 		primaryStage.show();
 	}
@@ -65,17 +64,17 @@ public class CreateCells extends Application {
 		addButtons(borderPane);
 		borderPane.setCenter(grid);
 		Scene scene = new Scene(borderPane);
-		
+
 		scene.getStylesheets().add("application.css");
 
 		return scene;
 	}
 	//create and add buttons to horizontal pane
-	//horizontal pane gets added to stack pane 
+	//horizontal pane gets added to stack pane
 	//StackPane finally gets added to BorderPane
 	private static void addButtons(BorderPane pane){
 		Button b = null;
-		StackPane bottomPane = new StackPane();		
+		StackPane bottomPane = new StackPane();
 		HBox hbButtons = new HBox();
 		hbButtons.setPadding(new Insets(20,0,0,0));
 		for(int i = 1;i <= simCore.numOfButtons();i++){
@@ -84,11 +83,11 @@ public class CreateCells extends Application {
 			b.setOnAction((event)->{
 				System.out.println("Button " + event.getTarget() + " was clicked");
 			});
-			hbButtons.getChildren().add(b);			
+			hbButtons.getChildren().add(b);
 		}
 		hbButtons.setAlignment(Pos.CENTER);
 		bottomPane.getChildren().add(hbButtons);
-		pane.setBottom(bottomPane);		
+		pane.setBottom(bottomPane);
 	}
 
 	private TilePane drawCells(TilePane grid) throws SimulatorException {

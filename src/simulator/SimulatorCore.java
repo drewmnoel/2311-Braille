@@ -6,14 +6,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
- * 
+ *
  * <h1>SimulatorCore</h1>
- * 
- * <p>The SimulatorCore class provides a simulation of the function of a braille player hardware. 
+ *
+ * <p>The SimulatorCore class provides a simulation of the function of a braille player hardware.
  * It supports the creation of a simulation of hardware with 1 to 10 braille cells and 1 to 5 buttons.
  * The SimulatorCore class is implemented using a singleton design, to ensure that only one simulation is instantiated at a time.
- * 
- * 
+ *
+ *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
  * @since 2017-02-07
@@ -31,15 +31,15 @@ public class SimulatorCore {
 	}
 
 	private SimulatorCore() {}
-	
+
 	public static SimulatorCore getInstance() {
 		return sc;
 	}
 
 	/**
-	 * This constructor is made public for testing purposes. 
+	 * This constructor is made public for testing purposes.
 	 * In actual implementation it will be made private.
-	 * 
+	 *
 	 * @param numCells Number of cells desired, must be between 1 and 10
 	 * @param numButton Number of buttons desired, must be between 1 and 5
 	 * @throws SimulatorException if the values are outside the accepted ranges
@@ -87,7 +87,7 @@ public class SimulatorCore {
 	 * The pins on a braille cell are represented using an integer array of length 8.
 	 * Values of '0' indicate lowered pins, values of '1' indicate raised pins.
 	 * Pins are numbered using a 0 indexed version of the standard numbering of dots in a braille cell.
-	 * 
+	 *
 	 * @param cellNumber The index of the braille cell to be set
 	 * @param dots A length 8 integer array containing only 0's and 1's
 	 * @throws SimulatorException if cellNumber is not a valid braille cell index
@@ -110,11 +110,11 @@ public class SimulatorCore {
 				throw error;
 			}
 		}
-		
+
 		cellObserver.set(cellNumber, dots);
 	}
 
-	
+
 	/**
 	 * Use this method to set all the pins in all braille cells in the simulator to 'lowered' position
 	 */
@@ -132,7 +132,7 @@ public class SimulatorCore {
 	 * This method returns a length 8 integer array .
 	 * Pins are numbered using a 0 indexed version of the standard numbering of dots in a braille cell.
 	 * Values of '0' indicate lowered pins, values of '1' indicate raised pins.
-	 * 
+	 *
 	 * @param i Index of the braille cell whose state is being returned
 	 * @return A length 8 integer array of 0's and 1's
 	 * @throws SimulatorException if i is not a valid braille cell index
@@ -145,12 +145,12 @@ public class SimulatorCore {
 		return cellObserver.get(i);
 	}
 
-	
+
 	/**
 	 * Use this method to retrieve the state of all braille cells in the simulator.
 	 * Braille cells are represented as length 8 integer arrays, with '0' indicating lowered and '1' indicating raised pins
 	 * The ArrayList returned by this method is ordered the same as the braille cells in the simulator
-	 * 
+	 *
 	 * @return an Arraylist of int arrays representations of all the braille cells in the simulator
 	 */
 	public ArrayList<int[]> allCells() {
@@ -163,7 +163,7 @@ public class SimulatorCore {
 
 	/**
 	 * Use this method to retrieve the number of braille cells present in the simulator
-	 * 
+	 *
 	 * @return an int between 1 and 10 of how many braille cells are present in the simulator
 	 */
 	public int numOfCells() {
@@ -172,7 +172,7 @@ public class SimulatorCore {
 
 	/**
 	 * Use this method to retrieve the number of buttons present in the simulator
-	 * 
+	 *
 	 * @return in int between 1 and 5 of how many buttons are present in the simulator
 	 */
 	public int numOfButtons() {
@@ -181,7 +181,7 @@ public class SimulatorCore {
 
 	/**
 	 * Use this method to query the simulator to check if it has been properly initialized with braille cells and buttons
-	 * 
+	 *
 	 * @return boolean value, with true indicating the simulator is properly intialized
 	 */
 	public static boolean ready() {

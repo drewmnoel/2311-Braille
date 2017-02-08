@@ -1,15 +1,13 @@
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Arrays;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import common.BrailleTextTranslator;
-import common.BrailleTextSymbol;
-import simulator.SimulatorCore;
-import simulator.SimulatorException;
-import java.util.Arrays;
 
 public class BrailleTextTranslatorTest {
 	String testString;
@@ -44,7 +42,7 @@ public class BrailleTextTranslatorTest {
 	@Before
 	public void setUp() throws Exception {
 		testString = "abcdefghijklmnopqrstuvwxyz";
-		
+
 	}
 
 	@Test
@@ -53,6 +51,6 @@ public class BrailleTextTranslatorTest {
 		for(int i = 0; i<26; i++) {
 			assertTrue(Arrays.equals(translateResult[i], expectedResult[i]));
 		}
-		
+
 	}
 }
