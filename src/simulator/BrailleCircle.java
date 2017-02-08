@@ -15,13 +15,17 @@ public class BrailleCircle {
 	private Circle circle;
 
 	/**
-	 * Create a new circle from a pin setting. A value of 1 indicates a raised pin (filled in on the UI) and otherwise indicates a lowered pin.
+	 * Create a new circle from a pin setting. A value of 1 indicates a raised
+	 * pin (filled in on the UI) and otherwise indicates a lowered pin.
 	 *
-	 * @param cell A Braille cell array
-	 * @param pos The particular entry in the array to represent
+	 * @param cell
+	 *            A Braille cell array
+	 * @param pos
+	 *            The particular entry in the array to represent
 	 */
 	public BrailleCircle(int[] cell, int pos) {
-		circle = new Circle(CreateCells.BRAILLE_BOX_SIDE / 2, CreateCells.BRAILLE_BOX_SIDE / 2, CreateCells.BRAILLE_DOT_RADIUS);
+		circle = new Circle(CreateCells.BRAILLE_BOX_SIDE / 2, CreateCells.BRAILLE_BOX_SIDE / 2,
+				CreateCells.BRAILLE_DOT_RADIUS);
 		if (cell[pos] == 1) {
 			circle.setStroke(Color.BLACK);
 			circle.setFill(Color.BLACK);
@@ -37,7 +41,7 @@ public class BrailleCircle {
 	 *
 	 * @return Circle of the requested cell entry
 	 */
-	public Circle getCircle(){
+	public Circle getCircle() {
 		return circle;
 	}
 
@@ -46,16 +50,13 @@ public class BrailleCircle {
 	 *
 	 * @return Standard hex representation of the fill color
 	 */
-	public String getHexFillColor(){
-		if(circle.getFill() != null){
+	public String getHexFillColor() {
+		if (circle.getFill() != null) {
 			Color c = (Color) circle.getFill();
-			String hex = String.format( "#%x%x%x",
-			            (int)( c.getRed() * 255 ),
-			            (int)( c.getGreen() * 255 ),
-			            (int)( c.getBlue() * 255 ) );
+			String hex = String.format("#%x%x%x", (int) (c.getRed() * 255), (int) (c.getGreen() * 255),
+					(int) (c.getBlue() * 255));
 			return hex;
-		}
-		else{
+		} else {
 			return null;
 		}
 	}
@@ -65,19 +66,15 @@ public class BrailleCircle {
 	 *
 	 * @return Standard hex representation of the stroke color
 	 */
-	public String getHexStrokeColor(){
-		if(circle.getStroke() != null){
+	public String getHexStrokeColor() {
+		if (circle.getStroke() != null) {
 			Color c = (Color) circle.getStroke();
-			String hex = String.format( "#%x%x%x",
-			            (int)( c.getRed() * 255 ),
-			            (int)( c.getGreen() * 255 ),
-			            (int)( c.getBlue() * 255 ) );
+			String hex = String.format("#%x%x%x", (int) (c.getRed() * 255), (int) (c.getGreen() * 255),
+					(int) (c.getBlue() * 255));
 			return hex;
-		}else{
+		} else {
 			return null;
 		}
 	}
-
-
 
 }

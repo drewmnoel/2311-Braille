@@ -12,7 +12,8 @@ public class SimulatorException extends Exception {
 	/**
 	 * Exception with a brief explanation message
 	 *
-	 * @param message Message to show as the cause of the exception
+	 * @param message
+	 *            Message to show as the cause of the exception
 	 */
 	public SimulatorException(String message) {
 		super(message);

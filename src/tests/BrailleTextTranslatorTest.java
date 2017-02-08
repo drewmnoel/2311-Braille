@@ -19,38 +19,21 @@ import common.BrailleTextTranslator;
  */
 public class BrailleTextTranslatorTest {
 	String testString;
-	int[][] expectedResult = {
-			{1, 0, 0, 0, 0, 0, 0, 0},
-			{1, 1, 0, 0, 0, 0, 0, 0},
-			{1, 0, 0, 0, 1, 0, 0, 0},
-			{1, 0, 0, 0, 1, 1, 0, 0},
-			{1, 0, 0, 0, 0, 1, 0, 0},
-			{1, 1, 0, 0, 1, 0, 0, 0},
-			{1, 1, 0, 0, 1, 1, 0, 0},
-			{1, 1, 0, 0, 0, 1, 0, 0},
-			{0, 1, 0, 0, 1, 0, 0, 0},
-			{0, 1, 0, 0, 1, 1, 0, 0},
-			{1, 0, 1, 0, 0, 0, 0, 0},
-			{1, 1, 1, 0, 0, 0, 0, 0},
-			{1, 0, 1, 0, 1, 0, 0, 0},
-			{1, 0, 1, 0, 1, 1, 0, 0},
-			{1, 0, 1, 0, 0, 1, 0, 0},
-			{1, 1, 1, 0, 1, 0, 0, 0},
-			{1, 1, 1, 0, 1, 1, 0, 0},
-			{1, 1, 1, 0, 0, 1, 0, 0},
-			{0, 1, 1, 0, 1, 0, 0, 0},
-			{0, 1, 1, 0, 1, 1, 0, 0},
-			{1, 0, 1, 0, 0, 0, 1, 0},
-			{1, 1, 1, 0, 0, 0, 1, 0},
-			{0, 1, 1, 0, 1, 1, 1, 0},
-			{1, 0, 1, 0, 1, 0, 1, 0},
-			{1, 0, 1, 0, 1, 1, 1, 0},
-			{1, 0, 1, 0, 0, 1, 1, 0}
-	};
+	int[][] expectedResult = { { 1, 0, 0, 0, 0, 0, 0, 0 }, { 1, 1, 0, 0, 0, 0, 0, 0 }, { 1, 0, 0, 0, 1, 0, 0, 0 },
+			{ 1, 0, 0, 0, 1, 1, 0, 0 }, { 1, 0, 0, 0, 0, 1, 0, 0 }, { 1, 1, 0, 0, 1, 0, 0, 0 },
+			{ 1, 1, 0, 0, 1, 1, 0, 0 }, { 1, 1, 0, 0, 0, 1, 0, 0 }, { 0, 1, 0, 0, 1, 0, 0, 0 },
+			{ 0, 1, 0, 0, 1, 1, 0, 0 }, { 1, 0, 1, 0, 0, 0, 0, 0 }, { 1, 1, 1, 0, 0, 0, 0, 0 },
+			{ 1, 0, 1, 0, 1, 0, 0, 0 }, { 1, 0, 1, 0, 1, 1, 0, 0 }, { 1, 0, 1, 0, 0, 1, 0, 0 },
+			{ 1, 1, 1, 0, 1, 0, 0, 0 }, { 1, 1, 1, 0, 1, 1, 0, 0 }, { 1, 1, 1, 0, 0, 1, 0, 0 },
+			{ 0, 1, 1, 0, 1, 0, 0, 0 }, { 0, 1, 1, 0, 1, 1, 0, 0 }, { 1, 0, 1, 0, 0, 0, 1, 0 },
+			{ 1, 1, 1, 0, 0, 0, 1, 0 }, { 0, 1, 1, 0, 1, 1, 1, 0 }, { 1, 0, 1, 0, 1, 0, 1, 0 },
+			{ 1, 0, 1, 0, 1, 1, 1, 0 }, { 1, 0, 1, 0, 0, 1, 1, 0 } };
+
 	/**
 	 * Set the testing string for later use
 	 *
-	 * @throws Exception Should never happen
+	 * @throws Exception
+	 *             Should never happen
 	 */
 	@Before
 	public void setUp() throws Exception {
@@ -58,12 +41,13 @@ public class BrailleTextTranslatorTest {
 	}
 
 	/**
-	 * Test that the translator translates ASCII to Braille cell correctly for each letter.
+	 * Test that the translator translates ASCII to Braille cell correctly for
+	 * each letter.
 	 */
 	@Test
 	public void testTranslateString() {
-		int[][]translateResult = BrailleTextTranslator.translate(testString);
-		for(int i = 0; i<26; i++) {
+		int[][] translateResult = BrailleTextTranslator.translate(testString);
+		for (int i = 0; i < 26; i++) {
 			assertTrue(Arrays.equals(translateResult[i], expectedResult[i]));
 		}
 

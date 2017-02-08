@@ -14,14 +14,16 @@ public class EntryPoint {
 	/**
 	 * Main method, standard entry point to a program
 	 *
-	 * @param args Command-line parameters (ignored)
+	 * @param args
+	 *            Command-line parameters (ignored)
 	 */
 	public static void main(String[] args) {
 		// Create a new thread to do things after the GUI starts
 		Thread t = new Thread(new MainThread());
 		t.start();
 
-		// Start the GUI. Main thread is now locked here until program terminates
+		// Start the GUI. Main thread is now locked here until program
+		// terminates
 		Application.launch(CreateCells.class);
 	}
 }

@@ -3,7 +3,8 @@ package common;
 import simulator.SimulatorCore;
 
 /**
- * Thread which performs various interactions. Required since JavaFX eats the normal Main method
+ * Thread which performs various interactions. Required since JavaFX eats the
+ * normal Main method
  *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
@@ -15,11 +16,13 @@ public class MainThread implements Runnable {
 	public void run() {
 		API api = new API();
 
-		// Wait for the core information to be prepopulated to avoid null pointers
+		// Wait for the core information to be prepopulated to avoid null
+		// pointers
 		while (!SimulatorCore.ready()) {
 			try {
 				Thread.sleep(1);
-			} catch (InterruptedException e) {}
+			} catch (InterruptedException e) {
+			}
 		}
 
 		// Core is ready, demo setting the display to several strings
@@ -30,7 +33,8 @@ public class MainThread implements Runnable {
 			api.setButtons(4);
 			Thread.sleep(1500);
 			api.setText("bye");
-		} catch (InterruptedException e) {}
+		} catch (InterruptedException e) {
+		}
 	}
 
 }

@@ -15,7 +15,8 @@ import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 
 /**
- * GUI main class, creates and draws all the user interface. Listens for changes and triggers redraws automatically.
+ * GUI main class, creates and draws all the user interface. Listens for changes
+ * and triggers redraws automatically.
  *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
@@ -31,9 +32,9 @@ public class CreateCells extends Application {
 	static final int BRAILLE_DOT_RADIUS = 5;
 	/** Length of Braille box */
 	static final int BRAILLE_BOX_SIDE = 40;
-	/** Minimum WIDTH of Button*/
+	/** Minimum WIDTH of Button */
 	private static final int BUTTON_MIN_WIDTH = 50;
-	/** Space Between cells*/
+	/** Space Between cells */
 	private static final int HORIZONTAL_PADDING = 20;
 	private static final int VERTICAL_PADDING = 20;
 	private static final SimulatorCore simCore = SimulatorCore.getInstance();
@@ -58,14 +59,15 @@ public class CreateCells extends Application {
 		});
 
 		primaryStage.setScene(makeScene());
-		// 5 is number of horizontal boxes, padding space is 4 + borderPane padding of 20
-		primaryStage.setMinWidth(BRAILLE_BOX_SIDE*BRAILLE_WIDTH*5+(HORIZONTAL_PADDING*7));
+		// 5 is number of horizontal boxes, padding space is 4 + borderPane
+		// padding of 20
+		primaryStage.setMinWidth(BRAILLE_BOX_SIDE * BRAILLE_WIDTH * 5 + (HORIZONTAL_PADDING * 7));
 		primaryStage.show();
 	}
 
 	private Scene makeScene() throws SimulatorException {
 		BorderPane borderPane = new BorderPane();
-		borderPane.setPadding(new Insets(20,20,20,20));
+		borderPane.setPadding(new Insets(20, 20, 20, 20));
 		TilePane grid = new TilePane();
 		grid = drawCells(grid);
 		addButtons(borderPane);
@@ -76,18 +78,19 @@ public class CreateCells extends Application {
 
 		return scene;
 	}
-	//create and add buttons to horizontal pane
-	//horizontal pane gets added to stack pane
-	//StackPane finally gets added to BorderPane
-	private static void addButtons(BorderPane pane){
+
+	// create and add buttons to horizontal pane
+	// horizontal pane gets added to stack pane
+	// StackPane finally gets added to BorderPane
+	private static void addButtons(BorderPane pane) {
 		Button b = null;
 		StackPane bottomPane = new StackPane();
 		HBox hbButtons = new HBox();
-		hbButtons.setPadding(new Insets(20,0,0,0));
-		for(int i = 1;i <= simCore.numOfButtons();i++){
+		hbButtons.setPadding(new Insets(20, 0, 0, 0));
+		for (int i = 1; i <= simCore.numOfButtons(); i++) {
 			b = new Button(Integer.toString(i));
 			b.setMinWidth(BUTTON_MIN_WIDTH);
-			b.setOnAction((event)->{
+			b.setOnAction((event) -> {
 				System.out.println("Button " + event.getTarget() + " was clicked");
 			});
 			hbButtons.getChildren().add(b);
