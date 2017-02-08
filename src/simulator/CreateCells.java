@@ -14,6 +14,13 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 
+/**
+ * GUI main class, creates and draws all the user interface. Listens for changes and triggers redraws automatically.
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-01-25
+ */
 public class CreateCells extends Application {
 
 	/** Number of columns wide a Braille cell is */
@@ -115,9 +122,5 @@ public class CreateCells extends Application {
 		}
 
 		return grid;
-	}
-
-	public static void main(String[] args) {
-		launch(args);
 	}
 }

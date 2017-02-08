@@ -32,6 +32,11 @@ public class SimulatorCore {
 
 	private SimulatorCore() {}
 
+	/**
+	 * Obtain instance of the SimulatorCore. This method must be called in order to access this, since it is a singleton.
+	 *
+	 * @return Shared instance of the SimulatorCore
+	 */
 	public static SimulatorCore getInstance() {
 		return sc;
 	}
