@@ -3,8 +3,8 @@ package common;
 import simulator.SimulatorCore;
 
 /**
- * Thread which performs various interactions. Required since JavaFX eats the
- * normal Main method
+ * This class acts as the client thread, which performs various actions on the
+ * UI. Required since JavaFX eats the normal Main method.
  *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
