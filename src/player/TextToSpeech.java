@@ -78,7 +78,7 @@ public class TextToSpeech {
 	 *
 	 * @throws TTSException Exception is thrown if the engine enters an invalid state
 	 */
-	public void stop() throws TTSException {
+	public void shutdown() throws TTSException {
 		try {
 			synthesizer.deallocate();
 		} catch (EngineException e) {

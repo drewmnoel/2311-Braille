@@ -49,7 +49,7 @@ public class MainThread implements Runnable {
 			tts.say("Setting text to bye");
 			api.setText("bye");
 
-			tts.stop();
+			tts.shutdown();
 		} catch (Exception e) {
 		}
 	}
