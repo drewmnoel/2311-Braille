@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
 import java.io.FileReader;
+import java.io.BufferedReader;
 import java.io.IOException;
 
 /**
@@ -33,16 +34,36 @@ public class FileParser {
 	/**
 	 * 
 	 * @return
-	 * @throws IOException if fileTarget is an invalid file path
+	 * @throws IOException if fileTarget is an invalid file path or if command in file is invalid
 	 */
-	public List<Event[]> parseFile() throws IOException {
+	public List<Event> parseFile() throws IOException {
 		// TODO: Parse the file line-by-line. Each line represents an event.
 		// Return a list of these events
 		// that will need to be executed in order.
-		
-		
-		return new ArrayList<>();
-
+		List<Event> eventList = new ArrayList<Event>();
+		String line;
+		File inputFile = new File(fileTarget);
+		FileReader inputReader = new FileReader(inputFile);
+		BufferedReader bufferedInput = new BufferedReader(inputReader);
+		while((line = bufferedInput.readLine()) != null) {
+			if(line.split(" ")[0].equals("TTS")) {
+				Event tempTTSEvent = new Event();
+				tempTTSEvent.setTTS(line.split(" ")[1]);
+				eventList.add(tempTTSEvent);
+			}
+			else if (line.split(" ")[0].equals("AUDIO")) {
+				Event tempAudioEvent = new Event();
+				tempAudioEvent.setAudioPlay(line.split(" ")[1]);
+				eventList.add(tempAudioEvent);
+			}
+			else {
+				IOException exception = new IOException("Invalid player command");
+				throw exception;
+			}
+		}
+		inputReader.close();
+		bufferedInput.close();
+		return eventList;
 	}
 
 	/**
