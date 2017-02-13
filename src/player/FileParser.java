@@ -28,7 +28,8 @@ public class FileParser {
 	}
 
 	public List<Event[]> parseFile() {
-		// TODO: Parse the file line-by-line. Each line represents an event. Return a list of these events
+		// TODO: Parse the file line-by-line. Each line represents an event.
+		// Return a list of these events
 		// that will need to be executed in order.
 		return new ArrayList<>();
 
@@ -46,7 +47,8 @@ public class FileParser {
 	/**
 	 * Set the file target for processing
 	 *
-	 * @param fileTarget Path to file to use. Accepts absolute and relative paths.
+	 * @param fileTarget
+	 *            Path to file to use. Accepts absolute and relative paths.
 	 */
 	public void setFileTarget(String fileTarget) {
 		this.fileTarget = fileTarget;

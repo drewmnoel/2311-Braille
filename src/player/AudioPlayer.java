@@ -17,7 +17,9 @@ public class AudioPlayer {
 	/**
 	 * Play a given audio file.
 	 *
-	 * @param filename Path to file which should be played. Accepts both absolute and relative paths.
+	 * @param filename
+	 *            Path to file which should be played. Accepts both absolute and
+	 *            relative paths.
 	 */
 	public void playFile(String filename) {
 		// TODO: Open the relevant file and play it using the default audio sink
