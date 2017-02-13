@@ -2,6 +2,9 @@ package player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * File parser to parse Braille scenario files
@@ -26,11 +29,18 @@ public class FileParser {
 		this();
 		setFileTarget(fileTarget);
 	}
-
-	public List<Event[]> parseFile() {
+	
+	/**
+	 * 
+	 * @return
+	 * @throws IOException if fileTarget is an invalid file path
+	 */
+	public List<Event[]> parseFile() throws IOException {
 		// TODO: Parse the file line-by-line. Each line represents an event.
 		// Return a list of these events
 		// that will need to be executed in order.
+		
+		
 		return new ArrayList<>();
 
 	}

@@ -26,7 +26,6 @@ public class AudioPlayer {
 	 *            relative paths.
 	 */
 	public void playFile(String filename) {
-		// TODO: Open the relevant file and play it using the default audio sink
 		Media fileToPlay = new Media(new File(filename).toURI().toString());
 		MediaPlayer audioPlayer = new MediaPlayer(fileToPlay);
 		audioPlayer.play();
