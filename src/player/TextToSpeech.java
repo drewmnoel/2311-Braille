@@ -109,11 +109,4 @@ public class TextToSpeech {
 
 		synthesizer.pause();
 	}
-
-	public static void main(String[] args) throws Exception {
-		TextToSpeech tts = new TextToSpeech();
-		tts.say("Marbles");
-		tts.say("Hello world");
-		tts.stop();
-	}
 }
