@@ -46,7 +46,7 @@ public class FileParser {
 		FileReader inputReader = new FileReader(inputFile);
 		BufferedReader bufferedInput = new BufferedReader(inputReader);
 		while((line = bufferedInput.readLine()) != null) {
-			if(line.split(" ")[0].equals("TTS")) {
+			if(line.split(" ", 2)[0].equals("TTS")) {
 				Event tempTTSEvent = new Event();
 				tempTTSEvent.setTTS(line.split(" ")[1]);
 				eventList.add(tempTTSEvent);
