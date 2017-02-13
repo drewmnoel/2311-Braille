@@ -1,5 +1,9 @@
 package player;
 
+import java.io.File;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
 /**
  * Basic implementation of an Audio Player to play select filetypes
  *
@@ -23,5 +27,8 @@ public class AudioPlayer {
 	 */
 	public void playFile(String filename) {
 		// TODO: Open the relevant file and play it using the default audio sink
+		Media fileToPlay = new Media(new File(filename).toURI().toString());
+		MediaPlayer audioPlayer = new MediaPlayer(fileToPlay);
+		audioPlayer.play();
 	}
 }

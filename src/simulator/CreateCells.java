@@ -42,7 +42,7 @@ public class CreateCells extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Enjoy your game.");
-		simCore.populate(4, 2);
+		simCore.populate(5, 3);
 
 		// Add the listener
 		SimulatorCore.cellObserver.addListener(new ListChangeListener<int[]>() {
