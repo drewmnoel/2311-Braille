@@ -25,7 +25,9 @@ public class TextToSpeech {
 	/**
 	 * Create a new TTS bot with default voice
 	 *
-	 * @throws TTSException Exception is thrown if any general engine failure occurs or if the voice could not be loaded.
+	 * @throws TTSException
+	 *             Exception is thrown if any general engine failure occurs or
+	 *             if the voice could not be loaded.
 	 */
 	public TextToSpeech() throws TTSException {
 		// Required so that we don't require a properties file
@@ -49,7 +51,8 @@ public class TextToSpeech {
 		EngineModeDesc desc = synthesizer.getEngineModeDesc();
 
 		// Synthesizers do not support retrieving voices by name natively.
-		// To remedy this, scan through all available voices for one that has the name we want.
+		// To remedy this, scan through all available voices for one that has
+		// the name we want.
 		Voice[] voices = ((SynthesizerModeDesc) desc).getVoices();
 		Voice voice = null;
 		for (int i = 0; i < voices.length; i++) {
@@ -74,9 +77,11 @@ public class TextToSpeech {
 	}
 
 	/**
-	 * Indicate that the TTS bot is done, and that it should be destroyed. TTS commands after this will always fail!
+	 * Indicate that the TTS bot is done, and that it should be destroyed. TTS
+	 * commands after this will always fail!
 	 *
-	 * @throws TTSException Exception is thrown if the engine enters an invalid state
+	 * @throws TTSException
+	 *             Exception is thrown if the engine enters an invalid state
 	 */
 	public void shutdown() throws TTSException {
 		try {
@@ -89,8 +94,11 @@ public class TextToSpeech {
 	/**
 	 * Speak text aloud using default speakers and settings
 	 *
-	 * @param text The text to read aloud
-	 * @throws TTSException Exception is thrown if the audio could not be played or the current thread is interrupted while playing the audio
+	 * @param text
+	 *            The text to read aloud
+	 * @throws TTSException
+	 *             Exception is thrown if the audio could not be played or the
+	 *             current thread is interrupted while playing the audio
 	 */
 	public void say(String text) throws TTSException {
 		try {
