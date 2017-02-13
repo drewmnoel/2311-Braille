@@ -19,19 +19,13 @@ public class TextToSpeech {
 		// Required so that we don't require a properties file
 		System.setProperty("FreeTTSSynthEngineCentral", "com.sun.speech.freetts.jsapi.FreeTTSEngineCentral");
 		Central.registerEngineCentral("com.sun.speech.freetts.jsapi.FreeTTSEngineCentral");
-		Central.createSynthesizer(null);
-
-		EngineModeDesc desc = new SynthesizerModeDesc();
 
 		synthesizer = Central.createSynthesizer(null);
 		if (synthesizer == null) {
-			System.err.println("NO");
-			System.exit(1);
+			throw new Exception("No synthesizer could be created");
 		}
 		synthesizer.allocate();
-		synthesizer.resume();
-
-		desc = synthesizer.getEngineModeDesc();
+		EngineModeDesc desc = synthesizer.getEngineModeDesc();
 
 		javax.speech.synthesis.Voice[] voices = ((SynthesizerModeDesc) desc).getVoices();
 		javax.speech.synthesis.Voice voice = null;
@@ -48,16 +42,26 @@ public class TextToSpeech {
 			System.exit(1);
 		}
 		synthesizer.getSynthesizerProperties().setVoice(voice);
+
+	}
+
+	public void stop() throws Exception {
+		synthesizer.deallocate();
 	}
 
 	public void say(String text) throws Exception {
+		synthesizer.resume();
+
 		synthesizer.speakPlainText(text, null);
+
 		synthesizer.waitEngineState(Synthesizer.QUEUE_EMPTY);
-		synthesizer.deallocate();
+		synthesizer.pause();
 	}
 
 	public static void main(String[] args) throws Exception {
 		TextToSpeech tts = new TextToSpeech();
-		tts.say("Marbles marbles marbles marbles marbles marbles marbles");
+		tts.say("Marbles");
+		tts.say("Hello world");
+		tts.stop();
 	}
 }
