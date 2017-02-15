@@ -48,12 +48,12 @@ public class FileParser {
 		while((line = bufferedInput.readLine()) != null) {
 			if(line.split(" ", 2)[0].equals("TTS")) {
 				Event tempTTSEvent = new Event();
-				tempTTSEvent.setTTS(line.split(" ")[1]);
+				tempTTSEvent.setTTS(line.split(" ", 2)[1]);
 				eventList.add(tempTTSEvent);
 			}
 			else if (line.split(" ")[0].equals("AUDIO")) {
 				Event tempAudioEvent = new Event();
-				tempAudioEvent.setAudioPlay(line.split(" ")[1]);
+				tempAudioEvent.setAudioPlay(line.split(" ", 2)[1]);
 				eventList.add(tempAudioEvent);
 			}
 			else {
