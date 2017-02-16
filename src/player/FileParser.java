@@ -58,6 +58,7 @@ public class FileParser {
 			}
 			else {
 				IOException exception = new IOException("Invalid player command");
+				bufferedInput.close();
 				throw exception;
 			}
 		}
