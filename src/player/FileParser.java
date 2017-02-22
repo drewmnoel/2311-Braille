@@ -46,25 +46,37 @@ public class FileParser {
 		FileReader inputReader = new FileReader(inputFile);
 		BufferedReader bufferedInput = new BufferedReader(inputReader);
 		while((line = bufferedInput.readLine()) != null) {
-			if(line.split(" ", 2)[0].equals("TTS")) {
-				Event tempTTSEvent = new Event();
-				tempTTSEvent.setTTS(line.split(" ", 2)[1]);
-				eventList.add(tempTTSEvent);
-			}
-			else if (line.split(" ")[0].equals("AUDIO")) {
-				Event tempAudioEvent = new Event();
-				tempAudioEvent.setAudioPlay(line.split(" ", 2)[1]);
-				eventList.add(tempAudioEvent);
-			}
-			else {
-				IOException exception = new IOException("Invalid player command");
-				bufferedInput.close();
-				throw exception;
-			}
+			parseEventType(eventList, line, bufferedInput);
 		}
 		inputReader.close();
 		bufferedInput.close();
 		return eventList;
+	}
+	
+	/**
+	 * Parses whether a line in the text file is for an audio or TTS event
+	 * @param eventList 
+	 * @param line
+	 * @param bufferedInput
+	 * @throws IOException
+	 */
+	
+	private void parseEventType(List<Event> eventList, String line, BufferedReader bufferedInput) throws IOException {
+		if(line.split(" ", 2)[0].equals("TTS")) {
+			Event tempTTSEvent = new Event();
+			tempTTSEvent.setTTS(line.split(" ", 2)[1]);
+			eventList.add(tempTTSEvent);
+		}
+		else if (line.split(" ")[0].equals("AUDIO")) {
+			Event tempAudioEvent = new Event();
+			tempAudioEvent.setAudioPlay(line.split(" ", 2)[1]);
+			eventList.add(tempAudioEvent);
+		}
+		else {
+			IOException exception = new IOException("Invalid player command");
+			bufferedInput.close();
+			throw exception;
+		}
 	}
 
 	/**
