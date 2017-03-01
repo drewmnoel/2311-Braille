@@ -21,6 +21,7 @@ public class Event {
 	private static final long CHOICE_OF_BUTTONS = 4;
 	//Jump to a specified event instead of continuing sequentially
 	private static final long JUMP = 5;
+	private static final long INITIALIZE_SIM = 6;
 	private long type;
 	private String eventDetails;
 
@@ -30,6 +31,26 @@ public class Event {
 	public Event() {
 	}
 
+	/**
+	 * Set the event type to be Initialize Sim
+	 * 
+	 * @param cellsAndButtons 
+	 * 		String containing number of cells whitespace number of buttons 
+	 */
+	public void setInitializeSim(String cellsAndButtons) {
+		this.type = Event.INITIALIZE_SIM;
+		this.eventDetails = cellsAndButtons;
+	}
+	
+	/**
+	 * Check if the event type is Initialize Sim
+	 *
+	 * @return True only if the event is Initialize Sim
+	 */
+	public boolean isInitializeSim() {
+		return this.type == Event.INITIALIZE_SIM;
+	}
+	
 	/**
 	 * Set the event type to be TTS
 	 *

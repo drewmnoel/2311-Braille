@@ -1,2 +1,8 @@
 TTS This is a text-to-speech line 
+TTS THIS IS IN ALL CAPS
+TTS This is a question?
+TTS This is an exclaimation. @. #. $. !.
+TTS @. 2. %. $.
+TTS Item 1 hello. Item 2 world. 
+TTS This is a longer statement to be read by text-to-speech. This is a new, sentence.
 AUDIO finished.wav
