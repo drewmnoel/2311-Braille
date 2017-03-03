@@ -34,6 +34,8 @@ public class MainThread implements Runnable {
 					tts.say(e.getEventDetails());
 				} else if (e.isAudioPlay()) {
 					ap.playFile(e.getEventDetails());
+				} else if (e.isSetBraille()) {
+					sim.displayString(e.getEventDetails());
 				}
 			}
 		} catch (Exception e) {}
