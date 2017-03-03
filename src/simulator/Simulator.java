@@ -1,4 +1,4 @@
-package realsimulator;
+package simulator;
 
 
 import java.awt.BorderLayout;
@@ -34,7 +34,7 @@ import javax.swing.JRadioButton;
  * <code> getButton(int) </code> method to get the reference of a specific
  * button. Then, you can call any methods specified in the JButton class on that
  * button, such as the <code> addActionListener() </code> method.
- * 
+ *
  * @author Team 4: Yassin Mohamed, Qassim Allauddin, Derek Li, Artem Solovey.
  *
  */
@@ -56,7 +56,7 @@ public class Simulator {
 	 * Creates and displays a window with <code>brailleCellNumber</code>
 	 * Braille cells and <code>jButtonNumber</code> buttons. The two parameters must be
 	 * positive integers.
-	 * 
+	 *
 	 * @param brailleCellNumber
 	 *            the number of braille cells the Simulator should have
 	 * @param jButtonNumber
@@ -128,8 +128,8 @@ public class Simulator {
 	 * actionListeners to the button.
 	 * Buttons are numbered from left to right as they appear in the frame, from
 	 * 0 to (jButtonNumber-1), jButtonNumber being the number of buttons
-	 * initialized by the constructor. 
-	 * 
+	 * initialized by the constructor.
+	 *
 	 * @param index
 	 *            the index of the button to be returned
 	 * @return reference to the JButton object at the index passed as argument
@@ -150,8 +150,8 @@ public class Simulator {
 	 * they appear in the frame, from 0 to (brailleCellNumber - 1),
 	 * brailleCellNumber being the number of BrailleCell objects initialized by
 	 * the constructor.
-	 * 
-	 * 
+	 *
+	 *
 	 * @param index
 	 *            the index of the BrailleCell object whose reference is to be
 	 *            returned
@@ -180,13 +180,13 @@ public class Simulator {
 		}
 	}
 
-	/**	
+	/**
 	 * Displays the string passed as argument on all the Braille Cells
 	 * If the string is shorter than the total number of Braille Cells, the
 	 * remaining cells are cleared. However, if the string is longer it only displays
 	 * the part of it up to however many Braille Cells there are and ignores the
 	 * rest.
-	 * 
+	 *
 	 * @param aString
 	 *            the String to be displayed on the Braille Cells
 	 */

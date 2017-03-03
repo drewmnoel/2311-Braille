@@ -1,4 +1,4 @@
-package realsimulator;
+package simulator;
 
 
 import java.util.HashMap;
@@ -15,11 +15,11 @@ import javax.swing.JRadioButton;
  * that aren't included by default, use the <code> setPins()</code> method,
  * which takes a string of 1s and 0s as argument and sets the pins accordingly.
  * 1 meaning raised and 0 meaning lowered.
- * 
- * The constructor of this class is not public. Objects are created when a 
- * <code> Simulator</code> object is created. Use the <code> getCell</code> method of class 
+ *
+ * The constructor of this class is not public. Objects are created when a
+ * <code> Simulator</code> object is created. Use the <code> getCell</code> method of class
  * <code> Simulator</code> to obtain references to individual <code> BrailleCell</code> objects.
- * 
+ *
  * @author Team 4: Yassin Mohamed, Qassim Allauddin, Derek Li, Artem Solovey.
  *
  */
@@ -67,7 +67,7 @@ public class BrailleCell {
 	}
 
 	/**
-	 * 
+	 *
 	 * Class constructor, initializes the class's 8 radio button variables as
 	 * the ones passed into the constructor. The arguments and the class
 	 * parameters have the same reference to allow the class to alter the state
@@ -75,8 +75,8 @@ public class BrailleCell {
 	 * <p>
 	 * Radio buttons can be thought of as occupying a 4x2 grid, with each button
 	 * having index Row x Coloumn starting with 1x1 on the top-left.
-	 * 
-	 * 
+	 *
+	 *
 	 * @param radio1x1
 	 *            radio button at position 1x1
 	 * @param radio1x2
@@ -110,15 +110,15 @@ public class BrailleCell {
 	}
 
 	/**
-	 * 
+	 *
 	 * Displays the character passed as argument on this Braille Cell object in
 	 * Braille.
 	 * <p>
 	 * The method works by selecting specific radio buttons that represent
 	 * raised "pins", or the parts of the letter that would be felt by a human
 	 * hand.
-	 * 
-	 * 
+	 *
+	 *
 	 * @param a
 	 *            the character to be displayed in Braille
 	 * @throws IllegalArgumentException
@@ -141,8 +141,8 @@ public class BrailleCell {
 	 * The first character corresponds to the
 	 * top-left pinn, the next character corresponding to the next pin
 	 * from left to right and top to bottom.
-	 * 
-	 * 
+	 *
+	 *
 	 * @param pins
 	 *            string of 1s and 0s that is 8 characters long that sets the
 	 *            state of the eight pins that form the cell
@@ -172,7 +172,7 @@ public class BrailleCell {
 
 	/**
 	 * Raises the pin that corresponds to the argument.
-	 * 
+	 *
 	 * @param pin
 	 *            the index of the pin to raise
 	 * @throws IllegalArgumentException
@@ -216,7 +216,7 @@ public class BrailleCell {
 
 	/**
 	 * Lowers the pin that corresponds to the argument.
-	 * 
+	 *
 	 * @param pin
 	 *            the index of the pin to lower
 	 * @throws IllegalArgumentException
@@ -261,8 +261,8 @@ public class BrailleCell {
 	 * Lowers all the pins in the cell.
 	 * <p>
 	 * This is equivalent to <code> displayLetter(' ') </code>.
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public void clear() {
 
