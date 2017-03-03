@@ -15,13 +15,12 @@ public class Event {
 	private static final long TTS = 0;
 	private static final long AUDIO_PLAY = 1;
 	private static final long BRAILLE = 2;
-	//wait for push of a single specific button only
-	private static final long SINGLE_BUTTON_PUSH = 3;
-	//wait one out of multiple possible buttons being pushed
-	private static final long CHOICE_OF_BUTTONS = 4;
+	//wait for button input
+	private static final long BUTTON_INPUT = 3;
 	//Jump to a specified event instead of continuing sequentially
-	private static final long JUMP = 5;
-	private static final long INITIALIZE_SIM = 6;
+	private static final long JUMP = 4;
+	//Initialize the simulator with set number of buttons and cells
+	private static final long INITIALIZE_SIM = 5;
 	private long type;
 	private String eventDetails;
 
@@ -112,29 +111,29 @@ public class Event {
 	}
 	
 	/**
-	 * Set the event to be single button push
+	 * Set the event to be button input
 	 * 
 	 * @param button 
 	 * 			Button number to expect a push from
 	 */
-	public void setSingleButton(String button) {
-		this.type = Event.SINGLE_BUTTON_PUSH;
+	public void setButtonInput(String button) {
+		this.type = Event.BUTTON_INPUT;
 		this.eventDetails = button;
 	}
 	
 	/**
-	 * Check if the event is a single button
+	 * Check if the event is a button input
 	 * 
 	 * @return True only if event is a single buttonn
 	 */
-	public boolean isSingleButton() {
-		return this.type == Event.SINGLE_BUTTON_PUSH;
+	public boolean isBUttonInput() {
+		return this.type == Event.BUTTON_INPUT;
 	}
 	
 	/**
 	 * Returns a long representing the type of this event
 	 * 
-	 * @return 0 if TTS, 1 if audio play, 2 if set braille cell, 3 if wait for button push, 4 if jump event
+	 * @return 0 if TTS, 1 if audio play, 2 if set braille cell, 3 if wait for button push, 4 if jump event, 5 for initialize sim
 	 */
 	public long eventType() {
 		return this.type;
