@@ -4,7 +4,7 @@ import player.AudioPlayer;
 import player.Event;
 import player.FileParser;
 import player.TextToSpeech;
-import simulator.SimulatorCore;
+import simulator.Simulator;
 
 /**
  * This class acts as the client thread, which performs various actions on the
@@ -18,7 +18,7 @@ public class MainThread implements Runnable {
 
 	@Override
 	public void run() {
-		API api = new API();
+		Simulator sim = Simulator.getInstance();
 		TextToSpeech tts;
 		FileParser fp = new FileParser();
 		AudioPlayer ap = new AudioPlayer();
@@ -34,26 +34,10 @@ public class MainThread implements Runnable {
 					tts.say(e.getEventDetails());
 				} else if (e.isAudioPlay()) {
 					ap.playFile(e.getEventDetails());
+				} else if (e.isSetBraille()) {
+					sim.displayString(e.getEventDetails());
 				}
 			}
-
-			// Wait for the core information to be prepopulated to avoid null
-			// pointers
-			while (!SimulatorCore.ready()) {
-				Thread.sleep(1);
-			}
-
-			// Core is ready, demo setting the display to several strings
-			api.setText("test");
-			Thread.sleep(1500);
-
-			api.setText("hello");
-			api.setButtons(4);
-			Thread.sleep(1500);
-
-			api.setText("bye");
-
-			tts.shutdown();
 		} catch (Exception e) {}
 	}
 
