@@ -10,16 +10,17 @@ package player;
  *
  */
 public class Event {
-	//Attributes to identify kind of event
-	//Text to speech
+	/** TTS Event */
 	private static final long TTS = 0;
+	/** Audio Play Event */
 	private static final long AUDIO_PLAY = 1;
+	/** Braille Display Update Event */
 	private static final long BRAILLE = 2;
-	//wait for push of any button
+	/** Button Press with Jumps Event */
 	private static final long BUTTON = 3;
-	//jump unconditionally to any part of the file
+	/** Unconditional Jump Event */
 	private static final long JUMP= 4;
-	//initialize the simulator
+	/** Simulator Initialize Event */
 	private static final long INITIALIZE_SIM = 5;
 
 	private long type;
