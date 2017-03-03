@@ -4,6 +4,7 @@ import player.AudioPlayer;
 import player.Event;
 import player.FileParser;
 import player.TextToSpeech;
+import simulator.Simulator;
 
 /**
  * This class acts as the client thread, which performs various actions on the
@@ -17,6 +18,7 @@ public class MainThread implements Runnable {
 
 	@Override
 	public void run() {
+		Simulator sim = Simulator.getInstance();
 		TextToSpeech tts;
 		FileParser fp = new FileParser();
 		AudioPlayer ap = new AudioPlayer();
