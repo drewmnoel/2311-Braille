@@ -113,29 +113,49 @@ public class Event {
 	}
 
 	/**
-	 * Set the event to be single button push
+	 * Set the event to be a button push
 	 *
-	 * @param button
-	 * 			Button number to expect a push from
+	 * @param buttonJumpArgs
+	 * 			Button jump args, relative jump offsets separated by spaces
 	 */
-	public void setButton(String button) {
+	public void setButton(String buttonJumpArgs) {
 		this.type = Event.BUTTON;
-		this.eventDetails = button;
+		this.eventDetails = buttonJumpArgs;
 	}
 
 	/**
-	 * Check if the event is a single button
+	 * Check if the event is a button push
 	 *
-	 * @return True only if event is a single buttonn
+	 * @return True only if event is a button
 	 */
 	public boolean isButton() {
 		return this.type == Event.BUTTON;
 	}
 
 	/**
+	 * Set the event to be an unconditional jump
+	 *
+	 * @param jumpOffset
+	 * 			Relative jump offset to seek to
+	 */
+	public void setJump(String jumpOffset) {
+		this.type = Event.JUMP;
+		this.eventDetails = jumpOffset;
+	}
+
+	/**
+	 * Check if the event is an unconditional jump
+	 *
+	 * @return True only if event is a button
+	 */
+	public boolean isJump() {
+		return this.type == Event.JUMP;
+	}
+
+	/**
 	 * Returns a long representing the type of this event
 	 *
-	 * @return 0 if TTS, 1 if audio play, 2 if set braille cell, 3 if wait for button push, 4 if jump event
+	 * @return Event type code
 	 */
 	public long eventType() {
 		return this.type;

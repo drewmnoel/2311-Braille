@@ -81,6 +81,15 @@ public class FileParser {
 		case "BRAILLE":
 			tempEvent.setBraille(eventArgs);
 			break;
+		case "BUTTON":
+			tempEvent.setButton(eventArgs);
+			break;
+		case "JUMP":
+			tempEvent.setJump(eventArgs);
+			break;
+		case "INIT":
+			tempEvent.setInitializeSim(eventArgs);
+			break;
 		default:
 			bufferedInput.close();
 			throw new IOException("Invalid player command");
