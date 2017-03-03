@@ -1,6 +1,5 @@
 package simulator;
 
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -29,8 +28,8 @@ import javax.swing.JRadioButton;
  * to right. Both of these methods return the actual reference of the objects
  * displayed in the frame, meaning you can then call methods from each of the
  * object's respective classes to manipulate them. For example, you can call
- * <code> displayCharacter(char)</code> on any specific cell to display a character
- * on that cell. You can also, in a similar fashion, use the
+ * <code> displayCharacter(char)</code> on any specific cell to display a
+ * character on that cell. You can also, in a similar fashion, use the
  * <code> getButton(int) </code> method to get the reference of a specific
  * button. Then, you can call any methods specified in the JButton class on that
  * button, such as the <code> addActionListener() </code> method.
@@ -44,17 +43,17 @@ public class Simulator {
 	int jButtonNumber;
 	private JFrame frame;
 	private GridLayout cellGrid = new GridLayout(4, 2);
-	LinkedList<JPanel> panelList = new LinkedList<JPanel>();
-	ArrayList<JRadioButton> pins = new ArrayList<JRadioButton>(8);
-	LinkedList<ArrayList<JRadioButton>> pinList = new LinkedList<ArrayList<JRadioButton>>();
-	LinkedList<JButton> buttonList = new LinkedList<JButton>();
-	LinkedList<BrailleCell> brailleList = new LinkedList<BrailleCell>();
+	LinkedList<JPanel> panelList = new LinkedList<>();
+	ArrayList<JRadioButton> pins = new ArrayList<>(8);
+	LinkedList<ArrayList<JRadioButton>> pinList = new LinkedList<>();
+	LinkedList<JButton> buttonList = new LinkedList<>();
+	LinkedList<BrailleCell> brailleList = new LinkedList<>();
 	JPanel southPanel = new JPanel();
 	JPanel centerPanel = new JPanel();
 
 	/**
-	 * Creates and displays a window with <code>brailleCellNumber</code>
-	 * Braille cells and <code>jButtonNumber</code> buttons. The two parameters must be
+	 * Creates and displays a window with <code>brailleCellNumber</code> Braille
+	 * cells and <code>jButtonNumber</code> buttons. The two parameters must be
 	 * positive integers.
 	 *
 	 * @param brailleCellNumber
@@ -120,15 +119,12 @@ public class Simulator {
 
 	}
 
-
-
 	/**
-	 * Returns a reference to the button at the index passed as argument.
-	 * The main purpose of providing this method is so the client can add
-	 * actionListeners to the button.
-	 * Buttons are numbered from left to right as they appear in the frame, from
-	 * 0 to (jButtonNumber-1), jButtonNumber being the number of buttons
-	 * initialized by the constructor.
+	 * Returns a reference to the button at the index passed as argument. The
+	 * main purpose of providing this method is so the client can add
+	 * actionListeners to the button. Buttons are numbered from left to right as
+	 * they appear in the frame, from 0 to (jButtonNumber-1), jButtonNumber
+	 * being the number of buttons initialized by the constructor.
 	 *
 	 * @param index
 	 *            the index of the button to be returned
@@ -181,10 +177,10 @@ public class Simulator {
 	}
 
 	/**
-	 * Displays the string passed as argument on all the Braille Cells
-	 * If the string is shorter than the total number of Braille Cells, the
-	 * remaining cells are cleared. However, if the string is longer it only displays
-	 * the part of it up to however many Braille Cells there are and ignores the
+	 * Displays the string passed as argument on all the Braille Cells If the
+	 * string is shorter than the total number of Braille Cells, the remaining
+	 * cells are cleared. However, if the string is longer it only displays the
+	 * part of it up to however many Braille Cells there are and ignores the
 	 * rest.
 	 *
 	 * @param aString
@@ -196,8 +192,6 @@ public class Simulator {
 			this.brailleList.get(i).displayCharacter(aString.charAt(i));
 		}
 	}
-
-
 
 	public static Simulator getInstance() {
 		Simulator sc = new Simulator(5, 3);

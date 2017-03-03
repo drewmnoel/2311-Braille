@@ -1,24 +1,24 @@
 package simulator;
 
-
 import java.util.HashMap;
 
 import javax.swing.JRadioButton;
 
 /**
  * This class implements a Braille Cell with 8 pins. The class contains methods
- * for displaying letters on the cell
- * as well as raising and/or lowering individual pins.
+ * for displaying letters on the cell as well as raising and/or lowering
+ * individual pins.
  * <p>
- * This class supports the standard Braille encoding of English characters plus the space character using
- * the <code> displayCharacter()</code> method. For any non-standard characters or ones
- * that aren't included by default, use the <code> setPins()</code> method,
- * which takes a string of 1s and 0s as argument and sets the pins accordingly.
- * 1 meaning raised and 0 meaning lowered.
+ * This class supports the standard Braille encoding of English characters plus
+ * the space character using the <code> displayCharacter()</code> method. For
+ * any non-standard characters or ones that aren't included by default, use the
+ * <code> setPins()</code> method, which takes a string of 1s and 0s as argument
+ * and sets the pins accordingly. 1 meaning raised and 0 meaning lowered.
  *
  * The constructor of this class is not public. Objects are created when a
- * <code> Simulator</code> object is created. Use the <code> getCell</code> method of class
- * <code> Simulator</code> to obtain references to individual <code> BrailleCell</code> objects.
+ * <code> Simulator</code> object is created. Use the <code> getCell</code>
+ * method of class <code> Simulator</code> to obtain references to individual
+ * <code> BrailleCell</code> objects.
  *
  * @author Team 4: Yassin Mohamed, Qassim Allauddin, Derek Li, Artem Solovey.
  *
@@ -33,7 +33,7 @@ public class BrailleCell {
 	JRadioButton radio3x2;
 	JRadioButton radio4x1;
 	JRadioButton radio4x2;
-	private static HashMap<Character, String> alphabet = new HashMap<Character, String>();
+	private static HashMap<Character, String> alphabet = new HashMap<>();
 
 	private void initializeAlphabet() {
 		alphabet.put('a', "10000000");
@@ -94,7 +94,7 @@ public class BrailleCell {
 	 * @param radio4x2
 	 *            radio button at position 4x2
 	 */
-	 BrailleCell(JRadioButton radio1x1, JRadioButton radio1x2, JRadioButton radio2x1, JRadioButton radio2x2,
+	BrailleCell(JRadioButton radio1x1, JRadioButton radio1x2, JRadioButton radio2x1, JRadioButton radio2x2,
 			JRadioButton radio3x1, JRadioButton radio3x2, JRadioButton radio4x1, JRadioButton radio4x2) {
 
 		this.initializeAlphabet();
@@ -137,10 +137,10 @@ public class BrailleCell {
 
 	/**
 	 * Takes an eight character string of 1s and 0s as argument, and sets the
-	 * the 8 pins accordingly. 1 corresponds to raising the pin, 0 to lowering it.
-	 * The first character corresponds to the
-	 * top-left pinn, the next character corresponding to the next pin
-	 * from left to right and top to bottom.
+	 * the 8 pins accordingly. 1 corresponds to raising the pin, 0 to lowering
+	 * it. The first character corresponds to the top-left pinn, the next
+	 * character corresponding to the next pin from left to right and top to
+	 * bottom.
 	 *
 	 *
 	 * @param pins
@@ -257,6 +257,7 @@ public class BrailleCell {
 
 		}
 	}
+
 	/**
 	 * Lowers all the pins in the cell.
 	 * <p>
