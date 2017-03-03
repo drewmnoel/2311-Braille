@@ -118,7 +118,7 @@ public class Event {
 	 * @param button
 	 * 			Button number to expect a push from
 	 */
-	public void setSingleButton(String button) {
+	public void setButton(String button) {
 		this.type = Event.BUTTON;
 		this.eventDetails = button;
 	}
@@ -128,7 +128,7 @@ public class Event {
 	 *
 	 * @return True only if event is a single buttonn
 	 */
-	public boolean isSingleButton() {
+	public boolean isButton() {
 		return this.type == Event.BUTTON;
 	}
 
