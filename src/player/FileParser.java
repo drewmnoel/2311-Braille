@@ -58,7 +58,7 @@ public class FileParser {
 
 	/**
 	 * Parses whether a line in the text file is for an audio or TTS event
-	 * 
+	 *
 	 * @param eventList
 	 * @param line
 	 * @param bufferedInput
@@ -77,6 +77,9 @@ public class FileParser {
 			break;
 		case "AUDIO":
 			tempEvent.setAudioPlay(eventArgs);
+			break;
+		case "BRAILLE":
+			tempEvent.setBraille(eventArgs);
 			break;
 		default:
 			bufferedInput.close();
