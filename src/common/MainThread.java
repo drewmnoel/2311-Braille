@@ -49,8 +49,10 @@ public class MainThread implements Runnable {
 				//if a jump in event order is needed, set it here
 				index = index + steps;
 			}
-
-		} catch(Exception e) {}
+		} catch(Exception e) {
+			System.err.println("Critical Error occured!");
+			e.printStackTrace(System.err);
+		}
 
 	}
 
