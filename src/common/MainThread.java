@@ -75,8 +75,12 @@ public class MainThread implements Runnable {
 			tempSteps = executeAudioPlay(thisEvent);
 		}
 		else if (thisEvent.isSetBraille()) {
-			//
+			//set braille cells to display give word
 			sim.displayString(thisEvent.getEventDetails());
+		}
+		else if (thisEvent.isJump()) {
+			//jump to an event non-sequentially
+			tempSteps = executeJump(thisEvent);
 		}
 		
 		return tempSteps;
@@ -145,8 +149,11 @@ public class MainThread implements Runnable {
 	
 	/**
 	 * Method to jump a number of events rather than going to the next in order
-	 * 
-	 * @param thisEvent Event whose description contains the number of events to jump
+	 * Forward jump are 1 for normal sequence, for more is -1 from what you set
+	 * Ex: 2 will jump 1 more than normal, 5 will jump 4 more than normal
+	 * Backwards jumps are negative, with the number set being the number of events jumped
+	 * Ex: -1 will jump backwards 1 event, -5 will jump back 5 events 
+	 * @param thisEvent Event whose description contains the number of events jump
 	 * @return the number of events to jump in sequence. Negative values indicate going backwards
 	 */
 	private int executeJump(Event thisEvent) {
