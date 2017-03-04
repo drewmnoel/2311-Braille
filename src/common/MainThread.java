@@ -5,6 +5,8 @@ import player.Event;
 import player.FileParser;
 import player.TextToSpeech;
 import simulator.Simulator;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class acts as the client thread, which performs various actions on the
@@ -18,6 +20,7 @@ public class MainThread implements Runnable {
 
 	@Override
 	public void run() {
+		/*
 		Simulator sim = Simulator.getInstance();
 		TextToSpeech tts;
 		FileParser fp = new FileParser();
@@ -39,6 +42,46 @@ public class MainThread implements Runnable {
 				}
 			}
 		} catch (Exception e) {}
+		*/
+		
+		try {
+			//File parser to parse events from input file
+			FileParser fp = new FileParser();
+			fp.setFileTarget("test.txt");
+			//List of events parsed from input file. parseFile return is implemented as an array list
+			ArrayList<Event> eventList = fp.parseFile();
+			//Temporary event object to hold events when iterating over eventList 
+			Event iterEvent;
+			
+			//Get the first event in eventList to initialize the simulator
+			iterEvent = eventList.get(0);
+			Simulator sim = executeInitializeSim(iterEvent);
+			
+			//Keep track of the index of next event to execute
+			int index = 1;
+			//Keep track of how many steps to take as set by the current event being executed
+			int steps;
+			//Iterate over eventList until the whole sequence of events is over
+			while(index <= eventList.size()) {
+				steps = 1;
+				steps = selectEventType(eventList.get(index));
+				index = index + steps;
+			}
+			
+		} catch(Exception e) {}
+	}
+	
+	private int selectEventType(Event thisEvent) {
+		int tempSteps = 1;
+		//check what type of event thisEvent is
+		if(thisEvent.isTTS()) {
+			tempSteps = executeTTS(thisEvent);
+		}
+		else if (thisEvent.isAudioPlay()) {
+			tempSteps = executeAudioPlay(thisEvent);
+		}
+		
+		return tempSteps;
 	}
 	
 	/**

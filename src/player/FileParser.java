@@ -36,11 +36,11 @@ public class FileParser {
 	 * @return
 	 * @throws IOException if fileTarget is an invalid file path or if command in file is invalid
 	 */
-	public List<Event> parseFile() throws IOException {
+	public ArrayList<Event> parseFile() throws IOException {
 		// TODO: Parse the file line-by-line. Each line represents an event.
 		// Return a list of these events
 		// that will need to be executed in order.
-		List<Event> eventList = new ArrayList<Event>();
+		ArrayList<Event> eventList = new ArrayList<Event>();
 		String line;
 		File inputFile = new File(fileTarget);
 		FileReader inputReader = new FileReader(inputFile);
@@ -71,6 +71,11 @@ public class FileParser {
 			Event tempAudioEvent = new Event();
 			tempAudioEvent.setAudioPlay(line.split(" ", 2)[1]);
 			eventList.add(tempAudioEvent);
+		}
+		else if(line.split(" ")[0].equals("INIT")) {
+			Event tempInitEvent = new Event();
+			tempInitEvent.setInitializeSim(line.split(" ", 2)[1]);
+			eventList.add(tempInitEvent);
 		}
 		else {
 			IOException exception = new IOException("Invalid player command");
