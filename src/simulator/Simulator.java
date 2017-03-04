@@ -193,6 +193,7 @@ public class Simulator {
 		}
 	}
 
+	@SuppressWarnings("javadoc")
 	public static Simulator getInstance() {
 		Simulator sc = new Simulator(5, 3);
 		return sc;
