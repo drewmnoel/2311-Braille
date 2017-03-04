@@ -1,12 +1,12 @@
 package common;
 
+import java.util.List;
+
 import player.AudioPlayer;
 import player.Event;
 import player.FileParser;
 import player.TextToSpeech;
 import simulator.Simulator;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class acts as the client thread, which performs various actions on the
@@ -20,20 +20,20 @@ public class MainThread implements Runnable {
 
 	@Override
 	public void run() {
-		
+
 		try {
 			//File parser to parse events from input file
 			FileParser fp = new FileParser();
 			fp.setFileTarget("test.txt");
 			//List of events parsed from input file. parseFile return is implemented as an array list
-			ArrayList<Event> eventList = fp.parseFile();
-			//Temporary event object to hold events when iterating over eventList 
+			List<Event> eventList = fp.parseFile();
+			//Temporary event object to hold events when iterating over eventList
 			Event iterEvent;
-			
+
 			//Get the first event in eventList to initialize the simulator
 			iterEvent = eventList.get(0);
 			Simulator sim = executeInitializeSim(iterEvent);
-			
+
 			//Keep track of the index of next event to execute
 			int index = 1;
 			//Keep track of how many steps to take as set by the current event being executed
@@ -49,20 +49,20 @@ public class MainThread implements Runnable {
 				//if a jump in event order is needed, set it here
 				index = index + steps;
 			}
-			
+
 		} catch(Exception e) {}
-		
+
 	}
-	
+
 	/**
-	 * Detects what type the event is and either execute the 
+	 * Detects what type the event is and either execute the
 	 * appropriate execute method or sets the simulator
-	 * 
+	 *
 	 * @param thisEvent Current event being looked at
-	 * @param sim 
+	 * @param sim
 	 * @return
 	 */
-	
+
 	private int eventTypeSelector(Event thisEvent, Simulator sim) {
 		int tempSteps = 1;
 		//check what type of event thisEvent is
@@ -82,23 +82,23 @@ public class MainThread implements Runnable {
 			//jump to an event non-sequentially
 			tempSteps = executeJump(thisEvent);
 		}
-		
+
 		return tempSteps;
 	}
-	
+
 	/**
 	 * Method to execute a text-to-speech event
-	 * Will say the event description  with TTS and 
+	 * Will say the event description  with TTS and
 	 * tell the player to proceed to the next event in sequence
-	 * 
+	 *
 	 * @param thisEvent Event whose description will be read by text to speech
 	 * @return 1, indicates go to next event in sequence
 	 */
 	private int executeTTS(Event thisEvent) {
 		//create a new text to speech object
-		TextToSpeech tts; 
+		TextToSpeech tts;
 		//try-catch for text-to-speech exceptions
-		try {	
+		try {
 			tts = new TextToSpeech();
 			//use text to speech to say the string stored in thisEvent's details
 			tts.say(thisEvent.getEventDetails());
@@ -106,12 +106,12 @@ public class MainThread implements Runnable {
 		//go to next event in list
 		return 1;
 	}
-	
+
 	/**
 	 * Method to execute a play audio file event
 	 * Will play the audio file specified in event description
 	 * and tell the player to proceed to the next event in sequence
-	 * 
+	 *
 	 * @param thisEvent Event whose description contains the path to the audio file to play
 	 * @return 1, indicates go to next event in sequence
 	 */
@@ -126,12 +126,12 @@ public class MainThread implements Runnable {
 		//go to next event in list
 		return 1;
 	}
-	
+
 	/**
 	 * Method to execute a initialize simulator event
 	 * Will create a simulator with the specified number of buttons and
 	 * cells in the event description, and return this created simulator
-	 * 
+	 *
 	 * @param thisEvent Event whose description contains the number of buttons and cells
 	 * @return the newly initialized simulator
 	 */
@@ -142,17 +142,17 @@ public class MainThread implements Runnable {
 		buttons = Integer.parseInt(thisEvent.getEventDetails().split(" ", -1)[0]);
 		//parse the second number in thisEvent's details to integer cells
 		cells = Integer.parseInt(thisEvent.getEventDetails().split(" ", -1)[1]);
-		
+
 		newSim = new Simulator(cells, buttons);
 		return newSim;
 	}
-	
+
 	/**
 	 * Method to jump a number of events rather than going to the next in order
 	 * Forward jump are 1 for normal sequence, for more is -1 from what you set
 	 * Ex: 2 will jump 1 more than normal, 5 will jump 4 more than normal
 	 * Backwards jumps are negative, with the number set being the number of events jumped
-	 * Ex: -1 will jump backwards 1 event, -5 will jump back 5 events 
+	 * Ex: -1 will jump backwards 1 event, -5 will jump back 5 events
 	 * @param thisEvent Event whose description contains the number of events jump
 	 * @return the number of events to jump in sequence. Negative values indicate going backwards
 	 */

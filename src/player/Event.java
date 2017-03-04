@@ -1,8 +1,8 @@
 package player;
 
 /**
- * Abstract representation of an event in the scenario. 
- * Events are created by FileParser parsing an input file
+ * Abstract representation of an event in the scenario. Events are created by
+ * FileParser parsing an input file
  *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
@@ -10,17 +10,19 @@ package player;
  *
  */
 public class Event {
-	//Attributes to identify kind of event
-	//Text to speech
+	/** TTS Event */
 	private static final long TTS = 0;
+	/** Audio Play Event */
 	private static final long AUDIO_PLAY = 1;
+	/** Braille Display Update Event */
 	private static final long BRAILLE = 2;
-	//wait for button input
-	private static final long BUTTON_INPUT = 3;
-	//Jump to a specified event instead of continuing sequentially
+	/** Button Press with Jumps Event */
+	private static final long BUTTON = 3;
+	/** Unconditional Jump Event */
 	private static final long JUMP = 4;
-	//Initialize the simulator with set number of buttons and cells
+	/** Simulator Initialize Event */
 	private static final long INITIALIZE_SIM = 5;
+
 	private long type;
 	private String eventDetails;
 
@@ -32,15 +34,15 @@ public class Event {
 
 	/**
 	 * Set the event type to be Initialize Sim
-	 * 
-	 * @param cellsAndButtons 
-	 * 		String containing number of cells whitespace number of buttons 
+	 *
+	 * @param cellsAndButtons
+	 *            String containing number of cells whitespace number of buttons
 	 */
 	public void setInitializeSim(String cellsAndButtons) {
 		this.type = Event.INITIALIZE_SIM;
 		this.eventDetails = cellsAndButtons;
 	}
-	
+
 	/**
 	 * Check if the event type is Initialize Sim
 	 *
@@ -49,7 +51,7 @@ public class Event {
 	public boolean isInitializeSim() {
 		return this.type == Event.INITIALIZE_SIM;
 	}
-	
+
 	/**
 	 * Set the event type to be TTS
 	 *
@@ -89,75 +91,76 @@ public class Event {
 	public boolean isAudioPlay() {
 		return this.type == Event.AUDIO_PLAY;
 	}
-	
+
 	/**
 	 * Set the event to be Set Braille
-	 * 
+	 *
 	 * @param wordToSet
-	 * 			String to represent on braille cells
+	 *            String to represent on braille cells
 	 */
 	public void setBraille(String wordToSet) {
 		this.type = Event.BRAILLE;
 		this.eventDetails = wordToSet;
 	}
-	
+
 	/**
 	 * Check if the event is a Set Braille
-	 * 
+	 *
 	 * @return True only if event is a Set Braille
 	 */
 	public boolean isSetBraille() {
 		return this.type == Event.BRAILLE;
 	}
-	
+
 	/**
-	 * Set the event to be button input
-	 * 
-	 * @param button 
-	 * 			Button number to expect a push from
+	 * Set the event to be a button push
+	 *
+	 * @param buttonJumpArgs
+	 *            Button jump args, relative jump offsets separated by spaces
 	 */
-	public void setButtonInput(String button) {
-		this.type = Event.BUTTON_INPUT;
-		this.eventDetails = button;
+	public void setButton(String buttonJumpArgs) {
+		this.type = Event.BUTTON;
+		this.eventDetails = buttonJumpArgs;
 	}
-	
+
 	/**
-	 * Check if the event is a button input
-	 * 
-	 * @return True only if event is a single buttonn
+	 * Check if the event is a button push
+	 *
+	 * @return True only if event is a button
 	 */
-	public boolean isBUttonInput() {
-		return this.type == Event.BUTTON_INPUT;
+	public boolean isButton() {
+		return this.type == Event.BUTTON;
 	}
-	
+
 	/**
-	 * Set the event to be a jump
-	 * 
-	 * @param jump number of events to jump
+	 * Set the event to be an unconditional jump
+	 *
+	 * @param jumpOffset
+	 *            Relative jump offset to seek to
 	 */
-	public void setJump(String jump) {
+	public void setJump(String jumpOffset) {
 		this.type = Event.JUMP;
-		this.eventDetails = jump;
+		this.eventDetails = jumpOffset;
 	}
-	
+
 	/**
-	 * Set the event to be a jump
-	 * 
-	 * @return True only if event is a jump
+	 * Check if the event is an unconditional jump
+	 *
+	 * @return True only if event is a button
 	 */
 	public boolean isJump() {
 		return this.type == Event.JUMP;
 	}
-	
+
 	/**
 	 * Returns a long representing the type of this event
-	 * 
-	 * @return 0 if TTS, 1 if audio play, 2 if set braille cell, 3 if wait for button push, 4 if jump event, 5 for initialize sim
+	 *
+	 * @return Event type code
 	 */
 	public long eventType() {
 		return this.type;
 	}
-	
+
 	/**
 	 * Get the generic details parameter
 	 *
