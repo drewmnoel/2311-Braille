@@ -8,6 +8,8 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineEvent;
+import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
@@ -58,25 +60,24 @@ public class AudioPlayer {
 		            DataLine.Info info = new DataLine.Info(Clip.class, format);
 		            Clip audioClip = (Clip) AudioSystem.getLine(info);
 		            audioClip.open(stream);
+
+		            // Add a custom listener which auto-closes the clip when done
+		            audioClip.addLineListener(new LineListener() {
+						@Override
+						public void update(LineEvent event) {
+							if (event.getType() == LineEvent.Type.STOP)
+			                    audioClip.close();
+						}
+		            });
+
 		            audioClip.start();
-
-		            while (!playCompleted) {
-		                try {
-		                    Thread.sleep(1000);
-		                } catch (InterruptedException ex) {
-		                    ex.printStackTrace();
-		                }
-		            }
-
-		            audioClip.close();
-
 		        } catch (UnsupportedAudioFileException e) {
 		            e.printStackTrace();
 		        } catch (LineUnavailableException e) {
 		            e.printStackTrace();
 		        } catch (IOException e) {
 		            e.printStackTrace();
-		        }
+				}
 
 		    }
 
