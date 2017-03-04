@@ -26,6 +26,9 @@ public class FileParser {
 
 	/**
 	 * Create a file parser which also sets the file to parse
+	 * 
+	 * @param fileTarget
+	 *            Path to the file which should be read and parsed
 	 */
 	public FileParser(String fileTarget) {
 		this();
@@ -33,16 +36,14 @@ public class FileParser {
 	}
 
 	/**
+	 * Parse the file line-by-line. Each line represents an input event.
 	 *
-	 * @return
+	 * @return List of events read from the file.
 	 * @throws IOException
 	 *             if fileTarget is an invalid file path or if command in file
 	 *             is invalid
 	 */
 	public List<Event> parseFile() throws IOException {
-		// TODO: Parse the file line-by-line. Each line represents an event.
-		// Return a list of these events
-		// that will need to be executed in order.
 		List<Event> eventList = new ArrayList<Event>();
 		String line;
 		File inputFile = new File(fileTarget);
@@ -57,7 +58,7 @@ public class FileParser {
 	}
 
 	/**
-	 * Parses whether a line in the text file is for an audio or TTS event
+	 * Parses a given line for the relevant event type
 	 *
 	 * @param eventList
 	 * @param line
@@ -97,10 +98,24 @@ public class FileParser {
 		eventList.add(tempEvent);
 	}
 
+	/**
+	 * Helper method to extract the command part of a line
+	 *
+	 * @param input
+	 *            Full line to parse
+	 * @return The command component of the line
+	 */
 	private String getCommand(String input) {
 		return input.split(" ", 2)[0];
 	}
 
+	/**
+	 * Helper method to extract the args part of a line
+	 *
+	 * @param input
+	 *            Full line to parse
+	 * @return The args component of the line
+	 */
 	private String getArgs(String input) {
 		return input.split(" ", 2)[1];
 	}

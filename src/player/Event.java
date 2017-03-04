@@ -1,8 +1,8 @@
 package player;
 
 /**
- * Abstract representation of an event in the scenario.
- * Events are created by FileParser parsing an input file
+ * Abstract representation of an event in the scenario. Events are created by
+ * FileParser parsing an input file
  *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
@@ -19,7 +19,7 @@ public class Event {
 	/** Button Press with Jumps Event */
 	private static final long BUTTON = 3;
 	/** Unconditional Jump Event */
-	private static final long JUMP= 4;
+	private static final long JUMP = 4;
 	/** Simulator Initialize Event */
 	private static final long INITIALIZE_SIM = 5;
 
@@ -36,7 +36,7 @@ public class Event {
 	 * Set the event type to be Initialize Sim
 	 *
 	 * @param cellsAndButtons
-	 * 		String containing number of cells whitespace number of buttons
+	 *            String containing number of cells whitespace number of buttons
 	 */
 	public void setInitializeSim(String cellsAndButtons) {
 		this.type = Event.INITIALIZE_SIM;
@@ -96,7 +96,7 @@ public class Event {
 	 * Set the event to be Set Braille
 	 *
 	 * @param wordToSet
-	 * 			String to represent on braille cells
+	 *            String to represent on braille cells
 	 */
 	public void setBraille(String wordToSet) {
 		this.type = Event.BRAILLE;
@@ -116,7 +116,7 @@ public class Event {
 	 * Set the event to be a button push
 	 *
 	 * @param buttonJumpArgs
-	 * 			Button jump args, relative jump offsets separated by spaces
+	 *            Button jump args, relative jump offsets separated by spaces
 	 */
 	public void setButton(String buttonJumpArgs) {
 		this.type = Event.BUTTON;
@@ -136,7 +136,7 @@ public class Event {
 	 * Set the event to be an unconditional jump
 	 *
 	 * @param jumpOffset
-	 * 			Relative jump offset to seek to
+	 *            Relative jump offset to seek to
 	 */
 	public void setJump(String jumpOffset) {
 		this.type = Event.JUMP;
