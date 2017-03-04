@@ -8,12 +8,8 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
-import javax.sound.sampled.LineEvent;
-import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import com.sun.media.jfxmedia.AudioClip;
 
 
 /**
@@ -24,7 +20,6 @@ import com.sun.media.jfxmedia.AudioClip;
  * @since 2017-02-12
  */
 public class AudioPlayer {
-	private static final int BUFFER_SIZE = 4096;
 	private static boolean playCompleted;
 	/**
 	 * Create an audio player with default settings
@@ -38,33 +33,33 @@ public class AudioPlayer {
 	 * @param filename
 	 *            Path to file which should be played. Accepts both absolute and
 	 *            relative paths.
-	 * @throws IOException 
-	 * @throws UnsupportedAudioFileException 
-	 * @throws LineUnavailableException 
+	 * @throws IOException
+	 * @throws UnsupportedAudioFileException
+	 * @throws LineUnavailableException
 	 */
 
 		public void playFile(String fileName) {
-		     
+
 		    /**
 		     * this flag indicates whether the playback completes or not.
 		     */
-		  
-		     
+
+
 		    /**
 		     * Play a given audio file.
 		     * @param fileName Path of the audio file.
 		     */
-		   
+
 		        File file = new File(fileName);
-		 
+
 		        try {
-		            AudioInputStream stream = AudioSystem.getAudioInputStream(file);		 
-		            AudioFormat format = stream.getFormat();		 
-		            DataLine.Info info = new DataLine.Info(Clip.class, format);		 
-		            Clip audioClip = (Clip) AudioSystem.getLine(info);	 
-		            audioClip.open(stream);		             
+		            AudioInputStream stream = AudioSystem.getAudioInputStream(file);
+		            AudioFormat format = stream.getFormat();
+		            DataLine.Info info = new DataLine.Info(Clip.class, format);
+		            Clip audioClip = (Clip) AudioSystem.getLine(info);
+		            audioClip.open(stream);
 		            audioClip.start();
-		             
+
 		            while (!playCompleted) {
 		                try {
 		                    Thread.sleep(1000);
@@ -72,9 +67,9 @@ public class AudioPlayer {
 		                    ex.printStackTrace();
 		                }
 		            }
-		             
+
 		            audioClip.close();
-		             
+
 		        } catch (UnsupportedAudioFileException e) {
 		            e.printStackTrace();
 		        } catch (LineUnavailableException e) {
@@ -82,7 +77,7 @@ public class AudioPlayer {
 		        } catch (IOException e) {
 		            e.printStackTrace();
 		        }
-		         
+
 		    }
-	
+
 }

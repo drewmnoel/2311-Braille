@@ -3,7 +3,6 @@ package player;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,7 @@ public class FileParser {
 
 	/**
 	 * Create a file parser which also sets the file to parse
-	 * 
+	 *
 	 * @param fileTarget
 	 *            Path to the file which should be read and parsed
 	 */
