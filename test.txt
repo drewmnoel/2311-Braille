@@ -1,13 +1,10 @@
-INIT 5 10
-TTS This is a text-to-speech line
-BRAILLE test 
-TTS THIS IS IN ALL CAPS
-BRAILLE hello
-TTS This is a question?
-BRAILLE zz
-TTS Item 1 hello. Item 2 world. 
-JUMP 4
-BRAILLE skip1
-BRAILLE skip2
-BRAILLE skip3
+INIT 3 10
+TTS Hello, this is a full test.
+BRAILLE Question
+TTS What is 1 plus 1
+TTS Press the button corresponding to the answer
+BUTTON 1 1 3
+TTS That is not correct.
+JUMP -4
+TTS Correct!
 AUDIO finished.wav
