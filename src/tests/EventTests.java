@@ -12,47 +12,70 @@ import player.Event;
 
 public class EventTests {
 	Event testEvent;
+	
+	//Setting up Event class for testing each method
 	@Before
 	public void setUp() throws Exception {
 		testEvent = new Event();		
 	}
 	
+	//Testing isInitializeSim() 
+	//Initialized with cell and button parameter and simulator initial event
+	//Testing for simulator initial event value
 	@Test
 	public void testIsInitializedSim(){
 		testEvent.setInitializeSim("10 10");
 		assertTrue(testEvent.isInitializeSim());
 	}
 	
+	//Testing isTTS()
+	//Using setTTS() method to set TTS event type and TTS eventDetails
+	//Checking to see if TTS event is of type TTS
 	@Test
 	public void testIsTTS(){
 		testEvent.setTTS("This is testing TTS");
 		assertTrue(testEvent.isTTS());
 	}
 
+	//Testing isAudioPlay()
+	//Using setAudio() to set Audio type and AudioPlay eventDetail
+	//Checking to see if Audio event is of type Audio
 	@Test
 	public void testIsAudioPlay(){
 		testEvent.setAudioPlay("music.wav");
 		assertTrue(testEvent.isAudioPlay());
 	}
 	
+	//Testing isBraille()
+	//Using setBraille() to set Braille type and Braille eventDetail
+	//Checking to see if Braille event is of type Braille
 	@Test
 	public void testIsSetBraille(){
 		testEvent.setBraille("two");
 		assertTrue(testEvent.isSetBraille());
 	}
 	
+	//Testing isButton()
+	//Using setButton() to set Button type and Button eventDetail
+	//Checking to see if Button event is of type Button
 	@Test
 	public void testIsButton(){
 		testEvent.setButton("1 1 4");
 		assertTrue(testEvent.isButton());
 	}
 	
+	//Testing isJump()
+	//Using setJump() to set unconditional jump and jump type
+	//Checking to see if Jump event is of type Jump	
 	@Test
 	public void testIsJump(){
 		testEvent.setJump("-6");
 		assertTrue(testEvent.isJump());
 	}
 	
+	
+	//Testing eventType() method
+	//Checking if the value returned matches that of event type assigned
 	@Test
 	public void testEventType(){
 		testEvent.setTTS("This is test");
@@ -74,6 +97,8 @@ public class EventTests {
 		assertEquals(5,testEvent.eventType());		
 	}
 	
+	//Testing getEventDetails() method
+	//Checking if eventDetails matches the event details assigned to particular method
 	@Test
 	public void testGetEventDetails(){
 		testEvent.setTTS("This is test");
