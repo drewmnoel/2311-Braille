@@ -20,29 +20,6 @@ public class MainThread implements Runnable {
 
 	@Override
 	public void run() {
-		/*
-		Simulator sim = Simulator.getInstance();
-		TextToSpeech tts;
-		FileParser fp = new FileParser();
-		AudioPlayer ap = new AudioPlayer();
-
-		// If anything goes wrong, bail out all at once.
-		try {
-			tts = new TextToSpeech();
-			fp.setFileTarget("test.txt");
-
-			// Parse the scenario file
-			for (Event e : fp.parseFile()) {
-				if (e.isTTS()) {
-					tts.say(e.getEventDetails());
-				} else if (e.isAudioPlay()) {
-					ap.playFile(e.getEventDetails());
-				} else if (e.isSetBraille()) {
-					sim.displayString(e.getEventDetails());
-				}
-			}
-		} catch (Exception e) {}
-		*/
 		
 		try {
 			//File parser to parse events from input file
@@ -63,22 +40,43 @@ public class MainThread implements Runnable {
 			int steps;
 			//Iterate over eventList until the whole sequence of events is over
 			while(index <= eventList.size()) {
+				//default is to go to the event immediately after this
 				steps = 1;
-				steps = selectEventType(eventList.get(index));
+				//set the next event in sequence
+				iterEvent = eventList.get(index);
+				//check what type of event iterEvent is, and execute it
+				steps = eventTypeSelector(iterEvent, sim);
+				//if a jump in event order is needed, set it here
 				index = index + steps;
 			}
 			
 		} catch(Exception e) {}
+		
 	}
 	
-	private int selectEventType(Event thisEvent) {
+	/**
+	 * Detects what type the event is and either execute the 
+	 * appropriate execute method or sets the simulator
+	 * 
+	 * @param thisEvent Current event being looked at
+	 * @param sim 
+	 * @return
+	 */
+	
+	private int eventTypeSelector(Event thisEvent, Simulator sim) {
 		int tempSteps = 1;
 		//check what type of event thisEvent is
-		if(thisEvent.isTTS()) {
+		if (thisEvent.isTTS()) {
+			//say event description as TTS
 			tempSteps = executeTTS(thisEvent);
 		}
 		else if (thisEvent.isAudioPlay()) {
+			//play audio file in event description
 			tempSteps = executeAudioPlay(thisEvent);
+		}
+		else if (thisEvent.isSetBraille()) {
+			//
+			sim.displayString(thisEvent.getEventDetails());
 		}
 		
 		return tempSteps;
@@ -144,6 +142,17 @@ public class MainThread implements Runnable {
 		newSim = new Simulator(cells, buttons);
 		return newSim;
 	}
-
+	
+	/**
+	 * Method to jump a number of events rather than going to the next in order
+	 * 
+	 * @param thisEvent Event whose description contains the number of events to jump
+	 * @return the number of events to jump in sequence. Negative values indicate going backwards
+	 */
+	private int executeJump(Event thisEvent) {
+		int jump;
+		jump = Integer.parseInt(thisEvent.getEventDetails().split(" ", -1)[0]);
+		return jump;
+	}
 }
 

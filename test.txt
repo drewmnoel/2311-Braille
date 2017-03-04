@@ -1,9 +1,10 @@
-INIT 4 7
-TTS This is a text-to-speech line 
+INIT 5 10
+TTS This is a text-to-speech line
+BRAILLE test 
 TTS THIS IS IN ALL CAPS
+BRAILLE hello
 TTS This is a question?
+BRAILLE zz
 TTS This is an exclaimation!. @. #. $. !.
-TTS @. 2. %. $.
 TTS Item 1 hello. Item 2 world. 
-TTS This is a longer statement to be read by text-to-speech. This is a new, sentence.
 AUDIO finished.wav

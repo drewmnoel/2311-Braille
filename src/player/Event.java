@@ -131,6 +131,25 @@ public class Event {
 	}
 	
 	/**
+	 * Set the event to be a jump
+	 * 
+	 * @param jump number of events to jump
+	 */
+	public void setJump(String jump) {
+		this.type = Event.JUMP;
+		this.eventDetails = jump;
+	}
+	
+	/**
+	 * Set the event to be a jump
+	 * 
+	 * @return True only if event is a jump
+	 */
+	public boolean isJump() {
+		return this.type == Event.JUMP;
+	}
+	
+	/**
 	 * Returns a long representing the type of this event
 	 * 
 	 * @return 0 if TTS, 1 if audio play, 2 if set braille cell, 3 if wait for button push, 4 if jump event, 5 for initialize sim

@@ -77,6 +77,16 @@ public class FileParser {
 			tempInitEvent.setInitializeSim(line.split(" ", 2)[1]);
 			eventList.add(tempInitEvent);
 		}
+		else if(line.split(" ")[0].equals("BRAILLE")) {
+			Event tempBrailleEvent = new Event();
+			tempBrailleEvent.setBraille(line.split(" ", 2)[1]);
+			eventList.add(tempBrailleEvent);
+		}
+		else if(line.split(" ")[0].equals("JUMP")) {
+			Event tempJumpEvent = new Event();
+			tempJumpEvent.setJump(line.split(" ", 2)[1]);
+			eventList.add(tempJumpEvent);			
+		}
 		else {
 			IOException exception = new IOException("Invalid player command");
 			bufferedInput.close();
