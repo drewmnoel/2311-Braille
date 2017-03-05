@@ -10,3 +10,4 @@ JUMP -6
 BRAILLE Correct
 TTS Correct!
 AUDIO finished.wav
+AUDIO sound/buzz.wav
