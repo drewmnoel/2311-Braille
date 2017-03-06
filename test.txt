@@ -11,4 +11,4 @@ BRAILLE Correct
 TTS Correct!
 AUDIO finished.wav
 BRAILLE A B C
-AUDIO C:\eclipse\buzz.wav
+AUDIO sound\buzz.wav
