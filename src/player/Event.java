@@ -192,11 +192,10 @@ public class Event {
 	public boolean hasCaps(String message) {
 		boolean capFlag = false;
 		char ch;
-		for (int i = 0; i<message.length(); i++) {
+		for (int i = 0; i < message.length(); i++) {
 			ch = message.charAt(i);
-			if (Character.isUpperCase(ch)) {
+			if (Character.toUpperCase(ch) == ch && Character.isLetter(ch)) {
 				capFlag = true;
-				return capFlag;
 			}
 		}
 		return capFlag;
@@ -214,9 +213,9 @@ public class Event {
 		char ch;
 		for(int i = 0; i < message.length(); i++) {
 			ch = message.charAt(i);
-			if(Character.isUpperCase(ch)) {
+			if(Character.toUpperCase(ch) == ch && Character.isLetter(ch)) {
 				modified.append('@');
-				modified.append(ch);
+				modified.append(Character.toLowerCase(ch));
 			}
 			else {
 				modified.append(ch);

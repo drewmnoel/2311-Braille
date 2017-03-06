@@ -120,7 +120,7 @@ public class EventTests {
 		assertEquals("3 10",testEvent.getEventDetails());	
 	}
 	
-	
+	//Testing hasCaps() method
 	@Test
 	public void testHasCaps() {
 		//strings with caps, should return true
@@ -130,6 +130,24 @@ public class EventTests {
 		assertTrue(testEvent.hasCaps("Abcdefghijklmnopqurstuvwxyz"));
 		
 		//strings with no caps, should return false
+		assertFalse(testEvent.hasCaps("abcdefghijklmnopqurstuvwxyz"));
+		assertFalse(testEvent.hasCaps("   "));
+		assertFalse(testEvent.hasCaps("@ g w 1 3 5"));
+	}
+	
+	//Testing addCapsCells() method
+	@Test
+	public void testAddCapsCells() {
+		//strings with no capitals, should be unchanged
+		assertEquals("abcd efg",testEvent.addCapsCells("abcd efg"));
+		assertEquals("d",testEvent.addCapsCells("d"));
+		assertEquals("12abc",testEvent.addCapsCells("12abc"));
+		assertEquals("0",testEvent.addCapsCells("0"));
+		assertEquals("   ",testEvent.addCapsCells("   "));
 		
+		//strings with capitals, but not all capitals, should have tags
+		assertEquals("@abcd",testEvent.addCapsCells("Abcd"));
+		assertEquals("@ab cd e@f",testEvent.addCapsCells("Ab cd eF"));
+		assertEquals("@a@b@c@de@f",testEvent.addCapsCells("ABCDeF"));
 	}
 }
