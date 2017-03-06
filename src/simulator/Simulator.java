@@ -205,7 +205,11 @@ public class Simulator {
 		}
 	}
 
-	@SuppressWarnings("javadoc")
+	/**
+	 * Singleton access for the simulator GUI. Added to ensure only one copy of the UI exists at once.
+	 *
+	 * @return Single reference to the user interface
+	 */
 	public static Simulator getInstance() {
 		return sc;
 	}
