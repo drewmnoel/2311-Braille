@@ -18,6 +18,8 @@ import simulator.Simulator;
  */
 public class MainThread implements Runnable {
 
+	//create a new audio player object
+	AudioPlayer ap = new AudioPlayer();
 	@Override
 	public void run() {
 
@@ -145,8 +147,7 @@ public class MainThread implements Runnable {
 	 * @return 1, indicates go to next event in sequence
 	 */
 	private int executeAudioPlay(Event thisEvent) {
-		//create a new audio player object
-		AudioPlayer ap = new AudioPlayer();
+		
 		//catch possible exceptions in opening audio file
 		try {
 			//play audio file specified in thisEvent's details
@@ -190,5 +191,6 @@ public class MainThread implements Runnable {
 		jump = Integer.parseInt(thisEvent.getEventDetails().split(" ", -1)[0]);
 		return jump;
 	}
+	
 }
 

@@ -119,4 +119,17 @@ public class EventTests {
 		testEvent.setInitializeSim("3 10");
 		assertEquals("3 10",testEvent.getEventDetails());	
 	}
+	
+	
+	@Test
+	public void testHasCaps() {
+		//strings with caps, should return true
+		assertTrue(testEvent.hasCaps("aAbc"));
+		assertTrue(testEvent.hasCaps("AAAbc deg  F"));
+		assertTrue(testEvent.hasCaps("abcdefghijklmnopqrstuvwxyZ"));
+		assertTrue(testEvent.hasCaps("Abcdefghijklmnopqurstuvwxyz"));
+		
+		//strings with no caps, should return false
+		
+	}
 }

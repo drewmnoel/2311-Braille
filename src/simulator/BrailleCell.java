@@ -63,6 +63,7 @@ public class BrailleCell {
 		alphabet.put('y', "11011100");
 		alphabet.put('z', "10011100");
 		alphabet.put(' ', "00000000");
+		alphabet.put('@', "00000100");
 
 	}
 

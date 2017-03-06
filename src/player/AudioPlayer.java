@@ -24,6 +24,8 @@ public class AudioPlayer {
 	/**
 	 * Create an audio player with default settings
 	 */
+	
+	
 	public AudioPlayer() {
 	}
 
@@ -49,17 +51,18 @@ public class AudioPlayer {
 			DataLine.Info info = new DataLine.Info(Clip.class, format);
 			Clip audioClip = (Clip) AudioSystem.getLine(info);
 			audioClip.open(stream);
-
+			
 			// Add a custom listener which auto-closes the clip when done
 			audioClip.addLineListener(new LineListener() {
 				@Override
 				public void update(LineEvent event) {
-					if (event.getType() == LineEvent.Type.STOP)
+					if (event.getType() == LineEvent.Type.STOP)	
 						audioClip.close();
 				}
 			});
-
+			
 			audioClip.start();
+			
 		} catch (UnsupportedAudioFileException e) {
 			e.printStackTrace();
 		} catch (LineUnavailableException e) {

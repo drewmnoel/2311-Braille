@@ -100,7 +100,18 @@ public class Event {
 	 */
 	public void setBraille(String wordToSet) {
 		this.type = Event.BRAILLE;
-		this.eventDetails = wordToSet;
+		//if string has no caps set it as is
+		if(!hasCaps(wordToSet)) {
+			this.eventDetails = wordToSet;
+		}
+		//if string is all caps set two cap cell flags at front ('@')
+		else if (wordToSet.toUpperCase().equals(wordToSet)) {
+			this.eventDetails = "@@" + wordToSet;
+		}
+		//if string has some caps but is not all caps, set cap flags before very capital letter
+		else {
+			this.eventDetails = addCapsCells(wordToSet);
+		}
 	}
 
 	/**
@@ -109,6 +120,7 @@ public class Event {
 	 * @return True only if event is a Set Braille
 	 */
 	public boolean isSetBraille() {
+		
 		return this.type == Event.BRAILLE;
 	}
 
@@ -168,5 +180,48 @@ public class Event {
 	 */
 	public String getEventDetails() {
 		return this.eventDetails;
+	}
+	
+	//set to private after testing
+	/**
+	 * Checks if a string contains capital letters
+	 * 
+	 * @param message string to be checked
+	 * @return True if there are capitals, false otherwise
+	 */
+	public boolean hasCaps(String message) {
+		boolean capFlag = false;
+		char ch;
+		for (int i = 0; i<message.length(); i++) {
+			ch = message.charAt(i);
+			if (Character.isUpperCase(ch)) {
+				capFlag = true;
+				return capFlag;
+			}
+		}
+		return capFlag;
+	}
+	
+	//set to private after testing
+	/**
+	 * Adds 'capital letter flags '@'' infront of ever capital letter in a string
+	 * 
+	 * @param message string to have flags added
+	 * @return modified string
+	 */
+	public String addCapsCells(String message) {
+		StringBuffer modified = new StringBuffer();
+		char ch;
+		for(int i = 0; i < message.length(); i++) {
+			ch = message.charAt(i);
+			if(Character.isUpperCase(ch)) {
+				modified.append('@');
+				modified.append(ch);
+			}
+			else {
+				modified.append(ch);
+			}
+		}
+		return modified.toString();
 	}
 }

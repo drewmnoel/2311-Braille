@@ -4,7 +4,7 @@ TTS What is 1 plus 1
 TTS Press the button corresponding to the answer
 BRAILLE Two
 BUTTON 1 1 4
-BRAILLE Wrong
+BRAILLE two
 TTS That is not correct.
 JUMP -6
 BRAILLE Correct
