@@ -11,6 +11,7 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineEvent;
 import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
@@ -24,8 +25,8 @@ public class AudioPlayer {
 	/**
 	 * Create an audio player with default settings
 	 */
-
-
+	
+	
 	public AudioPlayer() {
 	}
 
@@ -42,33 +43,30 @@ public class AudioPlayer {
 	 * @throws UnsupportedAudioFileException
 	 * @throws LineUnavailableException
 	 */
-	public void playFile(String fileName) throws PlayerException {
+	public void playFile(String fileName) {
 		File file = new File(fileName);
-
+		byte[] buffer = new byte[4096];
 		try {
 			AudioInputStream stream = AudioSystem.getAudioInputStream(file);
 			AudioFormat format = stream.getFormat();
-			DataLine.Info info = new DataLine.Info(Clip.class, format);
-			Clip audioClip = (Clip) AudioSystem.getLine(info);
-			audioClip.open(stream);
-
-			// Add a custom listener which auto-closes the clip when done
-			audioClip.addLineListener(new LineListener() {
-				@Override
-				public void update(LineEvent event) {
-					if (event.getType() == LineEvent.Type.STOP)
-						audioClip.close();
-				}
-			});
-
+			SourceDataLine audioClip = AudioSystem.getSourceDataLine(format);
+			audioClip.open(format);
 			audioClip.start();
-
+			
+			while(stream.available() > 0) {
+				int len = stream.read(buffer);
+				audioClip.write(buffer, 0, len);
+			}
+			
+			audioClip.drain();
+			audioClip.close();
+			
 		} catch (UnsupportedAudioFileException e) {
-			throw new PlayerException("An unsupported audio file was given. Only WAV files are currently supported.", e);
+			e.printStackTrace();
 		} catch (LineUnavailableException e) {
-			throw new PlayerException("Output audio sink could not be accessed", e);
+			e.printStackTrace();
 		} catch (IOException e) {
-			throw new PlayerException("Reading audio file failed", e);
+			e.printStackTrace();
 		}
 
 	}
