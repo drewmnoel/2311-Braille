@@ -17,10 +17,11 @@ import events.TTSEvent;
 public class EventTests {
 	Event testEvent;
 
-	// Testing InitEvent()
-	// Using setDetails() to set cell and button parameters
-	// Checking to see if Init Event executes and returns correct number of
-	// lines to skip
+	/**
+	 * Testing InitEvent() Using setDetails() to set cell and button parameters
+	 * Checking to see if Init Event executes and returns correct number of
+	 * lines to skip
+	 */
 	@Test
 	public void testInitializeSim() {
 		testEvent = new InitEvent();
@@ -28,10 +29,11 @@ public class EventTests {
 		assertEquals(1, testEvent.execute());
 	}
 
-	// Testing TTSEvent()
-	// Using setDetails() method to set TTS event type and TTS eventDetails
-	// Checking to see if TTS Event executes without exception and returns
-	// correct number of lines to skip
+	/**
+	 * Testing TTSEvent() Using setDetails() method to set TTS event type and
+	 * TTS eventDetails Checking to see if TTS Event executes without exception
+	 * and returns correct number of lines to skip
+	 */
 	@Test
 	public void testTTS() {
 		testEvent = new TTSEvent();
@@ -39,10 +41,11 @@ public class EventTests {
 		assertEquals(1, testEvent.execute());
 	}
 
-	// Testing isAudioPlay()
-	// Using setDetails() to set AudioPlay eventDetail
-	// Checking to see if Audio Event executes without exception and returns
-	// correct number of lines to skip
+	/**
+	 * Testing isAudioPlay() Using setDetails() to set AudioPlay eventDetail
+	 * Checking to see if Audio Event executes without exception and returns
+	 * correct number of lines to skip
+	 */
 	@Test
 	public void testAudioPlay() {
 		testEvent = new AudioEvent();
@@ -50,10 +53,11 @@ public class EventTests {
 		assertEquals(1, testEvent.execute());
 	}
 
-	// Testing isBraille()
-	// Using setBraille() to set Braille type and Braille eventDetail
-	// Checking to see if Braille Event executes without exception and returns
-	// correct number of lines to skip
+	/**
+	 * Testing isBraille() Using setBraille() to set Braille type and Braille
+	 * eventDetail Checking to see if Braille Event executes without exception
+	 * and returns correct number of lines to skip
+	 */
 	@Test
 	public void testBraille() {
 		testEvent = new BrailleEvent();
@@ -61,22 +65,23 @@ public class EventTests {
 		assertEquals(1, testEvent.execute());
 	}
 
-	// Testing ButtonEvent()
-	// Using setButton() to set Button type and Button eventDetail
-	// Checking to see if Button Event can be created without exception
-	// Cannot actually test the execute method since it relies on a human button
-	// press
-	// This test just ensures there's no exception thrown
+	/**
+	 * Testing ButtonEvent() Using setButton() to set Button type and Button
+	 * eventDetail Checking to see if Button Event can be created without
+	 * exception Cannot actually test the execute method since it relies on a
+	 * human button press This test just ensures there's no exception thrown
+	 */
 	@Test
 	public void testButton() {
 		testEvent = new ButtonEvent();
 		testEvent.setDetails("1 1 4");
 	}
 
-	// Testing JumpEvent()
-	// Using setJump() to set unconditional jump and jump type
-	// Checking to see if Jump Event can be executed without exception and
-	// returns correct number of lines to skip
+	/**
+	 * Testing JumpEvent() Using setJump() to set unconditional jump and jump
+	 * type Checking to see if Jump Event can be executed without exception and
+	 * returns correct number of lines to skip
+	 */
 	@Test
 	public void testIsJump() {
 		testEvent = new JumpEvent();
@@ -84,7 +89,9 @@ public class EventTests {
 		assertEquals(-6, testEvent.execute());
 	}
 
-	// Testing hasCaps() method
+	/**
+	 * Testing hasCaps() method
+	 */
 	@Test
 	public void testHasCaps() {
 		// strings with caps, should return true
@@ -99,7 +106,9 @@ public class EventTests {
 		assertFalse(BrailleEvent.hasCaps("@ g w 1 3 5"));
 	}
 
-	// Testing addCapsCells() method
+	/**
+	 * Testing addCapsCells() method
+	 */
 	@Test
 	public void testAddCapsCells() {
 		// strings with no capitals, should be unchanged
@@ -115,7 +124,9 @@ public class EventTests {
 		assertEquals("@a@b@c@de@f", BrailleEvent.addCapsCells("ABCDeF"));
 	}
 
-	// Testing hasDigits() method
+	/**
+	 * Testing hasDigits() method
+	 */
 	@Test
 	public void testHasDigits() {
 		assertFalse(BrailleEvent.hasDigits(""));
@@ -127,7 +138,9 @@ public class EventTests {
 		assertTrue(BrailleEvent.hasDigits("0000000"));
 	}
 
-	// Testing addDigitCells() method
+	/**
+	 * Testing addDigitCells() method
+	 */
 	@Test
 	public void testAddDigitCells() {
 		assertEquals("", BrailleEvent.addDigitCells(""));
