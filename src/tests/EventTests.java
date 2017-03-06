@@ -145,9 +145,9 @@ public class EventTests {
 		assertEquals("   ",testEvent.addCapsCells("   "));
 
 		//strings with capitals, but not all capitals, should have tags
-		assertEquals("»abcd",testEvent.addCapsCells("Abcd"));
-		assertEquals("»ab cd e»f",testEvent.addCapsCells("Ab cd eF"));
-		assertEquals("»a»b»c»de»f",testEvent.addCapsCells("ABCDeF"));
+		assertEquals("@abcd",testEvent.addCapsCells("Abcd"));
+		assertEquals("@ab cd e@f",testEvent.addCapsCells("Ab cd eF"));
+		assertEquals("@a@b@c@de@f",testEvent.addCapsCells("ABCDeF"));
 	}
 
 	@Test
