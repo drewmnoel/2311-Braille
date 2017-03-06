@@ -14,7 +14,7 @@ import com.sun.speech.freetts.VoiceManager;
  */
 public class TextToSpeech {
 	/** String representing the voice name to use */
-	protected final String VOICE_NAME = "kevin16";
+	protected static final String VOICE_NAME = "kevin16";
 	private com.sun.speech.freetts.Voice voice;
 
 	/**
