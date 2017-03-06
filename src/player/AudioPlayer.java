@@ -6,10 +6,6 @@ import java.io.IOException;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.LineEvent;
-import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -25,8 +21,8 @@ public class AudioPlayer {
 	/**
 	 * Create an audio player with default settings
 	 */
-	
-	
+
+
 	public AudioPlayer() {
 	}
 
@@ -39,11 +35,12 @@ public class AudioPlayer {
 	 * @param filename
 	 *            Path to file which should be played. Accepts both absolute and
 	 *            relative paths.
+	 * @throws PlayerException
 	 * @throws IOException
 	 * @throws UnsupportedAudioFileException
 	 * @throws LineUnavailableException
 	 */
-	public void playFile(String fileName) {
+	public void playFile(String fileName) throws PlayerException {
 		File file = new File(fileName);
 		byte[] buffer = new byte[4096];
 		try {
@@ -52,21 +49,21 @@ public class AudioPlayer {
 			SourceDataLine audioClip = AudioSystem.getSourceDataLine(format);
 			audioClip.open(format);
 			audioClip.start();
-			
+
 			while(stream.available() > 0) {
 				int len = stream.read(buffer);
 				audioClip.write(buffer, 0, len);
 			}
-			
+
 			audioClip.drain();
 			audioClip.close();
-			
+
 		} catch (UnsupportedAudioFileException e) {
-			e.printStackTrace();
+			throw new PlayerException("An unsupported audio file was given. Only WAV files are currently supported.", e);
 		} catch (LineUnavailableException e) {
-			e.printStackTrace();
+			throw new PlayerException("Output audio sink could not be accessed", e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new PlayerException("Reading audio file failed", e);
 		}
 
 	}
