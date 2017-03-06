@@ -112,7 +112,66 @@ public class Event {
 		else {
 			this.eventDetails = addCapsCells(wordToSet);
 		}
+
+		//if string has numbers, add flags before the first digit of the digit group
+		if (hasDigits(wordToSet)) {
+			this.eventDetails = addDigitCells(wordToSet);
+		}
+
 	}
+
+	/**
+	 * Create a string with sentinel character markers added for Braille numeric translation
+	 *
+	 * @param message Standard message for processing
+	 *
+	 * @return Modified message with sentinel markers added before each numeric group
+	 */
+	public String addDigitCells(String message) {
+		StringBuffer modified = new StringBuffer();
+		char ch, lastCh;
+
+		for(int i = 0; i < message.length(); i++) {
+			ch = message.charAt(i);
+			if (i > 0) {
+				lastCh = message.charAt(i-1);
+			} else {
+				// To satisfy that lastCh is init'd before the below check
+				lastCh = 'X';
+			}
+
+			// Only add the flag to the beginning of each group
+			if ((i == 0 || !Character.isDigit(lastCh)) && Character.isDigit(ch)) {
+				modified.append('#');
+				modified.append(ch);
+			}
+			else {
+				modified.append(ch);
+			}
+		}
+
+		return modified.toString();
+	}
+
+	/**
+	 * Check if the input string contains any digits (e.g. "503", "1", and "3232309").
+	 *
+	 * @param message Any input string which should be checked
+	 * @return True if and only if there is at least one digit
+	 */
+	public boolean hasDigits(String message) {
+		boolean digitFlag = false;
+		char ch;
+		for (int i = 0; i < message.length(); i++) {
+			ch = message.charAt(i);
+			if (Character.isDigit(ch)) {
+				digitFlag = true;
+			}
+		}
+		return digitFlag;
+	}
+
+
 
 	/**
 	 * Check if the event is a Set Braille
@@ -203,8 +262,8 @@ public class Event {
 	
 	//set to private after testing
 	/**
-	 * Adds 'capital letter flags '»'' infront of ever capital letter in a string
-	 * » is alt-175 
+	 * Adds 'capital letter flags 'Â»'' infront of ever capital letter in a string
+	 * Â» is alt-175 
 	 * 
 	 * @param message string to have flags added
 	 * @return modified string
@@ -215,7 +274,7 @@ public class Event {
 		for(int i = 0; i < message.length(); i++) {
 			ch = message.charAt(i);
 			if(Character.toUpperCase(ch) == ch && Character.isLetter(ch)) {
-				modified.append('»');
+				modified.append('Â»');
 				modified.append(Character.toLowerCase(ch));
 			}
 			else {

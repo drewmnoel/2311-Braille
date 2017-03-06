@@ -2,7 +2,7 @@ INIT 3 10
 TTS Hello, this is a full test.
 TTS What is 1 plus 1
 TTS Press the button corresponding to the answer
-BRAILLE Two
+BRAILLE 2
 BUTTON 1 1 4
 BRAILLE two
 TTS That is not correct.
