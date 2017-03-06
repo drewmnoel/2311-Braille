@@ -26,7 +26,9 @@ public class MainThread implements Runnable {
 			//List of events parsed from input file. parseFile return is implemented as an array list
 			List<Event> eventList = fp.parseFile();
 			//Checking for possible errors with respect to cells and buttons
-			ErrorManagement.errorManage(eventList);			
+			ErrorManagement.checkInit(eventList);
+			ErrorManagement.checkButtons(eventList);
+			ErrorManagement.checkCells(eventList);
 			//Temporary event object to hold events when iterating over eventList
 			Event iterEvent;
 
@@ -45,7 +47,7 @@ public class MainThread implements Runnable {
 				steps = 1;
 				//set the next event in sequence
 				iterEvent = eventList.get(index);
-				//check what type of event iterEvent is, and execute it
+				//check what type of event iterEvent is using polymorphism, and execute it
 				steps = iterEvent.execute();
 				System.out.println("Steps = " + steps);
 				System.out.println("Event detail = " + iterEvent.getDetails());
@@ -78,7 +80,7 @@ public class MainThread implements Runnable {
 		newSim = Simulator.getInstance();
 		newSim.init(cells, buttons);
 		//Checking if button that exists is being operated on
-		ErrorManagement.checkButtons(iterEvent, newSim);
+		//ErrorManagement.checkButtons(iterEvent, newSim);
 	}
 }
 
