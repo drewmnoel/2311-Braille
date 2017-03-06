@@ -262,8 +262,8 @@ public class Event {
 	
 	//set to private after testing
 	/**
-	 * Adds 'capital letter flags '»'' infront of ever capital letter in a string
-	 * » is alt-175 
+	 * Adds 'capital letter flags '@'' infront of ever capital letter in a string
+	 * @ is alt-175 
 	 * 
 	 * @param message string to have flags added
 	 * @return modified string
@@ -274,7 +274,7 @@ public class Event {
 		for(int i = 0; i < message.length(); i++) {
 			ch = message.charAt(i);
 			if(Character.toUpperCase(ch) == ch && Character.isLetter(ch)) {
-				modified.append('»');
+				modified.append('@');
 				modified.append(Character.toLowerCase(ch));
 			}
 			else {
