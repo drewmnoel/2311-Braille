@@ -75,23 +75,5 @@ public class MainThread implements Runnable {
 		newSim = Simulator.getInstance();
 		newSim.init(cells, buttons);
 	}
-
-	/**
-	 * Method to jump a number of events rather than going to the next in order
-	 * Forward jump are 1 for normal sequence, for more is -1 from what you set
-	 * Ex: 2 will jump 1 more than normal, 5 will jump 4 more than normal
-	 * Backwards jumps are negative, with the number set being the number of events jumped
-	 * Ex: -1 will jump backwards 1 event, -5 will jump back 5 events
-	 * @param thisEvent Event whose description contains the number of events jump
-	 * @return the number of events to jump in sequence. Negative values indicate going backwards
-	 */
-	private int executeJump(Event thisEvent) {
-		int jump;
-		jump = Integer.parseInt(thisEvent.getDetails().split(" ", -1)[0]);
-		if (jump == 0)
-			jump = 1;
-		return jump;
-	}
-
 }
 
