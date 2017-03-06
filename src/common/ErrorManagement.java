@@ -7,12 +7,12 @@ import java.io.LineNumberReader;
 import java.util.Iterator;
 import java.util.List;
 
-import player.Event;
+import events.Event;
 
-public class ErrorManagement{	
+public class ErrorManagement{
 	public static void errorManage(List<Event> eventList){
 	String line;
-	
+
 	int cells, buttons, lineNum = 1000;
 	boolean found = false;
 	LineNumberReader lineNumReader = null;
@@ -21,12 +21,12 @@ public class ErrorManagement{
 	FileReader inputReader = new FileReader(inputFile);
 	BufferedReader bufferedInput = new BufferedReader(inputReader);
 	lineNumReader = new LineNumberReader(inputReader);
-	
+
 	//testing if INIT is present
 	while ((line = bufferedInput.readLine()) != null) {
 		if(line.split(" ")[0].equals("INIT"))
 		{
-			found = true;			
+			found = true;
 			lineNum = lineNumReader.getLineNumber();
 			cells = Integer.parseInt(line.split(" ")[1]);
 			buttons = Integer.parseInt(line.split(" ")[2]);
@@ -37,16 +37,16 @@ public class ErrorManagement{
 			if(buttons > 10 || buttons < 1){
 				System.out.println("Buttons not in valid range[1-10]. Please enter again.");
 				System.exit(0);
-			}						
+			}
 			System.out.println("Found at " + lineNum + " line");
 		}
-		
+
 		if((found == false)||(lineNum != 0))
 		{
 			System.out.println("Initiliziation failed");
 			System.exit(0);
 		}
-		
+
 	}
 	inputReader.close();
 	bufferedInput.close();
@@ -56,7 +56,7 @@ public class ErrorManagement{
 	Iterator<Event> itr = eventList.iterator();
 	while(itr.hasNext()){
 		Event array = itr.next(); // You were just missing saving the value for reuse
-	    System.out.println(array.eventType());
+	    System.out.println(array.getClass());
 	}
 	}
 	//System.out.println(eventList.listIterator(0));

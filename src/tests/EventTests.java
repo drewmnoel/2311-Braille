@@ -4,171 +4,151 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Before;
 import org.junit.Test;
 
-import player.Event;
+import events.AudioEvent;
+import events.BrailleEvent;
+import events.ButtonEvent;
+import events.Event;
+import events.InitEvent;
+import events.JumpEvent;
+import events.TTSEvent;
 
 public class EventTests {
 	Event testEvent;
 
-	//Setting up Event class for testing each method
-	@Before
-	public void setUp() throws Exception {
-		testEvent = new Event();
-	}
-
-	//Testing isInitializeSim()
-	//Initialized with cell and button parameter and simulator initial event
-	//Testing for simulator initial event value
+	/**
+	 * Testing InitEvent() Using setDetails() to set cell and button parameters
+	 * Checking to see if Init Event executes and returns correct number of
+	 * lines to skip
+	 */
 	@Test
-	public void testIsInitializedSim(){
-		testEvent.setInitializeSim("10 10");
-		assertTrue(testEvent.isInitializeSim());
+	public void testInitializeSim() {
+		testEvent = new InitEvent();
+		testEvent.setDetails("10 10");
+		assertEquals(1, testEvent.execute());
 	}
 
-	//Testing isTTS()
-	//Using setTTS() method to set TTS event type and TTS eventDetails
-	//Checking to see if TTS event is of type TTS
+	/**
+	 * Testing TTSEvent() Using setDetails() method to set TTS event type and
+	 * TTS eventDetails Checking to see if TTS Event executes without exception
+	 * and returns correct number of lines to skip
+	 */
 	@Test
-	public void testIsTTS(){
-		testEvent.setTTS("This is testing TTS");
-		assertTrue(testEvent.isTTS());
+	public void testTTS() {
+		testEvent = new TTSEvent();
+		testEvent.setDetails("This is testing TTS");
+		assertEquals(1, testEvent.execute());
 	}
 
-	//Testing isAudioPlay()
-	//Using setAudio() to set Audio type and AudioPlay eventDetail
-	//Checking to see if Audio event is of type Audio
+	/**
+	 * Testing isAudioPlay() Using setDetails() to set AudioPlay eventDetail
+	 * Checking to see if Audio Event executes without exception and returns
+	 * correct number of lines to skip
+	 */
 	@Test
-	public void testIsAudioPlay(){
-		testEvent.setAudioPlay("music.wav");
-		assertTrue(testEvent.isAudioPlay());
+	public void testAudioPlay() {
+		testEvent = new AudioEvent();
+		testEvent.setDetails("finished.wav");
+		assertEquals(1, testEvent.execute());
 	}
 
-	//Testing isBraille()
-	//Using setBraille() to set Braille type and Braille eventDetail
-	//Checking to see if Braille event is of type Braille
+	/**
+	 * Testing isBraille() Using setBraille() to set Braille type and Braille
+	 * eventDetail Checking to see if Braille Event executes without exception
+	 * and returns correct number of lines to skip
+	 */
 	@Test
-	public void testIsSetBraille(){
-		testEvent.setBraille("two");
-		assertTrue(testEvent.isSetBraille());
+	public void testBraille() {
+		testEvent = new BrailleEvent();
+		testEvent.setDetails("two");
+		assertEquals(1, testEvent.execute());
 	}
 
-	//Testing isButton()
-	//Using setButton() to set Button type and Button eventDetail
-	//Checking to see if Button event is of type Button
+	/**
+	 * Testing ButtonEvent() Using setButton() to set Button type and Button
+	 * eventDetail Checking to see if Button Event can be created without
+	 * exception Cannot actually test the execute method since it relies on a
+	 * human button press This test just ensures there's no exception thrown
+	 */
 	@Test
-	public void testIsButton(){
-		testEvent.setButton("1 1 4");
-		assertTrue(testEvent.isButton());
+	public void testButton() {
+		testEvent = new ButtonEvent();
+		testEvent.setDetails("1 1 4");
 	}
 
-	//Testing isJump()
-	//Using setJump() to set unconditional jump and jump type
-	//Checking to see if Jump event is of type Jump
+	/**
+	 * Testing JumpEvent() Using setJump() to set unconditional jump and jump
+	 * type Checking to see if Jump Event can be executed without exception and
+	 * returns correct number of lines to skip
+	 */
 	@Test
-	public void testIsJump(){
-		testEvent.setJump("-6");
-		assertTrue(testEvent.isJump());
+	public void testIsJump() {
+		testEvent = new JumpEvent();
+		testEvent.setDetails("-6");
+		assertEquals(-6, testEvent.execute());
 	}
 
-
-	//Testing eventType() method
-	//Checking if the value returned matches that of event type assigned
-	@Test
-	public void testEventType(){
-		testEvent.setTTS("This is test");
-		assertEquals(0,testEvent.eventType());
-
-		testEvent.setAudioPlay("finished.wav");
-		assertEquals(1,testEvent.eventType());
-
-		testEvent.setBraille("two");;
-		assertEquals(2,testEvent.eventType());
-
-		testEvent.setButton("1 1 4");
-		assertEquals(3,testEvent.eventType());
-
-		testEvent.setJump("-5");
-		assertEquals(4,testEvent.eventType());
-
-		testEvent.setInitializeSim("3 10");
-		assertEquals(5,testEvent.eventType());
-	}
-
-	//Testing getEventDetails() method
-	//Checking if eventDetails matches the event details assigned to particular method
-	@Test
-	public void testGetEventDetails(){
-		testEvent.setTTS("This is test");
-		assertEquals("This is test",testEvent.getEventDetails());
-
-		testEvent.setAudioPlay("finished.wav");
-		assertEquals("finished.wav",testEvent.getEventDetails());
-
-		testEvent.setBraille("two");;
-		assertEquals("two",testEvent.getEventDetails());
-
-		testEvent.setButton("1 1 4");
-		assertEquals("1 1 4",testEvent.getEventDetails());
-
-		testEvent.setJump("-5");
-		assertEquals("-5",testEvent.getEventDetails());
-
-		testEvent.setInitializeSim("3 10");
-		assertEquals("3 10",testEvent.getEventDetails());
-	}
-
-	//Testing hasCaps() method
+	/**
+	 * Testing hasCaps() method
+	 */
 	@Test
 	public void testHasCaps() {
-		//strings with caps, should return true
-		assertTrue(testEvent.hasCaps("aAbc"));
-		assertTrue(testEvent.hasCaps("AAAbc deg  F"));
-		assertTrue(testEvent.hasCaps("abcdefghijklmnopqrstuvwxyZ"));
-		assertTrue(testEvent.hasCaps("Abcdefghijklmnopqurstuvwxyz"));
+		// strings with caps, should return true
+		assertTrue(BrailleEvent.hasCaps("aAbc"));
+		assertTrue(BrailleEvent.hasCaps("AAAbc deg  F"));
+		assertTrue(BrailleEvent.hasCaps("abcdefghijklmnopqrstuvwxyZ"));
+		assertTrue(BrailleEvent.hasCaps("Abcdefghijklmnopqurstuvwxyz"));
 
-		//strings with no caps, should return false
-		assertFalse(testEvent.hasCaps("abcdefghijklmnopqurstuvwxyz"));
-		assertFalse(testEvent.hasCaps("   "));
-		assertFalse(testEvent.hasCaps("@ g w 1 3 5"));
+		// strings with no caps, should return false
+		assertFalse(BrailleEvent.hasCaps("abcdefghijklmnopqurstuvwxyz"));
+		assertFalse(BrailleEvent.hasCaps("   "));
+		assertFalse(BrailleEvent.hasCaps("@ g w 1 3 5"));
 	}
 
-	//Testing addCapsCells() method
+	/**
+	 * Testing addCapsCells() method
+	 */
 	@Test
 	public void testAddCapsCells() {
-		//strings with no capitals, should be unchanged
-		assertEquals("abcd efg",testEvent.addCapsCells("abcd efg"));
-		assertEquals("d",testEvent.addCapsCells("d"));
-		assertEquals("12abc",testEvent.addCapsCells("12abc"));
-		assertEquals("0",testEvent.addCapsCells("0"));
-		assertEquals("   ",testEvent.addCapsCells("   "));
+		// strings with no capitals, should be unchanged
+		assertEquals("abcd efg", BrailleEvent.addCapsCells("abcd efg"));
+		assertEquals("d", BrailleEvent.addCapsCells("d"));
+		assertEquals("12abc", BrailleEvent.addCapsCells("12abc"));
+		assertEquals("0", BrailleEvent.addCapsCells("0"));
+		assertEquals("   ", BrailleEvent.addCapsCells("   "));
 
-		//strings with capitals, but not all capitals, should have tags
-		assertEquals("@abcd",testEvent.addCapsCells("Abcd"));
-		assertEquals("@ab cd e@f",testEvent.addCapsCells("Ab cd eF"));
-		assertEquals("@a@b@c@de@f",testEvent.addCapsCells("ABCDeF"));
+		// strings with capitals, but not all capitals, should have tags
+		assertEquals("@abcd", BrailleEvent.addCapsCells("Abcd"));
+		assertEquals("@ab cd e@f", BrailleEvent.addCapsCells("Ab cd eF"));
+		assertEquals("@a@b@c@de@f", BrailleEvent.addCapsCells("ABCDeF"));
 	}
 
+	/**
+	 * Testing hasDigits() method
+	 */
 	@Test
 	public void testHasDigits() {
-		assertFalse(testEvent.hasDigits(""));
-		assertFalse(testEvent.hasDigits("One"));
-		assertFalse(testEvent.hasDigits("f_i_v_e_r"));
+		assertFalse(BrailleEvent.hasDigits(""));
+		assertFalse(BrailleEvent.hasDigits("One"));
+		assertFalse(BrailleEvent.hasDigits("f_i_v_e_r"));
 
-		assertTrue(testEvent.hasDigits("0ne"));
-		assertTrue(testEvent.hasDigits("51,023,321"));
-		assertTrue(testEvent.hasDigits("0000000"));
+		assertTrue(BrailleEvent.hasDigits("0ne"));
+		assertTrue(BrailleEvent.hasDigits("51,023,321"));
+		assertTrue(BrailleEvent.hasDigits("0000000"));
 	}
 
+	/**
+	 * Testing addDigitCells() method
+	 */
 	@Test
 	public void testAddDigitCells() {
-		assertEquals("", testEvent.addDigitCells(""));
-		assertEquals("One", testEvent.addDigitCells("One"));
-		assertEquals("f_i_v_e_r", testEvent.addDigitCells("f_i_v_e_r"));
+		assertEquals("", BrailleEvent.addDigitCells(""));
+		assertEquals("One", BrailleEvent.addDigitCells("One"));
+		assertEquals("f_i_v_e_r", BrailleEvent.addDigitCells("f_i_v_e_r"));
 
-		assertEquals("#0ne", testEvent.addDigitCells("0ne"));
-		assertEquals("#51,#023,#321", testEvent.addDigitCells("51,023,321"));
-		assertEquals("#0000000", testEvent.addDigitCells("0000000"));
+		assertEquals("#0ne", BrailleEvent.addDigitCells("0ne"));
+		assertEquals("#51,#023,#321", BrailleEvent.addDigitCells("51,023,321"));
+		assertEquals("#0000000", BrailleEvent.addDigitCells("0000000"));
 	}
 }

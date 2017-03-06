@@ -50,6 +50,18 @@ public class Simulator {
 	LinkedList<BrailleCell> brailleList = new LinkedList<>();
 	JPanel southPanel = new JPanel();
 	JPanel centerPanel = new JPanel();
+	private static Simulator sc;
+
+	static {
+		sc = new Simulator();
+	}
+
+	/**
+	 * Dummy private constructor
+	 */
+	private Simulator() {
+
+	}
 
 	/**
 	 * Creates and displays a window with <code>brailleCellNumber</code> Braille
@@ -63,7 +75,7 @@ public class Simulator {
 	 * @throws IllegalArgumentException
 	 *             if one or both of the two parameters is negative or 0
 	 */
-	public Simulator(int brailleCellNumber, int jButtonNumber) {
+	public void init(int brailleCellNumber, int jButtonNumber) {
 
 		if (brailleCellNumber <= 0 || jButtonNumber <= 0)
 			throw new IllegalArgumentException("Non-positive integer entered.");
@@ -195,7 +207,6 @@ public class Simulator {
 
 	@SuppressWarnings("javadoc")
 	public static Simulator getInstance() {
-		Simulator sc = new Simulator(5, 3);
 		return sc;
 	}
 
