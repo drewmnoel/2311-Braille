@@ -7,6 +7,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import events.AudioEvent;
+import events.BrailleEvent;
+import events.ButtonEvent;
+import events.Event;
+import events.InitEvent;
+import events.JumpEvent;
+import events.TTSEvent;
+
 /**
  * File parser to parse Braille scenario files
  *
@@ -43,7 +51,7 @@ public class FileParser {
 	 *             is invalid
 	 */
 	public List<Event> parseFile() throws IOException {
-		List<Event> eventList = new ArrayList<Event>();
+		List<Event> eventList = new ArrayList<>();
 		String line;
 		File inputFile = new File(fileTarget);
 		FileReader inputReader = new FileReader(inputFile);
@@ -69,31 +77,32 @@ public class FileParser {
 		String eventType = getCommand(line);
 		String eventArgs = getArgs(line);
 
-		Event tempEvent = new Event();
+		Event tempEvent;
 
 		switch (eventType) {
 		case "TTS":
-			tempEvent.setTTS(eventArgs);
+			tempEvent = new TTSEvent();
 			break;
 		case "AUDIO":
-			tempEvent.setAudioPlay(eventArgs);
+			tempEvent = new AudioEvent();
 			break;
 		case "BRAILLE":
-			tempEvent.setBraille(eventArgs);
+			tempEvent = new BrailleEvent();
 			break;
 		case "BUTTON":
-			tempEvent.setButton(eventArgs);
+			tempEvent = new ButtonEvent();
 			break;
 		case "JUMP":
-			tempEvent.setJump(eventArgs);
+			tempEvent = new JumpEvent();
 			break;
 		case "INIT":
-			tempEvent.setInitializeSim(eventArgs);
+			tempEvent = new InitEvent();
 			break;
 		default:
 			bufferedInput.close();
 			throw new IOException("Invalid player command");
 		}
+		tempEvent.setDetails(eventArgs);
 		eventList.add(tempEvent);
 	}
 
