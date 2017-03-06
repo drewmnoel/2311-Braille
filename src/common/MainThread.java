@@ -2,6 +2,7 @@ package common;
 
 import java.util.List;
 
+import events.BrailleEvent;
 import events.Event;
 import player.FileParser;
 import simulator.Simulator;
@@ -24,28 +25,30 @@ public class MainThread implements Runnable {
 			fp.setFileTarget("test.txt");
 			//List of events parsed from input file. parseFile return is implemented as an array list
 			List<Event> eventList = fp.parseFile();
-			//Checking for possible errors with respect to
-			ErrorManagement.errorManage(eventList);
-
+			//Checking for possible errors with respect to cells and buttons
+			ErrorManagement.errorManage(eventList);			
 			//Temporary event object to hold events when iterating over eventList
 			Event iterEvent;
 
 			//Get the first event in eventList to initialize the simulator
 			iterEvent = eventList.get(0);
 			executeInitializeSim(iterEvent);
-
+			
 			//Keep track of the index of next event to execute
 			int index = 1;
 			//Keep track of how many steps to take as set by the current event being executed
 			int steps;
 			//Iterate over eventList until the whole sequence of events is over
-			while(index <= eventList.size() - 1 && index > 0) {
+			while(index <= eventList.size() - 1 && index > 0) {				
+	
 				//default is to go to the event immediately after this
 				steps = 1;
 				//set the next event in sequence
 				iterEvent = eventList.get(index);
 				//check what type of event iterEvent is, and execute it
 				steps = iterEvent.execute();
+				System.out.println("Steps = " + steps);
+				System.out.println("Event detail = " + iterEvent.getDetails());
 				//if a jump in event order is needed, set it here
 				index = index + steps;
 			}
@@ -57,12 +60,12 @@ public class MainThread implements Runnable {
 	}
 
 	/**
-	 * Method to execute a initialize simulator event Will create a simulator
-	 * with the specified number of buttons and cells in the event description
+	 * Method to execute a initialize simulator event
+	 * Will create a simulator with the specified number of buttons and
+	 * cells in the event description, and return this created simulator
 	 *
-	 * @param iterEvent
-	 *            Event whose description contains the number of buttons and
-	 *            cells
+	 * @param iterEvent Event whose description contains the number of buttons and cells
+	 * @return the newly initialized simulator
 	 */
 	private void executeInitializeSim(Event iterEvent) {
 		int buttons, cells;
@@ -71,9 +74,11 @@ public class MainThread implements Runnable {
 		buttons = Integer.parseInt(iterEvent.getDetails().split(" ", -1)[0]);
 		//parse the second number in thisEvent's details to integer cells
 		cells = Integer.parseInt(iterEvent.getDetails().split(" ", -1)[1]);
-
+		
 		newSim = Simulator.getInstance();
 		newSim.init(cells, buttons);
+		//Checking if button that exists is being operated on
+		ErrorManagement.checkButtons(iterEvent, newSim);
 	}
 }
 
