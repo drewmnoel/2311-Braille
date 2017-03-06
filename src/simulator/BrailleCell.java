@@ -62,8 +62,19 @@ public class BrailleCell {
 		alphabet.put('x', "11001100");
 		alphabet.put('y', "11011100");
 		alphabet.put('z', "10011100");
+		alphabet.put('1', "10000000");
+		alphabet.put('2', "10100000");
+		alphabet.put('3', "11000000");
+		alphabet.put('4', "11010000");
+		alphabet.put('5', "10010000");
+		alphabet.put('6', "11100000");
+		alphabet.put('7', "11110000");
+		alphabet.put('8', "10110000");
+		alphabet.put('9', "01100000");
+		alphabet.put('0', "01110000");
 		alphabet.put(' ', "00000000");
-		alphabet.put('»', "00000100");
+		alphabet.put('Â»', "00000100");
+		alphabet.put('#', "01011100");
 
 	}
 
