@@ -1,6 +1,7 @@
 package events;
 
 import player.AudioPlayer;
+import player.PlayerException;
 
 /**
  * Representation of an Audio Event in the scenario. Events are created by
@@ -22,15 +23,11 @@ public class AudioEvent extends Event {
 	 * @return 1, indicates go to next event in sequence
 	 */
 	@Override
-	public int execute() {
+	public int execute() throws PlayerException {
 		AudioPlayer ap = new AudioPlayer();
 
-		//catch possible exceptions in opening audio file
-		try {
-			//play audio file specified in thisEvent's details
-			ap.playFile(getDetails());
-		} catch (Exception e) {}
-		//go to next event in list
+		//play audio file specified in thisEvent's details
+		ap.playFile(getDetails());
 		return 1;
 	}
 

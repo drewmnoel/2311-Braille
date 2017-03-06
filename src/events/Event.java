@@ -1,5 +1,7 @@
 package events;
 
+import player.PlayerException;
+
 /**
  * Abstract representation of an Event in the scenario. This class shall not be
  * instantiated directly since it is abstract. Rather, one of the following
@@ -22,5 +24,5 @@ abstract public class Event {
 		return this.details;
 	}
 
-	abstract public int execute();
+	abstract public int execute() throws PlayerException;
 }

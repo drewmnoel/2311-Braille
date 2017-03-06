@@ -20,20 +20,15 @@ public class TextToSpeech {
 	/**
 	 * Create a new TTS bot with default voice
 	 *
-	 * @throws TTSException
-	 *             Exception is thrown if any general engine failure occurs or
-	 *             if the voice could not be loaded.
+	 * @throws EngineException
+	 *             Exception is thrown if a general engine failure occurs.
 	 */
-	public TextToSpeech() throws TTSException {
+	public TextToSpeech() throws EngineException {
 		// Required so that we don't require a properties file
 		System.setProperty("FreeTTSSynthEngineCentral", "com.sun.speech.freetts.jsapi.FreeTTSEngineCentral");
 
 		// Register FreeTTS as our engine of choice
-		try {
-			Central.registerEngineCentral("com.sun.speech.freetts.jsapi.FreeTTSEngineCentral");
-		} catch (EngineException e) {
-			throw new TTSException("Could not register the FreeTTS Engine", e);
-		}
+		Central.registerEngineCentral("com.sun.speech.freetts.jsapi.FreeTTSEngineCentral");
 
 		// Create the voice from the FreeTTS library
 		VoiceManager voiceManager = VoiceManager.getInstance();
@@ -48,11 +43,8 @@ public class TextToSpeech {
 	 *
 	 * @param text
 	 *            The text to read aloud
-	 * @throws TTSException
-	 *             Exception is thrown if the audio could not be played or the
-	 *             current thread is interrupted while playing the audio
 	 */
-	public void say(String text) throws TTSException {
+	public void say(String text) {
 		voice.speak(text);
 	}
 }

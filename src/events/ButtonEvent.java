@@ -2,6 +2,7 @@ package events;
 
 import common.JumpButtonListener;
 import common.SharedObject;
+import player.PlayerException;
 import simulator.Simulator;
 
 /**
@@ -17,7 +18,7 @@ import simulator.Simulator;
 public class ButtonEvent extends Event {
 
 	@Override
-	public int execute() {
+	public int execute() throws PlayerException {
 		// Access the simulator singleton
 		Simulator sim = Simulator.getInstance();
 
@@ -37,7 +38,10 @@ public class ButtonEvent extends Event {
 		while (sharedObject.getId() == -1) {
 			try {
 				Thread.sleep(5);
-			} catch (InterruptedException e) {}
+			} catch (InterruptedException e) {
+				// The thread was interrupted, we should probably exit
+				throw new PlayerException("The program was interrupted", e);
+			}
 		}
 
 		// Shared Object now contains the number of the button that was pressed.

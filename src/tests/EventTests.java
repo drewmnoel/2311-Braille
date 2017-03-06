@@ -13,6 +13,7 @@ import events.Event;
 import events.InitEvent;
 import events.JumpEvent;
 import events.TTSEvent;
+import player.PlayerException;
 
 public class EventTests {
 	Event testEvent;
@@ -23,7 +24,7 @@ public class EventTests {
 	 * lines to skip
 	 */
 	@Test
-	public void testInitializeSim() {
+	public void testInitializeSim() throws PlayerException {
 		testEvent = new InitEvent();
 		testEvent.setDetails("10 10");
 		assertEquals(1, testEvent.execute());
@@ -35,7 +36,7 @@ public class EventTests {
 	 * and returns correct number of lines to skip
 	 */
 	@Test
-	public void testTTS() {
+	public void testTTS() throws PlayerException {
 		testEvent = new TTSEvent();
 		testEvent.setDetails("This is testing TTS");
 		assertEquals(1, testEvent.execute());
@@ -47,7 +48,7 @@ public class EventTests {
 	 * correct number of lines to skip
 	 */
 	@Test
-	public void testAudioPlay() {
+	public void testAudioPlay() throws PlayerException {
 		testEvent = new AudioEvent();
 		testEvent.setDetails("finished.wav");
 		assertEquals(1, testEvent.execute());
@@ -59,7 +60,7 @@ public class EventTests {
 	 * and returns correct number of lines to skip
 	 */
 	@Test
-	public void testBraille() {
+	public void testBraille() throws PlayerException {
 		testEvent = new BrailleEvent();
 		testEvent.setDetails("two");
 		assertEquals(1, testEvent.execute());
@@ -83,7 +84,7 @@ public class EventTests {
 	 * returns correct number of lines to skip
 	 */
 	@Test
-	public void testIsJump() {
+	public void testIsJump() throws PlayerException {
 		testEvent = new JumpEvent();
 		testEvent.setDetails("-6");
 		assertEquals(-6, testEvent.execute());

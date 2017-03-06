@@ -24,8 +24,8 @@ public class AudioPlayer {
 	/**
 	 * Create an audio player with default settings
 	 */
-	
-	
+
+
 	public AudioPlayer() {
 	}
 
@@ -42,7 +42,7 @@ public class AudioPlayer {
 	 * @throws UnsupportedAudioFileException
 	 * @throws LineUnavailableException
 	 */
-	public void playFile(String fileName) {
+	public void playFile(String fileName) throws PlayerException {
 		File file = new File(fileName);
 
 		try {
@@ -51,24 +51,24 @@ public class AudioPlayer {
 			DataLine.Info info = new DataLine.Info(Clip.class, format);
 			Clip audioClip = (Clip) AudioSystem.getLine(info);
 			audioClip.open(stream);
-			
+
 			// Add a custom listener which auto-closes the clip when done
 			audioClip.addLineListener(new LineListener() {
 				@Override
 				public void update(LineEvent event) {
-					if (event.getType() == LineEvent.Type.STOP)	
+					if (event.getType() == LineEvent.Type.STOP)
 						audioClip.close();
 				}
 			});
-			
+
 			audioClip.start();
-			
+
 		} catch (UnsupportedAudioFileException e) {
-			e.printStackTrace();
+			throw new PlayerException("An unsupported audio file was given. Only WAV files are currently supported.", e);
 		} catch (LineUnavailableException e) {
-			e.printStackTrace();
+			throw new PlayerException("Output audio sink could not be accessed", e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new PlayerException("Reading audio file failed", e);
 		}
 
 	}
