@@ -57,12 +57,12 @@ public class MainThread implements Runnable {
 	}
 
 	/**
-	 * Method to execute a initialize simulator event
-	 * Will create a simulator with the specified number of buttons and
-	 * cells in the event description, and return this created simulator
+	 * Method to execute a initialize simulator event Will create a simulator
+	 * with the specified number of buttons and cells in the event description
 	 *
-	 * @param iterEvent Event whose description contains the number of buttons and cells
-	 * @return the newly initialized simulator
+	 * @param iterEvent
+	 *            Event whose description contains the number of buttons and
+	 *            cells
 	 */
 	private void executeInitializeSim(Event iterEvent) {
 		int buttons, cells;
