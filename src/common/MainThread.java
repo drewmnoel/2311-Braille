@@ -44,7 +44,7 @@ public class MainThread implements Runnable {
 			//Keep track of how many steps to take as set by the current event being executed
 			int steps;
 			//Iterate over eventList until the whole sequence of events is over
-			while(index <= eventList.size() - 1) {
+			while(index <= eventList.size() - 1 && index > 1) {
 				//default is to go to the event immediately after this
 				steps = 1;
 				//set the next event in sequence
@@ -189,6 +189,8 @@ public class MainThread implements Runnable {
 	private int executeJump(Event thisEvent) {
 		int jump;
 		jump = Integer.parseInt(thisEvent.getEventDetails().split(" ", -1)[0]);
+		if (jump == 0)
+			jump = 1;
 		return jump;
 	}
 	
