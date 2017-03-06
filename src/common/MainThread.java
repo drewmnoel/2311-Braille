@@ -32,7 +32,7 @@ public class MainThread implements Runnable {
 
 			//Get the first event in eventList to initialize the simulator
 			iterEvent = eventList.get(0);
-			Simulator sim = executeInitializeSim(iterEvent);
+			executeInitializeSim(iterEvent);
 
 			//Keep track of the index of next event to execute
 			int index = 1;
@@ -64,7 +64,7 @@ public class MainThread implements Runnable {
 	 * @param iterEvent Event whose description contains the number of buttons and cells
 	 * @return the newly initialized simulator
 	 */
-	private Simulator executeInitializeSim(Event iterEvent) {
+	private void executeInitializeSim(Event iterEvent) {
 		int buttons, cells;
 		Simulator newSim;
 		//parse the first number in thisEvent's details to integer buttons
@@ -72,8 +72,8 @@ public class MainThread implements Runnable {
 		//parse the second number in thisEvent's details to integer cells
 		cells = Integer.parseInt(iterEvent.getDetails().split(" ", -1)[1]);
 
-		newSim = new Simulator(cells, buttons);
-		return newSim;
+		newSim = Simulator.getInstance();
+		newSim.init(cells, buttons);
 	}
 
 	/**
