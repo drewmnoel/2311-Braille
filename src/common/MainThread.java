@@ -2,7 +2,6 @@ package common;
 
 import java.util.List;
 
-import events.BrailleEvent;
 import events.Event;
 import player.FileParser;
 import simulator.Simulator;
