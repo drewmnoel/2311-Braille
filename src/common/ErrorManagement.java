@@ -4,13 +4,24 @@ import java.util.List;
 
 import events.*;
 
+/**
+ * This class acts as a validation utility to ensure that the events as read by
+ * the file are sane and contain no errors. A list of events is considered valid
+ * if: there is exactly one INIT event and it is the first in the list, there
+ * are between 1 and 8 buttons, there are between 1 and 10 cells. Additionally,
+ * all BUTTON events must not reference more buttons than were declared in INIT
+ * and nor set a braille string with more cells than were declared in the INIT.
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-03-05
+ */
+public class ErrorManagement {
 
-public class ErrorManagement{
-	
-	
 	/**
-	 * Wrapper method to run checkInitFirst(), checkMultiInit(), checkButtons() and checkCells()
-	 *  
+	 * Wrapper method to run checkInitFirst(), checkMultiInit(), checkButtons()
+	 * and checkCells()
+	 *
 	 * @param eventList
 	 * @throws Exception
 	 */
@@ -22,10 +33,11 @@ public class ErrorManagement{
 	}
 	
 	/**
-	 * Checks if there is an INIT event is on the first line, and if so does
-	 * the INIT event declares a number of buttons and cells in the accepted range
-	 * 
-	 * @param eventList list of events parsed from player file
+	 * Checks if there is an INIT event is on the first line, and if so does the
+	 * INIT event declares a number of buttons and cells in the accepted range
+	 *
+	 * @param eventList
+	 *            list of events parsed from player file
 	 * @throws Exception
 	 */
 	private static void checkInitFirst(List<Event> eventList) throws Exception{		
@@ -57,10 +69,11 @@ public class ErrorManagement{
 	}
 
 	/**
-	 * Checks if there is more than one INIT event in the event lsit
-	 * If so, throws an exception
-	 * 
-	 * @param eventList list of events parsed from player file
+	 * Checks if there is more than one INIT event in the event lsit If so,
+	 * throws an exception
+	 *
+	 * @param eventList
+	 *            list of events parsed from player file
 	 * @throws Exception
 	 */
 	private static void checkMultiInit(List<Event> eventList) throws Exception {
@@ -77,9 +90,12 @@ public class ErrorManagement{
 	}
 	
 	/**
-	 * Checks if any BUTTON Events use a button that hasn't been initialized in the simulator
-	 * If one or more is found, throws an exception with a description that a ButtonEvent was not properly defined
-	 * @param eventList List of events parsed from player file
+	 * Checks if any BUTTON Events use a button that hasn't been initialized in
+	 * the simulator If one or more is found, throws an exception with a
+	 * description that a ButtonEvent was not properly defined
+	 *
+	 * @param eventList
+	 *            List of events parsed from player file
 	 * @throws Exception
 	 */
 	private static void checkButtons(List<Event> eventList) throws Exception {
@@ -101,8 +117,10 @@ public class ErrorManagement{
 	}
 	
 	/**
-	 * Checks if any BRAILLE Event use a braille cell that hasn't been initialized in the simulator
-	 * If one or more is found, throws an exception with a description that a BrailleEvent was not properly defined
+	 * Checks if any BRAILLE Event use a braille cell that hasn't been
+	 * initialized in the simulator If one or more is found, throws an exception
+	 * with a description that a BrailleEvent was not properly defined
+	 *
 	 * @param eventList
 	 * @throws Exception
 	 */
