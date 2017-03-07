@@ -17,6 +17,9 @@ import events.TTSEvent;
 
 /**
  * File parser to parse Braille scenario files
+ * The constructor initializes the class and sets the file to be read.
+ * Using parseFile and parseEventType each line is read and broken down 
+ * into events and assigned corresponding event details to them.
  *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
