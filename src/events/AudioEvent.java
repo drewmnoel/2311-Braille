@@ -26,7 +26,7 @@ public class AudioEvent extends Event {
 	public int execute() throws PlayerException {
 		AudioPlayer ap = new AudioPlayer();
 
-		//play audio file specified in thisEvent's details
+		// play audio file specified in thisEvent's details
 		ap.playFile(getDetails());
 		return 1;
 	}

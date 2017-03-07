@@ -19,40 +19,44 @@ public class MainThread implements Runnable {
 	public void run() {
 
 		try {
-			//File parser to parse events from input file
+			// File parser to parse events from input file
 			FileParser fp = new FileParser();
 			fp.setFileTarget("test.txt");
-			//List of events parsed from input file. parseFile return is implemented as an array list
+			// List of events parsed from input file. parseFile return is
+			// implemented as an array list
 			List<Event> eventList = fp.parseFile();
-			//Checking for possible errors with respect to cells and buttons
+			// Checking for possible errors with respect to cells and buttons
 			ErrorManagement.checkEventError(eventList);
-			
-			//Temporary event object to hold events when iterating over eventList
+
+			// Temporary event object to hold events when iterating over
+			// eventList
 			Event iterEvent;
 
-			//Get the first event in eventList to initialize the simulator
+			// Get the first event in eventList to initialize the simulator
 			iterEvent = eventList.get(0);
 			executeInitializeSim(iterEvent);
-			
-			//Keep track of the index of next event to execute
+
+			// Keep track of the index of next event to execute
 			int index = 1;
-			//Keep track of how many steps to take as set by the current event being executed
+			// Keep track of how many steps to take as set by the current event
+			// being executed
 			int steps;
-			//Iterate over eventList until the whole sequence of events is over
-			while(index <= eventList.size() - 1 && index > 0) {				
-	
-				//default is to go to the event immediately after this
+			// Iterate over eventList until the whole sequence of events is over
+			while (index <= eventList.size() - 1 && index > 0) {
+
+				// default is to go to the event immediately after this
 				steps = 1;
-				//set the next event in sequence
+				// set the next event in sequence
 				iterEvent = eventList.get(index);
-				//check what type of event iterEvent is using polymorphism, and execute it
+				// check what type of event iterEvent is using polymorphism, and
+				// execute it
 				steps = iterEvent.execute();
 				System.out.println("Steps = " + steps);
 				System.out.println("Event detail = " + iterEvent.getDetails());
-				//if a jump in event order is needed, set it here
+				// if a jump in event order is needed, set it here
 				index = index + steps;
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			System.err.println("Critical Error occured!");
 			e.printStackTrace(System.err);
 		}
@@ -60,24 +64,24 @@ public class MainThread implements Runnable {
 	}
 
 	/**
-	 * Method to execute a initialize simulator event
-	 * Will create a simulator with the specified number of buttons and
-	 * cells in the event description
+	 * Method to execute a initialize simulator event Will create a simulator
+	 * with the specified number of buttons and cells in the event description
 	 *
-	 * @param iterEvent Event whose description contains the number of buttons and cells
+	 * @param iterEvent
+	 *            Event whose description contains the number of buttons and
+	 *            cells
 	 */
 	private void executeInitializeSim(Event iterEvent) {
 		int buttons, cells;
 		Simulator newSim;
-		//parse the first number in thisEvent's details to integer buttons
+		// parse the first number in thisEvent's details to integer buttons
 		buttons = Integer.parseInt(iterEvent.getDetails().split(" ", -1)[0]);
-		//parse the second number in thisEvent's details to integer cells
+		// parse the second number in thisEvent's details to integer cells
 		cells = Integer.parseInt(iterEvent.getDetails().split(" ", -1)[1]);
-		
+
 		newSim = Simulator.getInstance();
 		newSim.init(cells, buttons);
-		//Checking if button that exists is being operated on
-		//ErrorManagement.checkButtons(iterEvent, newSim);
+		// Checking if button that exists is being operated on
+		// ErrorManagement.checkButtons(iterEvent, newSim);
 	}
 }
-

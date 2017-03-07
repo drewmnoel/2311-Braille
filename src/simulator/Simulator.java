@@ -206,7 +206,8 @@ public class Simulator {
 	}
 
 	/**
-	 * Singleton access for the simulator GUI. Added to ensure only one copy of the UI exists at once.
+	 * Singleton access for the simulator GUI. Added to ensure only one copy of
+	 * the UI exists at once.
 	 *
 	 * @return Single reference to the user interface
 	 */

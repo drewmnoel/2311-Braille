@@ -11,7 +11,8 @@ import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
- * Basic implementation of an Audio Player to play select filetypes. Currently only WAV files are supported.
+ * Basic implementation of an Audio Player to play select filetypes. Currently
+ * only WAV files are supported.
  *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
@@ -52,8 +53,7 @@ public class AudioPlayer {
 			audioClip.close();
 
 		} catch (UnsupportedAudioFileException e) {
-			throw new PlayerException("An unsupported audio file was given. Only WAV files are currently supported",
-					e);
+			throw new PlayerException("An unsupported audio file was given. Only WAV files are currently supported", e);
 		} catch (LineUnavailableException e) {
 			throw new PlayerException("Output audio sink could not be accessed", e);
 		} catch (IOException e) {

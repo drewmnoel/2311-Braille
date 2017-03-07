@@ -35,7 +35,7 @@ public class TextToSpeech {
 		voice = voiceManager.getVoice(VOICE_NAME);
 
 		// Finish creation of the voice
-        voice.allocate();
+		voice.allocate();
 	}
 
 	/**
