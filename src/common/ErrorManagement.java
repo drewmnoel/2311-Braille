@@ -1,12 +1,5 @@
 package common;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.LineNumberReader;
-import java.util.Iterator;
 import java.util.List;
 
 import events.*;
@@ -14,27 +7,36 @@ import events.*;
 
 public class ErrorManagement{
 	
+	
 	/**
-	 * Checks for errors associated with INIT events
-	 * If there is an INIT event is on the first line
-	 * If the INIT event declares a number of buttons and cells in the accepted range
-	 * There are no INIT events anywhere else in the player file
-	 * Throws an exception if any of the above is false
+	 * Wrapper method to run checkInitFirst(), checkMultiInit(), checkButtons() and checkCells()
+	 *  
+	 * @param eventList
+	 * @throws Exception
+	 */
+	public static void checkEventError(List<Event> eventList) throws Exception {
+		checkInitFirst(eventList);
+		checkMultiInit(eventList);
+		checkButtons(eventList);
+		checkCells(eventList);
+	}
+	
+	/**
+	 * Checks if there is an INIT event is on the first line, and if so does
+	 * the INIT event declares a number of buttons and cells in the accepted range
 	 * 
 	 * @param eventList list of events parsed from player file
 	 * @throws Exception
 	 */
-	public static void checkInit(List<Event> eventList) throws Exception{		
+	private static void checkInitFirst(List<Event> eventList) throws Exception{		
 		//Get the first event
 		Event iterEvent = eventList.get(0);
 		
 		int buttons;
 		int cells;
-		//keep track of whether an INIT 
-		boolean found = false;
+		
 		//Check if first event is an INIT event
 		if(iterEvent instanceof events.InitEvent) {
-			found = true;
 			//parse declared number of buttons and cells 
 			buttons = Integer.parseInt(iterEvent.getDetails().split(" ", -1)[0]);
 			cells = Integer.parseInt(iterEvent.getDetails().split(" ", -1)[1]);
@@ -52,7 +54,17 @@ public class ErrorManagement{
 		else {
 			throw new Exception("Error: First event is not an INIT event");
 		}
-		
+	}
+
+	/**
+	 * Checks if there is more than one INIT event in the event lsit
+	 * If so, throws an exception
+	 * 
+	 * @param eventList list of events parsed from player file
+	 * @throws Exception
+	 */
+	private static void checkMultiInit(List<Event> eventList) throws Exception {
+		Event iterEvent;
 		//iterate over events to see if there are other INIT events
 		for(int i = 1; i < eventList.size(); i++) {
 			//If another INIT event is found
@@ -62,7 +74,6 @@ public class ErrorManagement{
 				throw new Exception("Error: Can only have one INIT event in a player file");
 			}
 		}
-		
 	}
 	
 	/**
@@ -71,7 +82,7 @@ public class ErrorManagement{
 	 * @param eventList List of events parsed from player file
 	 * @throws Exception
 	 */
-	public static void checkButtons(List<Event> eventList) throws Exception {
+	private static void checkButtons(List<Event> eventList) throws Exception {
 		//parse the number of buttons in simulator from InitEvent
 		int buttons = Integer.parseInt(eventList.get(0).getDetails().split(" ", -1)[0]);
 		
@@ -95,7 +106,7 @@ public class ErrorManagement{
 	 * @param eventList
 	 * @throws Exception
 	 */
-	public static void checkCells(List<Event> eventList) throws Exception {
+	private static void checkCells(List<Event> eventList) throws Exception {
 		//Parse the number of cells in simulator from InitEvent
 		int cells = Integer.parseInt(eventList.get(0).getDetails().split(" ", -1)[1]);
 		

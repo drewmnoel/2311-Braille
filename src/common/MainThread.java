@@ -26,9 +26,8 @@ public class MainThread implements Runnable {
 			//List of events parsed from input file. parseFile return is implemented as an array list
 			List<Event> eventList = fp.parseFile();
 			//Checking for possible errors with respect to cells and buttons
-			ErrorManagement.checkInit(eventList);
-			ErrorManagement.checkButtons(eventList);
-			ErrorManagement.checkCells(eventList);
+			ErrorManagement.checkEventError(eventList);
+			
 			//Temporary event object to hold events when iterating over eventList
 			Event iterEvent;
 
