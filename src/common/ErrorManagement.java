@@ -30,9 +30,11 @@ public class ErrorManagement{
 		
 		int buttons;
 		int cells;
-		
+		//keep track of whether an INIT 
+		boolean found = false;
 		//Check if first event is an INIT event
 		if(iterEvent instanceof events.InitEvent) {
+			found = true;
 			//parse declared number of buttons and cells 
 			buttons = Integer.parseInt(iterEvent.getDetails().split(" ", -1)[0]);
 			cells = Integer.parseInt(iterEvent.getDetails().split(" ", -1)[1]);

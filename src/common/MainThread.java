@@ -22,7 +22,7 @@ public class MainThread implements Runnable {
 		try {
 			//File parser to parse events from input file
 			FileParser fp = new FileParser();
-			fp.setFileTarget("testexception.txt");
+			fp.setFileTarget("test.txt");
 			//List of events parsed from input file. parseFile return is implemented as an array list
 			List<Event> eventList = fp.parseFile();
 			//Checking for possible errors with respect to cells and buttons
