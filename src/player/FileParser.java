@@ -51,14 +51,19 @@ public class FileParser {
 	 *             is invalid
 	 */
 	public List<Event> parseFile() throws IOException {
+		//Setup eventList to store events information
 		List<Event> eventList = new ArrayList<>();
 		String line;
+		//initialize file reading
 		File inputFile = new File(fileTarget);
 		FileReader inputReader = new FileReader(inputFile);
 		BufferedReader bufferedInput = new BufferedReader(inputReader);
+		//Read until all text has been read and assign event details to eventList 
+		//based on event invoked
 		while ((line = bufferedInput.readLine()) != null) {
 			parseEventType(eventList, line, bufferedInput);
 		}
+		//Close stream and return eventList
 		inputReader.close();
 		bufferedInput.close();
 		return eventList;
@@ -74,11 +79,13 @@ public class FileParser {
 	 */
 
 	private void parseEventType(List<Event> eventList, String line, BufferedReader bufferedInput) throws IOException {
+		//Determine which event was invoked
 		String eventType = getCommand(line);
+		//Get event information 
 		String eventArgs = getArgs(line);
 
 		Event tempEvent;
-
+		//Start an event based on which one has been invoked in test file
 		switch (eventType) {
 		case "TTS":
 			tempEvent = new TTSEvent();

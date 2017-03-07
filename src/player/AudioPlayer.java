@@ -35,23 +35,28 @@ public class AudioPlayer {
 	 *             exception is chained with the source of the problem.
 	 */
 	public void playFile(String fileName) throws PlayerException {
+		//initialize file and set buffer size
 		File file = new File(fileName);
 		byte[] buffer = new byte[4096];
+		
 		try {
+			//Opens up audio stream to fileName
 			AudioInputStream stream = AudioSystem.getAudioInputStream(file);
+			//Acquires audio format of sound data from audio stream 
 			AudioFormat format = stream.getFormat();
+			//obtains data line to which sound bytes can be written to
 			SourceDataLine audioClip = AudioSystem.getSourceDataLine(format);
 			audioClip.open(format);
 			audioClip.start();
-
+			//Retrieves length of buffer and writes audio bytes until all bytes have been read 
 			while (stream.available() > 0) {
 				int len = stream.read(buffer);
 				audioClip.write(buffer, 0, len);
 			}
-
+			//drains out bytes and closes data line
 			audioClip.drain();
 			audioClip.close();
-
+		//Catches different exceptions
 		} catch (UnsupportedAudioFileException e) {
 			throw new PlayerException("An unsupported audio file was given. Only WAV files are currently supported", e);
 		} catch (LineUnavailableException e) {

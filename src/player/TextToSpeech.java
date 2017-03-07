@@ -6,7 +6,10 @@ import javax.speech.EngineException;
 import com.sun.speech.freetts.VoiceManager;
 
 /**
- * Implementation of a basic TTS bot
+ * Uses freetts library to implement a TTS bot that takes text from text file
+ * and reads it aloud. This class declares bot voice, defines engine and 
+ * sets up voice using VoiceManager. It accepts string text and reads text
+ * through speakers.
  *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
