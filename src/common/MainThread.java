@@ -1,6 +1,10 @@
 package common;
 
 import java.util.List;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import events.Event;
 import player.FileParser;
@@ -15,10 +19,23 @@ import simulator.Simulator;
  * @since 2017-02-02
  */
 public class MainThread implements Runnable {
+	/** The relative path and name of the output log */
+	private static final String OUTPUT_LOG = "error.log";
+	/** The logging granularity */
+	private static final Level LOGGER_LEVEL = Level.WARNING;
+
+	private Logger globalLogger = Logger.getGlobal();
+
 	@Override
 	public void run() {
 
 		try {
+			// Create the logger
+			FileHandler fh = new FileHandler(OUTPUT_LOG);
+			fh.setFormatter(new SimpleFormatter());
+			globalLogger.addHandler(fh);
+			globalLogger.setLevel(LOGGER_LEVEL);
+
 			// File parser to parse events from input file
 			FileParser fp = new FileParser();
 			fp.setFileTarget("test.txt");
@@ -51,14 +68,13 @@ public class MainThread implements Runnable {
 				// check what type of event iterEvent is using polymorphism, and
 				// execute it
 				steps = iterEvent.execute();
-				System.out.println("Steps = " + steps);
-				System.out.println("Event detail = " + iterEvent.getDetails());
+				globalLogger.info("Steps = " + steps);
+				globalLogger.info("Event detail = " + iterEvent.getDetails());
 				// if a jump in event order is needed, set it here
 				index = index + steps;
 			}
 		} catch (Exception e) {
-			System.err.println("Critical Error occured!");
-			e.printStackTrace(System.err);
+			globalLogger.log(Level.SEVERE, "Critical Error occured!", e);
 		}
 
 	}

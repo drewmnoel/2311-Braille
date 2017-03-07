@@ -1,6 +1,7 @@
 package common;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import events.Event;
 
@@ -82,7 +83,7 @@ public class ErrorManagement {
 		for (int i = 1; i < eventList.size(); i++) {
 			// If another INIT event is found
 			iterEvent = eventList.get(i);
-			System.out.println(iterEvent.getDetails());
+			Logger.getGlobal().severe(iterEvent.getDetails());
 			if (iterEvent instanceof events.InitEvent) {
 				throw new Exception("Error: Can only have one INIT event in a player file");
 			}
