@@ -26,7 +26,8 @@ public class FileParserTest {
 
 	FileParser fpTest;
 	FileParser fpTestException;
-	
+
+	/** Placeholder to define that no exceptions should be thrown*/
 	@Rule
 	public final ExpectedException exception = ExpectedException.none();
 	
