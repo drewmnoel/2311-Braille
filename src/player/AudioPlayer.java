@@ -12,7 +12,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  * Basic implementation of an Audio Player to play select filetypes. Currently
- * only WAV files are supported.
+ * only WAV, AU, AIFF, and MIDI files are supported.
  *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
@@ -22,7 +22,7 @@ public class AudioPlayer {
 	/**
 	 * Play a given audio file. Attempts to open the file (given in either
 	 * relative or absolute path) and play it through the default audio sink.
-	 * Supports only WAV files. Method will begin and wait until audio file is
+	 * Supports WAV, AU, AIFF and MIDI files. Method will begin and wait until audio file is
 	 * completed before returning. Since this will tie the current thread until
 	 * the file is done playing, using another thread may be desired.
 	 *
