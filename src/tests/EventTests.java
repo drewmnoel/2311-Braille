@@ -88,9 +88,6 @@ public class EventTests {
 	 * eventDetail Checking to see if Button Event can be created without
 	 * exception Cannot actually test the execute method since it relies on a
 	 * human button press This test just ensures there's no exception thrown
-	 *
-	 * @throws PlayerException
-	 *             Thrown if the execute method throws the exception.
 	 */
 	@Test
 	public void testButton() {
