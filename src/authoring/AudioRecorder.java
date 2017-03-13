@@ -87,6 +87,7 @@ public class AudioRecorder {
     
     /**
      * Method to set the name of the audio file to be recorded 
+     * Hook this up to GUI file to enter file name
      * @param fileName file path and name of the file
      */
     public void setFileName(String fileName) {
