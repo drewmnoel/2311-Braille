@@ -16,7 +16,7 @@ public class AudioRecorder {
 	DataLine.Info info;
 	 
 	/**
-     * Specifies audio format parameters, such as sampling rate
+     * Method to specify audio format parameters, such as sampling rate
      * and number of audio channels
      * 
      * Returns an AudioFormat object set to these parameters
@@ -32,7 +32,9 @@ public class AudioRecorder {
         return format;
     } 
 	
-    
+    /**
+     * Method to set and configure the audio line in
+     */
     private void setAudioLine() {
     	try {
     		//set audio line information to that specified by AudioFormat
@@ -44,6 +46,7 @@ public class AudioRecorder {
             }
     		//sets the audio line
             line = (TargetDataLine) AudioSystem.getLine(info);
+            line.open(format);
     	}catch (LineUnavailableException ex) {
     		//catch exceptions if data line does not set properly
             ex.printStackTrace();
@@ -51,7 +54,39 @@ public class AudioRecorder {
     }
     
     /**
-     * Sets the name of the audio file to be recorded 
+     * Method to start recording audio
+     * Hook this up to play button in GUI
+     * wavFile must be set by setFileName beforehand
+     * info and line must be set by setAudioLine beforehand
+     * Recording is stopped by method stopRecording
+     */
+    public void recordAudio() {
+    	try {
+    		//Sets the audio line in
+    		this.setAudioLine();
+    		//start capturing from line in
+    		line.start();
+    		//create audio input stream
+    		AudioInputStream ais = new AudioInputStream(line);
+    		//start recording
+    		AudioSystem.write(ais, fileType, wavFile);
+    		
+    	}catch(IOException e) {
+    		e.printStackTrace();
+    	}
+    }
+    /**
+     * Method to stop audio recording
+     * Stops and closes the line in
+     * Hook this up with stop button in GUI
+     */
+    public void stopRecording() {
+    	line.stop();
+    	line.close();
+    }
+    
+    /**
+     * Method to set the name of the audio file to be recorded 
      * @param fileName file path and name of the file
      */
     public void setFileName(String fileName) {
