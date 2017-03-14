@@ -7,15 +7,17 @@ import java.awt.event.*;
 public class AudioGUI extends JFrame implements ActionListener{
 	private JButton btnStart = new JButton("Start");
 	private JButton btnStop = new JButton("Stop");
+	private JButton readFile =  new JButton("Read Audio File");
 	AudioThread audioThread;
 		
-	public void AudioGUI(){
+	public AudioGUI(){
 		audioThread = new AudioThread();
 		setTitle("AudioRecorder");
 		
 		getContentPane().setLayout(new FlowLayout());
 		getContentPane().add(btnStart);
 		getContentPane().add(btnStop);
+		getContentPane().add(readFile);
 		
 		btnStart.addActionListener(this);
 		btnStop.addActionListener(this);
@@ -25,9 +27,8 @@ public class AudioGUI extends JFrame implements ActionListener{
 	public static void main(String[] args)
 	{
 		AudioGUI frame = new AudioGUI();
-		frame.setTitle("two buttons");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(100, 100);
+		frame.setSize(200, 200);
 		frame.setVisible(true);
 	}
 
@@ -38,7 +39,7 @@ public class AudioGUI extends JFrame implements ActionListener{
 			Thread thread = new Thread(audioThread);
 			thread.start();
 		} else if (e.getSource() == btnStop) {
-			System.out.println("Button start");
+			System.out.println("Button stop");
 			audioThread.stop();
 		}
 		
