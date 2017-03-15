@@ -3,6 +3,16 @@ package authoring;
 import javax.sound.sampled.*;
 import java.io.*;
 
+/**
+ * AudioRecorder class
+ * 
+ * This class is intended to be used as a dependency by a client GUI class to record audio
+ * from a microphone and save it as a .wav file. This class configures and stores the parameters of the
+ * input lines needed for audio recording, such as sample rate,  without need for user input. Before 
+ * recording, a user should set the name of the file they want the audio to be saved to using the method
+ * setFileName(). Audio recording  started by calling the recordAudio() method, and stopped by calling 
+ * the stopAudio() method.  
+ */
 public class AudioRecorder {
 	//File for audio to be saved as, will be specified by user
 	File wavFile;
