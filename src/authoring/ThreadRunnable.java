@@ -1,28 +1,22 @@
 package authoring;
+
 /*
  * Initializes recorder and sets fileName
- * recods until Thread is interrupted
+ * records until Thread is interrupted
  */
-public class ThreadRunnable implements Runnable{
-	AudioRecorder recorder = new AudioRecorder();
-	String fileName = "testAudio.wav";
-	
-	
+public class ThreadRunnable implements Runnable {
+	private final AudioRecorder recorder = new AudioRecorder();
+	private String fileName = "testAudio.wav";
+
+	@Override
 	public void run() {
-		while(!Thread.interrupted())
-		{
-			/*try {
-                Thread.sleep(5000);
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }*/
-            
-			recorder.recordAudio();
-		}
-		if(Thread.interrupted()){
+		recorder.setFileName(fileName);
+		// start recording
+		recorder.recordAudio();
+		// stop recording when thread is interrupted
+		if (Thread.currentThread().isInterrupted()) {
 			recorder.stopRecording();
 		}
-		
 	}
-	
+
 }
