@@ -1,17 +1,23 @@
 package authoring;
 
-import javax.sound.sampled.*;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+
+import javax.sound.sampled.AudioFileFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.TargetDataLine;
 
 /**
  * AudioRecorder class
- * 
+ *
  * This class is intended to be used as a dependency by a client GUI class to record audio
  * from a microphone and save it as a .wav file. This class configures and stores the parameters of the
- * input lines needed for audio recording, such as sample rate,  without need for user input. Before 
+ * input lines needed for audio recording, such as sample rate,  without need for user input. Before
  * recording, a user should set the name of the file they want the audio to be saved to using the method
- * setFileName(). Audio recording  started by calling the recordAudio() method, and stopped by calling 
- * the stopAudio() method.  
+ * setFileName(). Audio recording  started by calling the recordAudio() method, and stopped by calling
+ * the stopAudio() method.
  */
 public class AudioRecorder {
 	//File for audio to be saved as, will be specified by user
@@ -20,49 +26,16 @@ public class AudioRecorder {
 	AudioFileFormat.Type fileType = AudioFileFormat.Type.WAVE;
 	//Target line to capture audio data from
 	TargetDataLine line;
-	//Audio format parameters of the recording
-	AudioFormat format = getAudioFormat();
 	//Data line information object
 	DataLine.Info info;
-	 
-	/**
-     * Method to specify audio format parameters, such as sampling rate
-     * and number of audio channels
-     * 
-     * Returns an AudioFormat object set to these parameters
-     */
-    private AudioFormat getAudioFormat() {
-        float sampleRate = 16000;
-        int sampleSizeInBits = 8;
-        int channels = 2;
-        boolean signed = true;
-        boolean bigEndian = true;
-        AudioFormat format = new AudioFormat(sampleRate, sampleSizeInBits,
-                                             channels, signed, bigEndian);
-        return format;
-    } 
-	
+
     /**
-     * Method to set and configure the audio line in
+     * Method to set the audio line in
      */
-    private void setAudioLine() {
-    	try {
-    		//set audio line information to that specified by AudioFormat
-    		info = new DataLine.Info(TargetDataLine.class, format);
-    		//checks if system supports this type of data line, if not exit
-    		if (!AudioSystem.isLineSupported(info)) {
-                System.out.println("Line not supported");
-                System.exit(0);
-            }
-    		//sets the audio line
-            line = (TargetDataLine) AudioSystem.getLine(info);
-            line.open(format);
-    	}catch (LineUnavailableException ex) {
-    		//catch exceptions if data line does not set properly
-            ex.printStackTrace();
-        } 
+    public void setAudioLine(TargetDataLine line) {
+    	this.line = line;
     }
-    
+
     /**
      * Method to start recording audio
      * Hook this up to play button in GUI
@@ -72,17 +45,14 @@ public class AudioRecorder {
      */
     public void recordAudio() {
     	try {
-    		//Sets the audio line in
-    		this.setAudioLine();
     		//start capturing from line in
     		line.start();
     		//create audio input stream
     		AudioInputStream ais = new AudioInputStream(line);
-    		//start recording
+    		//start recording, continue until line is drained completely
     		AudioSystem.write(ais, fileType, wavFile);
-    		
-    	}catch(IOException e) {
-    		e.printStackTrace();
+    	} catch(IOException e) {
+    		e.printStackTrace(); // TODO: Handler this error gracefully
     	}
     }
     /**
@@ -94,15 +64,15 @@ public class AudioRecorder {
     	line.stop();
     	line.close();
     }
-    
+
     /**
-     * Method to set the name of the audio file to be recorded 
+     * Method to set the name of the audio file to be recorded
      * Hook this up to GUI file to enter file name
      * @param fileName file path and name of the file
      */
     public void setFileName(String fileName) {
     	wavFile = new File(fileName);
     }
-	
-    
+
+
 }
