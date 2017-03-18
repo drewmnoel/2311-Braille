@@ -16,7 +16,7 @@ public class GUI extends JFrame implements ActionListener {
 	private JButton btnStart = new JButton("Start");
 	private JButton btnStop = new JButton("Stop");
 	private JButton readFile = new JButton("Read Audio File");
-	Thread audioThread = new Thread(new ThreadRunnable());
+	Thread audioThread;
 
 	public GUI() {
 		getContentPane().setLayout(new FlowLayout());
@@ -32,6 +32,7 @@ public class GUI extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == btnStart) {
+			audioThread = new Thread(new ThreadRunnable());
 			audioThread.start();
 			btnStop.setEnabled(true);
 			btnStart.setEnabled(false);
