@@ -32,6 +32,9 @@ public class GUI extends JFrame implements ActionListener {
 		DefaultListModel<String> listModel = (DefaultListModel<String>) commandList.getModel();
 		listModel.addElement("Init Event");
 		listModel.addElement("TTS Event");
+		listModel.addElement("Button Event");
+		listModel.addElement("Button Event");
+		listModel.addElement("TTS Event");
 		commandList.setModel(listModel);
 		scrollPane.setViewportView(commandList);
 
