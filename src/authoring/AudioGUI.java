@@ -1,8 +1,6 @@
 package authoring;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.JFrame;
 /**
  * Testing GUI for audio recording
  *
@@ -12,7 +10,7 @@ public class AudioGUI{
 	{
 		GUI frame = new GUI();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(200, 200);
+		frame.setSize(400, 400);
 		frame.setVisible(true);
 	}
 }

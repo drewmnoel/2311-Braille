@@ -1,11 +1,16 @@
 package authoring;
 
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /*
  * Creates Buttons, threads
@@ -16,16 +21,43 @@ public class GUI extends JFrame implements ActionListener {
 	private JButton btnStart = new JButton("Start");
 	private JButton btnStop = new JButton("Stop");
 	private JButton readFile = new JButton("Read Audio File");
+	JScrollPane scrollPane = new JScrollPane();
 	ThreadRunnable audioThread;
 
 	public GUI() {
-		getContentPane().setLayout(new FlowLayout());
-		getContentPane().add(btnStart);
-		getContentPane().add(btnStop);
-		getContentPane().add(readFile);
+		// Add some sample elements to the list
+		JList<String> commandList = new JList<String>();
+		commandList.setModel(new DefaultListModel<String>());
+		DefaultListModel<String> listModel = (DefaultListModel<String>) commandList.getModel();
+		listModel.addElement("Init Event");
+		listModel.addElement("TTS Event");
+		commandList.setModel(listModel);
+		scrollPane.setViewportView(commandList);
 
+		// Create the root panel
+		JPanel rootContainer = new JPanel();
+		rootContainer.setLayout(new BoxLayout(rootContainer, BoxLayout.X_AXIS));
+
+		// Create the command list pane
+		JPanel listPanel = new JPanel();
+		listPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Scenario"));
+		listPanel.add(scrollPane);
+		rootContainer.add(listPanel);
+
+		// Create the buttons pane
+		JPanel buttonsPanel = new JPanel();
+		buttonsPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Commands"));
+		buttonsPanel.add(btnStart);
+		buttonsPanel.add(btnStop);
+		buttonsPanel.add(readFile);
+		rootContainer.add(buttonsPanel);
+
+		// Hook in the button listeners for the buttons
 		btnStart.addActionListener(this);
 		btnStop.addActionListener(this);
+
+		// Add the root container to the JFrame
+		add(rootContainer);
 	}
 
 	@Override
