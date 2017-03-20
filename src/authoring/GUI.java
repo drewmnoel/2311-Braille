@@ -19,9 +19,13 @@ import javax.swing.JScrollPane;
  * if stop button is pressed then end thread
  */
 public class GUI extends JFrame implements ActionListener {
-	private JButton btnStart = new JButton("Start");
-	private JButton btnStop = new JButton("Stop");
+	private JButton btnStart = new JButton("Start Recording");
+	private JButton btnStop = new JButton("Stop Recording");
 	private JButton readFile = new JButton("Read Audio File");
+	private JButton btnMoveUp = new JButton("Move Item Up");
+	private JButton btnMoveDown = new JButton("Move Item Down");
+	private JButton btnDelete = new JButton("Delete Item");
+	private JButton btnNew = new JButton("New Item");
 	JScrollPane scrollPane = new JScrollPane();
 	ThreadRunnable audioThread;
 
@@ -54,6 +58,11 @@ public class GUI extends JFrame implements ActionListener {
 		buttonsPanel.add(btnStart);
 		buttonsPanel.add(btnStop);
 		buttonsPanel.add(readFile);
+		buttonsPanel.add(btnMoveUp);
+		buttonsPanel.add(btnMoveDown);
+		buttonsPanel.add(btnDelete);
+		buttonsPanel.add(btnNew);
+
 		rootContainer.add(buttonsPanel);
 
 		// Hook in the button listeners for the buttons
