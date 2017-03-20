@@ -6,12 +6,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 /*
  * Creates Buttons, threads
@@ -26,30 +23,15 @@ public class GUI extends JFrame implements ActionListener {
 	private JButton btnMoveDown = new JButton("Move Item Down");
 	private JButton btnDelete = new JButton("Delete Item");
 	private JButton btnNew = new JButton("New Item");
-	JScrollPane scrollPane = new JScrollPane();
 	ThreadRunnable audioThread;
 
 	public GUI() {
-		// Add some sample elements to the list
-		JList<String> commandList = new JList<String>();
-		commandList.setModel(new DefaultListModel<String>());
-		DefaultListModel<String> listModel = (DefaultListModel<String>) commandList.getModel();
-		listModel.addElement("Init Event");
-		listModel.addElement("TTS Event");
-		listModel.addElement("Button Event");
-		listModel.addElement("Button Event");
-		listModel.addElement("TTS Event");
-		commandList.setModel(listModel);
-		scrollPane.setViewportView(commandList);
-
 		// Create the root panel
 		JPanel rootContainer = new JPanel();
 		rootContainer.setLayout(new BoxLayout(rootContainer, BoxLayout.X_AXIS));
 
 		// Create the command list pane
-		JPanel listPanel = new JPanel(new GridLayout(1,1));
-		listPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Scenario"));
-		listPanel.add(scrollPane);
+		JPanel listPanel = new LeftPanel();
 		rootContainer.add(listPanel);
 
 		// Create the buttons pane
