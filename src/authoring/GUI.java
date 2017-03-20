@@ -43,7 +43,7 @@ public class GUI extends JFrame implements ActionListener {
 		rootContainer.setLayout(new BoxLayout(rootContainer, BoxLayout.X_AXIS));
 
 		// Create the command list pane
-		JPanel listPanel = new JPanel();
+		JPanel listPanel = new JPanel(new GridLayout(1,1));
 		listPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Scenario"));
 		listPanel.add(scrollPane);
 		rootContainer.add(listPanel);
