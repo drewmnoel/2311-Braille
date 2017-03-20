@@ -11,7 +11,7 @@ import javax.swing.JScrollPane;
 public class LeftPanel extends JPanel {
 	JScrollPane scrollPane = new JScrollPane();
 
-	public LeftPanel() {
+	public LeftPanel(GUI gui) {
 		super(new GridLayout(1,1));
 		JList<String> commandList = new JList<String>();
 		commandList.setModel(new DefaultListModel<String>());
