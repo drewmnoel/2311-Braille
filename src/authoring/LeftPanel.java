@@ -26,4 +26,23 @@ public class LeftPanel extends JPanel {
 		setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Scenario"));
 		add(scrollPane);
 	}
+
+	private DefaultListModel<String> getList() {
+		JList<String> list = (JList<String>) scrollPane.getViewport().getView();
+		return (DefaultListModel<String>) list.getModel();
+	}
+
+	private void setList(DefaultListModel<String> listModel) {
+		JList<String> commandList = new JList<String>();
+		commandList.setModel(listModel);
+		scrollPane.setViewportView(commandList);
+		this.remove(scrollPane);
+		this.add(scrollPane);
+	}
+
+	public void addItem(String string) {
+		DefaultListModel<String> list = getList();
+		list.addElement(string);
+		setList(list);
+	}
 }

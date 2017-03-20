@@ -32,6 +32,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		// Hook in the button listeners for the buttons
 		btnStart.addActionListener(this);
 		btnStop.addActionListener(this);
+		btnNew.addActionListener(this);
 
 		this.gui = gui;
 	}
@@ -47,6 +48,8 @@ public class RightPanel extends JPanel implements ActionListener {
 			gui.getAudioThread().stopRecording();
 			btnStart.setEnabled(true);
 			btnStop.setEnabled(false);
+		} else if (e.getSource() == btnNew) {
+			gui.getLeftPanel().addItem("New Item");
 		}
 
 	}
