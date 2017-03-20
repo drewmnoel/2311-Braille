@@ -1,5 +1,6 @@
 package authoring;
 
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -45,7 +46,7 @@ public class GUI extends JFrame implements ActionListener {
 		rootContainer.add(listPanel);
 
 		// Create the buttons pane
-		JPanel buttonsPanel = new JPanel();
+		JPanel buttonsPanel = new JPanel(new GridLayout(10,1));
 		buttonsPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Commands"));
 		buttonsPanel.add(btnStart);
 		buttonsPanel.add(btnStop);
