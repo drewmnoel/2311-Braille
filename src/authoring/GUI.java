@@ -20,7 +20,7 @@ public class GUI extends JFrame {
 		rootContainer.setLayout(new BoxLayout(rootContainer, BoxLayout.X_AXIS));
 
 		// Create the command list pane
-		leftPanel = new LeftPanel(this);
+		leftPanel = new LeftPanel<>(this);
 		rootContainer.add(leftPanel);
 
 		// Create the buttons pane
