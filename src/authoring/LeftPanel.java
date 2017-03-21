@@ -16,6 +16,8 @@ public class LeftPanel<E> extends JPanel {
 	private JList<E> commandList = new JList<>();
 	private DefaultListModel<E> listModel = new DefaultListModel<>();
 
+	private GUI gui;
+
 	/**
 	 * Create a new left panel of the GUI.
 	 *
@@ -37,6 +39,8 @@ public class LeftPanel<E> extends JPanel {
 
 		// Add the scrollpane to this panel
 		add(scrollPane);
+
+		this.gui = gui;
 	}
 
 	/**
