@@ -14,7 +14,7 @@ public class LeftPanel extends JPanel {
 	private DefaultListModel<String> listModel = new DefaultListModel<>();
 
 	public LeftPanel(GUI gui) {
-		super(new GridLayout(1,1));
+		super(new GridLayout(1, 1));
 
 		commandList.setModel(listModel);
 		listModel.addElement("Init Event");
@@ -51,7 +51,7 @@ public class LeftPanel extends JPanel {
 		swapElements(selectedIndex, selectedIndex - 1);
 
 		// Update the highlight position
-		commandList.setSelectedIndex(selectedIndex-1);
+		commandList.setSelectedIndex(selectedIndex - 1);
 	}
 
 	public void moveDown() {
