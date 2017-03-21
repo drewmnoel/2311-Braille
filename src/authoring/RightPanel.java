@@ -59,6 +59,8 @@ public class RightPanel extends JPanel implements ActionListener {
 		} else if (e.getSource() == btnNew) {
 			gui.getLeftPanel().addItem("New Item");
 		}
+
+		gui.getLeftPanel().recalculateButtonStatus();
 	}
 
 	public void setUp(boolean status) {
@@ -67,5 +69,9 @@ public class RightPanel extends JPanel implements ActionListener {
 
 	public void setDown(boolean status) {
 		btnMoveDown.setEnabled(status);
+	}
+
+	public void setDelete(boolean status) {
+		btnDelete.setEnabled(status);
 	}
 }

@@ -128,18 +128,30 @@ public class LeftPanel<E> extends JPanel implements MouseListener {
 		listModel.remove(selectedIndex);
 	}
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
+	public void recalculateButtonStatus() {
 		// Get the index of the selected element
 		int selectedIndex = commandList.getSelectedIndex();
 
 		gui.getRightPanel().setUp(true);
 		gui.getRightPanel().setDown(true);
+		gui.getRightPanel().setDelete(true);
+
 		if (selectedIndex == 0) {
 			gui.getRightPanel().setUp(false);
-		} else if (selectedIndex == listModel.size() - 1) {
+		}
+		if (selectedIndex == listModel.size() - 1) {
 			gui.getRightPanel().setDown(false);
 		}
+		if (listModel.size() == 0 || selectedIndex == -1) {
+			gui.getRightPanel().setUp(false);
+			gui.getRightPanel().setDown(false);
+			gui.getRightPanel().setDelete(false);
+		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		recalculateButtonStatus();
 	}
 
 	@Override

@@ -29,6 +29,9 @@ public class GUI extends JFrame {
 
 		// Add the root container to the JFrame
 		add(rootContainer);
+
+		// Recalculate the button statuses
+		leftPanel.recalculateButtonStatus();
 	}
 
 	public void setAudioThread(ThreadRunnable audioThread) {
