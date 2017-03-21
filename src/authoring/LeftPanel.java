@@ -3,8 +3,6 @@ package authoring;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Collections;
-import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
@@ -128,15 +126,6 @@ public class LeftPanel<E> extends JPanel implements MouseListener {
 
 		// Remove that position from the listModel
 		listModel.remove(selectedIndex);
-	}
-
-	/**
-	 * Retrieve the command list as a generic list
-	 *
-	 * @return List containing the elements of the scrollpane
-	 */
-	public List<E> getList() {
-		return Collections.list(listModel.elements());
 	}
 
 	@Override
