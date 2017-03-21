@@ -128,6 +128,9 @@ public class LeftPanel<E> extends JPanel implements MouseListener {
 		listModel.remove(selectedIndex);
 	}
 
+	/**
+	 * Re-set the statuses of each of the relevant buttons.
+	 */
 	public void recalculateButtonStatus() {
 		// Get the index of the selected element
 		int selectedIndex = commandList.getSelectedIndex();
