@@ -9,13 +9,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 public class LeftPanel extends JPanel {
-	JScrollPane scrollPane = new JScrollPane();
+	private JScrollPane scrollPane = new JScrollPane();
+	private JList<String> commandList = new JList<>();
+	private DefaultListModel<String> listModel = new DefaultListModel<>();
 
 	public LeftPanel(GUI gui) {
 		super(new GridLayout(1,1));
-		JList<String> commandList = new JList<String>();
-		commandList.setModel(new DefaultListModel<String>());
-		DefaultListModel<String> listModel = (DefaultListModel<String>) commandList.getModel();
+
+		commandList.setModel(listModel);
 		listModel.addElement("Init Event");
 		listModel.addElement("TTS Event");
 		listModel.addElement("Button Event");
@@ -27,35 +28,18 @@ public class LeftPanel extends JPanel {
 		add(scrollPane);
 	}
 
-	private DefaultListModel<String> getList() {
-		JList<String> list = (JList<String>) scrollPane.getViewport().getView();
-		return (DefaultListModel<String>) list.getModel();
-	}
-
-	private void setList(DefaultListModel<String> listModel) {
-		JList<String> commandList = new JList<String>();
-		commandList.setModel(listModel);
-		scrollPane.setViewportView(commandList);
-		this.remove(scrollPane);
-		this.add(scrollPane);
-	}
-
 	private void swapElements(int a, int b) {
-		DefaultListModel<String> list = getList();
-		String strA = list.getElementAt(a);
-		String strB = list.getElementAt(b);
-		list.set(a, strB);
-		list.set(b, strA);
+		String strA = listModel.getElementAt(a);
+		String strB = listModel.getElementAt(b);
+		listModel.set(a, strB);
+		listModel.set(b, strA);
 	}
 
 	public void addItem(String string) {
-		DefaultListModel<String> list = getList();
-		list.addElement(string);
-		setList(list);
+		listModel.addElement(string);
 	}
 
 	public void moveUp() {
-		JList<String> commandList = (JList<String>) scrollPane.getViewport().getView();
 		int selectedIndex = commandList.getSelectedIndex();
 
 		// Do not move the top element "up"!
@@ -71,11 +55,7 @@ public class LeftPanel extends JPanel {
 	}
 
 	public void moveDown() {
-		JList<String> commandList = (JList<String>) scrollPane.getViewport().getView();
 		int selectedIndex = commandList.getSelectedIndex();
-
-		// Get the list
-		DefaultListModel<String> listModel = getList();
 
 		// Do not move the bottom down!
 		if (selectedIndex == listModel.size() - 1) {
@@ -90,11 +70,7 @@ public class LeftPanel extends JPanel {
 	}
 
 	public void deleteItem() {
-		JList<String> commandList = (JList<String>) scrollPane.getViewport().getView();
 		int selectedIndex = commandList.getSelectedIndex();
-
-		DefaultListModel<String> list = getList();
-		list.remove(selectedIndex);
-		setList(list);
+		listModel.remove(selectedIndex);
 	}
 }
