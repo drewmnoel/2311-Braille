@@ -1,46 +1,49 @@
 package authoring;
 
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /*
  * Creates Buttons, threads
  * if start button is pressed then start thread
  * if stop button is pressed then end thread
  */
-public class GUI extends JFrame implements ActionListener {
-	private JButton btnStart = new JButton("Start");
-	private JButton btnStop = new JButton("Stop");
-	private JButton readFile = new JButton("Read Audio File");
+public class GUI extends JFrame {
 	ThreadRunnable audioThread;
+	private LeftPanel leftPanel;
+	private RightPanel rightPanel;
 
 	public GUI() {
-		getContentPane().setLayout(new FlowLayout());
-		getContentPane().add(btnStart);
-		getContentPane().add(btnStop);
-		getContentPane().add(readFile);
+		// Create the root panel
+		JPanel rootContainer = new JPanel();
+		rootContainer.setLayout(new BoxLayout(rootContainer, BoxLayout.X_AXIS));
 
-		btnStart.addActionListener(this);
-		btnStop.addActionListener(this);
+		// Create the command list pane
+		leftPanel = new LeftPanel(this);
+		rootContainer.add(leftPanel);
+
+		// Create the buttons pane
+		rightPanel = new RightPanel(this);
+		rootContainer.add(rightPanel);
+
+		// Add the root container to the JFrame
+		add(rootContainer);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void setAudioThread(ThreadRunnable audioThread) {
+		this.audioThread = audioThread;
+	}
 
-		if (e.getSource() == btnStart) {
-			audioThread = new ThreadRunnable("testAudio.wav");
-			audioThread.start();
-			btnStop.setEnabled(true);
-			btnStart.setEnabled(false);
-		} else if (e.getSource() == btnStop) {
-			audioThread.stopRecording();
-			btnStart.setEnabled(true);
-			btnStop.setEnabled(false);
-		}
+	public ThreadRunnable getAudioThread() {
+		return this.audioThread;
+	}
 
+	public LeftPanel getLeftPanel() {
+		return this.leftPanel;
+	}
+
+	public RightPanel getRightPanel() {
+		return this.rightPanel;
 	}
 }
