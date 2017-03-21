@@ -91,4 +91,13 @@ public class LeftPanel extends JPanel {
 		// Update the highlight position
 		commandList.setSelectedIndex(selectedIndex+1);
 	}
+
+	public void deleteItem() {
+		JList<String> commandList = (JList<String>) scrollPane.getViewport().getView();
+		int selectedIndex = commandList.getSelectedIndex();
+
+		DefaultListModel<String> list = getList();
+		list.remove(selectedIndex);
+		setList(list);
+	}
 }
