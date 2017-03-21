@@ -11,7 +11,7 @@ import javax.swing.JPanel;
  */
 public class GUI extends JFrame {
 	ThreadRunnable audioThread;
-	private LeftPanel leftPanel;
+	private LeftPanel<String> leftPanel;
 	private RightPanel rightPanel;
 
 	public GUI() {
