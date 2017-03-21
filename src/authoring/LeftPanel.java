@@ -67,4 +67,28 @@ public class LeftPanel extends JPanel {
 		// Update the highlight position
 		commandList.setSelectedIndex(selectedIndex-1);
 	}
+
+	public void moveDown() {
+		JList<String> commandList = (JList<String>) scrollPane.getViewport().getView();
+		int selectedIndex = commandList.getSelectedIndex();
+
+		// Get the list
+		DefaultListModel<String> listModel = getList();
+
+		// Do not move the bottom down!
+		if (selectedIndex == listModel.size() - 1) {
+			return;
+		}
+
+		// Otherwise, get its value and the one above it
+		String highlighted = commandList.getSelectedValue();
+		String swapee = commandList.getModel().getElementAt(selectedIndex + 1);
+
+		// Get the list and swap the elements
+		listModel.set(selectedIndex, swapee);
+		listModel.set(selectedIndex + 1, highlighted);
+
+		// Update the highlight position
+		commandList.setSelectedIndex(selectedIndex+1);
+	}
 }

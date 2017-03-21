@@ -33,6 +33,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		btnStart.addActionListener(this);
 		btnStop.addActionListener(this);
 		btnMoveUp.addActionListener(this);
+		btnMoveDown.addActionListener(this);
 		btnNew.addActionListener(this);
 
 		this.gui = gui;
@@ -51,6 +52,8 @@ public class RightPanel extends JPanel implements ActionListener {
 			btnStop.setEnabled(false);
 		} else if (e.getSource() == btnMoveUp) {
 			gui.getLeftPanel().moveUp();
+		} else if (e.getSource() == btnMoveDown) {
+			gui.getLeftPanel().moveDown();
 		} else if (e.getSource() == btnNew) {
 			gui.getLeftPanel().addItem("New Item");
 		}
