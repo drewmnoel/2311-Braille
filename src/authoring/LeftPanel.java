@@ -40,6 +40,14 @@ public class LeftPanel extends JPanel {
 		this.add(scrollPane);
 	}
 
+	private void swapElements(int a, int b) {
+		DefaultListModel<String> list = getList();
+		String strA = list.getElementAt(a);
+		String strB = list.getElementAt(b);
+		list.set(a, strB);
+		list.set(b, strA);
+	}
+
 	public void addItem(String string) {
 		DefaultListModel<String> list = getList();
 		list.addElement(string);
@@ -50,19 +58,13 @@ public class LeftPanel extends JPanel {
 		JList<String> commandList = (JList<String>) scrollPane.getViewport().getView();
 		int selectedIndex = commandList.getSelectedIndex();
 
-		// Do not move the top up!
+		// Do not move the top element "up"!
 		if (selectedIndex == 0) {
 			return;
 		}
 
-		// Otherwise, get its value and the one above it
-		String highlighted = commandList.getSelectedValue();
-		String swapee = commandList.getModel().getElementAt(selectedIndex - 1);
-
-		// Get the list and swap the elements
-		DefaultListModel<String> listModel = getList();
-		listModel.set(selectedIndex, swapee);
-		listModel.set(selectedIndex-1, highlighted);
+		// Swap the element with the one above it
+		swapElements(selectedIndex, selectedIndex - 1);
 
 		// Update the highlight position
 		commandList.setSelectedIndex(selectedIndex-1);
@@ -80,16 +82,11 @@ public class LeftPanel extends JPanel {
 			return;
 		}
 
-		// Otherwise, get its value and the one above it
-		String highlighted = commandList.getSelectedValue();
-		String swapee = commandList.getModel().getElementAt(selectedIndex + 1);
-
-		// Get the list and swap the elements
-		listModel.set(selectedIndex, swapee);
-		listModel.set(selectedIndex + 1, highlighted);
+		// Swap the element with the one below it
+		swapElements(selectedIndex, selectedIndex + 1);
 
 		// Update the highlight position
-		commandList.setSelectedIndex(selectedIndex+1);
+		commandList.setSelectedIndex(selectedIndex + 1);
 	}
 
 	public void deleteItem() {
