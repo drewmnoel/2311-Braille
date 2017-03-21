@@ -39,7 +39,7 @@ public class GUI extends JFrame {
 		return this.audioThread;
 	}
 
-	public LeftPanel getLeftPanel() {
+	public LeftPanel<String> getLeftPanel() {
 		return this.leftPanel;
 	}
 
