@@ -11,7 +11,7 @@ import javax.swing.JPanel;
  */
 public class GUI extends JFrame {
 	ThreadRunnable audioThread;
-	private LeftPanel leftPanel;
+	private LeftPanel<String> leftPanel;
 	private RightPanel rightPanel;
 
 	public GUI() {
@@ -20,7 +20,7 @@ public class GUI extends JFrame {
 		rootContainer.setLayout(new BoxLayout(rootContainer, BoxLayout.X_AXIS));
 
 		// Create the command list pane
-		leftPanel = new LeftPanel(this);
+		leftPanel = new LeftPanel<>(this);
 		rootContainer.add(leftPanel);
 
 		// Create the buttons pane
@@ -29,6 +29,9 @@ public class GUI extends JFrame {
 
 		// Add the root container to the JFrame
 		add(rootContainer);
+
+		// Recalculate the button statuses
+		leftPanel.recalculateButtonStatus();
 	}
 
 	public void setAudioThread(ThreadRunnable audioThread) {
@@ -39,7 +42,7 @@ public class GUI extends JFrame {
 		return this.audioThread;
 	}
 
-	public LeftPanel getLeftPanel() {
+	public LeftPanel<String> getLeftPanel() {
 		return this.leftPanel;
 	}
 

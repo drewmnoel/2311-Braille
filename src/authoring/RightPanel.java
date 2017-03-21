@@ -41,7 +41,6 @@ public class RightPanel extends JPanel implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
 		if (e.getSource() == btnStart) {
 			gui.setAudioThread(new ThreadRunnable("testAudio.wav"));
 			gui.getAudioThread().start();
@@ -61,5 +60,18 @@ public class RightPanel extends JPanel implements ActionListener {
 			gui.getLeftPanel().addItem("New Item");
 		}
 
+		gui.getLeftPanel().recalculateButtonStatus();
+	}
+
+	public void setUp(boolean status) {
+		btnMoveUp.setEnabled(status);
+	}
+
+	public void setDown(boolean status) {
+		btnMoveDown.setEnabled(status);
+	}
+
+	public void setDelete(boolean status) {
+		btnDelete.setEnabled(status);
 	}
 }
