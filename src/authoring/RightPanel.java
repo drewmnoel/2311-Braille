@@ -42,7 +42,7 @@ public class RightPanel extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnStart) {
-			gui.setAudioThread(new ThreadRunnable("testAudio.wav"));
+			gui.setAudioThread(new ThreadRunnable());
 			gui.getAudioThread().start();
 			btnStop.setEnabled(true);
 			btnStart.setEnabled(false);
