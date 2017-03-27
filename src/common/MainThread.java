@@ -1,12 +1,16 @@
 package common;
 
-import player.SoundPlayer;
+import javax.swing.JFrame;
+
+import authoring.GUI;
 
 public class MainThread implements Runnable {
 
 	@Override
 	public void run() {
-		SoundPlayer s = new SoundPlayer();
-	    s.setScenarioFile("Scenario_One.txt");
+		GUI frame = new GUI();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(400, 400);
+		frame.setVisible(true);
 	}
 }
