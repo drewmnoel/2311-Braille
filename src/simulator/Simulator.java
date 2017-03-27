@@ -39,14 +39,14 @@ import javax.swing.JRadioButton;
  */
 public class Simulator {
 
-	int brailleCellNumber;
-	int jButtonNumber;
+	public int brailleCellNumber;
+	public int jButtonNumber;
 	private JFrame frame;
 	private GridLayout cellGrid = new GridLayout(4, 2);
 	LinkedList<JPanel> panelList = new LinkedList<>();
 	ArrayList<JRadioButton> pins = new ArrayList<>(8);
 	LinkedList<ArrayList<JRadioButton>> pinList = new LinkedList<>();
-	LinkedList<JButton> buttonList = new LinkedList<>();
+	public LinkedList<JButton> buttonList = new LinkedList<>();
 	LinkedList<BrailleCell> brailleList = new LinkedList<>();
 	JPanel southPanel = new JPanel();
 	JPanel centerPanel = new JPanel();
