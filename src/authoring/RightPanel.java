@@ -57,7 +57,8 @@ public class RightPanel extends JPanel implements ActionListener {
 		} else if (e.getSource() == btnDelete) {
 			gui.getLeftPanel().deleteItem();
 		} else if (e.getSource() == btnNew) {
-			gui.getLeftPanel().addItem("New Item");
+			PlayerCommand pc = new PlayerCommand();
+			gui.getLeftPanel().addItem(pc);
 		}
 
 		gui.getLeftPanel().recalculateButtonStatus();

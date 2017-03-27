@@ -11,7 +11,7 @@ import javax.swing.JPanel;
  */
 public class GUI extends JFrame {
 	ThreadRunnable audioThread;
-	private LeftPanel<String> leftPanel;
+	private LeftPanel<PlayerCommand> leftPanel;
 	private RightPanel rightPanel;
 
 	public GUI() {
@@ -42,7 +42,7 @@ public class GUI extends JFrame {
 		return this.audioThread;
 	}
 
-	public LeftPanel<String> getLeftPanel() {
+	public LeftPanel<PlayerCommand> getLeftPanel() {
 		return this.leftPanel;
 	}
 
