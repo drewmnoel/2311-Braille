@@ -3,10 +3,19 @@ package authoring;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import org.apache.commons.io.FilenameUtils;
 
 public class RightPanel extends JPanel implements ActionListener {
 	private JButton btnStart = new JButton("Start Recording");
@@ -17,6 +26,10 @@ public class RightPanel extends JPanel implements ActionListener {
 	private JButton btnDelete = new JButton("Delete Item");
 	private JButton btnNew = new JButton("New Item");
 	private GUI gui;
+	
+	 JButton openButton, saveButton;
+	    JTextArea log;
+	    JFileChooser fc = new JFileChooser();;
 
 	public RightPanel(GUI gui) {
 		super(new GridLayout(10,1));
@@ -36,7 +49,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		btnMoveDown.addActionListener(this);
 		btnNew.addActionListener(this);
 		btnDelete.addActionListener(this);
-
+		readFile.addActionListener(this);
 		this.gui = gui;
 	}
 	@Override
@@ -59,9 +72,25 @@ public class RightPanel extends JPanel implements ActionListener {
 		} else if (e.getSource() == btnNew) {
 			PlayerCommand pc = new PlayerCommand();
 			gui.getLeftPanel().addItem(pc);
-		}
+		} else if(e.getSource() == readFile){
+			this.fileChooser();
+		}	
 
 		gui.getLeftPanel().recalculateButtonStatus();
+	}
+	
+	private void fileChooser(){
+		JFileChooser chooser = new JFileChooser();
+	    FileNameExtensionFilter filter = new FileNameExtensionFilter("wav files (*.wav)", "wav");
+	    chooser.setFileFilter(filter);
+	    int returnVal = chooser.showOpenDialog(null);
+	    if(returnVal == JFileChooser.APPROVE_OPTION) {
+	       System.out.println("You chose to open this file: " +
+	            chooser.getSelectedFile());
+	       String name = chooser.getSelectedFile().toString();
+	       ReadFile read = new ReadFile();
+	       read.playSound(name);
+	    }
 	}
 
 	public void setUp(boolean status) {
