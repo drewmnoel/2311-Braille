@@ -2,14 +2,16 @@ package authoring;
 
 public class PlayerCommand {
 	private static int refCount = 0;
-	private int myRef;
-
+	protected int myRef;
+	protected String commandType = "";
+	protected String description = "";
+	
 	public PlayerCommand() {
 		myRef = refCount++;
 	}
 
 	@Override
 	public String toString() {
-		return (myRef) + "";
+		return (myRef) + " " + commandType + description;
 	}
 }
