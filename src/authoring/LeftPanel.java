@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -157,6 +158,20 @@ public class LeftPanel extends JPanel implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		recalculateButtonStatus();
+
+		if (e.getClickCount() < 2) {
+			return;
+		}
+
+		int index = commandList.locationToIndex(e.getPoint());
+		PlayerCommand command = this.commandList.getModel().getElementAt(index);
+
+		// Show the Add Item dialog
+		String answer;
+		answer = (String)JOptionPane.showInputDialog(gui, command.getEditLabel(), "Edit Item Details",
+				JOptionPane.PLAIN_MESSAGE, null, null, command.getCurrentValue());
+
+		command.setCurrentValue(answer);
 	}
 
 	@Override

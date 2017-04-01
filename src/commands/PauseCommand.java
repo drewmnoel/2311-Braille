@@ -28,4 +28,19 @@ public class PauseCommand extends PlayerCommand {
 		return "Pause " + waitTime;
 	}
 
+	@Override
+	public String getEditLabel() {
+		return "Enter length of time to wait";
+	}
+
+	@Override
+	public String getCurrentValue() {
+		return waitTime;
+	}
+
+	@Override
+	public void setCurrentValue(String waitTime) {
+		this.waitTime = waitTime;
+	}
+
 }

@@ -29,4 +29,19 @@ public class SetVoiceCommand extends PlayerCommand {
 		return "Voice " + voiceNumber;
 	}
 
+	@Override
+	public String getEditLabel() {
+		return "Enter a voice number";
+	}
+
+	@Override
+	public String getCurrentValue() {
+		return this.voiceNumber;
+	}
+
+	@Override
+	public void setCurrentValue(String voice) {
+		this.voiceNumber = voice;
+	}
+
 }
