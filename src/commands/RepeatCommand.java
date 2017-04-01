@@ -25,7 +25,7 @@ public class RepeatCommand extends PlayerCommand {
 
 	@Override
 	public String getEditLabel() {
-		return "Text to be repeated: ";
+		return "Text to be repeated";
 	}
 
 	@Override

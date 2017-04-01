@@ -26,7 +26,7 @@ public class SetVoiceCommand extends PlayerCommand {
 
 	@Override
 	public String toString() {
-		return "Voice " + voiceNumber;
+		return "Voice: " + voiceNumber;
 	}
 
 	@Override

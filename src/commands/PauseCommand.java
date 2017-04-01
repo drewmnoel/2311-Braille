@@ -25,12 +25,12 @@ public class PauseCommand extends PlayerCommand {
 
 	@Override
 	public String toString() {
-		return "Pause " + waitTime;
+		return "Pause: " + waitTime;
 	}
 
 	@Override
 	public String getEditLabel() {
-		return "Enter length of time to wait";
+		return "Length of time to wait";
 	}
 
 	@Override
