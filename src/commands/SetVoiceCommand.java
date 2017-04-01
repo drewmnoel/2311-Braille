@@ -15,7 +15,7 @@ public class SetVoiceCommand extends PlayerCommand {
 	 *
 	 * @param voice String of either 1, 2, 3, 4 representing the text to speech voice to use
 	 */
-	SetVoiceCommand(String voice) {
+	public SetVoiceCommand(String voice) {
 		this.voiceNumber = voice;
 	}
 
