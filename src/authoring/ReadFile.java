@@ -12,7 +12,7 @@ import javax.sound.sampled.SourceDataLine;
 
 public class ReadFile {
 
-    private final int BUFFER_SIZE = 128000;
+    private static final int BUFFER_SIZE = 128000;
     private File soundFile;
     private AudioInputStream audioStream;
     private AudioFormat audioFormat;
@@ -29,14 +29,14 @@ public class ReadFile {
             soundFile = new File(strFilename);
         } catch (Exception e) {
             e.printStackTrace();
-            System.exit(1);
+            return;
         }
 
         try {
             audioStream = AudioSystem.getAudioInputStream(soundFile);
         } catch (Exception e){
             e.printStackTrace();
-            System.exit(1);
+            return;
         }
 
         audioFormat = audioStream.getFormat();
@@ -47,10 +47,10 @@ public class ReadFile {
             sourceLine.open(audioFormat);
         } catch (LineUnavailableException e) {
             e.printStackTrace();
-            System.exit(1);
+            return;
         } catch (Exception e) {
             e.printStackTrace();
-            System.exit(1);
+            return;
         }
 
         sourceLine.start();
@@ -64,8 +64,7 @@ public class ReadFile {
                 e.printStackTrace();
             }
             if (nBytesRead >= 0) {
-                @SuppressWarnings("unused")
-                int nBytesWritten = sourceLine.write(abData, 0, nBytesRead);
+                sourceLine.write(abData, 0, nBytesRead);
             }
         }
 

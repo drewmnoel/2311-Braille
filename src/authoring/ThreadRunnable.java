@@ -20,7 +20,7 @@ import org.apache.commons.io.FilenameUtils;
  * records until Thread is interrupted
  */
 public class ThreadRunnable extends Thread {
-	private final AudioRecorder recorder = new AudioRecorder();
+	private AudioRecorder recorder;
 	private TargetDataLine line;
 	private File temporaryRecordingFile;
 
@@ -50,7 +50,7 @@ public class ThreadRunnable extends Thread {
 			e.printStackTrace();
 			return;
 		}
-		recorder.setAudioLine(line);
+		recorder = new AudioRecorder(line);
 		recorder.setFileName(temporaryRecordingFile.getAbsolutePath());
 	}
 

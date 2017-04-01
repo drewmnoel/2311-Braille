@@ -12,6 +12,7 @@ import commands.PlayerCommand;
  * if stop button is pressed then end thread
  */
 public class GUI extends JFrame {
+	private static final long serialVersionUID = -1291725446662111704L;
 	ThreadRunnable audioThread;
 	private LeftPanel<PlayerCommand> leftPanel;
 	private RightPanel rightPanel;

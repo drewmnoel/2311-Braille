@@ -14,6 +14,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import commands.PlayerCommand;
 
 public class RightPanel extends JPanel implements ActionListener {
+	private static final long serialVersionUID = 4894342125883442327L;
 	private JButton btnStart = new JButton("Start Recording");
 	private JButton btnStop = new JButton("Stop Recording");
 	private JButton readFile = new JButton("Read Audio File");

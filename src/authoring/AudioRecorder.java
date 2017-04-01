@@ -6,7 +6,6 @@ import java.io.IOException;
 import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.DataLine;
 import javax.sound.sampled.TargetDataLine;
 
 /**
@@ -26,15 +25,10 @@ public class AudioRecorder {
 	AudioFileFormat.Type fileType = AudioFileFormat.Type.WAVE;
 	//Target line to capture audio data from
 	TargetDataLine line;
-	//Data line information object
-	DataLine.Info info;
 
-    /**
-     * Method to set the audio line in
-     */
-    public void setAudioLine(TargetDataLine line) {
+    public AudioRecorder(TargetDataLine line) {
     	this.line = line;
-    }
+	}
 
     /**
      * Method to start recording audio
