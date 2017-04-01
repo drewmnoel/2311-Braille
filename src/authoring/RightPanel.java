@@ -11,8 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import commands.PlayerCommand;
-
 public class RightPanel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 4894342125883442327L;
 	private JButton btnStart = new JButton("Start Recording");
@@ -44,7 +42,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		btnStop.addActionListener(this);
 		btnMoveUp.addActionListener(this);
 		btnMoveDown.addActionListener(this);
-		btnNew.addActionListener(this);
+		btnNew.addActionListener(new listeners.NewButtonListener(gui));
 		btnDelete.addActionListener(this);
 		readFile.addActionListener(this);
 		this.gui = gui;
@@ -66,9 +64,6 @@ public class RightPanel extends JPanel implements ActionListener {
 			gui.getLeftPanel().moveDown();
 		} else if (e.getSource() == btnDelete) {
 			gui.getLeftPanel().deleteItem();
-		} else if (e.getSource() == btnNew) {
-			PlayerCommand pc = null;
-			gui.getLeftPanel().addItem(pc);
 		} else if(e.getSource() == readFile){
 			this.fileChooser();
 		}
