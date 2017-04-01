@@ -2,14 +2,14 @@ package authoring;
 
 /**
  * A class to represent pause commands. Contains a string for the pause duration
- * 
- * @author 
+ *
+ * @author
  *
  */
 public class PauseCommand extends PlayerCommand {
-	
+
 	/***
-	 * Constructor for PauseCommand. 
+	 * Constructor for PauseCommand.
 	 * @param waitTime The number of seconds for the pause to wait
 	 */
 	public PauseCommand(String waitTime) {
@@ -17,5 +17,11 @@ public class PauseCommand extends PlayerCommand {
 		description = waitTime;
 		commandType = "/~pause:";
 	}
-	
+
+	@Override
+	public String serialize() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
