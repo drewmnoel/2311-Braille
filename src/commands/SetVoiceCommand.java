@@ -8,21 +8,25 @@ package commands;
  */
 public class SetVoiceCommand extends PlayerCommand {
 
+	private String voiceNumber;
+
 	/**
 	 * Constructor to create a SetVoiceCommand object
 	 *
 	 * @param voice String of either 1, 2, 3, 4 representing the text to speech voice to use
 	 */
 	SetVoiceCommand(String voice) {
-		super();
-		description = voice;
-		commandType = "/~set-voice:";
+		this.voiceNumber = voice;
 	}
 
 	@Override
 	public String serialize() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/~set-voice: " + voiceNumber;
+	}
+
+	@Override
+	public String toString() {
+		return "Voice " + voiceNumber;
 	}
 
 }

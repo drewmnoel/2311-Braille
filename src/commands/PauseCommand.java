@@ -8,20 +8,24 @@ package commands;
  */
 public class PauseCommand extends PlayerCommand {
 
+	private String waitTime;
+
 	/***
 	 * Constructor for PauseCommand.
 	 * @param waitTime The number of seconds for the pause to wait
 	 */
 	public PauseCommand(String waitTime) {
-		super();
-		description = waitTime;
-		commandType = "/~pause:";
+		this.waitTime = waitTime;
 	}
 
 	@Override
 	public String serialize() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/~pause: " + waitTime;
+	}
+
+	@Override
+	public String toString() {
+		return "Pause " + waitTime;
 	}
 
 }
