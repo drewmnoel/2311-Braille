@@ -4,8 +4,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import commands.PlayerCommand;
-
 /*
  * Creates Buttons, threads
  * if start button is pressed then start thread
@@ -14,7 +12,7 @@ import commands.PlayerCommand;
 public class GUI extends JFrame {
 	private static final long serialVersionUID = -1291725446662111704L;
 	ThreadRunnable audioThread;
-	private LeftPanel<PlayerCommand> leftPanel;
+	private LeftPanel leftPanel;
 	private RightPanel rightPanel;
 
 	public GUI() {
@@ -23,7 +21,7 @@ public class GUI extends JFrame {
 		rootContainer.setLayout(new BoxLayout(rootContainer, BoxLayout.X_AXIS));
 
 		// Create the command list pane
-		leftPanel = new LeftPanel<>(this);
+		leftPanel = new LeftPanel(this);
 		rootContainer.add(leftPanel);
 
 		// Create the buttons pane
@@ -45,7 +43,7 @@ public class GUI extends JFrame {
 		return this.audioThread;
 	}
 
-	public LeftPanel<PlayerCommand> getLeftPanel() {
+	public LeftPanel getLeftPanel() {
 		return this.leftPanel;
 	}
 
