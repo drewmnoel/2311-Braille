@@ -1,4 +1,4 @@
-package authoring;
+package commands;
 
 abstract public class PlayerCommand {
 	protected String commandType;

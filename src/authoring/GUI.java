@@ -4,6 +4,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import commands.PlayerCommand;
+
 /*
  * Creates Buttons, threads
  * if start button is pressed then start thread

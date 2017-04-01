@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import commands.PlayerCommand;
+
 public class RightPanel extends JPanel implements ActionListener {
 	private JButton btnStart = new JButton("Start Recording");
 	private JButton btnStop = new JButton("Stop Recording");

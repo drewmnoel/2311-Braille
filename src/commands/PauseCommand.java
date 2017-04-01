@@ -1,4 +1,4 @@
-package authoring;
+package commands;
 
 /**
  * A class to represent pause commands. Contains a string for the pause duration

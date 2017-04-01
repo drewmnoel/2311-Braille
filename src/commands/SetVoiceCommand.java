@@ -1,4 +1,4 @@
-package authoring;
+package commands;
 
 /**
  * A class to represent set voice commands. Contains a string for which numbered text to speech voice to use
