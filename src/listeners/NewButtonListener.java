@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import authoring.GUI;
 import commands.PauseCommand;
+import commands.RepeatCommand;
 import commands.SetVoiceCommand;
 
 public class NewButtonListener implements ActionListener {
@@ -20,7 +21,7 @@ public class NewButtonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// Show the Add Item dialog
-		String[] possibilities = { "Pause", "Text-to-speech" };
+		String[] possibilities = { "Pause", "Text-to-speech", "Repeat"};
 		String answer;
 		answer = (String)JOptionPane.showInputDialog(gui, "Select the type of the item", "Add Item",
 				JOptionPane.PLAIN_MESSAGE, null, possibilities, "");
@@ -32,6 +33,8 @@ public class NewButtonListener implements ActionListener {
 		case "Text-to-speech":
 			gui.getLeftPanel().addItem(new SetVoiceCommand(" "));
 			break;
+		case "Repeat":
+			gui.getLeftPanel().addItem(new RepeatCommand(""));
 		default: break;
 		}
 	}
