@@ -2,31 +2,28 @@ package commands;
 
 public class ResetButtonCommand extends PlayerCommand {
 
-	private String val = "";
-
 	@Override
 	public String toString() {
-		return " " + val;
+		return "Reset Buttons";
 	}
 
 	@Override
 	public String serialize() {
-		return "/~: " + val;
+		return "/~reset-buttons";
 	}
 
 	@Override
 	public String getEditLabel() {
-		return "";
+		return "Ignored";
 	}
 
 	@Override
 	public String getCurrentValue() {
-		return val;
+		return null;
 	}
 
 	@Override
 	public void setCurrentValue(String val) {
-		this.val = val;
 	}
 
 }
