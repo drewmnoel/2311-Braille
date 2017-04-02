@@ -2,31 +2,28 @@ package commands;
 
 public class SkipCommand extends PlayerCommand {
 
-	private String val = "";
-
 	@Override
 	public String toString() {
-		return " " + val;
+		return "Skip";
 	}
 
 	@Override
 	public String serialize() {
-		return "/~: " + val;
+		return "/~skip";
 	}
 
 	@Override
 	public String getEditLabel() {
-		return "";
+		return "Ignored";
 	}
 
 	@Override
 	public String getCurrentValue() {
-		return val;
+		return "";
 	}
 
 	@Override
 	public void setCurrentValue(String val) {
-		this.val = val;
 	}
 
 }
