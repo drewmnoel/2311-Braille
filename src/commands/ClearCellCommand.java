@@ -11,7 +11,7 @@ public class ClearCellCommand extends PlayerCommand {
 
 	@Override
 	public String serialize() {
-		return "/~:disp-clear-cell" + cellNumber;
+		return "/~disp-clear-cell: " + cellNumber;
 	}
 
 	@Override
