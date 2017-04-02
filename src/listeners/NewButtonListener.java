@@ -21,6 +21,7 @@ import commands.SkipButtonCommand;
 import commands.SkipCommand;
 import commands.SoundCommand;
 import commands.UserInputCommand;
+import commands.TTSCommand;
 
 public class NewButtonListener implements ActionListener {
 
@@ -35,7 +36,7 @@ public class NewButtonListener implements ActionListener {
 		// Show the Add Item dialog
 		String[] possibilities = { "Pause", "Text-to-speech", "Repeat", "Button Repeat", "Button Skip", "User Input",
 				"Sound", "Reset Buttons", "Skip", "Clear All", "Clear Cell", "Set Pins", "Set Char", "Raise Pin",
-				"Lower Pin" };
+				"Lower Pin", "Set Voice" };
 		String answer;
 		answer = (String) JOptionPane.showInputDialog(gui, "Select the type of the item", "Add Item",
 				JOptionPane.PLAIN_MESSAGE, null, possibilities, "");
@@ -45,7 +46,7 @@ public class NewButtonListener implements ActionListener {
 			gui.getLeftPanel().addItem(new PauseCommand("1"));
 			break;
 		case "Text-to-speech":
-			gui.getLeftPanel().addItem(new SetVoiceCommand(" "));
+			gui.getLeftPanel().addItem(new TTSCommand(" "));
 			break;
 		case "Repeat":
 			gui.getLeftPanel().addItem(new RepeatCommand(""));
@@ -85,6 +86,9 @@ public class NewButtonListener implements ActionListener {
 			break;
 		case "Lower Pin":
 			gui.getLeftPanel().addItem(new CellLowerCommand());
+			break;
+		case "Set Voice":
+			gui.getLeftPanel().addItem(new SetVoiceCommand(" "));
 			break;
 		default:
 			break;

@@ -4,6 +4,10 @@ public class TTSCommand extends PlayerCommand {
 	
 	private String textToSay = "";
 	
+	public TTSCommand (String textToSay) {
+		this.textToSay = textToSay;
+	}
+	
 	@Override
 	public String toString() {
 		return "Text to speech: " + textToSay;
