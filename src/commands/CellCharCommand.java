@@ -2,31 +2,31 @@ package commands;
 
 public class CellCharCommand extends PlayerCommand {
 
-	private String val = "";
+	private String cellAndChar = "";
 
 	@Override
 	public String toString() {
-		return " " + val;
+		return "Cell and Char: " + cellAndChar;
 	}
 
 	@Override
 	public String serialize() {
-		return "/~: " + val;
+		return "/~disp-cell-char: " + cellAndChar;
 	}
 
 	@Override
 	public String getEditLabel() {
-		return "";
+		return "Cell and character (space separated)";
 	}
 
 	@Override
 	public String getCurrentValue() {
-		return val;
+		return cellAndChar;
 	}
 
 	@Override
-	public void setCurrentValue(String val) {
-		this.val = val;
+	public void setCurrentValue(String cellAndChar) {
+		this.cellAndChar = cellAndChar;
 	}
 
 }
