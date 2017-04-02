@@ -2,31 +2,31 @@ package commands;
 
 public class SetPinsCommand extends PlayerCommand {
 
-	private String val = "";
+	private String cellAndPins = "";
 
 	@Override
 	public String toString() {
-		return " " + val;
+		return "Set Pins: " + cellAndPins;
 	}
 
 	@Override
 	public String serialize() {
-		return "/~: " + val;
+		return "/~disp-cell-pins: " + cellAndPins;
 	}
 
 	@Override
 	public String getEditLabel() {
-		return "";
+		return "Cell and pins (space separated)";
 	}
 
 	@Override
 	public String getCurrentValue() {
-		return val;
+		return cellAndPins;
 	}
 
 	@Override
-	public void setCurrentValue(String val) {
-		this.val = val;
+	public void setCurrentValue(String cellAndPins) {
+		this.cellAndPins = cellAndPins;
 	}
 
 }

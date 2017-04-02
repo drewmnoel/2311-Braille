@@ -12,6 +12,7 @@ import commands.PauseCommand;
 import commands.RepeatButtonCommand;
 import commands.RepeatCommand;
 import commands.ResetButtonCommand;
+import commands.SetPinsCommand;
 import commands.SetVoiceCommand;
 import commands.SkipButtonCommand;
 import commands.SkipCommand;
@@ -29,7 +30,7 @@ public class NewButtonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// Show the Add Item dialog
-		String[] possibilities = { "Pause", "Text-to-speech", "Repeat", "Button Repeat", "Button Skip", "User Input", "Sound", "Reset Buttons", "Skip", "Clear All", "Clear Cell"};
+		String[] possibilities = { "Pause", "Text-to-speech", "Repeat", "Button Repeat", "Button Skip", "User Input", "Sound", "Reset Buttons", "Skip", "Clear All", "Clear Cell", "Set Pins"};
 		String answer;
 		answer = (String)JOptionPane.showInputDialog(gui, "Select the type of the item", "Add Item",
 				JOptionPane.PLAIN_MESSAGE, null, possibilities, "");
@@ -67,6 +68,9 @@ public class NewButtonListener implements ActionListener {
 			break;
 		case "Clear Cell":
 			gui.getLeftPanel().addItem(new ClearCellCommand());
+			break;
+		case "Set Pins":
+			gui.getLeftPanel().addItem(new SetPinsCommand());
 			break;
 		default: break;
 		}
