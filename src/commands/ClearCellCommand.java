@@ -2,31 +2,31 @@ package commands;
 
 public class ClearCellCommand extends PlayerCommand {
 
-	private String val = "";
+	private String cellNumber = "";
 
 	@Override
 	public String toString() {
-		return " " + val;
+		return "Clear Cell " + cellNumber;
 	}
 
 	@Override
 	public String serialize() {
-		return "/~: " + val;
+		return "/~:disp-clear-cell" + cellNumber;
 	}
 
 	@Override
 	public String getEditLabel() {
-		return "";
+		return "Cell number";
 	}
 
 	@Override
 	public String getCurrentValue() {
-		return val;
+		return cellNumber;
 	}
 
 	@Override
-	public void setCurrentValue(String val) {
-		this.val = val;
+	public void setCurrentValue(String cellNumber) {
+		this.cellNumber = cellNumber;
 	}
 
 }
