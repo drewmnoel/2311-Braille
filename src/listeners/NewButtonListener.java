@@ -30,12 +30,13 @@ public class NewButtonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// Show the Add Item dialog
-		String[] possibilities = { "Pause", "Text-to-speech", "Repeat", "Button Repeat", "Button Skip", "User Input", "Sound", "Reset Buttons", "Skip", "Clear All", "Clear Cell", "Set Pins"};
+		String[] possibilities = { "Pause", "Text-to-speech", "Repeat", "Button Repeat", "Button Skip", "User Input",
+				"Sound", "Reset Buttons", "Skip", "Clear All", "Clear Cell", "Set Pins" };
 		String answer;
-		answer = (String)JOptionPane.showInputDialog(gui, "Select the type of the item", "Add Item",
+		answer = (String) JOptionPane.showInputDialog(gui, "Select the type of the item", "Add Item",
 				JOptionPane.PLAIN_MESSAGE, null, possibilities, "");
 
-		switch(answer) {
+		switch (answer) {
 		case "Pause":
 			gui.getLeftPanel().addItem(new PauseCommand("1"));
 			break;
@@ -72,7 +73,8 @@ public class NewButtonListener implements ActionListener {
 		case "Set Pins":
 			gui.getLeftPanel().addItem(new SetPinsCommand());
 			break;
-		default: break;
+		default:
+			break;
 		}
 	}
 
