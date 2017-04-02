@@ -3,6 +3,8 @@ package authoring;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
@@ -185,4 +187,14 @@ public class LeftPanel extends JPanel implements MouseListener {
 
 	@Override
 	public void mouseExited(MouseEvent e) {}
+
+	public List<PlayerCommand> getList() {
+		List<PlayerCommand> result = new ArrayList<>();
+		for (Object o : listModel.toArray()) {
+			if (o instanceof PlayerCommand) {
+				result.add((PlayerCommand) o);
+			}
+		}
+		return result;
+	}
 }

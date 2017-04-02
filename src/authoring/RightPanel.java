@@ -20,6 +20,7 @@ public class RightPanel extends JPanel implements ActionListener {
 	private JButton btnMoveDown = new JButton("Move Item Down");
 	private JButton btnDelete = new JButton("Delete Item");
 	private JButton btnNew = new JButton("New Item");
+	private JButton btnExport = new JButton("Export");
 	private GUI gui;
 
 	 JButton openButton, saveButton;
@@ -36,6 +37,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		add(btnMoveDown);
 		add(btnDelete);
 		add(btnNew);
+		add(btnExport);
 
 		// Hook in the button listeners for the buttons
 		btnStart.addActionListener(this);
@@ -45,6 +47,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		btnNew.addActionListener(new listeners.NewButtonListener(gui));
 		btnDelete.addActionListener(this);
 		readFile.addActionListener(this);
+		btnExport.addActionListener(new listeners.ExportListener(gui));
 		this.gui = gui;
 	}
 	@Override
@@ -64,7 +67,7 @@ public class RightPanel extends JPanel implements ActionListener {
 			gui.getLeftPanel().moveDown();
 		} else if (e.getSource() == btnDelete) {
 			gui.getLeftPanel().deleteItem();
-		} else if(e.getSource() == readFile){
+		} else if(e.getSource() == readFile) {
 			this.fileChooser();
 		}
 
