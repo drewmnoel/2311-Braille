@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import authoring.GUI;
+import commands.ClearAllCommand;
 import commands.PauseCommand;
 import commands.RepeatButtonCommand;
 import commands.RepeatCommand;
@@ -27,7 +28,7 @@ public class NewButtonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// Show the Add Item dialog
-		String[] possibilities = { "Pause", "Text-to-speech", "Repeat", "Button Repeat", "Button Skip", "User Input", "Sound", "Reset Buttons", "Skip"};
+		String[] possibilities = { "Pause", "Text-to-speech", "Repeat", "Button Repeat", "Button Skip", "User Input", "Sound", "Reset Buttons", "Skip", "Clear All"};
 		String answer;
 		answer = (String)JOptionPane.showInputDialog(gui, "Select the type of the item", "Add Item",
 				JOptionPane.PLAIN_MESSAGE, null, possibilities, "");
@@ -60,6 +61,8 @@ public class NewButtonListener implements ActionListener {
 		case "Skip":
 			gui.getLeftPanel().addItem(new SkipCommand());
 			break;
+		case "Clear All":
+			gui.getLeftPanel().addItem(new ClearAllCommand());
 		default: break;
 		}
 	}
