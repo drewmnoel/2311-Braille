@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import authoring.GUI;
 import commands.CellCharCommand;
+import commands.CellLowerCommand;
 import commands.CellRaiseCommand;
 import commands.ClearAllCommand;
 import commands.ClearCellCommand;
@@ -33,7 +34,7 @@ public class NewButtonListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// Show the Add Item dialog
 		String[] possibilities = { "Pause", "Text-to-speech", "Repeat", "Button Repeat", "Button Skip", "User Input",
-				"Sound", "Reset Buttons", "Skip", "Clear All", "Clear Cell", "Set Pins", "Set Char", "Raise Pin" };
+				"Sound", "Reset Buttons", "Skip", "Clear All", "Clear Cell", "Set Pins", "Set Char", "Raise Pin", "Lower Pin" };
 		String answer;
 		answer = (String) JOptionPane.showInputDialog(gui, "Select the type of the item", "Add Item",
 				JOptionPane.PLAIN_MESSAGE, null, possibilities, "");
@@ -80,6 +81,9 @@ public class NewButtonListener implements ActionListener {
 			break;
 		case "Raise Pin":
 			gui.getLeftPanel().addItem(new CellRaiseCommand());
+			break;
+		case "Lower Pin":
+			gui.getLeftPanel().addItem(new CellLowerCommand());
 			break;
 		default:
 			break;

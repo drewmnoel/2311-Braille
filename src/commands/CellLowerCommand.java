@@ -2,31 +2,31 @@ package commands;
 
 public class CellLowerCommand extends PlayerCommand {
 
-	private String val = "";
+	private String cellAndPin = "";
 
 	@Override
 	public String toString() {
-		return " " + val;
+		return "Cell and Pin Lower: " + cellAndPin;
 	}
 
 	@Override
 	public String serialize() {
-		return "/~: " + val;
+		return "/~disp-cell-lower: " + cellAndPin;
 	}
 
 	@Override
 	public String getEditLabel() {
-		return "";
+		return "Cell and Pin to lower (space separated)";
 	}
 
 	@Override
 	public String getCurrentValue() {
-		return val;
+		return cellAndPin;
 	}
 
 	@Override
-	public void setCurrentValue(String val) {
-		this.val = val;
+	public void setCurrentValue(String cellAndPin) {
+		this.cellAndPin = cellAndPin;
 	}
 
 }
