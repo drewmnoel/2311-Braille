@@ -11,6 +11,7 @@ import commands.RepeatButtonCommand;
 import commands.RepeatCommand;
 import commands.SetVoiceCommand;
 import commands.SkipButtonCommand;
+import commands.UserInputCommand;
 
 public class NewButtonListener implements ActionListener {
 
@@ -23,7 +24,7 @@ public class NewButtonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// Show the Add Item dialog
-		String[] possibilities = { "Pause", "Text-to-speech", "Repeat", "Button Repeat", "Button Skip"};
+		String[] possibilities = { "Pause", "Text-to-speech", "Repeat", "Button Repeat", "Button Skip", "User Input"};
 		String answer;
 		answer = (String)JOptionPane.showInputDialog(gui, "Select the type of the item", "Add Item",
 				JOptionPane.PLAIN_MESSAGE, null, possibilities, "");
@@ -44,6 +45,8 @@ public class NewButtonListener implements ActionListener {
 		case "Button Skip":
 			gui.getLeftPanel().addItem(new SkipButtonCommand());
 			break;
+		case "User Input":
+			gui.getLeftPanel().addItem(new UserInputCommand());
 		default: break;
 		}
 	}
