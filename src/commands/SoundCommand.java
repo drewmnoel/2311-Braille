@@ -2,31 +2,31 @@ package commands;
 
 public class SoundCommand extends PlayerCommand {
 
-	private String val = "";
+	private String file = "";
 
 	@Override
 	public String toString() {
-		return " " + val;
+		return "Sound: " + file;
 	}
 
 	@Override
 	public String serialize() {
-		return "/~: " + val;
+		return "/~sound: " + file;
 	}
 
 	@Override
 	public String getEditLabel() {
-		return "";
+		return "File path: ";
 	}
 
 	@Override
 	public String getCurrentValue() {
-		return val;
+		return file;
 	}
 
 	@Override
-	public void setCurrentValue(String val) {
-		this.val = val;
+	public void setCurrentValue(String file) {
+		this.file = file;
 	}
 
 }
