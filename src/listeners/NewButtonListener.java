@@ -34,7 +34,8 @@ public class NewButtonListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// Show the Add Item dialog
 		String[] possibilities = { "Pause", "Text-to-speech", "Repeat", "Button Repeat", "Button Skip", "User Input",
-				"Sound", "Reset Buttons", "Skip", "Clear All", "Clear Cell", "Set Pins", "Set Char", "Raise Pin", "Lower Pin" };
+				"Sound", "Reset Buttons", "Skip", "Clear All", "Clear Cell", "Set Pins", "Set Char", "Raise Pin",
+				"Lower Pin" };
 		String answer;
 		answer = (String) JOptionPane.showInputDialog(gui, "Select the type of the item", "Add Item",
 				JOptionPane.PLAIN_MESSAGE, null, possibilities, "");

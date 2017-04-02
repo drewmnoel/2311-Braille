@@ -12,7 +12,9 @@ public class RepeatButtonCommand extends PlayerCommand {
 
 	/***
 	 * Constructor for PauseCommand.
-	 * @param waitTime The number of seconds for the pause to wait
+	 * 
+	 * @param waitTime
+	 *            The number of seconds for the pause to wait
 	 */
 	public RepeatButtonCommand(String waitTime) {
 		this.buttonNum = waitTime;
