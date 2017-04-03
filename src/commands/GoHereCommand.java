@@ -10,7 +10,7 @@ public class GoHereCommand extends PlayerCommand {
 	
 	@Override
 	public String toString() {
-		return jumpTag;
+		return "Jump tag: " + jumpTag;
 	}
 
 	@Override

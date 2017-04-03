@@ -92,7 +92,7 @@ public class NewButtonListener implements ActionListener {
 			gui.getLeftPanel().addItem(new SetVoiceCommand(" "));
 			break;
 		case "Jump Tag":
-			gui.getLeftPanel().addItem(new GoHereCommand(""));
+			gui.getLeftPanel().addItem(new GoHereCommand(" "));
 			break;
 		default:
 			break;
