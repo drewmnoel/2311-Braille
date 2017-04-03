@@ -22,6 +22,7 @@ import commands.SkipCommand;
 import commands.SoundCommand;
 import commands.UserInputCommand;
 import commands.TTSCommand;
+import commands.GoHereCommand;
 
 public class NewButtonListener implements ActionListener {
 
@@ -36,7 +37,7 @@ public class NewButtonListener implements ActionListener {
 		// Show the Add Item dialog
 		String[] possibilities = { "Pause", "Text-to-speech", "Repeat", "Button Repeat", "Button Skip", "User Input",
 				"Sound", "Reset Buttons", "Skip", "Clear All", "Clear Cell", "Set Pins", "Set Char", "Raise Pin",
-				"Lower Pin", "Set Voice" };
+				"Lower Pin", "Set Voice", "Jump Tag" };
 		String answer;
 		answer = (String) JOptionPane.showInputDialog(gui, "Select the type of the item", "Add Item",
 				JOptionPane.PLAIN_MESSAGE, null, possibilities, "");
@@ -89,6 +90,9 @@ public class NewButtonListener implements ActionListener {
 			break;
 		case "Set Voice":
 			gui.getLeftPanel().addItem(new SetVoiceCommand(" "));
+			break;
+		case "Jump Tag":
+			gui.getLeftPanel().addItem(new GoHereCommand(""));
 			break;
 		default:
 			break;
