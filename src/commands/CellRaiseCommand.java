@@ -4,6 +4,10 @@ public class CellRaiseCommand extends PlayerCommand {
 
 	private String cellAndPin = "";
 
+	public CellRaiseCommand(String cellAndPin) {
+		this.cellAndPin = cellAndPin;
+	}
+
 	@Override
 	public String toString() {
 		return "Cell and Pin Raise: " + cellAndPin;

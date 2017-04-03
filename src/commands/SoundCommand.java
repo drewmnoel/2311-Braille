@@ -4,6 +4,10 @@ public class SoundCommand extends PlayerCommand {
 
 	private String file = "";
 
+	public SoundCommand(String file) {
+		this.file = file;
+	}
+
 	@Override
 	public String toString() {
 		return "Sound: " + file;

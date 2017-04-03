@@ -4,6 +4,10 @@ public class ClearCellCommand extends PlayerCommand {
 
 	private String cellNumber = "";
 
+	public ClearCellCommand(String cellNumber) {
+		this.cellNumber = cellNumber;
+	}
+
 	@Override
 	public String toString() {
 		return "Clear Cell " + cellNumber;

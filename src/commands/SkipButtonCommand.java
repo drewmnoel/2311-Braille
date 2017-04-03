@@ -4,6 +4,10 @@ public class SkipButtonCommand extends PlayerCommand {
 
 	private String numAndIdentifier = "";
 
+	public SkipButtonCommand(String numAndIdentifier) {
+		this.numAndIdentifier = numAndIdentifier;
+	}
+
 	@Override
 	public String toString() {
 		return "Skip button: " + numAndIdentifier;

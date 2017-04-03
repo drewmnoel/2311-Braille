@@ -4,6 +4,10 @@ public class SetPinsCommand extends PlayerCommand {
 
 	private String cellAndPins = "";
 
+	public SetPinsCommand(String cellAndPins) {
+		this.cellAndPins = cellAndPins;
+	}
+
 	@Override
 	public String toString() {
 		return "Set Pins: " + cellAndPins;

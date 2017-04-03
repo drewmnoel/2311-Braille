@@ -2,6 +2,9 @@ package commands;
 
 public class ClearAllCommand extends PlayerCommand {
 
+	public ClearAllCommand(String args) {
+	}
+
 	@Override
 	public String toString() {
 		return "Clear All";

@@ -4,6 +4,10 @@ public class CellCharCommand extends PlayerCommand {
 
 	private String cellAndChar = "";
 
+	public CellCharCommand(String cellAndChar) {
+		this.cellAndChar = cellAndChar;
+	}
+
 	@Override
 	public String toString() {
 		return "Cell and Char: " + cellAndChar;

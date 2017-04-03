@@ -2,6 +2,9 @@ package commands;
 
 public class ResetButtonCommand extends PlayerCommand {
 
+	public ResetButtonCommand(String args) {
+	}
+
 	@Override
 	public String toString() {
 		return "Reset Buttons";
