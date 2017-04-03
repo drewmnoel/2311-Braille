@@ -56,12 +56,16 @@ public class CommandTests {
 			cellChar = new CellCharCommand(i + " " + alphabet.substring(i, i));
 			assertEquals("Cell and Char: " + i + " " + alphabet.substring(i, i), cellChar.toString());
 		}
+		cellChar = new CellCharCommand("This is a very long string look how long this is bork bork bork bork bork!");
+		assertEquals("Cell and Char: This is a very long string look how long this is bork bork bork bork bork!", cellChar.toString());
 		
 		//tests serialize()
 		for(int i = 0; i<alphabet.length(); i++) {
 			cellChar = new CellCharCommand(i + " " + alphabet.substring(i, i));
 			assertEquals("/~disp-cell-char:" + i + " " + alphabet.substring(i, i), cellChar.serialize());
 		}
+		cellChar = new CellCharCommand("This is a very long string look how long this is bork bork bork bork bork!");
+		assertEquals("/~disp-cell-char:This is a very long string look how long this is bork bork bork bork bork!", cellChar.serialize());
 		
 		//tests getEditLabel()
 		for(int i = 0; i<alphabet.length(); i++) {
@@ -328,12 +332,16 @@ public class CommandTests {
 			repeat = new RepeatCommand(alphabet.substring(i, i));
 			assertEquals("Repeat: " + alphabet.substring(i, i), repeat.toString());
 		}
-
+		repeat = new RepeatCommand("This is a very long string look how long this is bork bork bork bork bork!");
+		assertEquals("Repeat: This is a very long string look how long this is bork bork bork bork bork!", repeat.toString());
+		
 		//tests serialize()
 		for(int i = 0; i<alphabet.length(); i++) {
 			repeat = new RepeatCommand(alphabet.substring(i, i));
 			assertEquals("/~repeat\n" + alphabet.substring(i, i) + "\n" + "/~endrepeat", repeat.serialize());
 		}
+		repeat = new RepeatCommand("This is a very long string look how long this is bork bork bork bork bork!");
+		assertEquals("/~repeat\nThis is a very long string look how long this is bork bork bork bork bork!\n/~endrepeat", repeat.serialize());
 
 		//tests getEditLabel()
 		for(int i = 0; i<alphabet.length(); i++) {
@@ -427,12 +435,16 @@ public class CommandTests {
 			setString = new SetStringCommand(alphabet.substring(i, i));
 			assertEquals("String: " + alphabet.substring(i, i), setString.toString());
 		}
-
+		setString = new SetStringCommand("This is a very long string look how long this is bork bork bork bork bork!");
+		assertEquals("String: This is a very long string look how long this is bork bork bork bork bork!", setString.toString());
+		
 		//tests serialize()
 		for(int i = 0; i<alphabet.length(); i++) {
 			setString = new SetStringCommand(alphabet.substring(i, i));
 			assertEquals("/~disp-string:" + alphabet.substring(i, i), setString.serialize());
 		}
+		setString = new SetStringCommand("This is a very long string look how long this is bork bork bork bork bork!");
+		assertEquals("/~disp-string:This is a very long string look how long this is bork bork bork bork bork!", setString.serialize());
 
 		//tests getEditLabel()
 		for(int i = 0; i<alphabet.length(); i++) {
@@ -504,13 +516,17 @@ public class CommandTests {
 			skipButton = new SkipButtonCommand(i + " " + alphabet.substring(i, i));
 			assertEquals("Skip button: " + i + " " + alphabet.substring(i, i), skipButton.toString());
 		}
-
+		skipButton = new SkipButtonCommand("This is a very long string look how long this is bork bork bork bork bork!");
+		assertEquals("Skip button: This is a very long string look how long this is bork bork bork bork bork!", skipButton.toString());
+		
 		//tests serialize()
 		for(int i = 0; i<alphabet.length(); i++) {
 			skipButton = new SkipButtonCommand(i + " " + alphabet.substring(i, i));
 			assertEquals("/~skip-button:" + i + " " + alphabet.substring(i, i), skipButton.serialize());
 		}
-
+		skipButton = new SkipButtonCommand("This is a very long string look how long this is bork bork bork bork bork!");
+		assertEquals("/~skip-button:This is a very long string look how long this is bork bork bork bork bork!", skipButton.serialize());
+		
 		//tests getEditLabel()
 		for(int i = 0; i<alphabet.length(); i++) {
 			skipButton = new SkipButtonCommand(i + " " + alphabet.substring(i, i));
