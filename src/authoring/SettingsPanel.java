@@ -26,10 +26,6 @@ public class SettingsPanel extends JPanel {
 		buttonField = new JTextField();
 		titleField = new JTextField();
 		
-		//Sets default cells to 3 and buttons to 5
-		cellField.setText("5");
-		buttonField.setText("3");
-		
 		
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;

@@ -25,7 +25,6 @@ public class NewScenarioListener implements ActionListener {
     private JTextField btntxt = new JTextField(5);
 	private JTextField titletxt = new JTextField(5);
 	private JPanel myPanel = new JPanel(new GridLayout(0, 1, 5, 5));
-	private JPanel ruSure = new JPanel();
 	
 	public NewScenarioListener(GUI gui)
 	{
