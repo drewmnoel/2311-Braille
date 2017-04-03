@@ -18,6 +18,11 @@ public class ExportListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		StringBuilder sb = new StringBuilder();
+		// Build the file header first
+		sb.append("Cell " + gui.getSettingsPanel().getCellField() + "\n");
+		sb.append("Button " + gui.getSettingsPanel().getButtonField() + "\n");
+		sb.append(gui.getSettingsPanel().getTitleField() + "\n\n");
+
 		// Get the list of commands for export
 		List<PlayerCommand> list = gui.getLeftPanel().getList();
 		for (PlayerCommand pc : list) {
