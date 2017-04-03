@@ -136,6 +136,10 @@ public class LeftPanel extends JPanel implements MouseListener {
 	public void clearItem() {
 		listModel.removeAllElements();
 	}
+	
+	public boolean elementCheck() {
+		return listModel.isEmpty();
+	}
 
 	/**
 	 * Re-set the statuses of each of the relevant buttons.

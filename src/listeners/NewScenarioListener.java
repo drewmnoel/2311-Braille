@@ -25,32 +25,49 @@ public class NewScenarioListener implements ActionListener {
     private JTextField btntxt = new JTextField(5);
 	private JTextField titletxt = new JTextField(5);
 	private JPanel myPanel = new JPanel(new GridLayout(0, 1, 5, 5));
-
+	private JPanel ruSure = new JPanel();
+	
 	public NewScenarioListener(GUI gui)
 	{
 		this.gui = gui;
 	}
+	
+	public void scenarioBuilder() {
+		gui.getLeftPanel().clearItem();
 
+		 myPanel.add(cellLabel);
+	     myPanel.add(celltxt); 
+
+	     myPanel.add(btnLabel);
+	     myPanel.add(btntxt); 
+	     myPanel.add(titleLabel);
+	     myPanel.add(titletxt);
+
+
+	     int result = JOptionPane.showConfirmDialog(null, myPanel, 
+	              "Enter the Scenario parameters", JOptionPane.OK_CANCEL_OPTION);
+	     if (result == JOptionPane.OK_OPTION) {
+	        gui.getSettingsPanel().setCellField(celltxt.getText());
+	        gui.getSettingsPanel().setButtonFieldText(btntxt.getText());
+	        gui.getSettingsPanel().setTitleField(titletxt.getText());
+
+	     }
+	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		gui.getLeftPanel().clearItem();
-	    myPanel.add(cellLabel);
-	    myPanel.add(celltxt); 
-
-	    myPanel.add(btnLabel);
-	    myPanel.add(btntxt); 
-	    myPanel.add(titleLabel);
-	    myPanel.add(titletxt);
-
-
-	    int result = JOptionPane.showConfirmDialog(null, myPanel, 
-	             "Enter the Scenario parameters", JOptionPane.OK_CANCEL_OPTION);
-	    if (result == JOptionPane.OK_OPTION) {
-	       gui.getSettingsPanel().setCellField(celltxt.getText());
-	       gui.getSettingsPanel().setButtonFieldText(btntxt.getText());
-	       gui.getSettingsPanel().setTitleField(titletxt.getText());
-
-	    }
+		if(gui.getLeftPanel().elementCheck()) 
+		{
+			scenarioBuilder();
+		 } else {
+			 int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to start a new Scenario?"
+			 		+ " All current changes will be lost", "Warning!", 
+			 		JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION);
+		     if (result == JOptionPane.YES_OPTION) {
+		    	 scenarioBuilder();
+		     }
+		     
+		 }
+	   
 		
 		
 	}
