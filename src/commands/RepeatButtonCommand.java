@@ -22,7 +22,7 @@ public class RepeatButtonCommand extends PlayerCommand {
 
 	@Override
 	public String serialize() {
-		return " /~repeat-button: " + buttonNum;
+		return " /~repeat-button:" + buttonNum;
 	}
 
 	@Override

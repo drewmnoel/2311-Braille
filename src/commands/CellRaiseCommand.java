@@ -15,7 +15,7 @@ public class CellRaiseCommand extends PlayerCommand {
 
 	@Override
 	public String serialize() {
-		return "/~disp-cell-raise: " + cellAndPin;
+		return "/~disp-cell-raise:" + cellAndPin;
 	}
 
 	@Override

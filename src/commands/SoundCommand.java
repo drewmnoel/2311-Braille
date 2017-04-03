@@ -15,7 +15,7 @@ public class SoundCommand extends PlayerCommand {
 
 	@Override
 	public String serialize() {
-		return "/~sound: " + file;
+		return "/~sound:" + file;
 	}
 
 	@Override

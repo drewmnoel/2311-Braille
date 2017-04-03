@@ -15,7 +15,7 @@ public class SetPinsCommand extends PlayerCommand {
 
 	@Override
 	public String serialize() {
-		return "/~disp-cell-pins: " + cellAndPins;
+		return "/~disp-cell-pins:" + cellAndPins;
 	}
 
 	@Override

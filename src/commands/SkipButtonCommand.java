@@ -15,7 +15,7 @@ public class SkipButtonCommand extends PlayerCommand {
 
 	@Override
 	public String serialize() {
-		return "/~skip-button: " + numAndIdentifier;
+		return "/~skip-button:" + numAndIdentifier;
 	}
 
 	@Override
