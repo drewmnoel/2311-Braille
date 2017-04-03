@@ -42,7 +42,6 @@ public class ExportListener implements ActionListener {
 		}
 
 		// sb now contains the export file contents
-		// TODO: Save to file rather than printing out
 		JFileChooser save = new JFileChooser();
 
 		FileNameExtensionFilter txtFilter = new FileNameExtensionFilter("text files (*.txt)", "txt");
