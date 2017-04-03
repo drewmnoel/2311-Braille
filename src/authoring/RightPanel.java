@@ -23,6 +23,7 @@ public class RightPanel extends JPanel implements ActionListener {
 	private JButton btnNew = new JButton("New Item");
 	private JButton btnExport = new JButton("Export");
 	private JButton btnImport = new JButton("Import");
+	private JButton btnNewScenario = new JButton("New Scenario");
 	private GUI gui;
 
 	private static final String FONT_FACE = "Arial";
@@ -37,6 +38,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Commands"));
 
 		// Set font sizes
+		btnNewScenario.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
 		btnImport.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
 		btnExport.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
 		btnStart.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
@@ -48,6 +50,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		btnNew.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
 
 		// Add the buttons
+		add(btnNewScenario);
 		add(btnImport);
 		add(btnExport);
 		add(btnStart);
@@ -57,6 +60,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		add(btnMoveDown);
 		add(btnDelete);
 		add(btnNew);
+		
 
 		// Hook in the button listeners for the buttons
 		btnStart.addActionListener(this);
@@ -68,6 +72,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		readFile.addActionListener(this);
 		btnExport.addActionListener(new listeners.ExportListener(gui));
 		btnImport.addActionListener(new listeners.ImportListener(gui));
+		btnNewScenario.addActionListener(new listeners.NewScenarioListener(gui));
 
 		// Do not allow this component to enlarge ever
 		this.setMaximumSize(this.getPreferredSize());
