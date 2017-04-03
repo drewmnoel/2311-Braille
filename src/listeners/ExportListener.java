@@ -36,10 +36,7 @@ public class ExportListener implements ActionListener {
 
 		// Get the list of commands for export
 		List<PlayerCommand> list = gui.getLeftPanel().getList();
-		for (PlayerCommand pc : list) {
-			sb.append(pc.serialize());
-			sb.append("\n");
-		}
+		sb.append(parseCommands(list));
 
 		// sb now contains the export file contents
 		JFileChooser save = new JFileChooser();
@@ -62,8 +59,23 @@ public class ExportListener implements ActionListener {
 			file = new File(file.toString() + ".txt");
 		}
 
+		exportFile(file, sb.toString());
+	}
+
+	public String parseCommands(List<PlayerCommand> list) {
+		StringBuilder sb = new StringBuilder();
+
+		for (PlayerCommand pc : list) {
+			sb.append(pc.serialize());
+			sb.append("\n");
+		}
+
+		return sb.toString();
+	}
+
+	void exportFile(File file, String contents) {
 		try (Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "8859_1"));) {
-			out.append(sb.toString());
+			out.append(contents);
 			out.close();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
