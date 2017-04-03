@@ -94,6 +94,10 @@ public class ThreadRunnable extends Thread {
 
 		// Get the file and fix the extension if it's wrong
 		File file = saveFile.getSelectedFile();
+		if (file == null) {
+			return;
+		}
+
 		if (!FilenameUtils.getExtension(file.getName()).equalsIgnoreCase("wav")) {
 			file = new File(file.toString() + ".wav");
 		}
