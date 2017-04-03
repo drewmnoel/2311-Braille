@@ -14,19 +14,30 @@ public class GUI extends JFrame {
 	ThreadRunnable audioThread;
 	private LeftPanel leftPanel;
 	private RightPanel rightPanel;
+	private SettingsPanel settingsPanel;
 
 	public GUI() {
 		// Create the root panel
 		JPanel rootContainer = new JPanel();
-		rootContainer.setLayout(new BoxLayout(rootContainer, BoxLayout.X_AXIS));
+		rootContainer.setLayout(new BoxLayout(rootContainer, BoxLayout.Y_AXIS));
+
+		// Add the top settings panel
+		settingsPanel = new SettingsPanel(this);
+		rootContainer.add(settingsPanel);
+
+		JPanel bottomContainer = new JPanel();
+		bottomContainer.setLayout(new BoxLayout(bottomContainer, BoxLayout.X_AXIS));
+
+		rootContainer.add(bottomContainer);
 
 		// Create the command list pane
 		leftPanel = new LeftPanel(this);
-		rootContainer.add(leftPanel);
+		bottomContainer.add(leftPanel);
+
 
 		// Create the buttons pane
 		rightPanel = new RightPanel(this);
-		rootContainer.add(rightPanel);
+		bottomContainer.add(rightPanel);
 
 		// Add the root container to the JFrame
 		add(rootContainer);
@@ -49,5 +60,9 @@ public class GUI extends JFrame {
 
 	public RightPanel getRightPanel() {
 		return this.rightPanel;
+	}
+
+	public SettingsPanel getSettingsPanel() {
+		return this.settingsPanel;
 	}
 }
