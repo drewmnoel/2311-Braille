@@ -54,8 +54,23 @@ public class ImportListener implements ActionListener {
 				continue;
 			}
 
-			// Skip first three lines
+			// Process first three lines
 			if (i < 3) {
+				String components[] = line.split(" ", 2);
+				String firstWord = components[0];
+				String restOfLine = "";
+				if (components.length > 1) {
+					restOfLine = components[1];
+				}
+
+				if (firstWord.compareTo("Cell") == 0) {
+					gui.getSettingsPanel().setCellField(restOfLine);
+				} else if (firstWord.compareTo("Button") == 0) {
+					gui.getSettingsPanel().setButtonFieldText(restOfLine);
+				} else {
+					gui.getSettingsPanel().setTitleField(restOfLine);
+				}
+
 				i++;
 				continue;
 			}

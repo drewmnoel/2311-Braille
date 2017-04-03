@@ -50,28 +50,28 @@ public class SettingsPanel extends JPanel {
 		add(titleField, gbc);
 	}
 
-	public JTextField getCellField() {
-		return cellField;
+	public String getCellField() {
+		return cellField.getText();
 	}
 
-	public void setCellField(JTextField cellField) {
-		this.cellField = cellField;
+	public void setCellField(String fieldText) {
+		this.cellField.setText(fieldText);
 	}
 
-	public JTextField getButtonField() {
-		return buttonField;
+	public String getButtonField() {
+		return buttonField.getText();
 	}
 
-	public void setButtonField(JTextField buttonField) {
-		this.buttonField = buttonField;
+	public void setButtonFieldText(String fieldText) {
+		this.buttonField.setText(fieldText);
 	}
 
-	public JTextField getTitleField() {
-		return titleField;
+	public String getTitleField() {
+		return titleField.getText();
 	}
 
-	public void setTitleField(JTextField titleField) {
-		this.titleField = titleField;
+	public void setTitleField(String fieldText) {
+		this.titleField.setText(fieldText);
 	}
 
 }
