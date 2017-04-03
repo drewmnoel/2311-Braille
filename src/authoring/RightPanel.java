@@ -31,6 +31,8 @@ public class RightPanel extends JPanel implements ActionListener {
 	public RightPanel(GUI gui) {
 		super(new GridLayout(10,1));
 		setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Commands"));
+		add(btnImport);
+		add(btnExport);
 		add(btnStart);
 		add(btnStop);
 		add(readFile);
@@ -38,8 +40,6 @@ public class RightPanel extends JPanel implements ActionListener {
 		add(btnMoveDown);
 		add(btnDelete);
 		add(btnNew);
-		add(btnExport);
-		add(btnImport);
 
 		// Hook in the button listeners for the buttons
 		btnStart.addActionListener(this);
