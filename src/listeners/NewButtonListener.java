@@ -51,7 +51,8 @@ public class NewButtonListener implements ActionListener {
 			gui.getLeftPanel().addItem(new TTSCommand(" "));
 			break;
 		case "Display String":
-			gui.getLeftPanel().addItem(new SetStringCommand());
+			gui.getLeftPanel().addItem(new SetStringCommand(""));
+			break;
 		case "Repeat":
 			gui.getLeftPanel().addItem(new RepeatCommand(""));
 			break;

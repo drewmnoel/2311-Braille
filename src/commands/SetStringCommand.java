@@ -4,6 +4,10 @@ public class SetStringCommand extends PlayerCommand {
 
 	private String str = "";
 
+	public SetStringCommand(String str) {
+		this.str = str;
+	}
+
 	@Override
 	public String toString() {
 		return "String: " + str;
