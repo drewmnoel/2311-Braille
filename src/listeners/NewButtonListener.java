@@ -11,18 +11,19 @@ import commands.CellLowerCommand;
 import commands.CellRaiseCommand;
 import commands.ClearAllCommand;
 import commands.ClearCellCommand;
+import commands.GoHereCommand;
 import commands.PauseCommand;
 import commands.RepeatButtonCommand;
 import commands.RepeatCommand;
 import commands.ResetButtonCommand;
 import commands.SetPinsCommand;
+import commands.SetStringCommand;
 import commands.SetVoiceCommand;
 import commands.SkipButtonCommand;
 import commands.SkipCommand;
 import commands.SoundCommand;
-import commands.UserInputCommand;
 import commands.TTSCommand;
-import commands.GoHereCommand;
+import commands.UserInputCommand;
 
 public class NewButtonListener implements ActionListener {
 
@@ -35,7 +36,7 @@ public class NewButtonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// Show the Add Item dialog
-		String[] possibilities = { "Pause", "Text-to-speech", "Repeat", "Button Repeat", "Button Skip", "User Input",
+		String[] possibilities = { "Pause", "Text-to-speech", "Display String", "Repeat", "Button Repeat", "Button Skip", "User Input",
 				"Sound", "Reset Buttons", "Skip", "Clear All", "Clear Cell", "Set Pins", "Set Char", "Raise Pin",
 				"Lower Pin", "Set Voice", "Jump Tag" };
 		String answer;
@@ -49,6 +50,8 @@ public class NewButtonListener implements ActionListener {
 		case "Text-to-speech":
 			gui.getLeftPanel().addItem(new TTSCommand(" "));
 			break;
+		case "Display String":
+			gui.getLeftPanel().addItem(new SetStringCommand());
 		case "Repeat":
 			gui.getLeftPanel().addItem(new RepeatCommand(""));
 			break;
