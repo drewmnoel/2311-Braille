@@ -60,26 +60,27 @@ public class ImportListener implements ActionListener {
 				continue;
 			}
 
-			// Skip repeat commands for now
+			// When a repeat is seen, begin tracking the contents
 			if (line.compareTo("/~repeat") == 0) {
 				inCommand = true;
 				repeatHolder = new StringBuilder("");
 				continue;
 			}
 
+			// Track the repeat contents until the end is seen
 			if (inCommand && line.compareTo("/~endrepeat") != 0) {
 				repeatHolder.append(line.trim() + "\n");
 				continue;
 			}
 
+			// Put the entire contents of the end into the command and resume
+			// normal mode
 			if (line.compareTo("/~endrepeat") == 0) {
 				inCommand = false;
 				PlayerCommand pc = new RepeatCommand(repeatHolder.toString());
 				gui.getLeftPanel().addItem(pc);
 				continue;
 			}
-
-			System.out.println(line);
 
 			// Check for TTS, it has no header
 			if (line.length() < 2 || line.substring(0, 2).compareTo("/~") != 0) {
