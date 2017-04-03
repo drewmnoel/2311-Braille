@@ -135,9 +135,9 @@ public class LeftPanel extends JPanel implements MouseListener {
 	public void saveFile() {
 		SaveScenario s = new SaveScenario(gui);
 		s.saveFile();
-		
+
 	}
-	
+
 	public ArrayList<String> getItem() {
 		ArrayList<String> elements = new ArrayList<String>();
 		for(int i = 0; i <= listModel.size() - 1; i++)
@@ -183,11 +183,17 @@ public class LeftPanel extends JPanel implements MouseListener {
 		PlayerCommand command = this.commandList.getModel().getElementAt(index);
 
 		// Show the Add Item dialog
-		String answer;
-		answer = (String)JOptionPane.showInputDialog(gui, command.getEditLabel(), "Edit Item Details",
+		Object answer;
+		answer = JOptionPane.showInputDialog(gui, command.getEditLabel(), "Edit Item Details",
 				JOptionPane.PLAIN_MESSAGE, null, null, command.getCurrentValue());
 
-		command.setCurrentValue(answer);
+		if (answer == null) {
+			return;
+		}
+
+		if (!((String) answer).isEmpty()) {
+			command.setCurrentValue((String) answer);
+		}
 	}
 
 	@Override
@@ -212,7 +218,7 @@ public class LeftPanel extends JPanel implements MouseListener {
 		return result;
 	}
 
-	
 
-	
+
+
 }
