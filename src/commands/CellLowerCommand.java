@@ -15,7 +15,7 @@ public class CellLowerCommand extends PlayerCommand {
 
 	@Override
 	public String serialize() {
-		return "/~disp-cell-lower: " + cellAndPin;
+		return "/~disp-cell-lower:" + cellAndPin;
 	}
 
 	@Override

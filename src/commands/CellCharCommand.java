@@ -15,7 +15,7 @@ public class CellCharCommand extends PlayerCommand {
 
 	@Override
 	public String serialize() {
-		return "/~disp-cell-char: " + cellAndChar;
+		return "/~disp-cell-char:" + cellAndChar;
 	}
 
 	@Override

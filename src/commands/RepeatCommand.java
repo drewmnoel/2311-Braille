@@ -17,7 +17,7 @@ public class RepeatCommand extends PlayerCommand {
 	public String serialize() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("/~repeat\n");
-		sb.append(repeatedText + "\n");
+		sb.append(repeatedText.trim() + "\n");
 		sb.append("/~endrepeat");
 
 		return sb.toString();

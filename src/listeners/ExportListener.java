@@ -2,9 +2,12 @@ package listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.List;
 
 import javax.swing.JFileChooser;
@@ -54,11 +57,11 @@ public class ExportListener implements ActionListener {
 			file = new File(file.toString() + ".txt");
 		}
 
-		try {
-			FileWriter fw = new FileWriter(file);
-			fw.write(sb.toString());
-			fw.close();
+		try (Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "8859_1"));) {
+			out.append(sb.toString());
+			out.close();
 		} catch (IOException e1) {
+			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}

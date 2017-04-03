@@ -24,7 +24,7 @@ public class SetVoiceCommand extends PlayerCommand {
 
 	@Override
 	public String serialize() {
-		return "/~set-voice: " + voiceNumber;
+		return "/~set-voice:" + voiceNumber;
 	}
 
 	@Override

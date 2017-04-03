@@ -15,7 +15,7 @@ public class SetStringCommand extends PlayerCommand {
 
 	@Override
 	public String serialize() {
-		return "/~disp-string: " + str;
+		return "/~disp-string:" + str;
 	}
 
 	@Override

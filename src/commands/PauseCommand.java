@@ -22,7 +22,7 @@ public class PauseCommand extends PlayerCommand {
 
 	@Override
 	public String serialize() {
-		return "/~pause: " + waitTime;
+		return "/~pause:" + waitTime;
 	}
 
 	@Override
