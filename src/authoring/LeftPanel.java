@@ -132,6 +132,10 @@ public class LeftPanel extends JPanel implements MouseListener {
 		// Remove that position from the listModel
 		listModel.remove(selectedIndex);
 	}
+	
+	public void clearItem() {
+		listModel.removeAllElements();
+	}
 
 	/**
 	 * Re-set the statuses of each of the relevant buttons.
