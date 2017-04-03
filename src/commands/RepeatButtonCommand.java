@@ -12,7 +12,7 @@ public class RepeatButtonCommand extends PlayerCommand {
 
 	/***
 	 * Constructor for PauseCommand.
-	 * 
+	 *
 	 * @param waitTime
 	 *            The number of seconds for the pause to wait
 	 */
@@ -22,7 +22,7 @@ public class RepeatButtonCommand extends PlayerCommand {
 
 	@Override
 	public String serialize() {
-		return " /~repeat-button:" + buttonNum;
+		return "/~repeat-button:" + buttonNum;
 	}
 
 	@Override
