@@ -132,20 +132,6 @@ public class LeftPanel extends JPanel implements MouseListener {
 		// Remove that position from the listModel
 		listModel.remove(selectedIndex);
 	}
-	public void saveFile() {
-		SaveScenario s = new SaveScenario(gui);
-		s.saveFile();
-
-	}
-
-	public ArrayList<String> getItem() {
-		ArrayList<String> elements = new ArrayList<String>();
-		for(int i = 0; i <= listModel.size() - 1; i++)
-		{
-			elements.add(listModel.elementAt(i).serialize());
-		}
-		return elements;
-	}
 
 	/**
 	 * Re-set the statuses of each of the relevant buttons.
@@ -217,8 +203,4 @@ public class LeftPanel extends JPanel implements MouseListener {
 		}
 		return result;
 	}
-
-
-
-
 }
