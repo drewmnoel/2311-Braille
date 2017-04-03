@@ -1,3 +1,0 @@
-INIT 3 10
-TTS This is a check for exceptions
-TS  Should print critical error
