@@ -22,6 +22,7 @@ public class RightPanel extends JPanel implements ActionListener {
 	private JButton btnNew = new JButton("New Item");
 	private JButton btnExport = new JButton("Export");
 	private JButton btnSaveScenario = new JButton("Save Scenario");
+	private JButton btnImport = new JButton("Import");
 	private GUI gui;
 
 	 JButton openButton, saveButton;
@@ -40,6 +41,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		add(btnNew);
 		add(btnExport);
 		add(btnSaveScenario);
+		add(btnImport);
 
 		// Hook in the button listeners for the buttons
 		btnStart.addActionListener(this);
@@ -51,6 +53,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		readFile.addActionListener(this);
 		btnExport.addActionListener(new listeners.ExportListener(gui));
 		btnSaveScenario.addActionListener(this);
+		btnImport.addActionListener(new listeners.ImportListener(gui));
 		this.gui = gui;
 	}
 	@Override
