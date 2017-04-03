@@ -68,7 +68,7 @@ public class NewButtonListener implements ActionListener {
 			gui.getLeftPanel().addItem(new ResetButtonCommand());
 			break;
 		case "Skip":
-			gui.getLeftPanel().addItem(new SkipCommand());
+			gui.getLeftPanel().addItem(new SkipCommand(""));
 			break;
 		case "Clear All":
 			gui.getLeftPanel().addItem(new ClearAllCommand());

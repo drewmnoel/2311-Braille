@@ -1,29 +1,36 @@
 package commands;
 
 public class SkipCommand extends PlayerCommand {
-
+	
+	private String skipTo = "";
+	
+	public SkipCommand(String skipTo) {
+		this.skipTo = skipTo;
+	}
+	
 	@Override
 	public String toString() {
-		return "Skip";
+		return "Skip to: " + skipTo;
 	}
 
 	@Override
 	public String serialize() {
-		return "/~skip";
+		return "/~skip:" + skipTo;
 	}
 
 	@Override
 	public String getEditLabel() {
-		return "Ignored";
+		return "Enter label jump tag to skip to";
 	}
 
 	@Override
 	public String getCurrentValue() {
-		return "";
+		return skipTo;
 	}
 
 	@Override
 	public void setCurrentValue(String val) {
+		this.skipTo = val;
 	}
 
 }
