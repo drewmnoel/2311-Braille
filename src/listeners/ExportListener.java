@@ -29,7 +29,6 @@ public class ExportListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		StringBuilder sb = new StringBuilder();
-		String path;
 		// Build the file header first
 		sb.append("Cell " + gui.getSettingsPanel().getCellField() + "\n");
 		sb.append("Button " + gui.getSettingsPanel().getButtonField() + "\n");
@@ -52,25 +51,24 @@ public class ExportListener implements ActionListener {
 
 		int r = save.showSaveDialog(null);
 
-		// Get the file and fix the extension if it's wrong
+		// Check to see if any file was set
 		File file = save.getSelectedFile();
 		if(file == null)
 		{
-			path = "";
-		} else {
-			if (!FilenameUtils.getExtension(file.getName()).equalsIgnoreCase("txt")) {
-				file = new File(file.toString() + ".txt");
-			}
-
-			try (Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "8859_1"));) {
-				out.append(sb.toString());
-				out.close();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			path = file.getPath();
+			return;
 		}
-		
+
+		// Get the file and fix the extension if it's wrong
+		if (!FilenameUtils.getExtension(file.getName()).equalsIgnoreCase("txt")) {
+			file = new File(file.toString() + ".txt");
+		}
+
+		try (Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "8859_1"));) {
+			out.append(sb.toString());
+			out.close();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 }
