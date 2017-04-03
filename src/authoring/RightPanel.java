@@ -1,5 +1,6 @@
 package authoring;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,6 +25,9 @@ public class RightPanel extends JPanel implements ActionListener {
 	private JButton btnImport = new JButton("Import");
 	private GUI gui;
 
+	private static final String FONT_FACE = "Arial";
+	private static final int FONT_SIZE = 12;
+
 	 JButton openButton, saveButton;
 	    JTextArea log;
 	    JFileChooser fc = new JFileChooser();;
@@ -31,6 +35,19 @@ public class RightPanel extends JPanel implements ActionListener {
 	public RightPanel(GUI gui) {
 		super(new GridLayout(10,1));
 		setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Commands"));
+
+		// Set font sizes
+		btnImport.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
+		btnExport.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
+		btnStart.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
+		btnStop.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
+		readFile.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
+		btnMoveUp.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
+		btnMoveDown.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
+		btnDelete.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
+		btnNew.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
+
+		// Add the buttons
 		add(btnImport);
 		add(btnExport);
 		add(btnStart);
@@ -51,6 +68,10 @@ public class RightPanel extends JPanel implements ActionListener {
 		readFile.addActionListener(this);
 		btnExport.addActionListener(new listeners.ExportListener(gui));
 		btnImport.addActionListener(new listeners.ImportListener(gui));
+
+		// Do not allow this component to enlarge ever
+		this.setMaximumSize(this.getPreferredSize());
+
 		this.gui = gui;
 	}
 	@Override
