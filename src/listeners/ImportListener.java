@@ -46,32 +46,70 @@ public class ImportListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		List<String> inputLines = getInput();
 
-		boolean inCommand = false;
+		// Process first three lines
 		int i = 0;
-		StringBuilder repeatHolder = new StringBuilder("");
 		for (String line : inputLines) {
-
 			if (line.isEmpty()) {
 				continue;
 			}
 
-			// Process first three lines
+			if (i >= 3) {
+				break;
+			}
+			String components[] = line.split(" ", 2);
+			String firstWord = components[0];
+			String restOfLine = "";
+			if (components.length > 1) {
+				restOfLine = components[1];
+			}
+
+			if (firstWord.compareTo("Cell") == 0) {
+				gui.getSettingsPanel().setCellField(restOfLine);
+			} else if (firstWord.compareTo("Button") == 0) {
+				gui.getSettingsPanel().setButtonFieldText(restOfLine);
+			} else {
+				gui.getSettingsPanel().setTitleField(line);
+			}
+			i++;
+		}
+
+		for (PlayerCommand pc : parseString(inputLines)) {
+			gui.getLeftPanel().addItem(pc);
+		}
+	}
+
+	private List<String> getInput() {
+		JFileChooser importDialog = new JFileChooser();
+
+		FileNameExtensionFilter txtFilter = new FileNameExtensionFilter("text files (*.txt)", "txt");
+		importDialog.addChoosableFileFilter(txtFilter);
+		importDialog.setFileFilter(txtFilter);
+
+		importDialog.showOpenDialog(gui);
+
+		URI uri = importDialog.getSelectedFile().toURI();
+		try {
+			return Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new ArrayList<String>();
+		}
+	}
+
+	public List<PlayerCommand> parseString(List<String> inputLines) {
+		List<PlayerCommand> result = new ArrayList<>();
+		boolean inCommand = false;
+		StringBuilder repeatHolder = new StringBuilder("");
+		int i = 0;
+
+		for (String line : inputLines) {
+			if (line.isEmpty()) {
+				continue;
+			}
+
+			// Ignore first three lines
 			if (i < 3) {
-				String components[] = line.split(" ", 2);
-				String firstWord = components[0];
-				String restOfLine = "";
-				if (components.length > 1) {
-					restOfLine = components[1];
-				}
-
-				if (firstWord.compareTo("Cell") == 0) {
-					gui.getSettingsPanel().setCellField(restOfLine);
-				} else if (firstWord.compareTo("Button") == 0) {
-					gui.getSettingsPanel().setButtonFieldText(restOfLine);
-				} else {
-					gui.getSettingsPanel().setTitleField(line);
-				}
-
 				i++;
 				continue;
 			}
@@ -94,13 +132,13 @@ public class ImportListener implements ActionListener {
 			if (line.compareTo("/~endrepeat") == 0) {
 				inCommand = false;
 				PlayerCommand pc = new RepeatCommand(repeatHolder.toString());
-				gui.getLeftPanel().addItem(pc);
+				result.add(pc);
 				continue;
 			}
 
 			// Check for TTS, it has no header
 			if (line.length() < 2 || line.substring(0, 2).compareTo("/~") != 0) {
-				gui.getLeftPanel().addItem(new TTSCommand(line));
+				result.add(new TTSCommand(line));
 				continue;
 			}
 
@@ -168,27 +206,10 @@ public class ImportListener implements ActionListener {
 				break;
 			}
 
-			gui.getLeftPanel().addItem(pc);
+			result.add(pc);
 		}
-	}
 
-	private List<String> getInput() {
-		JFileChooser importDialog = new JFileChooser();
-
-		FileNameExtensionFilter txtFilter = new FileNameExtensionFilter("text files (*.txt)", "txt");
-		importDialog.addChoosableFileFilter(txtFilter);
-		importDialog.setFileFilter(txtFilter);
-
-		importDialog.showOpenDialog(gui);
-
-		URI uri = importDialog.getSelectedFile().toURI();
-		try {
-			return Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return new ArrayList<String>();
-		}
+		return result;
 	}
 
 }
