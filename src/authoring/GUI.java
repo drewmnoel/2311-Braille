@@ -11,7 +11,7 @@ import javax.swing.JPanel;
  */
 public class GUI extends JFrame {
 	private static final long serialVersionUID = -1291725446662111704L;
-	ThreadRunnable audioThread;
+	private transient ThreadRunnable audioThread;
 	private LeftPanel leftPanel;
 	private RightPanel rightPanel;
 	private SettingsPanel settingsPanel;

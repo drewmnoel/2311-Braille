@@ -2,6 +2,7 @@ package listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.net.URI;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -172,18 +173,18 @@ public class ImportListener implements ActionListener {
 	}
 
 	private List<String> getInput() {
+		JFileChooser importDialog = new JFileChooser();
+
+		FileNameExtensionFilter txtFilter = new FileNameExtensionFilter("text files (*.txt)", "txt");
+		importDialog.addChoosableFileFilter(txtFilter);
+		importDialog.setFileFilter(txtFilter);
+
+		importDialog.showOpenDialog(gui);
+
+		URI uri = importDialog.getSelectedFile().toURI();
 		try {
-			JFileChooser importDialog = new JFileChooser();
-
-			FileNameExtensionFilter txtFilter = new FileNameExtensionFilter("text files (*.txt)", "txt");
-			importDialog.addChoosableFileFilter(txtFilter);
-			importDialog.setFileFilter(txtFilter);
-
-			importDialog.showOpenDialog(gui);
-
-			URI uri = importDialog.getSelectedFile().toURI();
 			return Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
-		} catch (Exception e) {
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return new ArrayList<String>();
