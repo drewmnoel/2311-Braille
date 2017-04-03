@@ -30,7 +30,7 @@ public class RepeatCommand extends PlayerCommand {
 
 	@Override
 	public String getCurrentValue() {
-		return repeatedText;
+		return repeatedText.trim();
 	}
 
 	@Override
