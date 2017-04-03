@@ -9,6 +9,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import authoring.GUI;
 import commands.CellCharCommand;
 import commands.CellLowerCommand;
@@ -154,7 +157,15 @@ public class ImportListener implements ActionListener {
 
 	private List<String> getInput() {
 		try {
-			URI uri = new URI("file:///home/dnoel/git/Braille/test.txt");
+			JFileChooser importDialog = new JFileChooser();
+
+			FileNameExtensionFilter txtFilter = new FileNameExtensionFilter("text files (*.txt)", "txt");
+			importDialog.addChoosableFileFilter(txtFilter);
+			importDialog.setFileFilter(txtFilter);
+
+			importDialog.showOpenDialog(gui);
+
+			URI uri = importDialog.getSelectedFile().toURI();
 			return Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
