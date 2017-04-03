@@ -12,6 +12,7 @@ import commands.CellCharCommand;
 import commands.PlayerCommand;
 import commands.RepeatCommand;
 import listeners.ExportListener;
+import listeners.ImportListener;
 
 public class TestImportExport {
 
@@ -29,5 +30,31 @@ public class TestImportExport {
 
 		// Trim newlines from the end, ensure they're equal still
 		assertEquals(result.trim(), expectedResult.trim());
+	}
+
+	@Test
+	public void testImportSimple() {
+		String inputText = "Cell 1\nButton 2\nTitle\n/~disp-cell-char:a\n/~repeat\nTest repeat\n/~endrepeat";
+
+		ImportListener il = new ImportListener(null);
+
+		List<PlayerCommand> result = il.parseString(Arrays.asList(inputText.split("\n")));
+
+		List<PlayerCommand> expectedResult = new ArrayList<>();
+
+		expectedResult.add(new CellCharCommand("a"));
+		expectedResult.add(new RepeatCommand("Test repeat"));
+
+		// Ensure they're equal length
+		assertEquals(result.size(), expectedResult.size());
+
+		// Go item-by-item, needs to be in same order
+		for (int i = 0; i < result.size(); i++) {
+			PlayerCommand resultPC = result.get(i);
+			PlayerCommand expectPC = expectedResult.get(i);
+
+			assertEquals(resultPC.getClass(), expectPC.getClass());
+			assertEquals(resultPC.getCurrentValue(), expectPC.getCurrentValue());
+		}
 	}
 }
