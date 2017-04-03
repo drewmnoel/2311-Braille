@@ -20,7 +20,7 @@ public class SkipCommand extends PlayerCommand {
 
 	@Override
 	public String getEditLabel() {
-		return "Enter label jump tag to skip to";
+		return "Enter jump tag to skip to";
 	}
 
 	@Override
