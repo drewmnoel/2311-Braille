@@ -69,7 +69,7 @@ public class ImportListener implements ActionListener {
 				} else if (firstWord.compareTo("Button") == 0) {
 					gui.getSettingsPanel().setButtonFieldText(restOfLine);
 				} else {
-					gui.getSettingsPanel().setTitleField(restOfLine);
+					gui.getSettingsPanel().setTitleField(line);
 				}
 
 				i++;
