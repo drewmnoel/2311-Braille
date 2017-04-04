@@ -61,6 +61,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		btnMoveDown.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
 		btnDelete.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
 		btnNew.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
+		btnNewQuestion.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
 
 		// Add the buttons
 		add(btnNewScenario);
@@ -73,7 +74,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		add(btnMoveDown);
 		add(btnDelete);
 		add(btnNew);
-		
+		add(btnNewQuestion);
 
 		// Hook in the button listeners for the buttons
 		btnStart.addActionListener(this);
@@ -86,6 +87,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		btnExport.addActionListener(new listeners.ExportListener(gui));
 		btnImport.addActionListener(new listeners.ImportListener(gui));
 		btnNewScenario.addActionListener(new listeners.NewScenarioListener(gui));
+		btnNewQuestion.addActionListener(new listeners.NewQuestionListener(gui));
 
 		// Do not allow this component to enlarge ever
 		this.setMaximumSize(this.getPreferredSize());
@@ -96,7 +98,8 @@ public class RightPanel extends JPanel implements ActionListener {
 		btnExport.setEnabled(false);
 		readFile.setEnabled(false);
 		btnStart.setEnabled(false);
-		
+		btnNewQuestion.setEnabled(false);
+
 		this.gui = gui;
 	}
 	@Override
