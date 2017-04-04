@@ -1,5 +1,6 @@
 package authoring;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -25,8 +26,11 @@ public class SettingsPanel extends JPanel {
 		cellField = new JTextField(10);
 		buttonField = new JTextField();
 		titleField = new JTextField();
-		
-		
+
+		cellField.setMinimumSize(new Dimension(200, 15));
+		buttonField.setMinimumSize(new Dimension(200, 15));
+		titleField.setMinimumSize(new Dimension(200, 15));
+
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
 		gbc.gridy = 0;

@@ -47,7 +47,7 @@ public class RightPanel extends JPanel implements ActionListener {
 	 *           Reference to the overall GUI object
 	 */
 	public RightPanel(GUI gui) {
-		super(new GridLayout(10,1));
+		super(new GridLayout(15,1));
 		setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Commands"));
 
 		// Set font sizes
