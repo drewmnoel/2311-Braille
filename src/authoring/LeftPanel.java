@@ -133,10 +133,19 @@ public class LeftPanel extends JPanel implements MouseListener {
 		listModel.remove(selectedIndex);
 	}
 	
+	/**
+	 * Remove all elements from the list
+	 */
 	public void clearItem() {
 		listModel.removeAllElements();
 	}
 	
+	/**
+	 * Returns a boolean to see if the list is empty or not
+	 * 
+	 * @return
+	 * 		a true or false value
+	 */
 	public boolean elementCheck() {
 		return listModel.isEmpty();
 	}
