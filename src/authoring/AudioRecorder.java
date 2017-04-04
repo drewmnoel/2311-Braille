@@ -20,11 +20,11 @@ import javax.sound.sampled.TargetDataLine;
  */
 public class AudioRecorder {
 	//File for audio to be saved as, will be specified by user
-	File wavFile;
+	private File wavFile;
 	//Audio file format, set as .wav
-	AudioFileFormat.Type fileType = AudioFileFormat.Type.WAVE;
+	private AudioFileFormat.Type fileType = AudioFileFormat.Type.WAVE;
 	//Target line to capture audio data from
-	TargetDataLine line;
+	private TargetDataLine line;
 
     public AudioRecorder(TargetDataLine line) {
     	this.line = line;
