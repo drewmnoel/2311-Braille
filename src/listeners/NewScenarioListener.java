@@ -44,7 +44,15 @@ public class NewScenarioListener implements ActionListener {
 
 	     int result = JOptionPane.showConfirmDialog(null, myPanel, 
 	              "Enter the Scenario parameters", JOptionPane.OK_CANCEL_OPTION);
+	     
 	     if (result == JOptionPane.OK_OPTION) {
+	    	   if(celltxt.getText().isEmpty() || btntxt.getText().isEmpty() || titletxt.getText().isEmpty())
+	  	     {
+	  	    	JOptionPane.showMessageDialog(null,
+	  	    			    "One or more fields are empty!",
+	  	    			    "Missing fields!",
+	  	    			    JOptionPane.ERROR_MESSAGE);
+	  	     }
 	        gui.getSettingsPanel().setCellField(celltxt.getText());
 	        gui.getSettingsPanel().setButtonFieldText(btntxt.getText());
 	        gui.getSettingsPanel().setTitleField(titletxt.getText());
@@ -58,13 +66,27 @@ public class NewScenarioListener implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		if(gui.getLeftPanel().elementCheck()) 
 		{
+
+			gui.getSettingsPanel().setCellField("");
+			gui.getSettingsPanel().setButtonFieldText("");
+			gui.getSettingsPanel().setTitleField("");
+			celltxt.setText("");
+			btntxt.setText("");
+			titletxt.setText("");
 			scenarioBuilder();
+
 		 } else {
 			 int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to start a new Scenario?"
 			 		+ " All current changes will be lost", "Warning!", 
 			 		JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION);
 		     if (result == JOptionPane.YES_OPTION) {
-		    	 scenarioBuilder();
+				gui.getSettingsPanel().setCellField("");
+				gui.getSettingsPanel().setButtonFieldText("");
+				gui.getSettingsPanel().setTitleField("");
+				celltxt.setText("");
+				btntxt.setText("");
+				titletxt.setText("");				
+		    	scenarioBuilder();
 		     }
 		 }   		
 	}
