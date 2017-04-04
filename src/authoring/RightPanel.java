@@ -76,11 +76,19 @@ public class RightPanel extends JPanel implements ActionListener {
 
 		// Do not allow this component to enlarge ever
 		this.setMaximumSize(this.getPreferredSize());
-
+		
+		btnStop.setEnabled(false);
+		btnNew.setEnabled(false);
+		btnExport.setEnabled(false);
+		readFile.setEnabled(false);
+		btnStart.setEnabled(false);
+		
 		this.gui = gui;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		
 		if (e.getSource() == btnStart) {
 			gui.setAudioThread(new ThreadRunnable());
 			gui.getAudioThread().start();
@@ -99,7 +107,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		} else if(e.getSource() == readFile) {
 			this.fileChooser();
 		}
-
+		
 		gui.getLeftPanel().recalculateButtonStatus();
 	}
 
@@ -128,4 +136,21 @@ public class RightPanel extends JPanel implements ActionListener {
 	public void setDelete(boolean status) {
 		btnDelete.setEnabled(status);
 	}
+	
+	public void setStart(boolean status) {
+		btnStart.setEnabled(status);
+	}
+	
+	public void setReadFile(boolean status) {
+		readFile.setEnabled(status);
+	}
+	
+	public void setExport(boolean status) {
+		btnExport.setEnabled(status);
+	}
+	
+	public void setNew(boolean status) {
+		btnNew.setEnabled(status);
+	}
+	
 }

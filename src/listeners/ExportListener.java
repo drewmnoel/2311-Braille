@@ -45,7 +45,7 @@ public class ExportListener implements ActionListener {
 		save.addChoosableFileFilter(txtFilter);
 		save.setFileFilter(txtFilter);
 
-		int r = save.showSaveDialog(null);
+		save.showSaveDialog(null);
 
 		// Check to see if any file was set
 		File file = save.getSelectedFile();

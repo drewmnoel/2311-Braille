@@ -5,12 +5,14 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import authoring.GUI;
+import authoring.RightPanel;
 
 public class NewScenarioListener implements ActionListener {
 
@@ -28,7 +30,7 @@ public class NewScenarioListener implements ActionListener {
 		this.gui = gui;
 	}
 	
-	public void scenarioBuilder() {
+	private void scenarioBuilder() {
 		gui.getLeftPanel().clearItem();
 
 		 myPanel.add(cellLabel);
@@ -46,7 +48,10 @@ public class NewScenarioListener implements ActionListener {
 	        gui.getSettingsPanel().setCellField(celltxt.getText());
 	        gui.getSettingsPanel().setButtonFieldText(btntxt.getText());
 	        gui.getSettingsPanel().setTitleField(titletxt.getText());
-
+	        gui.getRightPanel().setReadFile(true);
+	        gui.getRightPanel().setNew(true);
+	        gui.getRightPanel().setExport(true);
+	        gui.getRightPanel().setReadFile(true);
 	     }
 	}
 	@Override
@@ -61,10 +66,6 @@ public class NewScenarioListener implements ActionListener {
 		     if (result == JOptionPane.YES_OPTION) {
 		    	 scenarioBuilder();
 		     }
-		     
-		 }
-	   
-		
-		
+		 }   		
 	}
 }
