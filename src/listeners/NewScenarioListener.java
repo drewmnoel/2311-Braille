@@ -13,7 +13,13 @@ import javax.swing.JTextField;
 
 import authoring.GUI;
 import authoring.RightPanel;
-
+/**
+ * NewScenarioListener class
+ * 
+ * The NewScenarioListener class is a listener that responds to a button 
+ * @author Alvis
+ *
+ */
 public class NewScenarioListener implements ActionListener {
 
 	private GUI gui;
@@ -56,7 +62,7 @@ public class NewScenarioListener implements ActionListener {
 	        gui.getSettingsPanel().setCellField(celltxt.getText());
 	        gui.getSettingsPanel().setButtonFieldText(btntxt.getText());
 	        gui.getSettingsPanel().setTitleField(titletxt.getText());
-	        gui.getRightPanel().setReadFile(true);
+	        gui.getRightPanel().setStart(true);
 	        gui.getRightPanel().setNew(true);
 	        gui.getRightPanel().setExport(true);
 	        gui.getRightPanel().setReadFile(true);
