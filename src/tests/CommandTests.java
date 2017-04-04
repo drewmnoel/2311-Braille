@@ -9,7 +9,6 @@ import commands.*;
 
 /***
  * JUnit test cases for all the various command classes
- * @author Jon
  *
  */
 
@@ -241,14 +240,16 @@ public class CommandTests {
 		assertEquals("Enter name of jump tag", goHere.getEditLabel());
 
 
-		//tests getCurrentValue()
-		assertEquals("testjumptaghere", goHere.getCurrentValue());
+		//tests setCurrentValue()
+		goHere.setCurrentValue("new tag");
+		assertEquals("new tag", goHere.getCurrentValue());
 
 	}
 	
 	/**
 	 * Test all methods in PauseCommand
 	 */
+	@Test
 	public void testPauseCommand() {
 		//tests toString()
 		for(int i = 0; i<26; i++) {

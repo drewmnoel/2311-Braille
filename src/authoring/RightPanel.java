@@ -5,6 +5,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import authoring.GUI;
+import commands.SoundCommand;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -110,7 +112,8 @@ public class RightPanel extends JPanel implements ActionListener {
 		
 		gui.getLeftPanel().recalculateButtonStatus();
 	}
-
+	
+	
 	private void fileChooser(){
 		JFileChooser chooser = new JFileChooser();
 	    FileNameExtensionFilter filter = new FileNameExtensionFilter("wav files (*.wav)", "wav");
@@ -121,6 +124,7 @@ public class RightPanel extends JPanel implements ActionListener {
 	            chooser.getSelectedFile());
 	       String name = chooser.getSelectedFile().toString();
 	       ReadFile read = new ReadFile();
+	       gui.getLeftPanel().addItem(new SoundCommand(name));
 	       read.playSound(name);
 	    }
 	}
