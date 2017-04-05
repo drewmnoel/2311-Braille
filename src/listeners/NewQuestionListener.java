@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import authoring.GUI;
+import commands.ResetButtonCommand;
 import commands.GoHereCommand;
 import commands.PauseCommand;
 import commands.PlayerCommand;
@@ -133,6 +134,7 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 		// It is composed of TTS, Braille string, a repeat section, a repeat
 		// button, some error
 		PlayerCommand holder;
+		gui.getLeftPanel().addItem(new ResetButtonCommand(""));
 		gui.getLeftPanel().addItem(new TTSCommand(introField.getText()));
 		gui.getLeftPanel().addItem(new PauseCommand("1"));
 
