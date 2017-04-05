@@ -25,6 +25,9 @@ public class GUI extends JFrame {
 	 * the UI is closed.
 	 */
 	public GUI() {
+		// Create the colour mapper
+		ColourMapper mapper = new ColourMapper();
+
 		// Create the root panel
 		JPanel rootContainer = new JPanel();
 		rootContainer.setLayout(new BoxLayout(rootContainer, BoxLayout.Y_AXIS));
@@ -40,11 +43,11 @@ public class GUI extends JFrame {
 		rootContainer.add(bottomContainer);
 
 		// Create the command list pane
-		leftPanel = new LeftPanel(this);
+		leftPanel = new LeftPanel(this, mapper);
 		bottomContainer.add(leftPanel);
 
 		// Create the buttons pane
-		rightPanel = new RightPanel(this);
+		rightPanel = new RightPanel(this, mapper);
 		bottomContainer.add(rightPanel);
 
 		// Add the root container to the JFrame

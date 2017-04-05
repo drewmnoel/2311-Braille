@@ -40,13 +40,15 @@ public class LeftPanel extends JPanel implements MouseListener {
 	 *
 	 * @param gui
 	 *            Reference to the overall GUI object
+	 * @param mapper Reference to the common colour mapper
 	 */
-	public LeftPanel(GUI gui) {
+	public LeftPanel(GUI gui, ColourMapper mapper) {
 		// Create a basic JPanel with a grid layout
 		super(new GridLayout(1, 1));
 
 		// Set the JList to have listModel as the content
 		commandList.setModel(listModel);
+		commandList.setCellRenderer(new ColourCellRenderer(mapper));
 
 		// Set the scollpane to have commandList as its content
 		scrollPane.setViewportView(commandList);

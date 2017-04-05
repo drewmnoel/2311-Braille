@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JComboBox;
@@ -16,6 +17,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import authoring.ColourMapper;
 import authoring.GUI;
 import commands.GoHereCommand;
 import commands.PauseCommand;
@@ -46,6 +48,7 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 	private JTextField brailleField;
 	private JTextField repeatField;
 	private JTextField buttonField;
+	private ColourMapper mapper;
 
 	/**
 	 * Create the NewQuestionListener with a reference to the current GUI
@@ -54,9 +57,11 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 	 *
 	 * @param gui
 	 *            Instance of currently running GUI
+	 * @param mapper Reference to the common instance of the colourmapper
 	 */
-	public NewQuestionListener(GUI gui) {
+	public NewQuestionListener(GUI gui, ColourMapper mapper) {
 		this.gui = gui;
+		this.mapper = mapper;
 
 		setLayout(new GridBagLayout());
 
@@ -65,12 +70,12 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 		JLabel repeatLabel = new JLabel("Repeating Text:", SwingConstants.RIGHT);
 		JLabel correctLabel = new JLabel("Correct Button:", SwingConstants.RIGHT);
 		JLabel incorrectLabel = new JLabel("Text For Incorrect:", SwingConstants.RIGHT);
-		
+
 		//Creates a text area that wraps properly and scrolls vertically only
 		introField = new JTextArea(5, 18);
 		introField.setLineWrap(true);
-		JScrollPane introPane = new JScrollPane(introField); 		
-		
+		JScrollPane introPane = new JScrollPane(introField);
+
 		brailleField = new JTextField();
 		repeatField = new JTextField();
 		buttonField = new JTextField();
@@ -143,42 +148,50 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 		// At this point we have enough information to create a basic question.
 		// It is composed of TTS, Braille string, a repeat section, a repeat
 		// button, some error
-		PlayerCommand holder;
-		gui.getLeftPanel().addItem(new ResetButtonCommand(""));
-		gui.getLeftPanel().addItem(new TTSCommand(introField.getText()));
-		gui.getLeftPanel().addItem(new PauseCommand("1"));
+		ArrayList<PlayerCommand> questionCommands = new ArrayList<>();
+		questionCommands.add(new ResetButtonCommand(""));
+		questionCommands.add(new TTSCommand(introField.getText()));
+		questionCommands.add(new PauseCommand("1"));
 
 		// Set the Braille fields
-		holder = new SetStringCommand(brailleField.getText());
-		gui.getLeftPanel().addItem(holder);
+		questionCommands.add(new SetStringCommand(brailleField.getText()));
 
 		// Start of the repeat section
-		holder = new GoHereCommand(randomLabel + "-start");
-		gui.getLeftPanel().addItem(holder);
+		questionCommands.add(new GoHereCommand(randomLabel + "-start"));
 
 		// Loop through all the buttons defined
+		PlayerCommand holder;
 		for (int i = 0; i < numOfButtons; i++) {
 			if (i != buttons.getSelectedIndex()) {
 				// All buttons that are wrong will just repeat the question
 				// (bad)
 				holder = new SkipButtonCommand("" + i + " " + randomLabel + "-bad");
-				gui.getLeftPanel().addItem(holder);
+				questionCommands.add(holder);
 			} else {
 				// The correct button skips to the end
 				holder = new SkipButtonCommand("" + i + " " + randomLabel + "-good");
-				gui.getLeftPanel().addItem(holder);
+				questionCommands.add(holder);
 			}
 		}
 		// Adds UserInputCommand to wait for button presses
-		gui.getLeftPanel().addItem(new UserInputCommand());
+		questionCommands.add(new UserInputCommand());
 
 		// Labels for bad
-		gui.getLeftPanel().addItem(new GoHereCommand("" + randomLabel + "-bad"));
-		gui.getLeftPanel().addItem(new TTSCommand(repeatField.getText()));
-		gui.getLeftPanel().addItem(new SkipCommand(randomLabel + "-start"));
+		questionCommands.add(new GoHereCommand("" + randomLabel + "-bad"));
+
+		questionCommands.add(new TTSCommand(repeatField.getText()));
+		questionCommands.add(new SkipCommand(randomLabel + "-start"));
 
 		// Label for good
-		gui.getLeftPanel().addItem(new GoHereCommand("" + randomLabel + "-good"));
+		holder = new GoHereCommand("" + randomLabel + "-good");
+		questionCommands.add(holder);
+
+		// Set the colors
+		mapper.addColourMapping(questionCommands);
+
+		for (PlayerCommand pc : questionCommands) {
+			gui.getLeftPanel().addItem(pc);
+		}
 	}
 
 }

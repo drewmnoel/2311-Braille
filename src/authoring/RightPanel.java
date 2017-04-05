@@ -57,8 +57,9 @@ public class RightPanel extends JPanel implements ActionListener {
 	 *
 	 * @param gui
 	 *            Reference to the overall GUI object
+	 * @param mapper Reference to the shared colour mapper object
 	 */
-	public RightPanel(GUI gui) {
+	public RightPanel(GUI gui, ColourMapper mapper) {
 		super(new GridLayout(15, 1));
 		setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Commands"));
 
@@ -99,7 +100,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		btnExport.addActionListener(new ExportListener(gui));
 		btnImport.addActionListener(new ImportListener(gui));
 		btnNewScenario.addActionListener(new NewScenarioListener(gui));
-		btnNewQuestion.addActionListener(new NewQuestionListener(gui));
+		btnNewQuestion.addActionListener(new NewQuestionListener(gui, mapper));
 
 		// Do not allow this component to enlarge ever
 		this.setMaximumSize(this.getPreferredSize());
