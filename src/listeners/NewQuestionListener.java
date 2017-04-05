@@ -66,7 +66,7 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 		JLabel correctLabel = new JLabel("Correct Button:", SwingConstants.RIGHT);
 		JLabel incorrectLabel = new JLabel("Text For Incorrect:", SwingConstants.RIGHT);
 		
-		
+		//Creates a text area that wraps properly and scrolls vertically only
 		introField = new JTextArea(5, 18);
 		introField.setLineWrap(true);
 		JScrollPane introPane = new JScrollPane(introField); 		
