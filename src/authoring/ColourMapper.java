@@ -24,7 +24,7 @@ public class ColourMapper {
 	//declared public for testing purposes
 	public HashMap<String, Color> colourMap;
 	//List of colors to cycle through
-	private final Color[] COLOURCYCLE = {Color.blue, Color.cyan, Color.darkGray, Color.gray, Color.green, Color.lightGray, Color.magenta, Color.orange, Color.pink, Color.red, Color.yellow};
+	private final Color[] COLOURCYCLE = {Color.blue, Color.cyan, Color.red, Color.green, Color.magenta, Color.orange,  Color.yellow, Color.gray, Color.lightGray, Color.pink, Color.darkGray,};
 	
 	/**
 	 * Constructor to initialize colourMap
