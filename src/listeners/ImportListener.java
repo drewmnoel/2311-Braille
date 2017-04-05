@@ -80,21 +80,25 @@ public class ImportListener implements ActionListener {
 
 	private List<String> getInput() {
 		JFileChooser importDialog = new JFileChooser();
-
+		List<String> str = new ArrayList<String>();
+		
 		FileNameExtensionFilter txtFilter = new FileNameExtensionFilter("text files (*.txt)", "txt");
 		importDialog.addChoosableFileFilter(txtFilter);
 		importDialog.setFileFilter(txtFilter);
 
-		importDialog.showOpenDialog(gui);
-
-		URI uri = importDialog.getSelectedFile().toURI();
-		try {
-			return Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return new ArrayList<String>();
+		int r = importDialog.showOpenDialog(gui);
+		if(r == JFileChooser.APPROVE_OPTION)
+		{
+			URI uri = importDialog.getSelectedFile().toURI();
+			try {
+				return str = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return str = new ArrayList<String>();
+			}
 		}
+		return str;
 	}
 
 	public List<PlayerCommand> parseString(List<String> inputLines) {
