@@ -20,9 +20,9 @@ import commands.PauseCommand;
 import commands.PlayerCommand;
 import commands.SetStringCommand;
 import commands.SkipButtonCommand;
-import commands.UserInputCommand;
 import commands.SkipCommand;
 import commands.TTSCommand;
+import commands.UserInputCommand;
 
 /**
  * This class is used as an action listener whenever the "New Question" button
@@ -44,6 +44,14 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 	private JTextField repeatField;
 	private JTextField buttonField;
 
+	/**
+	 * Create the NewQuestionListener with a reference to the current GUI
+	 * object. Access to this object is required in order to access the left
+	 * panel
+	 *
+	 * @param gui
+	 *            Instance of currently running GUI
+	 */
 	public NewQuestionListener(GUI gui) {
 		this.gui = gui;
 

@@ -38,6 +38,13 @@ public class NewButtonListener implements ActionListener {
 
 	private GUI gui;
 
+	/**
+	 * Create the NewButtonListener with a reference to the base GUI object
+	 * (required to access the left panel)
+	 *
+	 * @param gui
+	 *            Instance of currently running GUI
+	 */
 	public NewButtonListener(GUI gui) {
 		this.gui = gui;
 	}

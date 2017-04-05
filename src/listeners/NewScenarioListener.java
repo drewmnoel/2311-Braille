@@ -38,6 +38,13 @@ public class NewScenarioListener implements ActionListener {
 	private JTextField titletxt = new JTextField(5);
 	private JPanel myPanel = new JPanel(new GridLayout(0, 1, 5, 5));
 
+	/**
+	 * Create the NewScenarioListener with a reference to the base GUI object
+	 * (required to access the button panel)
+	 *
+	 * @param gui
+	 *            Instance of currently running GUI
+	 */
 	public NewScenarioListener(GUI gui) {
 		this.gui = gui;
 	}
