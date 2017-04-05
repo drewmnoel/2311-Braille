@@ -18,6 +18,10 @@ import javax.sound.sampled.TargetDataLine;
  * recording, a user should set the name of the file they want the audio to be
  * saved to using the method setFileName(). Audio recording started by calling
  * the recordAudio() method, and stopped by calling the stopAudio() method.
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-03-13
  */
 public class AudioRecorder {
 	// File for audio to be saved as, will be specified by user
@@ -32,7 +36,7 @@ public class AudioRecorder {
 	 * will allow the recorder to drain the source until it is empty, or the
 	 * source is closed. The source is typically a microphone, but not required
 	 * to be so.
-	 * 
+	 *
 	 * @param line
 	 *            Data line that the class should attempt to drain
 	 */

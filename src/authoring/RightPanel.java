@@ -15,10 +15,14 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import commands.SoundCommand;
 
 /**
- * RightPanel class
- *
+ * RightPanel is the class responsible for creating the control buttons as well
+ * as implementing the simple listeners. It adds the relevant hooks to the more
+ * complex listeners (located in the listeners package). It is instantiated by
+ * the GUI during runtime.
  *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-03-17
  *
  */
 public class RightPanel extends JPanel implements ActionListener {
@@ -45,7 +49,7 @@ public class RightPanel extends JPanel implements ActionListener {
 
 	/**
 	 * Create a new right panel of the GUI
-	 * 
+	 *
 	 * @param gui
 	 *            Reference to the overall GUI object
 	 */
