@@ -33,10 +33,11 @@ import commands.SkipCommand;
 import commands.SoundCommand;
 import commands.TTSCommand;
 import commands.UserInputCommand;
+
 /**
- * This class is used as an action listener whenever the "Import" button
- * is clicked. It serves as a way to initialize the application. Allowing the
- * user to set up saved scenario.
+ * This class is used as an action listener whenever the "Import" button is
+ * clicked. It serves as a way to initialize the application. Allowing the user
+ * to set up saved scenario.
  *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
@@ -116,10 +117,11 @@ public class ImportListener implements ActionListener {
 	}
 
 	/**
-	 * Parse a list of string lines (e.g. lines from a file) into serialized strings. Made private once
-	 * testing is completed.
+	 * Parse a list of string lines (e.g. lines from a file) into serialized
+	 * strings. Made private once testing is completed.
 	 *
-	 * @param inputLines List of strings, each one being a line to be processed
+	 * @param inputLines
+	 *            List of strings, each one being a line to be processed
 	 *
 	 * @return Generic ordered list of the processed commands
 	 */

@@ -23,10 +23,12 @@ import commands.SkipButtonCommand;
 import commands.UserInputCommand;
 import commands.SkipCommand;
 import commands.TTSCommand;
+
 /**
  * This class is used as an action listener whenever the "New Question" button
- * is clicked. It serves as a way to create question by asking user about introduction text,
- * braille text, repeating text, correct button, text for incorrect.
+ * is clicked. It serves as a way to create question by asking user about
+ * introduction text, braille text, repeating text, correct button, text for
+ * incorrect.
  *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
@@ -149,7 +151,7 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 		}
 		// Adds UserInputCommand to wait for button presses
 		gui.getLeftPanel().addItem(new UserInputCommand());
-		
+
 		// Labels for bad
 		gui.getLeftPanel().addItem(new GoHereCommand("" + randomLabel + "-bad"));
 		gui.getLeftPanel().addItem(new TTSCommand(repeatField.getText()));
