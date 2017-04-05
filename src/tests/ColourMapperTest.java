@@ -1,27 +1,38 @@
 package tests;
 
-import static org.junit.Assert.*;
-import commands.SkipButtonCommand;
-import commands.SkipCommand;
-import commands.GoHereCommand;
-import commands.PlayerCommand;
-import commands.TTSCommand;
-import commands.SetStringCommand;
-import commands.UserInputCommand;
-import authoring.ColourMapper;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.awt.Color;
 import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import authoring.ColourMapper;
+import commands.GoHereCommand;
+import commands.PlayerCommand;
+import commands.SetStringCommand;
+import commands.SkipButtonCommand;
+import commands.SkipCommand;
+import commands.TTSCommand;
+import commands.UserInputCommand;
+
+/**
+ * Test suite to verify the behaviour of the colour mapper. The colour mapper must map location tags to colours in order to make the UI more readable.
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-04-05
+ */
 public class ColourMapperTest {
 	//list with 3 different location tags
 	ArrayList<PlayerCommand> commandsFull = new ArrayList<PlayerCommand>();
 	//list with no location tags
 	ArrayList<PlayerCommand> commandsNoSkip =  new ArrayList<PlayerCommand>();
-	
-	//Set up the lists of commands
+
+	/**
+	 * Setup commands, generates the lists in order to pass them through the mapper later
+	 */
 	@Before
 	public void setUp() {
 		commandsFull.add(new SkipCommand("one"));
@@ -34,22 +45,24 @@ public class ColourMapperTest {
 		commandsFull.add(new SkipCommand("two"));
 		commandsFull.add(new SetStringCommand("three"));
 		commandsFull.add(new SkipCommand("three"));
-		
+
 		commandsNoSkip.add(new TTSCommand("one"));
 		commandsNoSkip.add(new TTSCommand("two"));
 		commandsNoSkip.add(new SetStringCommand("three"));
 		commandsNoSkip.add(new UserInputCommand());
 	}
-	
-	//Test that mappings are created properly and returned properly
+
+	/**
+	 * Basic test to ensure that colors are mapped when required
+	 */
 	@Test
 	public void test() {
 		ColourMapper colourMap_full = new ColourMapper();
 		ColourMapper colourMap_noSkip = new ColourMapper();
-		
+
 		colourMap_full.addColourMapping(commandsFull);
 		colourMap_noSkip.addColourMapping(commandsNoSkip);
-		
+
 		assertTrue(colourMap_noSkip.colourMap.isEmpty());
 		assertEquals(Color.blue, colourMap_full.getColour("one"));
 		assertEquals(Color.cyan, colourMap_full.getColour("two"));

@@ -68,7 +68,6 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 
 		JLabel introLabel = new JLabel("Introduction Text:", SwingConstants.RIGHT);
 		JLabel brailleLabel = new JLabel("Braille Text:", SwingConstants.RIGHT);
-		JLabel repeatLabel = new JLabel("Repeating Text:", SwingConstants.RIGHT);
 		JLabel correctLabel = new JLabel("Correct Button:", SwingConstants.RIGHT);
 		JLabel incorrectLabel = new JLabel("Text For Incorrect:", SwingConstants.RIGHT);
 
@@ -96,9 +95,6 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 		gbc.gridy++;
 		add(brailleLabel, gbc);
 
-		// gbc.gridy++;
-		// add(repeatLabel, gbc);
-
 		gbc.gridy++;
 		add(correctLabel, gbc);
 
@@ -113,9 +109,6 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 
 		gbc.gridy++;
 		add(brailleField, gbc);
-
-		// gbc.gridy++;
-		// add(buttonField, gbc);
 
 		gbc.gridy++;
 		add(buttons, gbc);

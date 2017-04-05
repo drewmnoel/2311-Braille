@@ -1,26 +1,27 @@
 package authoring;
 
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.List;
-import java.awt.Color;
-import commands.PlayerCommand;
-import commands.SkipCommand;
-import commands.SkipButtonCommand;
+
 import commands.GoHereCommand;
+import commands.PlayerCommand;
+import commands.SkipButtonCommand;
+import commands.SkipCommand;
 
 /**
  * This a utility class is used to create a mapping between location tags in the
  * scenario and their text colour. There method cycles between 11 set colours to
  * use in the mappings. The goal is to make sure all commands that use the same
  * location tag are coloured the same.
- * 
+ *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
  * @since 2017-04-01
  *
  */
 public class ColourMapper {
-	// declared public for testing purposes
+	/** Mapper from location tags to colors. Declared public for testing purposes */
 	public HashMap<String, Color> colourMap;
 	// List of colors to cycle through
 	private final Color[] COLOURCYCLE = { Color.blue, Color.cyan, Color.red, Color.green, Color.magenta, Color.orange,
@@ -36,7 +37,7 @@ public class ColourMapper {
 	/**
 	 * This method iterates over a list of commands, and if it sees any location
 	 * tags that aren't in colourMap, it will add a new colour mapping for it.
-	 * 
+	 *
 	 * @param commands
 	 *            list of commands from the scenario
 	 */
@@ -73,7 +74,7 @@ public class ColourMapper {
 
 	/**
 	 * This method returns the colour mapping for a given location tag.
-	 * 
+	 *
 	 * @param locationTag
 	 *            the location tag in the event's description
 	 * @return the colour mapped to that location tag
