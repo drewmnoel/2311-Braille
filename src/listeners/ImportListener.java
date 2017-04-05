@@ -13,6 +13,7 @@ import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import authoring.ColourMapper;
 import authoring.GUI;
 import commands.CellCharCommand;
 import commands.CellLowerCommand;
@@ -46,6 +47,7 @@ import commands.UserInputCommand;
 public class ImportListener implements ActionListener {
 
 	private GUI gui;
+	private ColourMapper mapper;
 
 	/**
 	 * Create an import listener with a reference to the parent GUI.
@@ -53,9 +55,11 @@ public class ImportListener implements ActionListener {
 	 * @param gui
 	 *            A reference to the parent GUI, needed in order to properly
 	 *            access the command list
+	 * @param mapper Shared reference to the color mapper
 	 */
-	public ImportListener(GUI gui) {
+	public ImportListener(GUI gui, ColourMapper mapper) {
 		this.gui = gui;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -89,7 +93,9 @@ public class ImportListener implements ActionListener {
 			i++;
 		}
 
-		for (PlayerCommand pc : parseString(inputLines)) {
+		List<PlayerCommand> allCommands = parseString(inputLines);
+		mapper.addColourMapping(allCommands);
+		for (PlayerCommand pc : allCommands) {
 			gui.getLeftPanel().addItem(pc);
 		}
 	}
@@ -109,7 +115,7 @@ public class ImportListener implements ActionListener {
 			gui.getRightPanel().setNew(true);
 			gui.getRightPanel().setExport(true);
 			gui.getRightPanel().setReadFile(true);
-			gui.getRightPanel().setNewQuestion(true);			
+			gui.getRightPanel().setNewQuestion(true);
 			try {
 				str = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
 			} catch (IOException e) {

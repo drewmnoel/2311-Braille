@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import authoring.ColourMapper;
 import commands.CellCharCommand;
 import commands.PlayerCommand;
 import commands.RepeatCommand;
@@ -45,7 +46,7 @@ public class TestImportExport {
 	public void testImportSimple() {
 		String inputText = "Cell 1\nButton 2\nTitle\n/~disp-cell-char:a\n/~repeat\nTest repeat\n/~endrepeat";
 
-		ImportListener il = new ImportListener(null);
+		ImportListener il = new ImportListener(null, new ColourMapper());
 
 		List<PlayerCommand> result = il.parseString(Arrays.asList(inputText.split("\n")));
 

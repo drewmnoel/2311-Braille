@@ -98,7 +98,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		btnDelete.addActionListener(this);
 		readFile.addActionListener(this);
 		btnExport.addActionListener(new ExportListener(gui));
-		btnImport.addActionListener(new ImportListener(gui));
+		btnImport.addActionListener(new ImportListener(gui, mapper));
 		btnNewScenario.addActionListener(new NewScenarioListener(gui));
 		btnNewQuestion.addActionListener(new NewQuestionListener(gui, mapper));
 
