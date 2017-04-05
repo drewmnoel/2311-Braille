@@ -75,6 +75,10 @@ public class ColourMapper {
 	 * @return the colour mapped to that location tag
 	 */
 	public Color getColour(String locationTag) {
+		if (!colourMap.containsKey(locationTag)) {
+			return Color.WHITE;
+		}
+
 		return colourMap.get(locationTag);
 	}
 	
