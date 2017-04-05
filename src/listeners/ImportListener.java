@@ -40,13 +40,19 @@ import commands.UserInputCommand;
  *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
- * @since 4/3/2017
- *
+ * @since 2017-04-02
  */
 public class ImportListener implements ActionListener {
 
 	private GUI gui;
 
+	/**
+	 * Create an import listener with a reference to the parent GUI.
+	 *
+	 * @param gui
+	 *            A reference to the parent GUI, needed in order to properly
+	 *            access the command list
+	 */
 	public ImportListener(GUI gui) {
 		this.gui = gui;
 	}
@@ -109,6 +115,14 @@ public class ImportListener implements ActionListener {
 		return str;
 	}
 
+	/**
+	 * Parse a list of string lines (e.g. lines from a file) into serialized strings. Made private once
+	 * testing is completed.
+	 *
+	 * @param inputLines List of strings, each one being a line to be processed
+	 *
+	 * @return Generic ordered list of the processed commands
+	 */
 	public List<PlayerCommand> parseString(List<String> inputLines) {
 		List<PlayerCommand> result = new ArrayList<>();
 		boolean inCommand = false;
