@@ -43,7 +43,10 @@ public class ThreadRunnable extends Thread {
 			line = (TargetDataLine) AudioSystem.getLine(info);
 			line.open(audioFormat);
 		} catch (LineUnavailableException ex) {
-			ex.printStackTrace(); // TODO: Handler this error gracefully
+			// No audio device? That's outside our control, bail.
+			System.err.println("There was no audio device available");
+			ex.printStackTrace();
+			return;
 		}
 
 		// Inform the recorder of the line and filename

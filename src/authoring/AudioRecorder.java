@@ -48,8 +48,10 @@ public class AudioRecorder {
 	 * Method to start recording audio Hook this up to play button in GUI
 	 * wavFile must be set by setFileName beforehand info and line must be set
 	 * by setAudioLine beforehand Recording is stopped by method stopRecording
+	 *
+	 * @return True if the recording occured OK, and false otherwise
 	 */
-	public void recordAudio() {
+	public boolean recordAudio() {
 		try {
 			// start capturing from line in
 			line.start();
@@ -58,8 +60,12 @@ public class AudioRecorder {
 			// start recording, continue until line is drained completely
 			AudioSystem.write(ais, fileType, wavFile);
 		} catch (IOException e) {
-			e.printStackTrace(); // TODO: Handler this error gracefully
+			// A file I/O exception happened, bail
+			e.printStackTrace();
+			return false;
 		}
+
+		return true;
 	}
 
 	/**

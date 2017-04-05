@@ -108,8 +108,8 @@ public class ImportListener implements ActionListener {
 			try {
 				str = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				// An IOException occured, this is outside the application's control.
+				// Gracefully return nothing
 				return new ArrayList<String>();
 			}
 		}
