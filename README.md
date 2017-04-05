@@ -1,17 +1,18 @@
-# Player
+# Team 2
+Team 2 is composed of:
 
-## TODO
-* Create a file parser to parse an input file format
-* Create an audio player to play files, given a string
+* Dilshad Khatri
+* Alvis Koshy
+* Drew Noel
+* Jonathan Tung
 
-# Simulator
+## Submission Information
+1. [Requirements Document](doc/RequirementsDoc.pdf)
+2. [Design Document](doc/DesignDoc.pdf)
+3. [Testing Document](doc/TestingDoc.pdf)
+4. [User Manual](doc/UserManual.pdf)
+5. [JavaDoc](doc/javadoc/)
 
-## Left to do
-* ~~Programmatically generate buttons (e.g. create 3 buttons, 1 button)~~
-* ~~Write button handlers (use handlers so we can define behavior outside class)~~
-* ~~Document (JavaDoc) all methods and loops~~
-* ~~Extract functionality to an API for later use~~
-* ~~JUnit tests for API and common modules~~
-* ~~Remove duplicate/unused methods/classes (e.g. there are several mains)~~
-* Rename classes / methods to be more clear what they do (e.g. CreateCells is GUI's main)
-* ~~Translate support for capitals/numbers~~
+A pre-compiled JAR (with sources included) may be found in the top-level
+directory. In order to run it, one only has to issue the appropriate jar
+command: ```java -jar authoring_app.jar```
