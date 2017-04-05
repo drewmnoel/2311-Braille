@@ -84,8 +84,8 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 		gbc.gridy++;
 		add(brailleLabel, gbc);
 
-		gbc.gridy++;
-		add(repeatLabel, gbc);
+		//gbc.gridy++;
+		//add(repeatLabel, gbc);
 
 		gbc.gridy++;
 		add(correctLabel, gbc);
@@ -102,8 +102,8 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 		gbc.gridy++;
 		add(brailleField, gbc);
 
-		gbc.gridy++;
-		add(buttonField, gbc);
+		//gbc.gridy++;
+		//add(buttonField, gbc);
 
 		gbc.gridy++;
 		add(buttons, gbc);
