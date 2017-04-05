@@ -24,7 +24,7 @@ public class SoundCommand extends PlayerCommand {
 
 	@Override
 	public String toString() {
-		return "Sound: " + file;
+		return "Play Sound: " + file;
 	}
 
 	@Override

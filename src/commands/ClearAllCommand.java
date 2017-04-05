@@ -21,7 +21,7 @@ public class ClearAllCommand extends PlayerCommand {
 
 	@Override
 	public String toString() {
-		return "Clear All";
+		return "Clear All Braille Cells";
 	}
 
 	@Override

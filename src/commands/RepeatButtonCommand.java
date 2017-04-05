@@ -29,7 +29,7 @@ public class RepeatButtonCommand extends PlayerCommand {
 
 	@Override
 	public String toString() {
-		return "Repeat Button: " + buttonNum;
+		return "Press this button to repeat TTS: " + buttonNum;
 	}
 
 	@Override

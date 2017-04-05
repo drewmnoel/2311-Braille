@@ -25,7 +25,7 @@ public class CellRaiseCommand extends PlayerCommand {
 
 	@Override
 	public String toString() {
-		return "Cell and Pin Raise: " + cellAndPin;
+		return "Braille Cell Raise Pin Number: " + cellAndPin;
 	}
 
 	@Override

@@ -25,7 +25,7 @@ public class ClearCellCommand extends PlayerCommand {
 
 	@Override
 	public String toString() {
-		return "Clear Cell " + cellNumber;
+		return "Clear Braille Cell " + cellNumber;
 	}
 
 	@Override

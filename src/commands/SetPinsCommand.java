@@ -26,7 +26,7 @@ public class SetPinsCommand extends PlayerCommand {
 
 	@Override
 	public String toString() {
-		return "Set Pins: " + cellAndPins;
+		return "Braille Cell Set Specific Pins: " + cellAndPins;
 	}
 
 	@Override

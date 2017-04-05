@@ -26,7 +26,7 @@ public class SetStringCommand extends PlayerCommand {
 
 	@Override
 	public String toString() {
-		return "String: " + str;
+		return "Display on Braille cells: " + str;
 	}
 
 	@Override

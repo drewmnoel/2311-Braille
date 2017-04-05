@@ -74,10 +74,10 @@ public class CommandTests {
 		//tests toString()
 		for(int i = 0; i<alphabet.length(); i++) {
 			cellChar = new CellCharCommand(i + " " + alphabet.substring(i, i));
-			assertEquals("Cell and Char: " + i + " " + alphabet.substring(i, i), cellChar.toString());
+			assertEquals("Braille Cell and Character: " + i + " " + alphabet.substring(i, i), cellChar.toString());
 		}
 		cellChar = new CellCharCommand("This is a very long string look how long this is bork bork bork bork bork!");
-		assertEquals("Cell and Char: This is a very long string look how long this is bork bork bork bork bork!", cellChar.toString());
+		assertEquals("Braille Cell and Character: This is a very long string look how long this is bork bork bork bork bork!", cellChar.toString());
 
 		//tests serialize()
 		for(int i = 0; i<alphabet.length(); i++) {
@@ -116,7 +116,7 @@ public class CommandTests {
 		//tests toString()
 		for(int i = 0; i<26; i++) {
 			cellLower = new CellLowerCommand(i + " " + i);
-			assertEquals("Cell and Pin Lower: " + i + " " + i, cellLower.toString());
+			assertEquals("Braille Cell Lower Pin Number: " + i + " " + i, cellLower.toString());
 		}
 
 		//tests serialize()
@@ -154,7 +154,7 @@ public class CommandTests {
 		//tests toString()
 		for(int i = 0; i<26; i++) {
 			cellRaise = new CellRaiseCommand(i + " " + i);
-			assertEquals("Cell and Pin Raise: " + i + " " + i, cellRaise.toString());
+			assertEquals("Braille Cell Raise Pin Number: " + i + " " + i, cellRaise.toString());
 		}
 
 		//tests serialize()
@@ -191,7 +191,7 @@ public class CommandTests {
 
 		clearAll = new ClearAllCommand("");
 		//tests toString()
-		assertEquals("Clear All", clearAll.toString());
+		assertEquals("Clear All Braille Cells", clearAll.toString());
 
 
 		//tests serialize()
@@ -214,7 +214,7 @@ public class CommandTests {
 		//tests toString()
 		for(int i = 0; i<26; i++) {
 			clearCell = new ClearCellCommand(Integer.toString(i));
-			assertEquals("Clear Cell " + i, clearCell.toString());
+			assertEquals("Clear Braille Cell " + i, clearCell.toString());
 		}
 
 		//tests serialize()
@@ -275,7 +275,7 @@ public class CommandTests {
 		//tests toString()
 		for(int i = 0; i<26; i++) {
 			pause = new PauseCommand(Integer.toString(i));
-			assertEquals("Pause: " + Integer.toString(i), pause.toString());
+			assertEquals("Pause for seconds: " + Integer.toString(i), pause.toString());
 		}
 
 		//tests serialize()
@@ -312,7 +312,7 @@ public class CommandTests {
 		//tests toString()
 		for(int i = 0; i<26; i++) {
 			repeatButton = new RepeatButtonCommand(Integer.toString(i));
-			assertEquals("Repeat Button: " + Integer.toString(i), repeatButton.toString());
+			assertEquals("Press this button to repeat TTS: " + Integer.toString(i), repeatButton.toString());
 		}
 
 		//tests serialize()
@@ -352,10 +352,10 @@ public class CommandTests {
 		//tests toString()
 		for(int i = 0; i<alphabet.length(); i++) {
 			repeat = new RepeatCommand(alphabet.substring(i, i));
-			assertEquals("Repeat: " + alphabet.substring(i, i), repeat.toString());
+			assertEquals("Text to be Repeat: " + alphabet.substring(i, i), repeat.toString());
 		}
 		repeat = new RepeatCommand("This is a very long string look how long this is bork bork bork bork bork!");
-		assertEquals("Repeat: This is a very long string look how long this is bork bork bork bork bork!", repeat.toString());
+		assertEquals("Text to be Repeat: This is a very long string look how long this is bork bork bork bork bork!", repeat.toString());
 
 		//tests serialize()
 		for(int i = 0; i<alphabet.length(); i++) {
@@ -392,7 +392,7 @@ public class CommandTests {
 	public void testResetButtonCommand() {
 		resetButton = new ResetButtonCommand("");
 		//tests toString()
-		assertEquals("Reset Buttons", resetButton.toString());
+		assertEquals("Disable all buttons", resetButton.toString());
 
 
 		//tests serialize()
@@ -415,7 +415,7 @@ public class CommandTests {
 		//tests toString()
 		for(int i = 0; i<26; i++) {
 			setPins = new SetPinsCommand(i + " " + i);
-			assertEquals("Set Pins: " + i + " " + i, setPins.toString());
+			assertEquals("Braille Cell Set Specific Pins: " + i + " " + i, setPins.toString());
 		}
 
 		//tests serialize()
@@ -455,10 +455,10 @@ public class CommandTests {
 		//tests toString()
 		for(int i = 0; i<alphabet.length(); i++) {
 			setString = new SetStringCommand(alphabet.substring(i, i));
-			assertEquals("String: " + alphabet.substring(i, i), setString.toString());
+			assertEquals("Display on Braille cells: " + alphabet.substring(i, i), setString.toString());
 		}
 		setString = new SetStringCommand("This is a very long string look how long this is bork bork bork bork bork!");
-		assertEquals("String: This is a very long string look how long this is bork bork bork bork bork!", setString.toString());
+		assertEquals("Display on Braille cells: This is a very long string look how long this is bork bork bork bork bork!", setString.toString());
 
 		//tests serialize()
 		for(int i = 0; i<alphabet.length(); i++) {
@@ -496,7 +496,19 @@ public class CommandTests {
 		//tests toString()
 		for(int i = 1; i<5; i++) {
 			setVoice = new SetVoiceCommand(Integer.toString(i));
-			assertEquals("Voice: " + i, setVoice.toString());
+			if(i == 1) {
+				assertEquals("TTS Voice to use: male 1", setVoice.toString());
+			}
+			else if(i == 2) {
+				assertEquals("TTS Voice to use: female 2", setVoice.toString());
+			}
+			else if(i == 3) {
+				assertEquals("TTS Voice to use: male 3", setVoice.toString());
+			}
+			else if(i == 4) {
+				assertEquals("TTS Voice to use: male 4", setVoice.toString());
+			}
+			
 		}
 
 		//tests serialize()
@@ -624,10 +636,10 @@ public class CommandTests {
 		//tests toString()
 		for(int i = 0; i<alphabet.length(); i++) {
 			sound = new SoundCommand(i + " " + alphabet.substring(i, i));
-			assertEquals("Sound: " + i + " " + alphabet.substring(i, i), sound.toString());
+			assertEquals("Play Sound: " + i + " " + alphabet.substring(i, i), sound.toString());
 		}
 		sound = new SoundCommand("This is a very long string look how long this is bork bork bork bork bork!");
-		assertEquals("Sound: This is a very long string look how long this is bork bork bork bork bork!", sound.toString());
+		assertEquals("Play Sound: This is a very long string look how long this is bork bork bork bork bork!", sound.toString());
 
 		//tests serialize()
 		for(int i = 0; i<alphabet.length(); i++) {
@@ -708,7 +720,7 @@ public class CommandTests {
 	public void testUserInputCommand() {
 		userInput = new UserInputCommand();
 		//tests toString()
-		assertEquals("User Input", userInput.toString());
+		assertEquals("Wait for User Input", userInput.toString());
 
 
 		//tests serialize()

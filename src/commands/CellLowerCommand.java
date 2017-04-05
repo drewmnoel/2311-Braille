@@ -25,7 +25,7 @@ public class CellLowerCommand extends PlayerCommand {
 
 	@Override
 	public String toString() {
-		return "Cell and Pin Lower: " + cellAndPin;
+		return "Braille Cell Lower Pin Number: " + cellAndPin;
 	}
 
 	@Override

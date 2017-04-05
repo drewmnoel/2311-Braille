@@ -21,7 +21,7 @@ public class ResetButtonCommand extends PlayerCommand {
 
 	@Override
 	public String toString() {
-		return "Reset Buttons";
+		return "Disable all buttons";
 	}
 
 	@Override

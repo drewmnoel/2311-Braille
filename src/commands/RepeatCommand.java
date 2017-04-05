@@ -27,7 +27,7 @@ public class RepeatCommand extends PlayerCommand {
 
 	@Override
 	public String toString() {
-		return "Repeat: " + repeatedText;
+		return "Text to be Repeat: " + repeatedText;
 	}
 
 	@Override

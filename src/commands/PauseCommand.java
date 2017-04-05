@@ -28,7 +28,7 @@ public class PauseCommand extends PlayerCommand {
 
 	@Override
 	public String toString() {
-		return "Pause: " + waitTime;
+		return "Pause for seconds: " + waitTime;
 	}
 
 	@Override

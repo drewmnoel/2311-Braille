@@ -16,7 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class ColourMapperTest {
-	//list with 2 different location tags
+	//list with 3 different location tags
 	ArrayList<PlayerCommand> commandsFull = new ArrayList<PlayerCommand>();
 	//list with no location tags
 	ArrayList<PlayerCommand> commandsNoSkip =  new ArrayList<PlayerCommand>();

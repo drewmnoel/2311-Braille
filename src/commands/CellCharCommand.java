@@ -25,7 +25,7 @@ public class CellCharCommand extends PlayerCommand {
 
 	@Override
 	public String toString() {
-		return "Cell and Char: " + cellAndChar;
+		return "Braille Cell and Character: " + cellAndChar;
 	}
 
 	@Override

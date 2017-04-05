@@ -12,7 +12,7 @@ public class UserInputCommand extends PlayerCommand {
 
 	@Override
 	public String toString() {
-		return "User Input";
+		return "Wait for User Input";
 	}
 
 	@Override
