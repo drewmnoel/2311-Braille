@@ -20,7 +20,7 @@ import commands.PlayerCommand;
  * provides a view which the authoring user can interact with via buttons
  * defined in the RightPanel. It acts as: a wrapper in front of a list, a mouse
  * listener to detect click events, and a UI panel for the GUI
- * 
+ *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
  * @since 2017-03-15
@@ -195,6 +195,12 @@ public class LeftPanel extends JPanel implements MouseListener {
 		}
 
 		int index = commandList.locationToIndex(e.getPoint());
+
+		// Did not click on an actual entry, ignore them
+		if (index < 0) {
+			return;
+		}
+
 		PlayerCommand command = this.commandList.getModel().getElementAt(index);
 
 		// Show the Add Item dialog
@@ -231,7 +237,7 @@ public class LeftPanel extends JPanel implements MouseListener {
 	 * Returns the full ordered list of commands stored at this point. Returns a
 	 * defensive copy, not the original reference, so changes to the returned
 	 * object will not be seen in the UI.
-	 * 
+	 *
 	 * @return A copy of the current list, in the same order that they are
 	 *         stored and shown in the panel
 	 */
