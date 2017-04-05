@@ -10,6 +10,15 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
+/**
+ * Utility class which allows arbitrary files to be played through the speakers.
+ * This class is used via the Play command in the authoring UI to aid in
+ * locating and inserting the correct audio files when using the authoring UI
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-03-15
+ */
 public class ReadFile {
 
 	private static final int BUFFER_SIZE = 128000;
@@ -19,6 +28,8 @@ public class ReadFile {
 	private SourceDataLine sourceLine;
 
 	/**
+	 * Play a file through the default audio sink (typically speakers)
+	 *
 	 * @param filename
 	 *            the name of the file that is going to be played
 	 */
