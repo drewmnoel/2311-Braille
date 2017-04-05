@@ -4,23 +4,21 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import authoring.GUI;
-import authoring.RightPanel;
 
 /**
  * NewScenarioListener class
- * 
+ *
  * This class is used as an action listener whenever the "New Scenario" button
  * is clicked. It serves as a way to initialize the application. Allowing the
  * user to set the bounds of the scenario they are creating such as the number
  * of Cells and Buttons and can define what the title of the scenario should be.
- * 
+ *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
  * @since 4/3/2017
@@ -78,6 +76,7 @@ public class NewScenarioListener implements ActionListener {
 				gui.getRightPanel().setNew(true);
 				gui.getRightPanel().setExport(true);
 				gui.getRightPanel().setReadFile(true);
+				gui.getRightPanel().setNewQuestion(true);
 			}
 
 			// Takes the text that was input by the user in the fields and sets
