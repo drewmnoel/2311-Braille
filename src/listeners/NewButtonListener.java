@@ -76,7 +76,7 @@ public class NewButtonListener implements ActionListener {
 			case "Button Repeat":
 				gui.getLeftPanel().addItem(new RepeatButtonCommand(""));
 				break;
-			case "Button Skip":
+			case "Button Location":
 				gui.getLeftPanel().addItem(new SkipButtonCommand(""));
 				break;
 			case "User Input":
@@ -88,7 +88,7 @@ public class NewButtonListener implements ActionListener {
 			case "Reset Buttons":
 				gui.getLeftPanel().addItem(new ResetButtonCommand(""));
 				break;
-			case "Skip":
+			case "Go To Location":
 				gui.getLeftPanel().addItem(new SkipCommand(""));
 				break;
 			case "Clear All":
@@ -112,7 +112,7 @@ public class NewButtonListener implements ActionListener {
 			case "Set Voice":
 				gui.getLeftPanel().addItem(new SetVoiceCommand(""));
 				break;
-			case "Jump Tag":
+			case "Location Tag":
 				gui.getLeftPanel().addItem(new GoHereCommand(""));
 				break;
 			default:
