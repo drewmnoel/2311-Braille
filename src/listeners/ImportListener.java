@@ -106,11 +106,11 @@ public class ImportListener implements ActionListener {
 		if (r == JFileChooser.APPROVE_OPTION) {
 			URI uri = importDialog.getSelectedFile().toURI();
 			try {
-				return str = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
+				str = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				return str = new ArrayList<String>();
+				return new ArrayList<String>();
 			}
 		}
 		return str;
