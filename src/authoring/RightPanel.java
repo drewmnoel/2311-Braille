@@ -13,6 +13,11 @@ import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import commands.SoundCommand;
+import listeners.ExportListener;
+import listeners.ImportListener;
+import listeners.NewButtonListener;
+import listeners.NewQuestionListener;
+import listeners.NewScenarioListener;
 
 /**
  * RightPanel is the class responsible for creating the control buttons as well
@@ -88,13 +93,13 @@ public class RightPanel extends JPanel implements ActionListener {
 		btnStop.addActionListener(this);
 		btnMoveUp.addActionListener(this);
 		btnMoveDown.addActionListener(this);
-		btnNew.addActionListener(new listeners.NewButtonListener(gui));
+		btnNew.addActionListener(new NewButtonListener(gui));
 		btnDelete.addActionListener(this);
 		readFile.addActionListener(this);
-		btnExport.addActionListener(new listeners.ExportListener(gui));
-		btnImport.addActionListener(new listeners.ImportListener(gui));
-		btnNewScenario.addActionListener(new listeners.NewScenarioListener(gui));
-		btnNewQuestion.addActionListener(new listeners.NewQuestionListener(gui));
+		btnExport.addActionListener(new ExportListener(gui));
+		btnImport.addActionListener(new ImportListener(gui));
+		btnNewScenario.addActionListener(new NewScenarioListener(gui));
+		btnNewQuestion.addActionListener(new NewQuestionListener(gui));
 
 		// Do not allow this component to enlarge ever
 		this.setMaximumSize(this.getPreferredSize());

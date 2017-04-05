@@ -1,22 +1,39 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.Before;
 import org.junit.Test;
 
-import commands.*;
+import commands.CellCharCommand;
+import commands.CellLowerCommand;
+import commands.CellRaiseCommand;
+import commands.ClearAllCommand;
+import commands.ClearCellCommand;
+import commands.GoHereCommand;
+import commands.PauseCommand;
+import commands.RepeatButtonCommand;
+import commands.RepeatCommand;
+import commands.ResetButtonCommand;
+import commands.SetPinsCommand;
+import commands.SetStringCommand;
+import commands.SetVoiceCommand;
+import commands.SkipButtonCommand;
+import commands.SkipCommand;
+import commands.SoundCommand;
+import commands.TTSCommand;
+import commands.UserInputCommand;
 
 /**
  * This class represents the user interface for the authoring program. It is
  * responsible for creating all the user interface panels. In order to create a
  * new authoring session, simply create a (single) instance of this class.
- * 
- * This Junit test class tests all methods in command classes, CellCharCommand, 
- * CellLowerCommand, CellRaiseCommand, ClearAllCommand, ClearCellCommand, GoHereCommand, 
- * PauseCommand, RepeatButtonCommand, RepeatCommand, ResetButtonCommand, SetPinsCommand, 
+ *
+ * This Junit test class tests all methods in command classes, CellCharCommand,
+ * CellLowerCommand, CellRaiseCommand, ClearAllCommand, ClearCellCommand, GoHereCommand,
+ * PauseCommand, RepeatButtonCommand, RepeatCommand, ResetButtonCommand, SetPinsCommand,
  * SetStringCommand, SetVoiceCommand, SkipButtonCommand, SkipCommand, SoundCommand, TTSCommand, UserInputCommand
+ *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
  * @since 2017-03-15
@@ -44,16 +61,16 @@ public class CommandTests {
 	SoundCommand sound;
 	TTSCommand TTS;
 	UserInputCommand userInput;
-	
-	
+
+
 	/**
-	 * Tests all the methods in CellCharCommand 
+	 * Tests all the methods in CellCharCommand
 	 */
 	@Test
 	public void testCellCharCommand() {
 		//alphabet, valid inputs to test
 		String alphabet = "abcdefghijklmnopqrstuvwxyz";
-		
+
 		//tests toString()
 		for(int i = 0; i<alphabet.length(); i++) {
 			cellChar = new CellCharCommand(i + " " + alphabet.substring(i, i));
@@ -61,7 +78,7 @@ public class CommandTests {
 		}
 		cellChar = new CellCharCommand("This is a very long string look how long this is bork bork bork bork bork!");
 		assertEquals("Cell and Char: This is a very long string look how long this is bork bork bork bork bork!", cellChar.toString());
-		
+
 		//tests serialize()
 		for(int i = 0; i<alphabet.length(); i++) {
 			cellChar = new CellCharCommand(i + " " + alphabet.substring(i, i));
@@ -69,19 +86,19 @@ public class CommandTests {
 		}
 		cellChar = new CellCharCommand("This is a very long string look how long this is bork bork bork bork bork!");
 		assertEquals("/~disp-cell-char:This is a very long string look how long this is bork bork bork bork bork!", cellChar.serialize());
-		
+
 		//tests getEditLabel()
 		for(int i = 0; i<alphabet.length(); i++) {
 			cellChar = new CellCharCommand(i + " " + alphabet.substring(i, i));
 			assertEquals("Cell and character (space separated)", cellChar.getEditLabel());
 		}
-		
+
 		//tests getCurrentValue()
 		for(int i = 0; i<alphabet.length(); i++) {
 			cellChar = new CellCharCommand(i + " " + alphabet.substring(i, i));
 			assertEquals(i + " " + alphabet.substring(i, i), cellChar.getCurrentValue());
 		}
-		
+
 		//tests setCurrentValue()
 		cellChar = new CellCharCommand(" ");
 		for(int i = 0; i<alphabet.length(); i++) {
@@ -89,13 +106,13 @@ public class CommandTests {
 			assertEquals(i + " " + alphabet.substring(i, i), cellChar.getCurrentValue());
 		}
 	}
-	
+
 	/**
 	 * Tests all the methods in CellLowerCommand
 	 */
 	@Test
 	public void testCellLowerCommand() {
-	
+
 		//tests toString()
 		for(int i = 0; i<26; i++) {
 			cellLower = new CellLowerCommand(i + " " + i);
@@ -127,13 +144,13 @@ public class CommandTests {
 			assertEquals(i + " " + i, cellLower.getCurrentValue());
 		}
 	}
-	
+
 	/**
 	 * Tests all the methods in CellRaiseCommand
 	 */
 	@Test
 	public void testCellRaiseCommand() {
-	
+
 		//tests toString()
 		for(int i = 0; i<26; i++) {
 			cellRaise = new CellRaiseCommand(i + " " + i);
@@ -165,13 +182,13 @@ public class CommandTests {
 			assertEquals(i + " " + i, cellRaise.getCurrentValue());
 		}
 	}
-	
+
 	/**
 	 * Tests all the methods in ClearAllCommand
 	 */
 	@Test
 	public void testClearAllCommand() {
-	
+
 		clearAll = new ClearAllCommand("");
 		//tests toString()
 		assertEquals("Clear All", clearAll.toString());
@@ -188,7 +205,7 @@ public class CommandTests {
 		//tests getCurrentValue()
 		assertEquals("", clearAll.getCurrentValue());
 	}
-	
+
 	/**
 	 * Test all methods in ClearCellCommand
 	 */
@@ -225,7 +242,7 @@ public class CommandTests {
 			assertEquals(Integer.toString(i), clearCell.getCurrentValue());
 		}
 	}
-	
+
 	/**
 	 * Test all methods in GoHereCommand
 	 */
@@ -249,7 +266,7 @@ public class CommandTests {
 		assertEquals("new tag", goHere.getCurrentValue());
 
 	}
-	
+
 	/**
 	 * Test all methods in PauseCommand
 	 */
@@ -286,7 +303,7 @@ public class CommandTests {
 			assertEquals(Integer.toString(i), pause.getCurrentValue());
 		}
 	}
-	
+
 	/**
 	 * Test all methods in RepeatButtonCommand
 	 */
@@ -331,7 +348,7 @@ public class CommandTests {
 	public void testRepeatCommand() {
 		//alphabet, valid inputs to test
 		String alphabet = "abcdefghijklmnopqrstuvwxyz";
-		
+
 		//tests toString()
 		for(int i = 0; i<alphabet.length(); i++) {
 			repeat = new RepeatCommand(alphabet.substring(i, i));
@@ -339,7 +356,7 @@ public class CommandTests {
 		}
 		repeat = new RepeatCommand("This is a very long string look how long this is bork bork bork bork bork!");
 		assertEquals("Repeat: This is a very long string look how long this is bork bork bork bork bork!", repeat.toString());
-		
+
 		//tests serialize()
 		for(int i = 0; i<alphabet.length(); i++) {
 			repeat = new RepeatCommand(alphabet.substring(i, i));
@@ -369,7 +386,7 @@ public class CommandTests {
 	}
 
 	/**
-	 * Test all methods in ResetButtonCommand 
+	 * Test all methods in ResetButtonCommand
 	 */
 	@Test
 	public void testResetButtonCommand() {
@@ -389,7 +406,7 @@ public class CommandTests {
 		//tests getCurrentValue()
 		assertEquals(null, resetButton.getCurrentValue());
 	}
-	
+
 	/**
 	 * Test all methods in SetPinsCommand
 	 */
@@ -442,7 +459,7 @@ public class CommandTests {
 		}
 		setString = new SetStringCommand("This is a very long string look how long this is bork bork bork bork bork!");
 		assertEquals("String: This is a very long string look how long this is bork bork bork bork bork!", setString.toString());
-		
+
 		//tests serialize()
 		for(int i = 0; i<alphabet.length(); i++) {
 			setString = new SetStringCommand(alphabet.substring(i, i));
@@ -470,7 +487,7 @@ public class CommandTests {
 			assertEquals(alphabet.substring(i, i), setString.getCurrentValue());
 		}
 	}
-	
+
 	/**
 	 * Test all methods in SetVoiceCommand
 	 */
@@ -507,8 +524,8 @@ public class CommandTests {
 			assertEquals(Integer.toString(i) , setVoice.getCurrentValue());
 		}
 	}
-	
-	/** 
+
+	/**
 	 * Test all methods in SkipButtonCommand
 	 */
 	@Test
@@ -523,7 +540,7 @@ public class CommandTests {
 		}
 		skipButton = new SkipButtonCommand("This is a very long string look how long this is bork bork bork bork bork!");
 		assertEquals("Skip button: This is a very long string look how long this is bork bork bork bork bork!", skipButton.toString());
-		
+
 		//tests serialize()
 		for(int i = 0; i<alphabet.length(); i++) {
 			skipButton = new SkipButtonCommand(i + " " + alphabet.substring(i, i));
@@ -531,7 +548,7 @@ public class CommandTests {
 		}
 		skipButton = new SkipButtonCommand("This is a very long string look how long this is bork bork bork bork bork!");
 		assertEquals("/~skip-button:This is a very long string look how long this is bork bork bork bork bork!", skipButton.serialize());
-		
+
 		//tests getEditLabel()
 		for(int i = 0; i<alphabet.length(); i++) {
 			skipButton = new SkipButtonCommand(i + " " + alphabet.substring(i, i));
@@ -551,7 +568,7 @@ public class CommandTests {
 			assertEquals(i + " " + alphabet.substring(i, i), skipButton.getCurrentValue());
 		}
 	}
-	
+
 	/**
 	 * Test all methods in SkipCommand
 	 */
@@ -575,7 +592,7 @@ public class CommandTests {
 		}
 		skip = new SkipCommand("This is a very long string look how long this is bork bork bork bork bork!");
 		assertEquals("/~skip:This is a very long string look how long this is bork bork bork bork bork!", skip.serialize());
-		
+
 		//tests getEditLabel()
 		for(int i = 0; i<alphabet.length(); i++) {
 			skip = new SkipCommand(i + " " + alphabet.substring(i, i));
@@ -595,7 +612,7 @@ public class CommandTests {
 			assertEquals(i + " " + alphabet.substring(i, i), skip.getCurrentValue());
 		}
 	}
-	
+
 	/**
 	 * Test all methods in SoundCommand
 	 */
@@ -611,7 +628,7 @@ public class CommandTests {
 		}
 		sound = new SoundCommand("This is a very long string look how long this is bork bork bork bork bork!");
 		assertEquals("Sound: This is a very long string look how long this is bork bork bork bork bork!", sound.toString());
-		
+
 		//tests serialize()
 		for(int i = 0; i<alphabet.length(); i++) {
 			sound = new SoundCommand(i + " " + alphabet.substring(i, i));
@@ -619,7 +636,7 @@ public class CommandTests {
 		}
 		sound = new SoundCommand("This is a very long string look how long this is bork bork bork bork bork!");
 		assertEquals("/~sound:This is a very long string look how long this is bork bork bork bork bork!", sound.serialize());
-		
+
 		//tests getEditLabel()
 		for(int i = 0; i<alphabet.length(); i++) {
 			sound = new SoundCommand(i + " " + alphabet.substring(i, i));
@@ -639,7 +656,7 @@ public class CommandTests {
 			assertEquals(i + " " + alphabet.substring(i, i), sound.getCurrentValue());
 		}
 	}
-	
+
 	/**
 	 * Test all methods in TTSCommand
 	 */
@@ -655,7 +672,7 @@ public class CommandTests {
 		}
 		TTS = new TTSCommand("This is a very long string look how long this is bork bork bork bork bork!");
 		assertEquals("Text to speech: This is a very long string look how long this is bork bork bork bork bork!", TTS.toString());
-		
+
 		//tests serialize()
 		for(int i = 0; i<alphabet.length(); i++) {
 			TTS = new TTSCommand(i + " " + alphabet.substring(i, i));
@@ -663,7 +680,7 @@ public class CommandTests {
 		}
 		TTS = new TTSCommand("This is a very long string look how long this is bork bork bork bork bork!");
 		assertEquals("This is a very long string look how long this is bork bork bork bork bork!", TTS.serialize());
-		
+
 		//tests getEditLabel()
 		for(int i = 0; i<alphabet.length(); i++) {
 			TTS = new TTSCommand(i + " " + alphabet.substring(i, i));
@@ -683,7 +700,7 @@ public class CommandTests {
 			assertEquals(i + " " + alphabet.substring(i, i), TTS.getCurrentValue());
 		}
 	}
-	
+
 	/**
 	 * Test all methods in UserInputCommand
 	 */

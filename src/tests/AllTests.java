@@ -12,6 +12,6 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 2017-02-07
  */
 @RunWith(Suite.class)
-@SuiteClasses({ })
+@SuiteClasses({ CommandTests.class, ExportErrorCheckTest.class, TestImportExport.class})
 public class AllTests {
 }
