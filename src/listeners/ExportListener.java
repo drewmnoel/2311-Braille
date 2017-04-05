@@ -17,6 +17,7 @@ import org.apache.commons.io.FilenameUtils;
 
 import authoring.GUI;
 import commands.PlayerCommand;
+
 /**
  * This class is used as an action listener whenever the "Export" button
  * is clicked. It allows the user to output the settings and commands used by the user.Allowing the
@@ -25,13 +26,19 @@ import commands.PlayerCommand;
  *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
- * @since 4/3/2017
- *
+ * @since 2017-04-02
  */
 public class ExportListener implements ActionListener {
 
 	private GUI gui;
 
+	/**
+	 * Create an export listener with a reference to the parent GUI.
+	 *
+	 * @param gui
+	 *            A reference to the parent GUI, needed in order to properly
+	 *            access the command list
+	 */
 	public ExportListener(GUI gui) {
 		this.gui = gui;
 	}
@@ -71,6 +78,16 @@ public class ExportListener implements ActionListener {
 		exportFile(file, sb.toString());
 	}
 
+	/**
+	 * Parse a list of commands into serialized strings. Made private once
+	 * testing is completed.
+	 *
+	 * @param list
+	 *            Generic ordered list containing all the commands that should
+	 *            be serialized
+	 *
+	 * @return String containing newline-separated serialized commands
+	 */
 	public String parseCommands(List<PlayerCommand> list) {
 		StringBuilder sb = new StringBuilder();
 
@@ -82,7 +99,7 @@ public class ExportListener implements ActionListener {
 		return sb.toString();
 	}
 
-	void exportFile(File file, String contents) {
+	private void exportFile(File file, String contents) {
 		try (Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "8859_1"));) {
 			out.append(contents);
 			out.close();
