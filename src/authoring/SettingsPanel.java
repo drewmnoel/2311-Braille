@@ -10,13 +10,12 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class SettingsPanel extends JPanel {
-
-	private GUI gui;
+	private static final long serialVersionUID = -3823080553310951237L;
 	private JTextField cellField;
 	private JTextField buttonField;
 	private JTextField titleField;
 
-	public SettingsPanel(GUI gui) {
+	public SettingsPanel() {
 		setLayout(new GridBagLayout());
 
 		JLabel cellLabel = new JLabel("Cells:", SwingConstants.RIGHT);

@@ -24,7 +24,7 @@ import commands.SkipCommand;
 import commands.TTSCommand;
 
 public class NewQuestionListener extends JPanel implements ActionListener {
-
+	private static final long serialVersionUID = 7443038348707836054L;
 	private GUI gui;
 	private JComboBox<String> buttons;
 	private JTextField introField;

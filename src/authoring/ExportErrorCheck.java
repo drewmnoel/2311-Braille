@@ -1,16 +1,25 @@
 package authoring;
 
-import commands.*;
-import authoring.GUI;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.HashMap;
-import javax.swing.JList;
+import java.util.List;
+
+import commands.CellCharCommand;
+import commands.CellLowerCommand;
+import commands.CellRaiseCommand;
+import commands.ClearCellCommand;
+import commands.GoHereCommand;
+import commands.PlayerCommand;
+import commands.RepeatButtonCommand;
+import commands.SetPinsCommand;
+import commands.SetStringCommand;
+import commands.SkipButtonCommand;
+import commands.SkipCommand;
+import commands.UserInputCommand;
 
 /**
  * Class to handle simple error checking in a scenario file before it is
  * exported Checks for things like missing jump tags, or calling buttons without
- * 
+ *
  * @author Jon
  *
  */
@@ -19,7 +28,7 @@ public class ExportErrorCheck {
 	/**
 	 * Method to check whether a scenario has jump events to jump tags that
 	 * don't exist
-	 * 
+	 *
 	 * @param commands
 	 *            list of commands that make up the scenario
 	 * @return true if every jump event has a jump tag false otherwise
@@ -63,7 +72,7 @@ public class ExportErrorCheck {
 	/**
 	 * Method to check whether a scenario calls a button that hasn't been
 	 * initialized
-	 * 
+	 *
 	 * @param commands
 	 *            list of commands that make up the scenario
 	 * @param numButtons
@@ -103,7 +112,7 @@ public class ExportErrorCheck {
 	/**
 	 * Method to check whether a scenario tries to call on a braille cell that
 	 * doesn't exist
-	 * 
+	 *
 	 * @param commands
 	 *            list of commands that make up the scenario
 	 * @param numCells
@@ -144,7 +153,7 @@ public class ExportErrorCheck {
 	/**
 	 * Method to check whether or not all UserInput commands have a button setup
 	 * command before them
-	 * 
+	 *
 	 * @param commands
 	 *            list of commands that make up the scenario
 	 * @return true if all UserInput commands have button setup commands before
@@ -152,7 +161,6 @@ public class ExportErrorCheck {
 	 */
 	public static boolean checkUserInput(List<PlayerCommand> commands) {
 		boolean seenUserInput = false;
-		boolean seenButtonSetup = true;
 		// whether a buttons are set up before a UserInput command
 		boolean setUp = true;
 
