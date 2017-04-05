@@ -34,12 +34,9 @@ import commands.SoundCommand;
 import commands.TTSCommand;
 import commands.UserInputCommand;
 /**
- * NewScenarioListener class
- *
- * This class is used as an action listener whenever the "New Scenario" button
+ * This class is used as an action listener whenever the "Import" button
  * is clicked. It serves as a way to initialize the application. Allowing the
- * user to set the bounds of the scenario they are creating such as the number
- * of Cells and Buttons and can define what the title of the scenario should be.
+ * user to set up saved scenario.
  *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0

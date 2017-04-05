@@ -18,8 +18,6 @@ import org.apache.commons.io.FilenameUtils;
 import authoring.GUI;
 import commands.PlayerCommand;
 /**
- * NewScenarioListener class
- *
  * This class is used as an action listener whenever the "Export" button
  * is clicked. It allows the user to output the settings and commands used by the user.Allowing the
  * user to save a copy of the scenario they are creating such as the number
