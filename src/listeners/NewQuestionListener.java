@@ -11,6 +11,8 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -40,7 +42,7 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 7443038348707836054L;
 	private GUI gui;
 	private JComboBox<String> buttons;
-	private JTextField introField;
+	private JTextArea introField;
 	private JTextField brailleField;
 	private JTextField repeatField;
 	private JTextField buttonField;
@@ -63,8 +65,12 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 		JLabel repeatLabel = new JLabel("Repeating Text:", SwingConstants.RIGHT);
 		JLabel correctLabel = new JLabel("Correct Button:", SwingConstants.RIGHT);
 		JLabel incorrectLabel = new JLabel("Text For Incorrect:", SwingConstants.RIGHT);
-
-		introField = new JTextField();
+		
+		
+		introField = new JTextArea(5, 18);
+		introField.setLineWrap(true);
+		JScrollPane introPane = new JScrollPane(introField); 		
+		
 		brailleField = new JTextField();
 		repeatField = new JTextField();
 		buttonField = new JTextField();
@@ -97,7 +103,7 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.gridx++;
 		gbc.gridy = 0;
-		add(introField, gbc);
+		add(introPane, gbc);
 
 		gbc.gridy++;
 		add(brailleField, gbc);
