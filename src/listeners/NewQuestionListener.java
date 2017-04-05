@@ -46,7 +46,7 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 	private JComboBox<String> buttons;
 	private JTextArea introField;
 	private JTextField brailleField;
-	private JTextField repeatField;
+	private JTextArea repeatField;
 	private JTextField buttonField;
 	private ColourMapper mapper;
 
@@ -75,9 +75,14 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 		introField = new JTextArea(5, 18);
 		introField.setLineWrap(true);
 		JScrollPane introPane = new JScrollPane(introField);
+		
+		//Creates a text area that wraps properly and scrolls vertically only for incorrect text
+		repeatField = new JTextArea(5, 18);
+		repeatField.setLineWrap(true);
+		JScrollPane repeatPane = new JScrollPane(repeatField);
 
 		brailleField = new JTextField();
-		repeatField = new JTextField();
+		//repeatField = new JTextField();
 		buttonField = new JTextField();
 		this.buttons = new JComboBox<String>();
 
@@ -114,7 +119,7 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 		add(buttons, gbc);
 
 		gbc.gridy++;
-		add(repeatField, gbc);
+		add(repeatPane, gbc);
 	}
 
 	@Override
