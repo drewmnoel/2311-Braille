@@ -15,9 +15,14 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.commons.io.FilenameUtils;
 
-/*
- * Initializes recorder and sets fileName
- * records until Thread is interrupted
+/**
+ * Utility class which records from a given source to an output file. Used by
+ * (and created by) the authoring UI to record from a microphone to a WAV file.
+ * Works in a separate thread so that it does not lock up the UI.
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-03-15
  */
 public class ThreadRunnable extends Thread {
 	private AudioRecorder recorder;
