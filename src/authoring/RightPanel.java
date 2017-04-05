@@ -14,6 +14,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/**
+ * RightPanel class
+ * 
+ * 
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ *
+ */
 public class RightPanel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 4894342125883442327L;
 	private JButton btnStart = new JButton("Start Recording");
@@ -34,7 +41,11 @@ public class RightPanel extends JPanel implements ActionListener {
 	 JButton openButton, saveButton;
 	    JTextArea log;
 	    JFileChooser fc = new JFileChooser();;
-
+	/**
+	 * Create a new right panel of the GUI
+	 * @param gui
+	 *           Reference to the overall GUI object
+	 */
 	public RightPanel(GUI gui) {
 		super(new GridLayout(10,1));
 		setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Commands"));
@@ -79,6 +90,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		// Do not allow this component to enlarge ever
 		this.setMaximumSize(this.getPreferredSize());
 		
+		//Enabling to be false so that user initializes with a New Scenario first
 		btnStop.setEnabled(false);
 		btnNew.setEnabled(false);
 		btnExport.setEnabled(false);
@@ -90,7 +102,7 @@ public class RightPanel extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		
+		//Cases for button events
 		if (e.getSource() == btnStart) {
 			gui.setAudioThread(new ThreadRunnable());
 			gui.getAudioThread().start();
@@ -110,10 +122,14 @@ public class RightPanel extends JPanel implements ActionListener {
 			this.fileChooser();
 		}
 		
+		//A call to a method that programmatically checks button status
 		gui.getLeftPanel().recalculateButtonStatus();
 	}
 	
-	
+	/**
+	 * A method that incorporates the ability to choose and open 
+	 * a file in the computer's directory
+	 */
 	private void fileChooser(){
 		JFileChooser chooser = new JFileChooser();
 	    FileNameExtensionFilter filter = new FileNameExtensionFilter("wav files (*.wav)", "wav");
@@ -128,31 +144,73 @@ public class RightPanel extends JPanel implements ActionListener {
 	       read.playSound(name);
 	    }
 	}
-
+	
+	/**
+	 * A method that changes the availability of a btnMoveUp button
+	 * 
+	 * @param status
+	 * 			parameter that is either true or false
+	 */
 	public void setUp(boolean status) {
 		btnMoveUp.setEnabled(status);
 	}
-
+	
+	/**
+	 * A method that changes the availability of a btnMoveDown button
+	 * 
+	 * @param status
+	 * 			parameter that is either true or false
+	 */
 	public void setDown(boolean status) {
 		btnMoveDown.setEnabled(status);
 	}
-
+	
+	/**
+	 * A method that changes the availability of a btnDelete button
+	 *
+	 * @param status
+	 * 			parameter that is either true or false
+	 */
 	public void setDelete(boolean status) {
 		btnDelete.setEnabled(status);
 	}
 	
+	/**
+	 * A method that changes the availability of a btnStart button
+	 *
+	 * @param status
+	 * 			parameter that is either true or false
+	 */
 	public void setStart(boolean status) {
 		btnStart.setEnabled(status);
 	}
 	
+	/**
+	 * A method that changes the availability of a readFile button
+	 * 
+	 * @param status
+	 * 			parameter that is either true or false
+	 */
 	public void setReadFile(boolean status) {
 		readFile.setEnabled(status);
 	}
 	
+	/**
+	 * A method that changes the availability of a btnExport button
+	 * 
+	 * @param status
+	 * 			parameter that is either true or false
+	 */
 	public void setExport(boolean status) {
 		btnExport.setEnabled(status);
 	}
 	
+	/**
+	 * A method that changes the availability of a btnNew button
+	 *
+	 * @param status
+	 * 			parameter that is either true or false
+	 */
 	public void setNew(boolean status) {
 		btnNew.setEnabled(status);
 	}
