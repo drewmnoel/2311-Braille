@@ -15,10 +15,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import authoring.GUI;
-import commands.ResetButtonCommand;
 import commands.GoHereCommand;
 import commands.PauseCommand;
 import commands.PlayerCommand;
+import commands.ResetButtonCommand;
 import commands.SetStringCommand;
 import commands.SkipButtonCommand;
 import commands.SkipCommand;
@@ -129,49 +129,50 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 		}
 
 		int result = JOptionPane.showConfirmDialog(null, this, "Enter Question Details", JOptionPane.OK_CANCEL_OPTION);
-		
-		if(result == JOptionPane.OK_OPTION) {
-			// At this point we have enough information to create a basic question.
-			// It is composed of TTS, Braille string, a repeat section, a repeat
-			// button, some error
-			PlayerCommand holder;
-			gui.getLeftPanel().addItem(new ResetButtonCommand(""));
-			gui.getLeftPanel().addItem(new TTSCommand(introField.getText()));
-			gui.getLeftPanel().addItem(new PauseCommand("1"));
 
-			// Set the Braille fields
-			holder = new SetStringCommand(brailleField.getText());
-			gui.getLeftPanel().addItem(holder);
-
-			// Start of the repeat section
-			holder = new GoHereCommand(randomLabel + "-start");
-			gui.getLeftPanel().addItem(holder);
-
-			// Loop through all the buttons defined
-			for (int i = 0; i < numOfButtons; i++) {
-				if (i != buttons.getSelectedIndex()) {
-					// All buttons that are wrong will just repeat the question
-					// (bad)
-					holder = new SkipButtonCommand("" + i + " " + randomLabel + "-bad");
-					gui.getLeftPanel().addItem(holder);
-				} else {
-					// The correct button skips to the end
-					holder = new SkipButtonCommand("" + i + " " + randomLabel + "-good");
-					gui.getLeftPanel().addItem(holder);
-				}
-			}
-			// Adds UserInputCommand to wait for button presses
-			gui.getLeftPanel().addItem(new UserInputCommand());
-
-			// Labels for bad
-			gui.getLeftPanel().addItem(new GoHereCommand("" + randomLabel + "-bad"));
-			gui.getLeftPanel().addItem(new TTSCommand(repeatField.getText()));
-			gui.getLeftPanel().addItem(new SkipCommand(randomLabel + "-start"));
-
-			// Label for good
-			gui.getLeftPanel().addItem(new GoHereCommand("" + randomLabel + "-good"));
+		if(result != JOptionPane.OK_OPTION) {
+			return;
 		}
-		
+
+		// At this point we have enough information to create a basic question.
+		// It is composed of TTS, Braille string, a repeat section, a repeat
+		// button, some error
+		PlayerCommand holder;
+		gui.getLeftPanel().addItem(new ResetButtonCommand(""));
+		gui.getLeftPanel().addItem(new TTSCommand(introField.getText()));
+		gui.getLeftPanel().addItem(new PauseCommand("1"));
+
+		// Set the Braille fields
+		holder = new SetStringCommand(brailleField.getText());
+		gui.getLeftPanel().addItem(holder);
+
+		// Start of the repeat section
+		holder = new GoHereCommand(randomLabel + "-start");
+		gui.getLeftPanel().addItem(holder);
+
+		// Loop through all the buttons defined
+		for (int i = 0; i < numOfButtons; i++) {
+			if (i != buttons.getSelectedIndex()) {
+				// All buttons that are wrong will just repeat the question
+				// (bad)
+				holder = new SkipButtonCommand("" + i + " " + randomLabel + "-bad");
+				gui.getLeftPanel().addItem(holder);
+			} else {
+				// The correct button skips to the end
+				holder = new SkipButtonCommand("" + i + " " + randomLabel + "-good");
+				gui.getLeftPanel().addItem(holder);
+			}
+		}
+		// Adds UserInputCommand to wait for button presses
+		gui.getLeftPanel().addItem(new UserInputCommand());
+
+		// Labels for bad
+		gui.getLeftPanel().addItem(new GoHereCommand("" + randomLabel + "-bad"));
+		gui.getLeftPanel().addItem(new TTSCommand(repeatField.getText()));
+		gui.getLeftPanel().addItem(new SkipCommand(randomLabel + "-start"));
+
+		// Label for good
+		gui.getLeftPanel().addItem(new GoHereCommand("" + randomLabel + "-good"));
 	}
 
 }
