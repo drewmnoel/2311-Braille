@@ -3,7 +3,9 @@ package commands;
 /**
  * A class to represent button repeating commands.
  *
- * @author
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-04-01
  *
  */
 public class RepeatButtonCommand extends PlayerCommand {

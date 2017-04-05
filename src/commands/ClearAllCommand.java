@@ -1,5 +1,13 @@
 package commands;
 
+/**
+ * Command wrapper to represent the /~disp-cellAll command in the player. No
+ * values are required for this command, and any given are ignored.
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-04-01
+ */
 public class ClearAllCommand extends PlayerCommand {
 
 	public ClearAllCommand(String args) {

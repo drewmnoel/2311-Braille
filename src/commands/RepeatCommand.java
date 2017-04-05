@@ -1,5 +1,15 @@
 package commands;
 
+/**
+ * Command wrapper to represent the /~repeat command in the player. Values
+ * consist of any arbitrary string which is text that should be read. The values
+ * are automatically wrapped in the correct /~repeat and /~endrepeat tags when
+ * serialized.
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-04-01
+ */
 public class RepeatCommand extends PlayerCommand {
 
 	private String repeatedText;

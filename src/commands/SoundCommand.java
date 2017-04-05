@@ -1,5 +1,13 @@
 package commands;
 
+/**
+ * Command wrapper to represent the /~sound command in the player. Values are
+ * given as a full path to the file to be played.
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-04-01
+ */
 public class SoundCommand extends PlayerCommand {
 
 	private String file = "";

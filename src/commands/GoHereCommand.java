@@ -1,5 +1,13 @@
 package commands;
 
+/**
+ * Command wrapper to represent the jump tags in the player. Values consist of
+ * any arbitrary string to be used as a descriptor
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-04-01
+ */
 public class GoHereCommand extends PlayerCommand {
 
 	private String jumpTag = "";

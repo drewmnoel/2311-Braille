@@ -1,5 +1,14 @@
 package commands;
 
+/**
+ * Command wrapper to represent the /~disp-cell-lower command in the player.
+ * Values consist of a string with a space separator between a cell number and a
+ * single number pin to lower (e.g. "4 1")
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-04-01
+ */
 public class CellLowerCommand extends PlayerCommand {
 
 	private String cellAndPin = "";

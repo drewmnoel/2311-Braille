@@ -1,5 +1,14 @@
 package commands;
 
+/**
+ * Command wrapper to represent the /~disp-string command in the player. Values
+ * are given as a single string, which is the string which should be shown on
+ * the player.
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-04-01
+ */
 public class SetStringCommand extends PlayerCommand {
 
 	private String str = "";

@@ -1,5 +1,14 @@
 package commands;
 
+/**
+ * Command wrapper to represent the /~disp-clear-cell command in the player.
+ * Values consist of a string consisting of only the cell number that should be
+ * cleared (e.g. "5")
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-04-01
+ */
 public class ClearCellCommand extends PlayerCommand {
 
 	private String cellNumber = "";

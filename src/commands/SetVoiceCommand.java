@@ -4,8 +4,9 @@ package commands;
  * A class to represent set voice commands. Contains a string for which numbered
  * text to speech voice to use
  *
- * @author
- *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-04-01
  */
 public class SetVoiceCommand extends PlayerCommand {
 

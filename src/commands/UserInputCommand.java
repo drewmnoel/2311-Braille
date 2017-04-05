@@ -1,5 +1,13 @@
 package commands;
 
+/**
+ * Command wrapper to represent the /~user-input command in the player. No
+ * values are used and any provided are ignored.
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-04-01
+ */
 public class UserInputCommand extends PlayerCommand {
 
 	@Override

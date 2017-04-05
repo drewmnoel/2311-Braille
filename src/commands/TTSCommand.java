@@ -1,5 +1,13 @@
 package commands;
 
+/**
+ * Command wrapper to represent the TTS command in the player. Values are given
+ * as the text that should be read aloud by the TTS.
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-04-01
+ */
 public class TTSCommand extends PlayerCommand {
 
 	private String textToSay = "";

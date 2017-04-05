@@ -3,8 +3,9 @@ package commands;
 /**
  * A class to represent pause commands. Contains a string for the pause duration
  *
- * @author
- *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-04-01
  */
 public class PauseCommand extends PlayerCommand {
 
@@ -12,7 +13,7 @@ public class PauseCommand extends PlayerCommand {
 
 	/***
 	 * Constructor for PauseCommand.
-	 * 
+	 *
 	 * @param waitTime
 	 *            The number of seconds for the pause to wait
 	 */

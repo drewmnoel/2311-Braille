@@ -1,5 +1,13 @@
 package commands;
 
+/**
+ * Command wrapper to represent the /~skip-button command in the player. Values
+ * are given as a button, followed by the target jump that should be sought to.
+ *
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-04-01
+ */
 public class SkipButtonCommand extends PlayerCommand {
 
 	private String numAndIdentifier = "";
