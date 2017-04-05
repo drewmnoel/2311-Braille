@@ -13,9 +13,16 @@ import commands.PlayerCommand;
 import commands.RepeatCommand;
 import listeners.ExportListener;
 import listeners.ImportListener;
-
+/**
+ * This Junit test class tests all methods in ExportListener and ImportListener classes
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-03-15
+ */
 public class TestImportExport {
-
+	/**
+	 * Test all methods in ExportListener
+	 */
 	@Test
 	public void testExportSimple() {
 		List<PlayerCommand> list = new ArrayList<>();
@@ -31,7 +38,9 @@ public class TestImportExport {
 		// Trim newlines from the end, ensure they're equal still
 		assertEquals(result.trim(), expectedResult.trim());
 	}
-
+	/**
+	 * Test all methods in ImportListener
+	 */
 	@Test
 	public void testImportSimple() {
 		String inputText = "Cell 1\nButton 2\nTitle\n/~disp-cell-char:a\n/~repeat\nTest repeat\n/~endrepeat";
@@ -58,3 +67,6 @@ public class TestImportExport {
 		}
 	}
 }
+
+
+

@@ -1,3 +1,4 @@
+
 package tests;
 
 import static org.junit.Assert.*;
@@ -7,16 +8,24 @@ import org.junit.Test;
 
 import commands.*;
 
-/***
- * JUnit test cases for all the various command classes
- *
+/**
+ * This class represents the user interface for the authoring program. It is
+ * responsible for creating all the user interface panels. In order to create a
+ * new authoring session, simply create a (single) instance of this class.
+ * 
+ * This Junit test class tests all methods in command classes, CellCharCommand, 
+ * CellLowerCommand, CellRaiseCommand, ClearAllCommand, ClearCellCommand, GoHereCommand, 
+ * PauseCommand, RepeatButtonCommand, RepeatCommand, ResetButtonCommand, SetPinsCommand, 
+ * SetStringCommand, SetVoiceCommand, SkipButtonCommand, SkipCommand, SoundCommand, TTSCommand, UserInputCommand
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-03-15
  */
-
 public class CommandTests {
 
-	/**
-	 * Sets up instances of all the command classes
-	 */
+/**
+* Sets up instances of all the command classes
+*/
 	CellCharCommand cellChar;
 	CellLowerCommand cellLower;
 	CellRaiseCommand cellRaise;
@@ -36,11 +45,6 @@ public class CommandTests {
 	TTSCommand TTS;
 	UserInputCommand userInput;
 	
-
-	@Before
-	public void setUp() throws Exception {
-		
-	}
 	
 	/**
 	 * Tests all the methods in CellCharCommand 
@@ -319,7 +323,7 @@ public class CommandTests {
 			assertEquals(Integer.toString(i), repeatButton.getCurrentValue());
 		}
 	}
-	
+
 	/**
 	 * Test all methods in RepeatCommand
 	 */
@@ -363,7 +367,7 @@ public class CommandTests {
 			assertEquals(alphabet.substring(i, i), repeat.getCurrentValue());
 		}
 	}
-	
+
 	/**
 	 * Test all methods in ResetButtonCommand 
 	 */
@@ -422,7 +426,7 @@ public class CommandTests {
 			assertEquals(i + " " + i, setPins.getCurrentValue());
 		}
 	}
-	
+
 	/**
 	 * Test all methods in SetStringCommand
 	 */
