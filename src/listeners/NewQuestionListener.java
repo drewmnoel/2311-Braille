@@ -20,6 +20,7 @@ import commands.PauseCommand;
 import commands.PlayerCommand;
 import commands.SetStringCommand;
 import commands.SkipButtonCommand;
+import commands.RepeatCommand;
 import commands.SkipCommand;
 import commands.TTSCommand;
 
@@ -140,7 +141,7 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 
 		// Labels for bad
 		gui.getLeftPanel().addItem(new GoHereCommand("" + randomLabel + "-bad"));
-		gui.getLeftPanel().addItem(new TTSCommand(repeatField.getText()));
+		gui.getLeftPanel().addItem(new RepeatCommand(repeatField.getText()));
 		gui.getLeftPanel().addItem(new SkipCommand(randomLabel + "-start"));
 
 		// Label for good
