@@ -128,13 +128,13 @@ public class ExportErrorCheck {
 	}
 	
 	/**
+	 * Method to check whether or not all UserInput commands have a button setup command before them
 	 * 
-	 * 
-	 * @param commands
-	 * @param numCells
-	 * @return
+	 * @param commands list of commands that make up the scenario
+	 * @return true if all UserInput commands have button setup commands before them
+	 * 			false otherwise
 	 */
-	public static boolean checkUserInput(List<PlayerCommand> commands, int numCells) {
+	public static boolean checkUserInput(List<PlayerCommand> commands) {
 		boolean seenUserInput = false;
 		boolean seenButtonSetup = true;
 		//whether a buttons are set up before a UserInput command
