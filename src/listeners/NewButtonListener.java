@@ -36,15 +36,14 @@ public class NewButtonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// Show the Add Item dialog
-		String[] possibilities = { "Pause", "Text-to-speech", "Display String", "Repeat", "Button Repeat", "Button Skip", "User Input",
-				"Sound", "Reset Buttons", "Skip", "Clear All", "Clear Cell", "Set Pins", "Set Char", "Raise Pin",
-				"Lower Pin", "Set Voice", "Jump Tag" };
-		String answer;		
+		String[] possibilities = { "Pause", "Text-to-speech", "Display String", "Repeat", "Button Repeat",
+				"Button Skip", "User Input", "Sound", "Reset Buttons", "Skip", "Clear All", "Clear Cell", "Set Pins",
+				"Set Char", "Raise Pin", "Lower Pin", "Set Voice", "Jump Tag" };
+		String answer;
 		answer = (String) JOptionPane.showInputDialog(gui, "Select the type of the item", "Add Item",
 				JOptionPane.PLAIN_MESSAGE, null, possibilities, "");
-		
-		if(answer != null)
-		{
+
+		if (answer != null) {
 			switch (answer) {
 			case "Pause":
 				gui.getLeftPanel().addItem(new PauseCommand(""));
@@ -105,7 +104,6 @@ public class NewButtonListener implements ActionListener {
 			}
 		}
 
-		
 	}
 
 }

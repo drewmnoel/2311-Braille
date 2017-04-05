@@ -35,7 +35,6 @@ public class GUI extends JFrame {
 		leftPanel = new LeftPanel(this);
 		bottomContainer.add(leftPanel);
 
-
 		// Create the buttons pane
 		rightPanel = new RightPanel(this);
 		bottomContainer.add(rightPanel);

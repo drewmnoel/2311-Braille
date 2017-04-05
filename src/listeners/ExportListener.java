@@ -49,8 +49,7 @@ public class ExportListener implements ActionListener {
 
 		// Check to see if any file was set
 		File file = save.getSelectedFile();
-		if(file == null)
-		{
+		if (file == null) {
 			return;
 		}
 

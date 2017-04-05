@@ -1,13 +1,13 @@
 package commands;
 
 public class GoHereCommand extends PlayerCommand {
-	
+
 	private String jumpTag = "";
-	
-	public GoHereCommand (String jumpTag) {
+
+	public GoHereCommand(String jumpTag) {
 		this.jumpTag = jumpTag;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Jump tag: " + jumpTag;

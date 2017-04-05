@@ -39,16 +39,18 @@ public class RightPanel extends JPanel implements ActionListener {
 	private static final String FONT_FACE = "Arial";
 	private static final int FONT_SIZE = 12;
 
-	 JButton openButton, saveButton;
-	    JTextArea log;
-	    JFileChooser fc = new JFileChooser();
+	JButton openButton, saveButton;
+	JTextArea log;
+	JFileChooser fc = new JFileChooser();
+
 	/**
 	 * Create a new right panel of the GUI
+	 * 
 	 * @param gui
-	 *           Reference to the overall GUI object
+	 *            Reference to the overall GUI object
 	 */
 	public RightPanel(GUI gui) {
-		super(new GridLayout(15,1));
+		super(new GridLayout(15, 1));
 		setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Commands"));
 
 		// Set font sizes
@@ -93,7 +95,8 @@ public class RightPanel extends JPanel implements ActionListener {
 		// Do not allow this component to enlarge ever
 		this.setMaximumSize(this.getPreferredSize());
 
-		//Enabling to be false so that user initializes with a New Scenario first
+		// Enabling to be false so that user initializes with a New Scenario
+		// first
 		btnStop.setEnabled(false);
 		btnNew.setEnabled(false);
 		btnExport.setEnabled(false);
@@ -103,10 +106,11 @@ public class RightPanel extends JPanel implements ActionListener {
 
 		this.gui = gui;
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		//Cases for button events
+		// Cases for button events
 		if (e.getSource() == btnStart) {
 			gui.setAudioThread(new ThreadRunnable());
 			gui.getAudioThread().start();
@@ -122,38 +126,37 @@ public class RightPanel extends JPanel implements ActionListener {
 			gui.getLeftPanel().moveDown();
 		} else if (e.getSource() == btnDelete) {
 			gui.getLeftPanel().deleteItem();
-		} else if(e.getSource() == readFile) {
+		} else if (e.getSource() == readFile) {
 			this.fileChooser();
 		}
 
-		//A call to a method that programmatically checks button status
+		// A call to a method that programmatically checks button status
 		gui.getLeftPanel().recalculateButtonStatus();
 	}
 
 	/**
-	 * A method that incorporates the ability to choose and open
-	 * a file in the computer's directory
+	 * A method that incorporates the ability to choose and open a file in the
+	 * computer's directory
 	 */
-	private void fileChooser(){
+	private void fileChooser() {
 		JFileChooser chooser = new JFileChooser();
-	    FileNameExtensionFilter filter = new FileNameExtensionFilter("wav files (*.wav)", "wav");
-	    chooser.setFileFilter(filter);
-	    int returnVal = chooser.showOpenDialog(null);
-	    if(returnVal == JFileChooser.APPROVE_OPTION) {
-	       System.out.println("You chose to open this file: " +
-	            chooser.getSelectedFile());
-	       String name = chooser.getSelectedFile().toString();
-	       ReadFile read = new ReadFile();
-	       gui.getLeftPanel().addItem(new SoundCommand(name));
-	       read.playSound(name);
-	    }
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("wav files (*.wav)", "wav");
+		chooser.setFileFilter(filter);
+		int returnVal = chooser.showOpenDialog(null);
+		if (returnVal == JFileChooser.APPROVE_OPTION) {
+			System.out.println("You chose to open this file: " + chooser.getSelectedFile());
+			String name = chooser.getSelectedFile().toString();
+			ReadFile read = new ReadFile();
+			gui.getLeftPanel().addItem(new SoundCommand(name));
+			read.playSound(name);
+		}
 	}
 
 	/**
 	 * A method that changes the availability of a btnMoveUp button
 	 *
 	 * @param status
-	 * 			parameter that is either true or false
+	 *            parameter that is either true or false
 	 */
 	public void setUp(boolean status) {
 		btnMoveUp.setEnabled(status);
@@ -163,7 +166,7 @@ public class RightPanel extends JPanel implements ActionListener {
 	 * A method that changes the availability of a btnMoveDown button
 	 *
 	 * @param status
-	 * 			parameter that is either true or false
+	 *            parameter that is either true or false
 	 */
 	public void setDown(boolean status) {
 		btnMoveDown.setEnabled(status);
@@ -173,7 +176,7 @@ public class RightPanel extends JPanel implements ActionListener {
 	 * A method that changes the availability of a btnDelete button
 	 *
 	 * @param status
-	 * 			parameter that is either true or false
+	 *            parameter that is either true or false
 	 */
 	public void setDelete(boolean status) {
 		btnDelete.setEnabled(status);
@@ -183,7 +186,7 @@ public class RightPanel extends JPanel implements ActionListener {
 	 * A method that changes the availability of a btnStart button
 	 *
 	 * @param status
-	 * 			parameter that is either true or false
+	 *            parameter that is either true or false
 	 */
 	public void setStart(boolean status) {
 		btnStart.setEnabled(status);
@@ -193,7 +196,7 @@ public class RightPanel extends JPanel implements ActionListener {
 	 * A method that changes the availability of a readFile button
 	 *
 	 * @param status
-	 * 			parameter that is either true or false
+	 *            parameter that is either true or false
 	 */
 	public void setReadFile(boolean status) {
 		readFile.setEnabled(status);
@@ -203,7 +206,7 @@ public class RightPanel extends JPanel implements ActionListener {
 	 * A method that changes the availability of a btnExport button
 	 *
 	 * @param status
-	 * 			parameter that is either true or false
+	 *            parameter that is either true or false
 	 */
 	public void setExport(boolean status) {
 		btnExport.setEnabled(status);
@@ -213,7 +216,7 @@ public class RightPanel extends JPanel implements ActionListener {
 	 * A method that changes the availability of a btnNew button
 	 *
 	 * @param status
-	 * 			parameter that is either true or false
+	 *            parameter that is either true or false
 	 */
 	public void setNew(boolean status) {
 		btnNew.setEnabled(status);
@@ -223,7 +226,7 @@ public class RightPanel extends JPanel implements ActionListener {
 	 * A method that changes the availability of a btnNewQuestion button
 	 *
 	 * @param status
-	 * 			parameter that is either true or false
+	 *            parameter that is either true or false
 	 */
 	public void setNewQuestion(boolean status) {
 		btnNewQuestion.setEnabled(status);

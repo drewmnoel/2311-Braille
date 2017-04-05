@@ -1,13 +1,13 @@
 package commands;
 
 public class SkipCommand extends PlayerCommand {
-	
+
 	private String skipTo = "";
-	
+
 	public SkipCommand(String skipTo) {
 		this.skipTo = skipTo;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Skip to: " + skipTo;

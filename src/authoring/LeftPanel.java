@@ -132,19 +132,18 @@ public class LeftPanel extends JPanel implements MouseListener {
 		// Remove that position from the listModel
 		listModel.remove(selectedIndex);
 	}
-	
+
 	/**
 	 * Remove all elements from the list
 	 */
 	public void clearItem() {
 		listModel.removeAllElements();
 	}
-	
+
 	/**
 	 * Returns a boolean to see if the list is empty or not
 	 * 
-	 * @return
-	 * 		a true or false value
+	 * @return a true or false value
 	 */
 	public boolean elementCheck() {
 		return listModel.isEmpty();
@@ -200,16 +199,20 @@ public class LeftPanel extends JPanel implements MouseListener {
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {}
+	public void mousePressed(MouseEvent e) {
+	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {}
+	public void mouseReleased(MouseEvent e) {
+	}
 
 	@Override
-	public void mouseEntered(MouseEvent e) {}
+	public void mouseEntered(MouseEvent e) {
+	}
 
 	@Override
-	public void mouseExited(MouseEvent e) {}
+	public void mouseExited(MouseEvent e) {
+	}
 
 	public List<PlayerCommand> getList() {
 		List<PlayerCommand> result = new ArrayList<>();

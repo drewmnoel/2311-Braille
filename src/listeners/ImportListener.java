@@ -81,14 +81,13 @@ public class ImportListener implements ActionListener {
 	private List<String> getInput() {
 		JFileChooser importDialog = new JFileChooser();
 		List<String> str = new ArrayList<String>();
-		
+
 		FileNameExtensionFilter txtFilter = new FileNameExtensionFilter("text files (*.txt)", "txt");
 		importDialog.addChoosableFileFilter(txtFilter);
 		importDialog.setFileFilter(txtFilter);
 
 		int r = importDialog.showOpenDialog(gui);
-		if(r == JFileChooser.APPROVE_OPTION)
-		{
+		if (r == JFileChooser.APPROVE_OPTION) {
 			URI uri = importDialog.getSelectedFile().toURI();
 			try {
 				return str = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());

@@ -104,14 +104,14 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 		int numOfButtons = Integer.parseInt(strNumOfButtons);
 		buttons.removeAllItems();
 		for (int i = 0; i < numOfButtons; i++) {
-			buttons.addItem("Button " + (i+1));
+			buttons.addItem("Button " + (i + 1));
 		}
 
-		JOptionPane.showConfirmDialog(null, this,
-				"Enter Question Details", JOptionPane.OK_CANCEL_OPTION);
+		JOptionPane.showConfirmDialog(null, this, "Enter Question Details", JOptionPane.OK_CANCEL_OPTION);
 
 		// At this point we have enough information to create a basic question.
-		// It is composed of TTS, Braille string, a repeat section, a repeat button, some error
+		// It is composed of TTS, Braille string, a repeat section, a repeat
+		// button, some error
 		PlayerCommand holder;
 		gui.getLeftPanel().addItem(new TTSCommand(introField.getText()));
 		gui.getLeftPanel().addItem(new PauseCommand("1"));
@@ -127,7 +127,8 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 		// Loop through all the buttons defined
 		for (int i = 0; i < numOfButtons; i++) {
 			if (i != buttons.getSelectedIndex()) {
-				// All buttons that are wrong will just repeat the question (bad)
+				// All buttons that are wrong will just repeat the question
+				// (bad)
 				holder = new SkipButtonCommand("" + i + " " + randomLabel + "-bad");
 				gui.getLeftPanel().addItem(holder);
 			} else {
