@@ -27,6 +27,15 @@ public class AudioRecorder {
 	// Target line to capture audio data from
 	private TargetDataLine line;
 
+	/**
+	 * Create a new audio recorder with a given data line as the source. This
+	 * will allow the recorder to drain the source until it is empty, or the
+	 * source is closed. The source is typically a microphone, but not required
+	 * to be so.
+	 * 
+	 * @param line
+	 *            Data line that the class should attempt to drain
+	 */
 	public AudioRecorder(TargetDataLine line) {
 		this.line = line;
 	}
@@ -61,7 +70,7 @@ public class AudioRecorder {
 	/**
 	 * Method to set the name of the audio file to be recorded Hook this up to
 	 * GUI file to enter file name
-	 * 
+	 *
 	 * @param fileName
 	 *            file path and name of the file
 	 */
