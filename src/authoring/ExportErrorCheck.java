@@ -18,9 +18,12 @@ import commands.UserInputCommand;
 
 /**
  * Class to handle simple error checking in a scenario file before it is
- * exported Checks for things like missing jump tags, or calling buttons without
+ * exported Checks for things like missing jump tags, or calling buttons 
+ * that have not been initialized
  *
- * @author Jon
+ * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
+ * @version 1.0
+ * @since 2017-04-01
  *
  */
 public class ExportErrorCheck {
