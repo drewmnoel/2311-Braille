@@ -1,5 +1,6 @@
 package authoring;
 
+import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.JLabel;
@@ -17,6 +18,7 @@ class ColourCellRenderer extends JLabel implements ListCellRenderer<Object> {
 
 	public ColourCellRenderer(ColourMapper mapper) {
 		this.mapper = mapper;
+		this.setOpaque(true);
 	}
 
 	@Override
@@ -44,6 +46,12 @@ class ColourCellRenderer extends JLabel implements ListCellRenderer<Object> {
 		}
 
 		setForeground(mapper.getColour(locationTag));
+
+		if (isSelected) {
+			setBackground(Color.LIGHT_GRAY);
+		} else {
+			setBackground(Color.WHITE);
+		}
 		return this;
 	}
 }
