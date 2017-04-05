@@ -250,7 +250,7 @@ public class CommandTests {
 	public void testGoHereCommand() {
 		goHere = new GoHereCommand("testjumptaghere");
 		//tests toString()
-		assertEquals("Jump tag: testjumptaghere", goHere.toString());
+		assertEquals("Location: testjumptaghere", goHere.toString());
 
 
 		//tests serialize()
@@ -258,7 +258,7 @@ public class CommandTests {
 
 
 		//tests getEditLabel()
-		assertEquals("Enter name of jump tag", goHere.getEditLabel());
+		assertEquals("Enter name of location", goHere.getEditLabel());
 
 
 		//tests setCurrentValue()
@@ -536,10 +536,10 @@ public class CommandTests {
 		//tests toString()
 		for(int i = 0; i<alphabet.length(); i++) {
 			skipButton = new SkipButtonCommand(i + " " + alphabet.substring(i, i));
-			assertEquals("Skip button: " + i + " " + alphabet.substring(i, i), skipButton.toString());
+			assertEquals("Button Location Target: " + i + " " + alphabet.substring(i, i), skipButton.toString());
 		}
 		skipButton = new SkipButtonCommand("This is a very long string look how long this is bork bork bork bork bork!");
-		assertEquals("Skip button: This is a very long string look how long this is bork bork bork bork bork!", skipButton.toString());
+		assertEquals("Button Location Target: This is a very long string look how long this is bork bork bork bork bork!", skipButton.toString());
 
 		//tests serialize()
 		for(int i = 0; i<alphabet.length(); i++) {
@@ -580,10 +580,10 @@ public class CommandTests {
 		//tests toString()
 		for(int i = 0; i<alphabet.length(); i++) {
 			skip = new SkipCommand(i + " " + alphabet.substring(i, i));
-			assertEquals("Skip to: " + i + " " + alphabet.substring(i, i), skip.toString());
+			assertEquals("Go to location: " + i + " " + alphabet.substring(i, i), skip.toString());
 		}
 		skip = new SkipCommand("This is a very long string look how long this is bork bork bork bork bork!");
-		assertEquals("Skip to: This is a very long string look how long this is bork bork bork bork bork!", skip.toString());
+		assertEquals("Go to location: This is a very long string look how long this is bork bork bork bork bork!", skip.toString());
 
 		//tests serialize()
 		for(int i = 0; i<alphabet.length(); i++) {
@@ -596,7 +596,7 @@ public class CommandTests {
 		//tests getEditLabel()
 		for(int i = 0; i<alphabet.length(); i++) {
 			skip = new SkipCommand(i + " " + alphabet.substring(i, i));
-			assertEquals("Enter jump tag to skip to", skip.getEditLabel());
+			assertEquals("Enter location to go to", skip.getEditLabel());
 		}
 
 		//tests getCurrentValue()

@@ -15,7 +15,7 @@ public class SkipButtonCommand extends PlayerCommand {
 	/**
 	 * Constructor for SkipButtonCommand which presets the internal value to a
 	 * given string
-	 * 
+	 *
 	 * @param numAndIdentifier
 	 *            Number and identifier for the skip button
 	 */
@@ -25,7 +25,7 @@ public class SkipButtonCommand extends PlayerCommand {
 
 	@Override
 	public String toString() {
-		return "Skip button: " + numAndIdentifier;
+		return "Button Location Target: " + numAndIdentifier;
 	}
 
 	@Override

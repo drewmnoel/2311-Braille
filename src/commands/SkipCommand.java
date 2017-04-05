@@ -24,7 +24,7 @@ public class SkipCommand extends PlayerCommand {
 
 	@Override
 	public String toString() {
-		return "Skip to: " + skipTo;
+		return "Go to location: " + skipTo;
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class SkipCommand extends PlayerCommand {
 
 	@Override
 	public String getEditLabel() {
-		return "Enter jump tag to skip to";
+		return "Enter location to go to";
 	}
 
 	@Override

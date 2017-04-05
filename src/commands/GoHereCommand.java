@@ -24,7 +24,7 @@ public class GoHereCommand extends PlayerCommand {
 
 	@Override
 	public String toString() {
-		return "Jump tag: " + jumpTag;
+		return "Location: " + jumpTag;
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class GoHereCommand extends PlayerCommand {
 
 	@Override
 	public String getEditLabel() {
-		return "Enter name of jump tag";
+		return "Enter name of location";
 	}
 
 	@Override
