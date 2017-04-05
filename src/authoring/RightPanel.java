@@ -5,8 +5,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import authoring.GUI;
-import commands.SoundCommand;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -14,10 +12,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import commands.SoundCommand;
+
 /**
  * RightPanel class
- * 
- * 
+ *
+ *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  *
  */
@@ -29,10 +29,11 @@ public class RightPanel extends JPanel implements ActionListener {
 	private JButton btnMoveUp = new JButton("Move Item Up");
 	private JButton btnMoveDown = new JButton("Move Item Down");
 	private JButton btnDelete = new JButton("Delete Item");
-	private JButton btnNew = new JButton("New Item");
+	private JButton btnNew = new JButton("New Item (Advanced)");
 	private JButton btnExport = new JButton("Export");
 	private JButton btnImport = new JButton("Import");
 	private JButton btnNewScenario = new JButton("New Scenario");
+	private JButton btnNewQuestion = new JButton("New Question");
 	private GUI gui;
 
 	private static final String FONT_FACE = "Arial";
@@ -40,14 +41,14 @@ public class RightPanel extends JPanel implements ActionListener {
 
 	 JButton openButton, saveButton;
 	    JTextArea log;
-	    JFileChooser fc = new JFileChooser();;
+	    JFileChooser fc = new JFileChooser();
 	/**
 	 * Create a new right panel of the GUI
 	 * @param gui
 	 *           Reference to the overall GUI object
 	 */
 	public RightPanel(GUI gui) {
-		super(new GridLayout(10,1));
+		super(new GridLayout(15,1));
 		setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Commands"));
 
 		// Set font sizes
@@ -61,6 +62,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		btnMoveDown.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
 		btnDelete.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
 		btnNew.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
+		btnNewQuestion.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
 
 		// Add the buttons
 		add(btnNewScenario);
@@ -73,7 +75,7 @@ public class RightPanel extends JPanel implements ActionListener {
 		add(btnMoveDown);
 		add(btnDelete);
 		add(btnNew);
-		
+		add(btnNewQuestion);
 
 		// Hook in the button listeners for the buttons
 		btnStart.addActionListener(this);
@@ -86,22 +88,24 @@ public class RightPanel extends JPanel implements ActionListener {
 		btnExport.addActionListener(new listeners.ExportListener(gui));
 		btnImport.addActionListener(new listeners.ImportListener(gui));
 		btnNewScenario.addActionListener(new listeners.NewScenarioListener(gui));
+		btnNewQuestion.addActionListener(new listeners.NewQuestionListener(gui));
 
 		// Do not allow this component to enlarge ever
 		this.setMaximumSize(this.getPreferredSize());
-		
+
 		//Enabling to be false so that user initializes with a New Scenario first
 		btnStop.setEnabled(false);
 		btnNew.setEnabled(false);
 		btnExport.setEnabled(false);
 		readFile.setEnabled(false);
 		btnStart.setEnabled(false);
-		
+		btnNewQuestion.setEnabled(false);
+
 		this.gui = gui;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+
 		//Cases for button events
 		if (e.getSource() == btnStart) {
 			gui.setAudioThread(new ThreadRunnable());
@@ -121,13 +125,13 @@ public class RightPanel extends JPanel implements ActionListener {
 		} else if(e.getSource() == readFile) {
 			this.fileChooser();
 		}
-		
+
 		//A call to a method that programmatically checks button status
 		gui.getLeftPanel().recalculateButtonStatus();
 	}
-	
+
 	/**
-	 * A method that incorporates the ability to choose and open 
+	 * A method that incorporates the ability to choose and open
 	 * a file in the computer's directory
 	 */
 	private void fileChooser(){
@@ -144,27 +148,27 @@ public class RightPanel extends JPanel implements ActionListener {
 	       read.playSound(name);
 	    }
 	}
-	
+
 	/**
 	 * A method that changes the availability of a btnMoveUp button
-	 * 
+	 *
 	 * @param status
 	 * 			parameter that is either true or false
 	 */
 	public void setUp(boolean status) {
 		btnMoveUp.setEnabled(status);
 	}
-	
+
 	/**
 	 * A method that changes the availability of a btnMoveDown button
-	 * 
+	 *
 	 * @param status
 	 * 			parameter that is either true or false
 	 */
 	public void setDown(boolean status) {
 		btnMoveDown.setEnabled(status);
 	}
-	
+
 	/**
 	 * A method that changes the availability of a btnDelete button
 	 *
@@ -174,7 +178,7 @@ public class RightPanel extends JPanel implements ActionListener {
 	public void setDelete(boolean status) {
 		btnDelete.setEnabled(status);
 	}
-	
+
 	/**
 	 * A method that changes the availability of a btnStart button
 	 *
@@ -184,27 +188,27 @@ public class RightPanel extends JPanel implements ActionListener {
 	public void setStart(boolean status) {
 		btnStart.setEnabled(status);
 	}
-	
+
 	/**
 	 * A method that changes the availability of a readFile button
-	 * 
+	 *
 	 * @param status
 	 * 			parameter that is either true or false
 	 */
 	public void setReadFile(boolean status) {
 		readFile.setEnabled(status);
 	}
-	
+
 	/**
 	 * A method that changes the availability of a btnExport button
-	 * 
+	 *
 	 * @param status
 	 * 			parameter that is either true or false
 	 */
 	public void setExport(boolean status) {
 		btnExport.setEnabled(status);
 	}
-	
+
 	/**
 	 * A method that changes the availability of a btnNew button
 	 *
@@ -214,5 +218,15 @@ public class RightPanel extends JPanel implements ActionListener {
 	public void setNew(boolean status) {
 		btnNew.setEnabled(status);
 	}
-	
+
+	/**
+	 * A method that changes the availability of a btnNewQuestion button
+	 *
+	 * @param status
+	 * 			parameter that is either true or false
+	 */
+	public void setNewQuestion(boolean status) {
+		btnNewQuestion.setEnabled(status);
+	}
+
 }

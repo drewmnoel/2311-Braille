@@ -23,6 +23,7 @@ public class GUI extends JFrame {
 
 		// Add the top settings panel
 		settingsPanel = new SettingsPanel(this);
+		settingsPanel.setMaximumSize(settingsPanel.getMinimumSize());
 		rootContainer.add(settingsPanel);
 
 		JPanel bottomContainer = new JPanel();
