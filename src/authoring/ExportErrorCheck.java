@@ -85,29 +85,31 @@ public class ExportErrorCheck {
 		// iterate over command to find RepeatButtonCommands and
 		// SkipButtonCommands
 		for (PlayerCommand pc : commands) {
-			// if command is a RepeatButtonCommand
-			if (pc instanceof RepeatButtonCommand) {
-				// if it calls for a button that doesn't exist
-				if (Integer.parseInt(pc.getCurrentValue()) > numButtons || Integer.parseInt(pc.getCurrentValue()) < 0) {
-					// There's an error, break and return false
-					errorFree = false;
-					break;
-				}
-			}
-			// if command is a SkipButtonCommand
-			if (pc instanceof SkipButtonCommand) {
-				// If it calls for a button that doesn't exist
-				if (Integer.parseInt(pc.getCurrentValue().split(" ")[0]) > numButtons
-						|| Integer.parseInt(pc.getCurrentValue().split(" ")[0]) < 0) {
-					// There's an error, break and return false
-					errorFree = false;
-					break;
-				}
-			}
-		}
+			//if command is a RepeatButtonCommand
+			if(pc instanceof RepeatButtonCommand) {
 
+				//if it calls for a button that doesn't exist
+				if(Integer.parseInt(pc.getCurrentValue()) >= numButtons ||  Integer.parseInt(pc.getCurrentValue()) < 0) {
+					errorFree = false;
+					break;
+				}
+			}	
+
+			//if command is a SkipButtonCommand
+			if(pc instanceof SkipButtonCommand) {
+				//If it calls for a button that doesn't exist
+				if(Integer.parseInt(pc.getCurrentValue().split(" ")[0]) >= numButtons ||  Integer.parseInt(pc.getCurrentValue().split(" ")[0]) < 0) {
+					//There's an error, break and return false
+					errorFree = false;
+					break;
+
+				}
+			}
+
+		}
 		return errorFree;
 	}
+
 
 	/**
 	 * Method to check whether a scenario tries to call on a braille cell that
