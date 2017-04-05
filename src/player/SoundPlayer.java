@@ -19,6 +19,7 @@ import com.sun.speech.freetts.VoiceManager;
 
 import simulator.Simulator;
 
+@SuppressWarnings("javadoc")
 public class SoundPlayer
 {
 	private Voice voice;

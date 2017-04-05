@@ -37,6 +37,7 @@ import javax.swing.JRadioButton;
  * @author Team 4: Yassin Mohamed, Qassim Allauddin, Derek Li, Artem Solovey.
  *
  */
+@SuppressWarnings("javadoc")
 public class Simulator {
 
 	public int brailleCellNumber;
