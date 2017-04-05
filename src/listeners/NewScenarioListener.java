@@ -72,6 +72,12 @@ public class NewScenarioListener implements ActionListener {
 				// fields
 				JOptionPane.showMessageDialog(null, "One or more fields are empty!", "Missing fields!",
 						JOptionPane.ERROR_MESSAGE);
+			} else {
+				// Enables buttons to true only after the user initializes
+				gui.getRightPanel().setStart(true);
+				gui.getRightPanel().setNew(true);
+				gui.getRightPanel().setExport(true);
+				gui.getRightPanel().setReadFile(true);
 			}
 
 			// Takes the text that was input by the user in the fields and sets
@@ -80,11 +86,6 @@ public class NewScenarioListener implements ActionListener {
 			gui.getSettingsPanel().setButtonFieldText(btntxt.getText());
 			gui.getSettingsPanel().setTitleField(titletxt.getText());
 
-			// Enables buttons to true only after the user initializes
-			gui.getRightPanel().setStart(true);
-			gui.getRightPanel().setNew(true);
-			gui.getRightPanel().setExport(true);
-			gui.getRightPanel().setReadFile(true);
 		}
 	}
 
