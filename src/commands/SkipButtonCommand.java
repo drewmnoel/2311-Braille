@@ -12,6 +12,13 @@ public class SkipButtonCommand extends PlayerCommand {
 
 	private String numAndIdentifier = "";
 
+	/**
+	 * Constructor for SkipButtonCommand which presets the internal value to a
+	 * given string
+	 * 
+	 * @param numAndIdentifier
+	 *            Number and identifier for the skip button
+	 */
 	public SkipButtonCommand(String numAndIdentifier) {
 		this.numAndIdentifier = numAndIdentifier;
 	}

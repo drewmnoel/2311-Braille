@@ -13,6 +13,12 @@ public class ClearCellCommand extends PlayerCommand {
 
 	private String cellNumber = "";
 
+	/**
+	 * Construct a new instance with the value set to the given value
+	 *
+	 * @param cellNumber
+	 *            Desired value of the ClearCellCommand
+	 */
 	public ClearCellCommand(String cellNumber) {
 		this.cellNumber = cellNumber;
 	}

@@ -10,6 +10,12 @@ package commands;
  */
 public class ClearAllCommand extends PlayerCommand {
 
+	/**
+	 * Construct a new instance of the Clear All command
+	 *
+	 * @param args
+	 *            Ignored argument
+	 */
 	public ClearAllCommand(String args) {
 	}
 

@@ -12,6 +12,12 @@ public class GoHereCommand extends PlayerCommand {
 
 	private String jumpTag = "";
 
+	/**
+	 * Construct a new instance with the value set to the given value
+	 *
+	 * @param jumpTag
+	 *            Desired jump tag label
+	 */
 	public GoHereCommand(String jumpTag) {
 		this.jumpTag = jumpTag;
 	}

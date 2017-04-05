@@ -13,6 +13,12 @@ public class CellLowerCommand extends PlayerCommand {
 
 	private String cellAndPin = "";
 
+	/**
+	 * Construct a new instance with the value set to the given value
+	 *
+	 * @param cellAndPin
+	 *            Desired value of the CellLowerCommand
+	 */
 	public CellLowerCommand(String cellAndPin) {
 		this.cellAndPin = cellAndPin;
 	}

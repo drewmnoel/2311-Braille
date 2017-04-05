@@ -13,6 +13,13 @@ public class SetPinsCommand extends PlayerCommand {
 
 	private String cellAndPins = "";
 
+	/**
+	 * Create new SetPinsCommand with the internal value (for cells and pins)
+	 * set to a given value
+	 * 
+	 * @param cellAndPins
+	 *            Desired value for the cells and pins in this command
+	 */
 	public SetPinsCommand(String cellAndPins) {
 		this.cellAndPins = cellAndPins;
 	}

@@ -14,6 +14,13 @@ public class RepeatCommand extends PlayerCommand {
 
 	private String repeatedText;
 
+	/**
+	 * Construct a RepeatCommand with the repeated text value set to the input
+	 * value
+	 * 
+	 * @param repeatedText
+	 *            Desired value of the repeated text
+	 */
 	public RepeatCommand(String repeatedText) {
 		this.repeatedText = repeatedText;
 	}

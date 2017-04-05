@@ -10,6 +10,12 @@ package commands;
  */
 public class ResetButtonCommand extends PlayerCommand {
 
+	/***
+	 * Constructor for ResetButtonCommand.
+	 *
+	 * @param args
+	 *            Ignored input argument
+	 */
 	public ResetButtonCommand(String args) {
 	}
 

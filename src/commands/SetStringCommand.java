@@ -13,6 +13,13 @@ public class SetStringCommand extends PlayerCommand {
 
 	private String str = "";
 
+	/**
+	 * Create a new SetStringCommand which has the internal value set to an
+	 * input value
+	 * 
+	 * @param str
+	 *            Desired input value for the command to have
+	 */
 	public SetStringCommand(String str) {
 		this.str = str;
 	}

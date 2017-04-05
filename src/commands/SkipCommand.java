@@ -12,6 +12,12 @@ public class SkipCommand extends PlayerCommand {
 
 	private String skipTo = "";
 
+	/**
+	 * Constructor of the SkipCommand which sets the target jump location
+	 *
+	 * @param skipTo
+	 *            String representing the jump target
+	 */
 	public SkipCommand(String skipTo) {
 		this.skipTo = skipTo;
 	}

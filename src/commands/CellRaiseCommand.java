@@ -13,6 +13,12 @@ public class CellRaiseCommand extends PlayerCommand {
 
 	private String cellAndPin = "";
 
+	/**
+	 * Construct a new instance with the value set to the given value
+	 *
+	 * @param cellAndPin
+	 *            Desired value of the CellRaiseCommand
+	 */
 	public CellRaiseCommand(String cellAndPin) {
 		this.cellAndPin = cellAndPin;
 	}

@@ -12,6 +12,12 @@ public class SoundCommand extends PlayerCommand {
 
 	private String file = "";
 
+	/**
+	 * Create a new instance with the file path pre-set
+	 *
+	 * @param file
+	 *            Path to the file to play
+	 */
 	public SoundCommand(String file) {
 		this.file = file;
 	}
