@@ -12,7 +12,6 @@ public class SetVoiceCommand extends PlayerCommand {
 
 	private String voiceNumber;
 
-	
 	/**
 	 * Constructor to create a SetVoiceCommand object
 	 *
@@ -32,16 +31,13 @@ public class SetVoiceCommand extends PlayerCommand {
 	@Override
 	public String toString() {
 		String voice = "TTS Voice to use: ";
-		if(Integer.parseInt(voiceNumber) == 1) {
+		if (Integer.parseInt(voiceNumber) == 1) {
 			voice = voice + "male 1";
-		}
-		else if(Integer.parseInt(voiceNumber) == 2) {
+		} else if (Integer.parseInt(voiceNumber) == 2) {
 			voice = voice + "female 2";
-		}
-		else if(Integer.parseInt(voiceNumber) == 3) {
+		} else if (Integer.parseInt(voiceNumber) == 3) {
 			voice = voice + "male 3";
-		}
-		else if(Integer.parseInt(voiceNumber) == 4) {
+		} else if (Integer.parseInt(voiceNumber) == 4) {
 			voice = voice + "male 4";
 		}
 		return voice;

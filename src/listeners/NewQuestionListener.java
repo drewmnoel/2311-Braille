@@ -57,7 +57,8 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 	 *
 	 * @param gui
 	 *            Instance of currently running GUI
-	 * @param mapper Reference to the common instance of the colourmapper
+	 * @param mapper
+	 *            Reference to the common instance of the colourmapper
 	 */
 	public NewQuestionListener(GUI gui, ColourMapper mapper) {
 		this.gui = gui;
@@ -71,7 +72,7 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 		JLabel correctLabel = new JLabel("Correct Button:", SwingConstants.RIGHT);
 		JLabel incorrectLabel = new JLabel("Text For Incorrect:", SwingConstants.RIGHT);
 
-		//Creates a text area that wraps properly and scrolls vertically only
+		// Creates a text area that wraps properly and scrolls vertically only
 		introField = new JTextArea(5, 18);
 		introField.setLineWrap(true);
 		JScrollPane introPane = new JScrollPane(introField);
@@ -95,8 +96,8 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 		gbc.gridy++;
 		add(brailleLabel, gbc);
 
-		//gbc.gridy++;
-		//add(repeatLabel, gbc);
+		// gbc.gridy++;
+		// add(repeatLabel, gbc);
 
 		gbc.gridy++;
 		add(correctLabel, gbc);
@@ -113,8 +114,8 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 		gbc.gridy++;
 		add(brailleField, gbc);
 
-		//gbc.gridy++;
-		//add(buttonField, gbc);
+		// gbc.gridy++;
+		// add(buttonField, gbc);
 
 		gbc.gridy++;
 		add(buttons, gbc);
@@ -141,7 +142,7 @@ public class NewQuestionListener extends JPanel implements ActionListener {
 
 		int result = JOptionPane.showConfirmDialog(null, this, "Enter Question Details", JOptionPane.OK_CANCEL_OPTION);
 
-		if(result != JOptionPane.OK_OPTION) {
+		if (result != JOptionPane.OK_OPTION) {
 			return;
 		}
 

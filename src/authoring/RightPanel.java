@@ -57,7 +57,8 @@ public class RightPanel extends JPanel implements ActionListener {
 	 *
 	 * @param gui
 	 *            Reference to the overall GUI object
-	 * @param mapper Reference to the shared colour mapper object
+	 * @param mapper
+	 *            Reference to the shared colour mapper object
 	 */
 	public RightPanel(GUI gui, ColourMapper mapper) {
 		super(new GridLayout(15, 1));

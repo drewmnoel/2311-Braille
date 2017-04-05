@@ -26,8 +26,8 @@ import commands.TTSCommand;
 import commands.UserInputCommand;
 
 /**
- * This class is used as an action listener whenever the "New Item" button
- * is clicked. It enables the user to set items from dialog box with their value.
+ * This class is used as an action listener whenever the "New Item" button is
+ * clicked. It enables the user to set items from dialog box with their value.
  *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
@@ -53,8 +53,8 @@ public class NewButtonListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// Show the Add Item dialog
 		String[] possibilities = { "Pause", "Text-to-speech", "Display String", "Repeat", "Button Repeat",
-				"Button Location", "User Input", "Sound", "Reset Buttons", "Go To Location", "Clear All", "Clear Cell", "Set Pins",
-				"Set Char", "Raise Pin", "Lower Pin", "Set Voice", "Location Tag" };
+				"Button Location", "User Input", "Sound", "Reset Buttons", "Go To Location", "Clear All", "Clear Cell",
+				"Set Pins", "Set Char", "Raise Pin", "Lower Pin", "Set Voice", "Location Tag" };
 		String answer;
 		answer = (String) JOptionPane.showInputDialog(gui, "Select the type of the item", "Add Item",
 				JOptionPane.PLAIN_MESSAGE, null, possibilities, "");

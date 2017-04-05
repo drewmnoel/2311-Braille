@@ -40,7 +40,8 @@ public class LeftPanel extends JPanel implements MouseListener {
 	 *
 	 * @param gui
 	 *            Reference to the overall GUI object
-	 * @param mapper Reference to the common colour mapper
+	 * @param mapper
+	 *            Reference to the common colour mapper
 	 */
 	public LeftPanel(GUI gui, ColourMapper mapper) {
 		// Create a basic JPanel with a grid layout

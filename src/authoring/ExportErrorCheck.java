@@ -18,8 +18,8 @@ import commands.UserInputCommand;
 
 /**
  * Class to handle simple error checking in a scenario file before it is
- * exported Checks for things like missing jump tags, or calling buttons 
- * that have not been initialized
+ * exported Checks for things like missing jump tags, or calling buttons that
+ * have not been initialized
  *
  * @author Dilshad Khatri, Alvis Koshy, Drew Noel, Jonathan Tung
  * @version 1.0
@@ -88,21 +88,23 @@ public class ExportErrorCheck {
 		// iterate over command to find RepeatButtonCommands and
 		// SkipButtonCommands
 		for (PlayerCommand pc : commands) {
-			//if command is a RepeatButtonCommand
-			if(pc instanceof RepeatButtonCommand) {
+			// if command is a RepeatButtonCommand
+			if (pc instanceof RepeatButtonCommand) {
 
-				//if it calls for a button that doesn't exist
-				if(Integer.parseInt(pc.getCurrentValue()) >= numButtons ||  Integer.parseInt(pc.getCurrentValue()) < 0) {
+				// if it calls for a button that doesn't exist
+				if (Integer.parseInt(pc.getCurrentValue()) >= numButtons
+						|| Integer.parseInt(pc.getCurrentValue()) < 0) {
 					errorFree = false;
 					break;
 				}
-			}	
+			}
 
-			//if command is a SkipButtonCommand
-			if(pc instanceof SkipButtonCommand) {
-				//If it calls for a button that doesn't exist
-				if(Integer.parseInt(pc.getCurrentValue().split(" ")[0]) >= numButtons ||  Integer.parseInt(pc.getCurrentValue().split(" ")[0]) < 0) {
-					//There's an error, break and return false
+			// if command is a SkipButtonCommand
+			if (pc instanceof SkipButtonCommand) {
+				// If it calls for a button that doesn't exist
+				if (Integer.parseInt(pc.getCurrentValue().split(" ")[0]) >= numButtons
+						|| Integer.parseInt(pc.getCurrentValue().split(" ")[0]) < 0) {
+					// There's an error, break and return false
 					errorFree = false;
 					break;
 
@@ -112,7 +114,6 @@ public class ExportErrorCheck {
 		}
 		return errorFree;
 	}
-
 
 	/**
 	 * Method to check whether a scenario tries to call on a braille cell that

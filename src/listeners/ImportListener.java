@@ -55,7 +55,8 @@ public class ImportListener implements ActionListener {
 	 * @param gui
 	 *            A reference to the parent GUI, needed in order to properly
 	 *            access the command list
-	 * @param mapper Shared reference to the color mapper
+	 * @param mapper
+	 *            Shared reference to the color mapper
 	 */
 	public ImportListener(GUI gui, ColourMapper mapper) {
 		this.gui = gui;
@@ -119,7 +120,8 @@ public class ImportListener implements ActionListener {
 			try {
 				str = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
 			} catch (IOException e) {
-				// An IOException occured, this is outside the application's control.
+				// An IOException occured, this is outside the application's
+				// control.
 				// Gracefully return nothing
 				return new ArrayList<String>();
 			}
