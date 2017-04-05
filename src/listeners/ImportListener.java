@@ -105,6 +105,11 @@ public class ImportListener implements ActionListener {
 		int r = importDialog.showOpenDialog(gui);
 		if (r == JFileChooser.APPROVE_OPTION) {
 			URI uri = importDialog.getSelectedFile().toURI();
+			gui.getRightPanel().setStart(true);
+			gui.getRightPanel().setNew(true);
+			gui.getRightPanel().setExport(true);
+			gui.getRightPanel().setReadFile(true);
+			gui.getRightPanel().setNewQuestion(true);			
 			try {
 				str = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
 			} catch (IOException e) {
