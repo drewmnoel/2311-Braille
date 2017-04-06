@@ -45,6 +45,10 @@ public class ColourMapperTest {
 		commandsFull.add(new SkipCommand("two"));
 		commandsFull.add(new SetStringCommand("three"));
 		commandsFull.add(new SkipCommand("three"));
+		//test colour cycling
+		for(int i = 0; i<11; i++) {
+			commandsFull.add(new SkipCommand("" + i));
+		}
 
 		commandsNoSkip.add(new TTSCommand("one"));
 		commandsNoSkip.add(new TTSCommand("two"));
@@ -67,6 +71,17 @@ public class ColourMapperTest {
 		assertEquals(Color.blue, colourMap_full.getColour("one"));
 		assertEquals(Color.cyan, colourMap_full.getColour("two"));
 		assertEquals(Color.red, colourMap_full.getColour("three"));
+		//test colour cycling
+		assertEquals(Color.magenta, colourMap_full.getColour("1"));
+		assertEquals(Color.orange, colourMap_full.getColour("2"));
+		assertEquals(Color.yellow, colourMap_full.getColour("3"));
+		assertEquals(Color.gray, colourMap_full.getColour("4"));
+		assertEquals(Color.lightGray, colourMap_full.getColour("5"));
+		assertEquals(Color.pink, colourMap_full.getColour("6"));
+		assertEquals(Color.darkGray, colourMap_full.getColour("7"));
+		assertEquals(Color.blue, colourMap_full.getColour("8"));
+		assertEquals(Color.cyan, colourMap_full.getColour("9"));
+		assertEquals(Color.red, colourMap_full.getColour("10"));
 	}
 
 }
